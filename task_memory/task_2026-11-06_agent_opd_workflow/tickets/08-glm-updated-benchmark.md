@@ -3,6 +3,7 @@
 | Date | Change |
 | --- | --- |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
+| 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
 
 # 08: 第 20 步 GLM 的评测与学习结果
 
@@ -10,7 +11,7 @@
 
 **Blocked by:** 04: GLM 第 20 次更新的导出与重载; 06: 原始 GLM 的固定 20 题评测.
 
-**Status:** draft — interview pending; not approved for runtime execution.
+**Status:** pending — predecessor acceptance required.
 
 - [ ] 实际评测载入的是已验证的第 20 次更新权重；同样 20 题四 seeds 有 80 个有效 grader 结果。
 - [ ] 前后环境、工具、grader 和采样合同一致；不能混合不同 sandbox 合同的结果。

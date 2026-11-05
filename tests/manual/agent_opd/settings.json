@@ -1,0 +1,26 @@
+{
+  "context_length": 65536,
+  "response_length": 4096,
+  "train_batch_size": 4,
+  "ppo_max_token_len_per_gpu": 65536,
+  "learning_rate": 2e-06,
+  "seed": 42,
+  "optimizer_betas": [
+    0.9,
+    0.98
+  ],
+  "weight_decay": 0,
+  "clip_ratio": 0.2,
+  "clip_ratio_high": 0.28,
+  "importance_ratio_bounds": [
+    0.5,
+    2.0
+  ],
+  "rollout_memory_utilization": 0.75,
+  "teacher_memory_utilization": 0.75,
+  "max_running_requests": 4,
+  "chunked_prefill_size": 8192,
+  "save_directory": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs",
+  "project_name": "agent-opd",
+  "experiment_name": "set-by-worker"
+}

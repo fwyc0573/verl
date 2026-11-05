@@ -3,6 +3,7 @@
 | Date | Change |
 | --- | --- |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
+| 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
 
 # 03: Frog/Qwen 两步真实 OPD 与训推一致性
 
@@ -10,7 +11,7 @@
 
 **Blocked by:** 01: 冻结并验证两组 workflow 合同.
 
-**Status:** draft — interview pending; not approved for runtime execution.
+**Status:** pending — predecessor acceptance required.
 
 - [ ] 实际加载两个固定模型，验证同对 tokenizer/template 兼容性和 Qwen 渲染后的真实历史/长度，不直接套用 GLM token IDs。
 - [ ] 按合同覆盖 reasoning、正文和工具表达；teacher 评分 tokens、student tokens 及 loss mask 对齐。

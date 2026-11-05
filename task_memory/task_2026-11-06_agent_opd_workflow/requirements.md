@@ -2,7 +2,8 @@
 
 | Date | Change |
 | --- | --- |
-| 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
+| 2026-11-06 | Record execution steering and carry the recommended symmetric test matrix into execution. |
+| 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
 
 # Requirements
 
@@ -24,7 +25,7 @@
 - 在新 branch 工作，及时将已验证的阶段成果推送到个人 repo。已核对 origin 为 https://github.com/fwyc0573/verl.git；本次新建 branch 为 agent-opd，起点为 e41dd697abd7d5a583c0b46b1cedb821ba402db3。
 - 及时清理本任务不再被依赖的临时数据、原始日志、编译缓存、测试权重和 benchmark 产物；保留可复用代码及精简 Markdown 验证结论。保护共享模型、原始数据、miles 的工作和其他任务。
 - 当前仓库原有未跟踪的 .serena/ 与本任务无关，保持原状，不暂存。
-- 当前阶段授权创建、验证和推送规划文档。访谈完成前不启动该方案的训练或 benchmark；GPU 执行细节属于后续冻结的运行合同。
+- 最新“开始执行”指令授权进入实施与真实测试。按上一轮推荐 A 推进两组对称的 20 次更新与完整前后评测；沿用来源单 turn 训练，执行中据实冻结技术配置。
 
 ## Source task and inheritance limits
 
@@ -32,10 +33,10 @@
 
 | 项目 | 本次已读取的 miles 记录 | verl 草案 |
 | --- | --- | --- |
-| GLM 训练和评测 | 20 次成功更新；原始和第 20 步各 20 题、四 seeds | 建议复刻；访谈确认完整矩阵 |
-| Frog/Qwen 训练和评测 | 8 H800、两次更新；明确未扩展到完整 benchmark | 建议扩展为与 GLM 相同的最终验收深度，尚待确认 |
+| GLM 训练和评测 | 20 次成功更新；原始和第 20 步各 20 题、四 seeds | 执行 20 次有效更新及两个版本各 80 个有效结果 |
+| Frog/Qwen 训练和评测 | 8 H800、两次更新；明确未扩展到完整 benchmark | 执行与 GLM 相同的完整验收深度 |
 | 训练输入 | Ticket07 glm5.2 原始 turn；GLM 80 turns、四类各 20 | 复用来源与排除约束；实际 Qwen 长度和类别须单独验证 |
-| 训练交互 | 固定历史前缀上由当前 student 生成一个新 turn，再由 teacher 评分 | 是否训练中执行工具并继续多轮，尚待访谈 |
+| 训练交互 | 固定历史前缀上由当前 student 生成一个新 turn，再由 teacher 评分 | 沿用来源单 turn；真实多轮工具执行由原生 SWE 评测覆盖 |
 | benchmark | Ticket06 fixed50 确定性选 20 题，继承 fixed175 排除；原生 SWE agent、工具和 grader | 复用固定题目与评分含义；实际 sandbox 可用性待验证 |
 | 训推误差 | 已记录 trainer/decode/prefill 残差；没有校准后的数值通过阈值 | 必须单独定义并取得真实 PASS |
 | 硬件 | 最后明确切换为 H800/codesign | 沿用当前工作区 H800/codesign 默认；实际总配额和每组布局待执行前核验 |
@@ -43,12 +44,15 @@
 
 历史来源中 GLM 一次运行的 trainer/decode 平均绝对 logprob 差范围为 0.005970–0.035865、最大单 token 差 1.597615；报告明确拒绝据此宣称数值通过。Frog/Qwen 的实际两步记录也区分 workflow PASS 与数值资格，并指出最终第二步尚未由原 driver 发布。上述数值只解释本次新增验收需求，不是容差或当前作业状态。
 
-## Questions to resolve, in order
+## Execution steering
 
-1. 两组是否都要求 20 次成功更新，并对原始与第 20 步模型各执行固定 20 题 × 4 seeds？建议对两组采用相同的完整验收范围。来源非对称矩阵作为实际备选保留。
-2. agent OPD 的训练边界：复刻固定历史上的新单 turn，还是要求训练 rollout 实际调用工具、接收结果并继续多轮？真实工具执行的 benchmark 不能替代后一项训练验收。
-3. 训推一致性的通过定义：冻结同一 student、同一权重版本和相同 tokens 的结构条件与数值误差预算。预算须有依据，在资格测试前冻结；不得以放宽阈值或 TIS 掩盖失败。
-4. 根据以上选择确认 tickets 粒度、依赖和执行合同；后端、精度、数据长度和资源布局先从现有能力调查提出，常规实现细节不重复请求授权。
+[Original Request] 开始执行
+
+- 将该指令作为从已推送草案进入实施的明确要求，按上一轮推荐 A 执行：两组各 20 次成功更新，原始和更新后各 20 题 × 4 seeds，总计 320 个有效评分。用户未逐项重述矩阵，此处记录执行解释；如有后续纠正，以新指令为准。
+- 复刻来源的固定历史前缀 + 当前 student 新单 turn；完整 SWE 工具交互与 grader 在 benchmark 执行。若需要训练中多轮工具交互，属于另一个明确能力，不混淆两者证据。
+- 不继续等待逐题访谈。后端、配置、数值校准和资源布局按源代码、锁定环境和真实检查自主确定并记录；未有依据的数值 PASS 不得宣称。
+- 使用当前 verl 的 uv.lock 及原生 megatron+sglang 作为首选；已从公司镜像代理解析 uv.cu130.dev5 的 amd64 manifest digest 466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504。该解析只证明镜像身份，实际环境尚待验证。
+- 20 步学习测试在各组两步资格完成后独立从原始权重启动；资格两步不混入 20 步计数。
 
 ## Acceptance common to both pairs
 

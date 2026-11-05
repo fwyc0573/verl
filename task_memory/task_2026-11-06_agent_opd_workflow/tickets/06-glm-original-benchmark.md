@@ -3,6 +3,7 @@
 | Date | Change |
 | --- | --- |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
+| 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
 
 # 06: 原始 GLM 的固定 20 题评测
 
@@ -10,7 +11,7 @@
 
 **Blocked by:** 01: 冻结并验证两组 workflow 合同.
 
-**Status:** draft — interview pending; not approved for runtime execution.
+**Status:** pending — predecessor acceptance required.
 
 - [ ] 确认 benchmark 范围后，对冻结的 20 题和四 seeds 获取 80 个有效原生评分，模型权重/环境/采样/超时身份完整。
 - [ ] 基础设施错误保留为 missing，合法 unresolved 作为模型失败；先取得可用的原生结果再扩大提交。

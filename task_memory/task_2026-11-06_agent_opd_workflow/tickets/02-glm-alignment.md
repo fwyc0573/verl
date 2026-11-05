@@ -3,6 +3,7 @@
 | Date | Change |
 | --- | --- |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
+| 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
 
 # 02: GLM 两步真实 OPD 与训推一致性
 
@@ -10,7 +11,7 @@
 
 **Blocked by:** 01: 冻结并验证两组 workflow 合同.
 
-**Status:** draft — interview pending; not approved for runtime execution.
+**Status:** pending — predecessor acceptance required.
 
 - [ ] 使用冻结的真实数据与交互边界，teacher 实际评分的 token IDs 与当前 student 采样一致。
 - [ ] thinking、正文和工具信号的源字段、tokens、mask、实际生成覆盖分别可核验；MoE routes 按约定真实录制并 replay。

@@ -1,0 +1,680 @@
+{
+  "stage": "zero_gpu_environment_preflight",
+  "result": "FAIL",
+  "initiating_cause": "uv sync --offline could not obtain the pinned deep-ep 1.2.1 wheel because it was absent from the image cache.",
+  "job": {
+    "kind": "RJob",
+    "apiVersion": "rjob.brainpp.cn/v1alpha1",
+    "metadata": {
+      "name": "exp-1106-012337-418890",
+      "uid": "7182b2ad-7489-412e-83cf-159e4defa102",
+      "creationTimestamp": "2026-11-05T17:23:37Z",
+      "deletionTimestamp": null,
+      "ownerReferences": null
+    },
+    "creator": "i-fengyicheng",
+    "preemptible": "no",
+    "quota_group": "codesign",
+    "stop_annotations": {
+      "rjob.brainpp.cn/system-stop-reason": "Some critical tasks failed."
+    },
+    "stop_spec": {
+      "stopTimestamp": "2026-11-05T17:30:53Z"
+    },
+    "status": {
+      "phase": "Failed",
+      "reason": "RJobFailed",
+      "message": "Tasks with failed status: [default]",
+      "taskStatuses": {
+        "default": {
+          "failed": 1,
+          "taskStage": "stepmind-task-stage-1"
+        }
+      },
+      "finishTime": "2026-11-05T17:30:54Z",
+      "taskStage": "stepmind-task-stage-1"
+    }
+  },
+  "replica": {
+    "kind": "Replica",
+    "apiVersion": "rjob.brainpp.cn/v1alpha1",
+    "metadata": {
+      "name": "exp-1106-012337-418890-cfcd2084",
+      "uid": "419c32a5-6ca7-4e68-9e01-8a768a8c7915",
+      "creationTimestamp": "2026-11-05T17:23:43Z",
+      "deletionTimestamp": null,
+      "ownerReferences": [
+        {
+          "apiVersion": "rjob.brainpp.cn/v1alpha1",
+          "kind": "RJob",
+          "name": "exp-1106-012337-418890",
+          "uid": "7182b2ad-7489-412e-83cf-159e4defa102",
+          "controller": true,
+          "blockOwnerDeletion": true
+        }
+      ]
+    },
+    "creator": "i-fengyicheng",
+    "preemptible": "no",
+    "quota_group": "codesign",
+    "stop_annotations": {},
+    "stop_spec": {},
+    "status": {
+      "conditions": [
+        {
+          "type": "Initialized",
+          "status": "True",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T17:23:43Z"
+        },
+        {
+          "type": "Ready",
+          "status": "False",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T17:30:52Z",
+          "reason": "PodFailed"
+        },
+        {
+          "type": "ContainersReady",
+          "status": "False",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T17:30:52Z",
+          "reason": "PodFailed"
+        },
+        {
+          "type": "PodScheduled",
+          "status": "True",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T17:23:43Z"
+        }
+      ],
+      "hostIP": "10.191.9.65",
+      "podIP": "10.191.9.65",
+      "podIPs": [
+        {
+          "ip": "10.191.9.65"
+        }
+      ],
+      "startTime": "2026-11-05T17:23:43Z",
+      "containerStatuses": [
+        {
+          "name": "default",
+          "state": {
+            "terminated": {
+              "exitCode": 1,
+              "reason": "Error",
+              "message": "user command: exit status 1",
+              "startedAt": "2026-11-05T17:30:49Z",
+              "finishedAt": "2026-11-05T17:30:50Z",
+              "containerID": "containerd://0ccdd0dbb3e26a8475f3cc8c3ad8aeb7630f0f0ad20ad06b6c2534e5a9791fb9"
+            }
+          },
+          "lastState": {},
+          "ready": false,
+          "restartCount": 0,
+          "image": "sha256:3eae996c8f0d4383bda9cc9448dd445eb960f253ac7d3e4cb4f0c6465cb706ae",
+          "imageID": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+          "containerID": "containerd://0ccdd0dbb3e26a8475f3cc8c3ad8aeb7630f0f0ad20ad06b6c2534e5a9791fb9",
+          "started": false
+        }
+      ],
+      "qosClass": "Guaranteed",
+      "phase": "Failed",
+      "nodeName": "gpu-h800-0235.host.platform.shaipower.com",
+      "finishTimestamp": "2026-11-05T17:30:53Z"
+    }
+  },
+  "verified_creator": "i-fengyicheng",
+  "verified_local_source_mount": "100.96.128.195:/data/ycfeng:/data/ycfeng",
+  "image": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+  "events": [
+    {
+      "reason": "Scheduled",
+      "message": "Successfully assigned shai-core/exp-1106-012337-418890-cfcd2084 to gpu-h800-0235.host.platform.shaipower.com",
+      "event_time": "2026-11-05 17:23:43.773834+00:00",
+      "first_timestamp": null,
+      "last_timestamp": null,
+      "count": null,
+      "involved_object": {
+        "api_version": "v1",
+        "field_path": null,
+        "kind": "Pod",
+        "name": "exp-1106-012337-418890-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "45369687004",
+        "uid": "d82c102e-fbb4-4132-9b40-9736dd7bbe4d"
+      },
+      "source": {
+        "component": null,
+        "host": null
+      }
+    },
+    {
+      "reason": "Pulling",
+      "message": "Pulling image \"artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504\"",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:23:47+00:00",
+      "last_timestamp": "2026-11-05 17:28:27+00:00",
+      "count": 3,
+      "involved_object": {
+        "api_version": "v1",
+        "field_path": "spec.containers{default}",
+        "kind": "Pod",
+        "name": "exp-1106-012337-418890-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "45369687078",
+        "uid": "d82c102e-fbb4-4132-9b40-9736dd7bbe4d"
+      },
+      "source": {
+        "component": "kubelet",
+        "host": "gpu-h800-0235.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "Failed",
+      "message": "Failed to pull image \"artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504\": rpc error: code = Canceled desc = failed to pull and unpack image \"artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504\": context canceled",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:26:27+00:00",
+      "last_timestamp": "2026-11-05 17:28:01+00:00",
+      "count": 2,
+      "involved_object": {
+        "api_version": "v1",
+        "field_path": "spec.containers{default}",
+        "kind": "Pod",
+        "name": "exp-1106-012337-418890-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "45369687078",
+        "uid": "d82c102e-fbb4-4132-9b40-9736dd7bbe4d"
+      },
+      "source": {
+        "component": "kubelet",
+        "host": "gpu-h800-0235.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "Failed",
+      "message": "Error: ErrImagePull",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:26:27+00:00",
+      "last_timestamp": "2026-11-05 17:28:01+00:00",
+      "count": 2,
+      "involved_object": {
+        "api_version": "v1",
+        "field_path": "spec.containers{default}",
+        "kind": "Pod",
+        "name": "exp-1106-012337-418890-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "45369687078",
+        "uid": "d82c102e-fbb4-4132-9b40-9736dd7bbe4d"
+      },
+      "source": {
+        "component": "kubelet",
+        "host": "gpu-h800-0235.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "BackOff",
+      "message": "Back-off pulling image \"artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504\"",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:26:27+00:00",
+      "last_timestamp": "2026-11-05 17:28:13+00:00",
+      "count": 2,
+      "involved_object": {
+        "api_version": "v1",
+        "field_path": "spec.containers{default}",
+        "kind": "Pod",
+        "name": "exp-1106-012337-418890-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "45369687078",
+        "uid": "d82c102e-fbb4-4132-9b40-9736dd7bbe4d"
+      },
+      "source": {
+        "component": "kubelet",
+        "host": "gpu-h800-0235.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "Failed",
+      "message": "Error: ImagePullBackOff",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:26:27+00:00",
+      "last_timestamp": "2026-11-05 17:28:13+00:00",
+      "count": 2,
+      "involved_object": {
+        "api_version": "v1",
+        "field_path": "spec.containers{default}",
+        "kind": "Pod",
+        "name": "exp-1106-012337-418890-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "45369687078",
+        "uid": "d82c102e-fbb4-4132-9b40-9736dd7bbe4d"
+      },
+      "source": {
+        "component": "kubelet",
+        "host": "gpu-h800-0235.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "Pulled",
+      "message": "Successfully pulled image \"artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504\" in 2m21.009340126s (2m21.009354051s including waiting)",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:30:48+00:00",
+      "last_timestamp": "2026-11-05 17:30:48+00:00",
+      "count": 1,
+      "involved_object": {
+        "api_version": "v1",
+        "field_path": "spec.containers{default}",
+        "kind": "Pod",
+        "name": "exp-1106-012337-418890-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "45369687078",
+        "uid": "d82c102e-fbb4-4132-9b40-9736dd7bbe4d"
+      },
+      "source": {
+        "component": "kubelet",
+        "host": "gpu-h800-0235.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "Created",
+      "message": "Created container default",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:30:48+00:00",
+      "last_timestamp": "2026-11-05 17:30:48+00:00",
+      "count": 1,
+      "involved_object": {
+        "api_version": "v1",
+        "field_path": "spec.containers{default}",
+        "kind": "Pod",
+        "name": "exp-1106-012337-418890-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "45369687078",
+        "uid": "d82c102e-fbb4-4132-9b40-9736dd7bbe4d"
+      },
+      "source": {
+        "component": "kubelet",
+        "host": "gpu-h800-0235.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "Started",
+      "message": "Started container default",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:30:49+00:00",
+      "last_timestamp": "2026-11-05 17:30:49+00:00",
+      "count": 1,
+      "involved_object": {
+        "api_version": "v1",
+        "field_path": "spec.containers{default}",
+        "kind": "Pod",
+        "name": "exp-1106-012337-418890-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "45369687078",
+        "uid": "d82c102e-fbb4-4132-9b40-9736dd7bbe4d"
+      },
+      "source": {
+        "component": "kubelet",
+        "host": "gpu-h800-0235.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "Failed",
+      "message": "Error: ErrImagePull",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:28:01+00:00",
+      "last_timestamp": "2026-11-05 17:28:01+00:00",
+      "count": null,
+      "involved_object": {
+        "api_version": "rjob.brainpp.cn/v1alpha1",
+        "field_path": null,
+        "kind": "Replica",
+        "name": "exp-1106-012337-418890-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "1632293531",
+        "uid": "419c32a5-6ca7-4e68-9e01-8a768a8c7915"
+      },
+      "source": {
+        "component": "rjob-controller",
+        "host": "gpu-h800-0235.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "BackOff",
+      "message": "Back-off pulling image \"artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504\"",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:28:13+00:00",
+      "last_timestamp": "2026-11-05 17:28:13+00:00",
+      "count": null,
+      "involved_object": {
+        "api_version": "rjob.brainpp.cn/v1alpha1",
+        "field_path": null,
+        "kind": "Replica",
+        "name": "exp-1106-012337-418890-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "1632293531",
+        "uid": "419c32a5-6ca7-4e68-9e01-8a768a8c7915"
+      },
+      "source": {
+        "component": "rjob-controller",
+        "host": "gpu-h800-0235.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "Failed",
+      "message": "Failed to pull image \"artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504\": rpc error: code = Canceled desc = failed to pull and unpack image \"artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504\": context canceled",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:28:01+00:00",
+      "last_timestamp": "2026-11-05 17:28:01+00:00",
+      "count": null,
+      "involved_object": {
+        "api_version": "rjob.brainpp.cn/v1alpha1",
+        "field_path": null,
+        "kind": "Replica",
+        "name": "exp-1106-012337-418890-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "1632293531",
+        "uid": "419c32a5-6ca7-4e68-9e01-8a768a8c7915"
+      },
+      "source": {
+        "component": "rjob-controller",
+        "host": "gpu-h800-0235.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "Failed",
+      "message": "Error: ImagePullBackOff",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:28:13+00:00",
+      "last_timestamp": "2026-11-05 17:28:13+00:00",
+      "count": null,
+      "involved_object": {
+        "api_version": "rjob.brainpp.cn/v1alpha1",
+        "field_path": null,
+        "kind": "Replica",
+        "name": "exp-1106-012337-418890-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "1632293531",
+        "uid": "419c32a5-6ca7-4e68-9e01-8a768a8c7915"
+      },
+      "source": {
+        "component": "rjob-controller",
+        "host": "gpu-h800-0235.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "Pulling",
+      "message": "Pulling image \"artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504\"",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:28:27+00:00",
+      "last_timestamp": "2026-11-05 17:28:27+00:00",
+      "count": null,
+      "involved_object": {
+        "api_version": "rjob.brainpp.cn/v1alpha1",
+        "field_path": null,
+        "kind": "Replica",
+        "name": "exp-1106-012337-418890-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "1632303650",
+        "uid": "419c32a5-6ca7-4e68-9e01-8a768a8c7915"
+      },
+      "source": {
+        "component": "rjob-controller",
+        "host": "gpu-h800-0235.host.platform.shaipower.com"
+      }
+    }
+  ],
+  "incident_logs": {
+    "request": {
+      "method": "GET",
+      "path": "/kapis/rjob.brainpp.cn/v1alpha1/tenants/shai/projects/shai-core/rjobs/exp-1106-012337-418890/logs/query_range",
+      "parameters": {
+        "replicas": "exp-1106-012337-418890-cfcd2084",
+        "start": "1793899840000000000",
+        "end": "1793899870000000000",
+        "direction": "forward",
+        "limit": 500
+      },
+      "http_status": 200
+    },
+    "rows": [
+      {
+        "timestamp": "1793899849287648000",
+        "line": "[2026-11-06T01:30:49+08:00] exp-1106-012337-418890-cfcd2084 >> {\"@caller\":\"gitlab.basemind.com/basemind/brainpp/projects/kubebrain/cmd/worker-init/app/options.(*Options).Run\",\"@file\":\"projects/kubebrain/cmd/worker-init/app/options/options.go:80\",\"@level\":\"info\",\"@msg\":\"SSHD not enabled\",\"@timestamp\":\"2026-11-05T17:30:49.287Z\"}",
+        "pod": "exp-1106-012337-418890-cfcd2084",
+        "node": "gpu-h800-0235.host.platform.shaipower.com",
+        "message": "{\"@caller\":\"gitlab.basemind.com/basemind/brainpp/projects/kubebrain/cmd/worker-init/app/options.(*Options).Run\",\"@file\":\"projects/kubebrain/cmd/worker-init/app/options/options.go:80\",\"@level\":\"info\",\"@msg\":\"SSHD not enabled\",\"@timestamp\":\"2026-11-05T17:30:49.287Z\"}"
+      },
+      {
+        "timestamp": "1793899849318689000",
+        "line": "[2026-11-06T01:30:49+08:00] exp-1106-012337-418890-cfcd2084 >> 2026/11/05 17:30:49 [DEBUG] packaging-url , packaging-dir /workdir/src/rjob, Starting packaging server",
+        "pod": "exp-1106-012337-418890-cfcd2084",
+        "node": "gpu-h800-0235.host.platform.shaipower.com",
+        "message": "2026/11/05 17:30:49 [DEBUG] packaging-url , packaging-dir /workdir/src/rjob, Starting packaging server"
+      },
+      {
+        "timestamp": "1793899849338437000",
+        "line": "[2026-11-06T01:30:49+08:00] exp-1106-012337-418890-cfcd2084 >> warning: `VIRTUAL_ENV=/workspace/verl/.venv` does not match the project environment path `/data/ycfeng/envs/verl-agent-opd-megatron-sglang` and will be ignored; use `--active` to target the active environment instead",
+        "pod": "exp-1106-012337-418890-cfcd2084",
+        "node": "gpu-h800-0235.host.platform.shaipower.com",
+        "message": "warning: `VIRTUAL_ENV=/workspace/verl/.venv` does not match the project environment path `/data/ycfeng/envs/verl-agent-opd-megatron-sglang` and will be ignored; use `--active` to target the active environment instead"
+      },
+      {
+        "timestamp": "1793899849814868000",
+        "line": "[2026-11-06T01:30:49+08:00] exp-1106-012337-418890-cfcd2084 >> Using CPython 3.12.13 interpreter at: /data/ycfeng/envs/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+        "pod": "exp-1106-012337-418890-cfcd2084",
+        "node": "gpu-h800-0235.host.platform.shaipower.com",
+        "message": "Using CPython 3.12.13 interpreter at: /data/ycfeng/envs/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12"
+      },
+      {
+        "timestamp": "1793899849815004000",
+        "line": "[2026-11-06T01:30:49+08:00] exp-1106-012337-418890-cfcd2084 >> Creating virtual environment at: /data/ycfeng/envs/verl-agent-opd-megatron-sglang",
+        "pod": "exp-1106-012337-418890-cfcd2084",
+        "node": "gpu-h800-0235.host.platform.shaipower.com",
+        "message": "Creating virtual environment at: /data/ycfeng/envs/verl-agent-opd-megatron-sglang"
+      },
+      {
+        "timestamp": "1793899849934911000",
+        "line": "[2026-11-06T01:30:49+08:00] exp-1106-012337-418890-cfcd2084 >>   × Failed to download `deep-ep==1.2.1`",
+        "pod": "exp-1106-012337-418890-cfcd2084",
+        "node": "gpu-h800-0235.host.platform.shaipower.com",
+        "message": "  × Failed to download `deep-ep==1.2.1`"
+      },
+      {
+        "timestamp": "1793899849934931000",
+        "line": "[2026-11-06T01:30:49+08:00] exp-1106-012337-418890-cfcd2084 >>   ╰─▶ Network connectivity is disabled, but the",
+        "pod": "exp-1106-012337-418890-cfcd2084",
+        "node": "gpu-h800-0235.host.platform.shaipower.com",
+        "message": "  ╰─▶ Network connectivity is disabled, but the"
+      },
+      {
+        "timestamp": "1793899849934932000",
+        "line": "[2026-11-06T01:30:49+08:00] exp-1106-012337-418890-cfcd2084 >>       requested data wasn't found in the cache for:",
+        "pod": "exp-1106-012337-418890-cfcd2084",
+        "node": "gpu-h800-0235.host.platform.shaipower.com",
+        "message": "      requested data wasn't found in the cache for:"
+      },
+      {
+        "timestamp": "1793899849934934000",
+        "line": "[2026-11-06T01:30:49+08:00] exp-1106-012337-418890-cfcd2084 >>       `https://github.com/verl-project/verl-wheelhouse/releases/download/deep-ep-3f601f7ac1c062c46502646ff04c535013bfca00-py3.12-torch2.13.0-cu130/deep_ep-1.2.1-cp312-cp312-linux_x86_64.whl`",
+        "pod": "exp-1106-012337-418890-cfcd2084",
+        "node": "gpu-h800-0235.host.platform.shaipower.com",
+        "message": "      `https://github.com/verl-project/verl-wheelhouse/releases/download/deep-ep-3f601f7ac1c062c46502646ff04c535013bfca00-py3.12-torch2.13.0-cu130/deep_ep-1.2.1-cp312-cp312-linux_x86_64.whl`"
+      },
+      {
+        "timestamp": "1793899849934936000",
+        "line": "[2026-11-06T01:30:49+08:00] exp-1106-012337-418890-cfcd2084 >> ",
+        "pod": "exp-1106-012337-418890-cfcd2084",
+        "node": "gpu-h800-0235.host.platform.shaipower.com",
+        "message": ""
+      },
+      {
+        "timestamp": "1793899849939038000",
+        "line": "[2026-11-06T01:30:49+08:00] exp-1106-012337-418890-cfcd2084 >> ExitCode= 1",
+        "pod": "exp-1106-012337-418890-cfcd2084",
+        "node": "gpu-h800-0235.host.platform.shaipower.com",
+        "message": "ExitCode= 1"
+      },
+      {
+        "timestamp": "1793899850150860000",
+        "line": "[2026-11-06T01:30:50+08:00] exp-1106-012337-418890-cfcd2084 >> hint: `deep-ep` (v1.2.1) was included because `verl[megatron]` depends on `deep-ep`",
+        "pod": "exp-1106-012337-418890-cfcd2084",
+        "node": "gpu-h800-0235.host.platform.shaipower.com",
+        "message": "hint: `deep-ep` (v1.2.1) was included because `verl[megatron]` depends on `deep-ep`"
+      }
+    ]
+  },
+  "audit": {
+    "rjob-audit": {
+      "count": 11,
+      "pagination_complete": true,
+      "operations": [
+        {
+          "timestamp": 1793899854,
+          "operation": "update",
+          "result": "succeeded",
+          "subject_name": "system:serviceaccount:kubebrain:queue-controller",
+          "data": null
+        },
+        {
+          "timestamp": 1793899853,
+          "operation": "update",
+          "result": "succeeded",
+          "subject_name": "system:serviceaccount:kubebrain:queue-controller",
+          "data": null
+        },
+        {
+          "timestamp": 1793899853,
+          "operation": "update",
+          "result": "succeeded",
+          "subject_name": "system:serviceaccount:kubebrain:rjob-controller",
+          "data": null
+        },
+        {
+          "timestamp": 1793899851,
+          "operation": "update",
+          "result": "succeeded",
+          "subject_name": "system:serviceaccount:kubebrain:rjob-controller",
+          "data": null
+        },
+        {
+          "timestamp": 1793899851,
+          "operation": "update",
+          "result": "succeeded",
+          "subject_name": "system:serviceaccount:kubebrain:queue-controller",
+          "data": null
+        },
+        {
+          "timestamp": 1793899851,
+          "operation": "update",
+          "result": "succeeded",
+          "subject_name": "system:serviceaccount:kubebrain:rjob-controller",
+          "data": null
+        },
+        {
+          "timestamp": 1793899425,
+          "operation": "update",
+          "result": "succeeded",
+          "subject_name": "system:serviceaccount:kubebrain:rjob-controller",
+          "data": null
+        },
+        {
+          "timestamp": 1793899425,
+          "operation": "update",
+          "result": "succeeded",
+          "subject_name": "system:serviceaccount:kubebrain:rjob-controller",
+          "data": null
+        },
+        {
+          "timestamp": 1793899424,
+          "operation": "update",
+          "result": "succeeded",
+          "subject_name": "system:serviceaccount:kubebrain:sys.infra.add-on",
+          "data": null
+        },
+        {
+          "timestamp": 1793899422,
+          "operation": "update",
+          "result": "succeeded",
+          "subject_name": "system:serviceaccount:kubebrain:queue-controller",
+          "data": null
+        },
+        {
+          "timestamp": 1793899417,
+          "operation": "create",
+          "result": "succeeded",
+          "subject_name": "i-fengyicheng",
+          "data": null
+        }
+      ]
+    },
+    "replica-audit": {
+      "count": 1,
+      "pagination_complete": true,
+      "operations": [
+        {
+          "timestamp": 1793899423,
+          "operation": "create",
+          "result": "succeeded",
+          "subject_name": "system:serviceaccount:kubebrain:rjob-controller",
+          "data": null
+        }
+      ]
+    }
+  },
+  "existing_deepscan": {
+    "count": 0,
+    "pagination_complete": true
+  },
+  "raw_evidence_directory": "/data/ycfeng/tmp/rca-exp-1106-012337-418890",
+  "query_coverage": [
+    {
+      "query": "rjob-historical-events",
+      "ok": true
+    },
+    {
+      "query": "replica-historical-events",
+      "ok": true
+    },
+    {
+      "query": "rjob-live-events",
+      "ok": true
+    },
+    {
+      "query": "replica-live-events",
+      "ok": true
+    },
+    {
+      "query": "incident-logs",
+      "ok": true
+    },
+    {
+      "query": "rjob-audit",
+      "ok": true
+    },
+    {
+      "query": "replica-audit",
+      "ok": true
+    },
+    {
+      "query": "existing-deepscan",
+      "ok": true
+    }
+  ],
+  "interpretation": [
+    "Earlier ImagePullBackOff did not prevent eventual image pull and container startup at 17:30:49Z.",
+    "Native uv reached the mounted CPython 3.12.13 interpreter and created the requested persistent venv; it installed no dependencies before the missing cache error.",
+    "The local launcher observed terminal Failed at 01:30:55HKT; its later atexit stop is cleanup, not the initiating worker exit.",
+    "No GPU was allocated and no model training or numerical acceptance was performed.",
+    "No OOMKilled or incident-bound preemption event appears in the returned state/events; this is not a complete node/kernel investigation.",
+    "Initial bounded log reads were HTTP200 with no rows; later collector reads returned the error after ingestion delay."
+  ],
+  "unknown": {
+    "initiating_manual_stop_actor": "UNKNOWN",
+    "initiating_manual_stop_reason": "UNKNOWN",
+    "initiating_manual_stop_request_time": "UNKNOWN"
+  },
+  "limits": [
+    "Direct native Pod read returned403; replica projection and Pod Events were readable.",
+    "Audit changed-field data were null; no initiating stop operation was returned."
+  ]
+}

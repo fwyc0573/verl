@@ -3,6 +3,7 @@
 | Date | Change |
 | --- | --- |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
+| 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
 
 # 10: 最终清理、结论与分支交付
 
@@ -10,7 +11,7 @@
 
 **Blocked by:** 08: 第 20 步 GLM 的评测与学习结果; 09: 第 20 步 Qwen 的评测与学习结果.
 
-**Status:** draft — interview pending; not approved for runtime execution.
+**Status:** pending — predecessor acceptance required.
 
 - [ ] 最终依赖按确认范围核对；如某项被明确取消，记录决定与 skipped 状态，不计为通过。
 - [ ] 重读 requirements，逐项链接真实结论、精确命令、环境版本及限制；summary 使用 English。

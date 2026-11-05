@@ -3,6 +3,7 @@
 | Date | Change |
 | --- | --- |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
+| 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
 
 # 09: 第 20 步 Qwen 的评测与学习结果
 
@@ -10,7 +11,7 @@
 
 **Blocked by:** 05: Frog/Qwen 第 20 次更新的导出与重载; 07: 原始 Qwen 的固定 20 题评测.
 
-**Status:** draft — interview pending; not approved for runtime execution.
+**Status:** pending — predecessor acceptance required.
 
 - [ ] 载入真实第 20 次更新权重，完成同一 20 题四 seeds 的 80 个有效原生 grader 结果。
 - [ ] 与原始 Qwen 的工具、环境、grader、采样和分母一致，报告配对 avg@4 差及按题 bootstrap 区间。

@@ -3,6 +3,7 @@
 | Date | Change |
 | --- | --- |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
+| 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
 
 # 04: GLM 第 20 次更新的导出与重载
 
@@ -10,7 +11,7 @@
 
 **Blocked by:** 02: GLM 两步真实 OPD 与训推一致性.
 
-**Status:** draft — interview pending; not approved for runtime execution.
+**Status:** pending — predecessor acceptance required.
 
 - [ ] 在确认的实验范围内完成 20 次成功 optimizer update，逐步记录版本和有效数值；原先两步资格是否另起运行由合同明确。
 - [ ] 保持已通过的一致性配置，检查运行期间版本、tokens、routes 和误差观测；异常按原生故障与观测缺失分别处理。

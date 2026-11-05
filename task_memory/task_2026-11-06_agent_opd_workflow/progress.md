@@ -3,19 +3,17 @@
 | Date | Change |
 | --- | --- |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
+| 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
 
 # Progress
 
 ## Current state
 
-- completed: 阅读 miles 来源 requirements/plan、progress 末段与两份报告的相关段落，核对两组身份、范围差异及数值验收缺口。
-- completed: 检查 verl 原生 OPD、Agent Loop、teacher、R3 与 Qwen3.5 示例，记录复用入口及尚未验证的兼容性。
-- completed: 核对 origin 为个人 fwyc0573/verl；从 main 的 e41dd697abd7d5a583c0b46b1cedb821ba402db3 新建 agent-opd；保留既有 .serena/。
-- completed: 创建用户要求的 task、GLOSSARY 和 10 个 draft tickets；文档直接验证通过，精确命令见 test_report_2026-11-06_planning.md。
-- in-progress: 依次访谈，第一项为两组是否采用相同的 20 步及前后 benchmark 范围。
-- completed: 暂存范围检查，仅 15 个本任务 Markdown 文件；git diff --cached --check 通过。
-- completed: 规划提交 fe8c108edf6dc72b7810fde9917cf7ac0698d2bc 已普通 push 到个人 origin/agent-opd；独立 ls-remote 返回相同 SHA。本文补录回执后作为文档跟进提交同步。
-- pending: 所有 GPU 运行、环境安装、训推数值资格、导出/重载和 benchmark。当前没有本任务提交的 job，也没有待清理的本任务运行产物。
+- completed: 规划草案、10 tickets、新分支及个人 repo 推送；已有文档检查证据。
+- in-progress: 用户已指示“开始执行”，按推荐 A 的两组对称 20 步与原始/更新后评测推进。沿用来源单 turn 训练。
+- in-progress: ticket01 原生锁定环境、模型支持、真实数据适配、同 student 数值观测。已解析 CI image amd64 digest；首个零 GPU 环境 worker 因离线 wheel 缺失失败，正在补齐锁定依赖。
+- pending: 两组 GPU 资格、独立 20 步、导出重载、320 个有效评测、最终清理。
+- 本任务尚未提交 GPU 作业；当前新增代码与环境阶段不代表 workflow 或数值通过。既有 .serena/ 始终保护。
 
 ## Investigation commands and conclusions
 
@@ -32,7 +30,7 @@
 - 读取 verl 的 OPD 文档、Qwen3.5 FSDP 示例，以及 agent_loop.py/actor.py 的相关 symbols。
   - Actual: 已有可复用路径；尚未验证目标模型/镜像/长上下文/数值的实际兼容性。
 
-## Draft decisions and non-decisions
+## Historical planning decisions (superseded by execution steering below)
 
 - Requirements 中的 Questions to resolve 是唯一未决设计列表；ticket 不将推荐值伪装成用户确认。
 - 推荐两组对称完成 20 次更新与两版本各 80 次有效 benchmark。来源的非对称范围作为第一题的真实备选。
@@ -41,9 +39,9 @@
 
 ## Next actions
 
-1. 确定两组完整测试矩阵，第一题推荐两组均做 20 步及原始/更新后各 20 题 avg@4。
-2. 明确训练交互边界和数值通过标准，核验运行配置及必要前提。
-3. 更新同一目录内的 requirements、plan 与 tickets 并及时推送；访谈达成共识后按依赖执行。
+1. 监控零 GPU 环境修复 exp-1106-013411-959935，保持 launcher 存活；对照首次缓存缺失错误核对结果。
+2. 并行落实数据适配和原生数值观测，完成 ticket01 的运行合同；必要缺口用最小变更修复。
+3. 按实测配额推进两组资格及基线评测，完成一项即检查、提交、推送并消费无后续依赖的产物。
 
 ## 1. 规划完成情况
 
@@ -105,3 +103,26 @@
 ## Publication receipt
 
 执行 git commit 创建 fe8c108edf6dc72b7810fde9917cf7ac0698d2bc（含 Co-authored-by: OpenAI Codex）。git push -u origin agent-opd 成功新建个人远端分支，随后 git rev-parse HEAD 和 git ls-remote --heads origin refs/heads/agent-opd 均返回该完整 SHA。没有发起 PR 或触碰上游。当前仍未运行 GPU；所有 tickets 保持 draft。此回执跟进仅修改 progress 和 test_report，随后普通提交和 push；最终 tip 由当次终端回执核对。
+
+## Execution start
+
+[Original Request] 开始执行
+
+采用上一轮推荐 A：两组各 20 次成功更新与原始/更新后各 80 个有效评分。用户指令进入执行，故不再等待原访谈问题。源训练仍为固定 history 上的新单 turn；原生 benchmark 执行真实工具 episode。
+
+并行职责：runtime_compat 负责 runtime_probe；data_benchmark 负责精确历史/数据适配；alignment_contract 负责 native Agent Loop 观测和数值汇总；root 负责本地 Python RJob launcher、运行、合同和交付。所有修改在同一 branch 协作。
+
+环境观察：本机 /data 可用约 105 GiB，只有小型 Docker 镜像，无现成 verl venv。没有拉取大型镜像到本机。通过公司镜像代理解析 verlai/verl:uv.cu130.dev5 的 amd64 digest；将使用零 GPU worker 的镜像离线缓存，在当前机器挂载的 /data 下 materialize 一套 uv.lock 环境，供后续直接调用。运行脚本不打印 credentials。
+
+## Execution checkpoint: native adapters and environment repair
+
+- Ticket01: source-exact prepared dataset, model/runtime registry, Hydra native recipe, same-token logprob comparison and personal RJob entrypoint implemented. CPU checks do not establish model/runtime qualification. Additional trainer/benchmark integration remains in progress.
+- Original CPU environment job `exp-1106-012337-418890`, UID `7182b2ad-7489-412e-83cf-159e4defa102`, requested 0 GPUs/16 CPUs/96000Mi. Creator and local NFS `100.96.128.195:/data/ycfeng:/data/ycfeng` verified. Image eventually pulled; native container exited1 on offline `deep-ep==1.2.1` cache miss. Terminal Failed precedes launcher atexit cleanup. Selected RCA: evidence/runtime-environment-failure.json.
+- Repair hypothesis: the pinned wheel is absent from the image cache, while mounted interpreter and venv creation work. Allowing the frozen sync to fetch missing dependencies in a zero-GPU job should populate the persistent environment without changing the lock. Falsifying result: download/version/build failure or affected imports still fail. Repair job `exp-1106-013411-959935`, launcher session66632, same immutable image/source/resources; current business outcome pending. Persistent installation log: /data/ycfeng/tmp/verl-agent-opd-20261106/environment-sync.log.
+- CPU checks: Python3.10.6 and existing miles-agent-opd-cpu Python3.12.13 each passed six alignment fault tests. Existing CPU environment imports torch2.11.0+cu130/transformers5.19.0; these are not this task's locked training versions. Prepared dataset CLI import/help passed with explicit PYTHONPATH pointing to verl. The first direct script invocation without that path failed ModuleNotFoundError:verl; no package behavior was changed to hide it.
+- Native recipe composition: GLM/Qwen ×2/20 steps constructed through actual Hydra configs. This checks schema composition only; CUDA/model load, 8/80 real turns, numeric budget, full updates and exports remain unverified. Source seed42, LR2e-6, Adam betas0.9/0.98, no warmup/weight decay, PGk1/no task rewards, BF16/FA3 and token IS/rejection0.5–2 are explicit.
+- GLM pools planned8 actor+8 teacher, denseTP4 and expertTP1×EP8; Qwen4 actor+4 teacher, denseTP2. Actual GPU allocation, devices, dispatch and collective execution remain pending. No other jobs were controlled.
+
+### Check-progress self-check after adapter CPU milestone
+
+Ticket01 remains TODO; tickets02–10 remain TODO behind recorded dependencies. Mainline frontier is the real environment/data/config qualification in01; runtime, exact-input, trainer observations and native benchmark adaptation progressed in parallel. D1–D7 CLEAR: each adapter supplies evidence required by the next workflow stage, no repeated parameter-tuning loop, and the single environment repair tests the documented cache hypothesis. S1–S6 show no immediate contradiction requiring a scope change. Numerical limits remain deliberately unset rather than copied from Miles residual errors. Next route: finish persistent imports/data receipts, run independent calibration and freeze justified limits, then native qualification and baseline benchmark. Do not add general framework features or broaden CPU test machinery.
