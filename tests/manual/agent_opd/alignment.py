@@ -1,22 +1,105 @@
 """Compare probabilities for identical student tokens and weight versions.
 
-No numerical acceptance budget is supplied by this module. A measured comparison
-becomes a pass or fail only when the caller supplies every required limit from
-the qualification's recorded calibration.
+The adopted budget is supplied explicitly by the run settings. Only mean
+absolute logprob error is gated. Tails, signed errors, ratios and both K3
+expressions remain diagnostics. Every input must pass before aggregation.
 """
 
 import math
 from collections.abc import Mapping, Sequence
 
 
-LIMIT_METRICS = (
-    "mean_abs_diff",
-    "p95_abs_diff",
-    "p99_abs_diff",
-    "max_abs_diff",
-    "abs_signed_mean_diff",
-    "ratio_fraction_outside",
-)
+LIMIT_METRICS = ("mean_abs_diff",)
+
+
+def validate_numerical_limits(numerical_limits):
+    if numerical_limits is None:
+        return None
+    if set(numerical_limits) != set(LIMIT_METRICS):
+        raise ValueError("numerical_limits must define only mean_abs_diff; other metrics are diagnostic")
+    limits = {name: float(value) for name, value in numerical_limits.items()}
+    if any(not math.isfinite(value) or value < 0 for value in limits.values()):
+        raise ValueError("Numerical limits must be finite and nonnegative")
+    return limits
+
+
+def _k3_diagnostics(differences):
+    """Report discrepancy expressions without treating them as a qualified KL."""
+    forward, reverse = [], []
+    overflow = 0
+    for difference in differences:
+        try:
+            ratio = math.exp(difference)
+            forward_value = math.fsum((ratio * difference, -math.expm1(difference)))
+            reverse_value = math.expm1(difference) - difference
+            if not all(math.isfinite(value) for value in (forward_value, reverse_value)):
+                raise OverflowError
+            forward.append(forward_value)
+            reverse.append(reverse_value)
+        except OverflowError:
+            overflow += 1
+    result = {
+        "status": "reported" if not overflow else "overflow",
+        "ratio_definition": "r=exp(candidate_logprob-reference_logprob)",
+        "overflow_token_count": overflow,
+        "r_log_r_minus_r_plus_one_mean": None,
+        "r_minus_one_minus_log_r_mean": None,
+        "acceptance_cutoff": None,
+        "interpretation": "Discrepancy diagnostics; no KL qualification is inferred",
+    }
+    if not overflow:
+        try:
+            result["r_log_r_minus_r_plus_one_mean"] = math.fsum(forward) / len(differences)
+            result["r_minus_one_minus_log_r_mean"] = math.fsum(reverse) / len(differences)
+        except OverflowError:
+            result["status"] = "overflow"
+    return result
+
+
+def aggregate_input_metrics(input_metrics, *, expected_input_count, numerical_limits, whole_input_packs):
+    """Bound every native pack using complete, individually qualified inputs.
+
+    For complete-input packs, A_pack/N_pack is a nonnegative token-weighted
+    mean of input MAEs and cannot exceed max(input MAE). Any subsequent
+    pack/time/DP arithmetic means preserve that bound. Physical backend pack
+    boundaries are not observed and no measured pack mean is invented.
+    """
+    limits = validate_numerical_limits(numerical_limits)
+    complete = len(input_metrics) == expected_input_count and expected_input_count > 0
+    result = {
+        "status": "unverified",
+        "expected_input_count": expected_input_count,
+        "observed_input_count": len(input_metrics),
+        "completion_source": "current_student",
+        "all_loss_eligible_tokens_before_tis": True,
+        "native_pack_boundary_observed": False,
+        "native_pack_mean_abs_diff": None,
+        "native_pack_acceptance": "unverified",
+        "whole_input_packs": whole_input_packs,
+    }
+    if not input_metrics:
+        return result
+    numerator = math.fsum(item["abs_diff_sum"] for item in input_metrics)
+    denominator = sum(item["token_count"] for item in input_metrics)
+    upper_bound = max(item["mean_abs_diff"] for item in input_metrics)
+    result.update(
+        abs_diff_sum=numerator, token_count=denominator,
+        global_token_mean_abs_diff=numerator / denominator,
+        per_input_mean_abs_diff=math.fsum(item["mean_abs_diff"] for item in input_metrics) / len(input_metrics),
+        native_pack_mean_abs_diff_upper_bound=upper_bound,
+        failed_input_count=sum(item["status"] == "fail" for item in input_metrics),
+    )
+    if not complete or not whole_input_packs:
+        return result
+    if limits is None:
+        result["status"] = "measured"
+        return result
+    threshold = limits["mean_abs_diff"]
+    passed = upper_bound <= threshold and result["global_token_mean_abs_diff"] <= threshold
+    result["status"] = "pass" if passed else "fail"
+    result["native_pack_acceptance"] = "proven_bounded" if upper_bound <= threshold else "unverified"
+    result["numerical_limits"] = limits
+    return result
 
 
 def _quantile(sorted_values: list[float], fraction: float) -> float:
@@ -73,6 +156,7 @@ def compare_logprobs(
     if not all(math.isfinite(value) for value in differences):
         raise ValueError("The logprob differences are non-finite")
     absolute = sorted(abs(value) for value in differences)
+    absolute_sum = math.fsum(absolute)
     signed_mean = math.fsum(differences) / len(differences)
     lower_log, upper_log = math.log(ratio_lower), math.log(ratio_upper)
     outside = sum(value < lower_log or value > upper_log for value in differences)
@@ -82,7 +166,8 @@ def compare_logprobs(
         "token_ids_match": True,
         "versions_match": True,
         "weight_version": reference_weight_version,
-        "mean_abs_diff": math.fsum(absolute) / len(absolute),
+        "abs_diff_sum": absolute_sum,
+        "mean_abs_diff": absolute_sum / len(absolute),
         "p95_abs_diff": _quantile(absolute, 0.95),
         "p99_abs_diff": _quantile(absolute, 0.99),
         "max_abs_diff": absolute[-1],
@@ -96,15 +181,10 @@ def compare_logprobs(
         "ratio_outside_count": outside,
         "ratio_fraction_outside": outside / len(differences),
         "mismatch_count": sum(value != 0 for value in differences),
+        "k3_diagnostics": _k3_diagnostics(differences),
     }
-    if numerical_limits is not None:
-        if set(numerical_limits) != set(LIMIT_METRICS):
-            raise ValueError(f"numerical_limits must define exactly {', '.join(LIMIT_METRICS)}")
-        limits = {name: float(value) for name, value in numerical_limits.items()}
-        if any(not math.isfinite(value) or value < 0 for value in limits.values()):
-            raise ValueError("Numerical limits must be finite and nonnegative")
-        if limits["ratio_fraction_outside"] > 1:
-            raise ValueError("The ratio fraction limit cannot exceed one")
+    limits = validate_numerical_limits(numerical_limits)
+    if limits is not None:
         result["numerical_limits"] = limits
         result["failed_metrics"] = [name for name, limit in limits.items() if result[name] > limit]
         result["status"] = "fail" if result["failed_metrics"] else "pass"

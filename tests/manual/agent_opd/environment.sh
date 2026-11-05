@@ -5,6 +5,7 @@ repo=/data/ycfeng/sota-engine/verl
 stage=/data/ycfeng/tmp/verl-agent-opd-20261106
 mkdir -p "$stage"
 exec > >(tee -a "$stage/environment-sync.log") 2>&1
+printf '\nVERL_ENVIRONMENT_JOB=%s\n' "${KUBEBRAIN_RJOB_NAME:?}"
 export TMPDIR="$stage"
 export PYTHONDONTWRITEBYTECODE=1
 export PYTHONPATH="$repo"
@@ -17,7 +18,11 @@ supplement=/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache
 test -d "$supplement/archive-v0"
 test -d "$supplement/wheels-v6/index"
 mkdir -p "$UV_CACHE_DIR"
-cp -a -n "$supplement/." "$UV_CACHE_DIR/"
+stat -f -c 'UV_CACHE_FILESYSTEM=%T' "$UV_CACHE_DIR"
+readlink -f "$UV_CACHE_DIR"
+# The worker cache filesystem rejects chmod metadata preservation. uv needs
+# cache contents and links; ownership, ACLs and timestamps are not inputs.
+cp -R -n --no-preserve=all "$supplement/." "$UV_CACHE_DIR/"
 printf 'MERGED_PREFETCH_CACHE=%s\n' "$supplement"
 set +x
 proxy_script=$(curl --noproxy '*' --fail --silent --show-error --max-time 15 http://deploy.i.shaipower.com/httpproxy)

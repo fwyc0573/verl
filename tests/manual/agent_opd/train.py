@@ -21,7 +21,7 @@ import torch
 from omegaconf import OmegaConf
 
 from tests.manual.agent_opd.agent_loop import _weight_version
-from tests.manual.agent_opd.alignment import compare_logprobs
+from tests.manual.agent_opd.alignment import aggregate_input_metrics, compare_logprobs
 from tests.manual.agent_opd.prepare_turns import token_hash
 from verl.trainer.main_ppo import run_ppo
 from verl.trainer.main_ppo_v0 import BaseTaskRunner
@@ -40,6 +40,13 @@ PAIRS = {
 VERSION_SOURCE = (
     "RayPPOTrainer.fit publishes the initial loaded version before generation, then each completed step; "
     "_compute_old_log_prob runs before the current step update. No independent live parameter checksum."
+)
+PACK_BOUND_SOURCE = (
+    "Megatron.forward_backward_batch -> engine.utils.prepare_micro_batches -> "
+    "seqlen_balancing.rearrange_micro_batches selects complete input rows; "
+    "dynamic_context_parallel=False and context_parallel_size=1. "
+    "Each pack MAE is a token-weighted mean of complete-input MAEs, bounded by their maximum; "
+    "subsequent pack/time/DP means preserve this bound. Backend boundaries are not observed."
 )
 
 
@@ -69,6 +76,8 @@ def _unverified(error):
 
 
 def _compare(record, reference, candidate, settings):
+    if record["probability_definition"] != "raw_model_logprob":
+        raise ValueError("The comparison does not have verified raw-model probability semantics")
     if "prefill" in (reference, candidate) and not record["independent_prefill"]:
         raise ValueError("An independent student prefill was not verified")
     return compare_logprobs(
@@ -93,6 +102,12 @@ def _aggregate(records, settings):
             and record["comparisons"][name]["status"] != "unverified"
         ]
         entry = {"verified_turn_count": len(valid), "unverified_turn_count": len(records) - len(valid)}
+        entry.update(aggregate_input_metrics(
+            [record["comparisons"][name] for record in valid],
+            expected_input_count=len(records),
+            numerical_limits=settings["numerical_limits"],
+            whole_input_packs=all(record["whole_input_packs"] for record in valid),
+        ))
         if valid:
             versions = {record["weight_versions"][reference] for record in valid}
             if len(versions) != 1:
@@ -281,6 +296,14 @@ class ObservedPPOTrainer(RayPPOTrainer):
             "version_source": VERSION_SOURCE if native_manager else "Unverified custom checkpoint manager",
             "source_uid": receipt["source_uid"],
             "source_category": receipt["source_category"],
+            "completion_source": "current_student",
+            "probability_definition": rescoring.get("probability_definition"),
+            "sampling_params": rescoring.get("sampling_params"),
+            "all_loss_eligible_tokens_before_tis": True,
+            "whole_input_packs": (
+                not self.config.actor_rollout_ref.actor.megatron.dynamic_context_parallel
+                and self.config.actor_rollout_ref.actor.megatron.context_parallel_size == 1
+            ),
             "completion": batch.non_tensor_batch["completion"][index],
             "generated_category": batch.non_tensor_batch["completion"][index]["category"],
             "prompt_token_count": len(prompt_ids),
@@ -323,6 +346,8 @@ class ObservedPPOTrainer(RayPPOTrainer):
         record["status"] = (
             "unverified" if "unverified" in statuses else "fail" if "fail" in statuses else statuses.pop()
         )
+        if not record["whole_input_packs"]:
+            record["status"] = "unverified"
         return record
 
     def _save_observations(self, records):
@@ -338,6 +363,11 @@ class ObservedPPOTrainer(RayPPOTrainer):
             "numerical_limits": self.alignment_settings["numerical_limits"],
             "version_source": VERSION_SOURCE,
             "aggregation_scope": "Each training step separately; versions are never combined",
+            "completion_source": "current_student",
+            "probability_definition": "raw_model_logprob",
+            "all_loss_eligible_tokens_before_tis": True,
+            "native_pack_bound_source": PACK_BOUND_SOURCE,
+            "diagnostic_only": ["tails", "signed_error", "importance_ratios", "k3_diagnostics"],
             "by_training_step": {},
         }
         for step, turns in by_step.items():

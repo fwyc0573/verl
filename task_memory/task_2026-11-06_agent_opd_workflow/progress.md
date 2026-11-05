@@ -221,3 +221,24 @@ Found and inspected source requirements.md Q59 (lines143–151) and glm-numerica
 1. CPU缓存PASS尚未证明完整native环境或模型可用。
 2. 数值标准已确定为双MAE≤0.03；实现必须忠实表达原生聚合，不能虚标。
 3. 当前没有训练GPU或有效benchmark；继续按真实业务证据推进。
+
+
+## Fourth worker filesystem failure and next repair hypothesis
+
+Fourth job exp-1106-015912-607567 UID1e015548-8956-46b4-b530-bb9395fd2d81, replicaUIDa7703131-365e-48e0-bfc3-c7f6e3735102, H8000195: creator and local NFS verified; container18:03:36–18:03:40Z exit1/restart0, platformFailed18:03:56Z. New worker log contains2048 cp preserving-permissions errors/318065bytes. uv sync was not reached. Exact selected evidence: evidence/runtime-environment-copy-failure.json. Target filesystem type is UNKNOWN; source sample xattrs are empty, so this is not established as a source ACL defect. The cp failure is inferred from last command/set-e/containerexit1, not a directly captured command status.
+
+Before a fifth attempt, the specific repair hypothesis is that `cp -R -n --no-preserve=all` preserves cache contents and symlinks without requesting the unsupported ownership/mode/ACL/timestamp operations. No dependency/lock/backend change. Falsifiers: content/link copy itself fails, or uv cannot consume copied metadata. The script now reports exact job identity and target stat-f/readlink before copy so the next outcome is attributable. The prior CPU cp-a success did not validate worker metadata support. Native MAE code is ready for CPU verification; no calibration or arbitrary tolerance sweep is added.
+
+Native evaluator import check PASS under existing Python3.10.20 from cwd=/data/ycfeng/tmp with PYTHONPATH ordering native-eval worktree, StepTron root, native SWE src and StepAlign root. Source native adapter, RunCheckPipeline and swe_formal import successfully; pipeline/scorer resolve to step3p6-native-eval-1015z. Running the same stdin check from verl cwd failed tests.e2e import because local tests takes precedence; benchmark launches by absolute script path and uses its explicit native PYTHONPATH. This is import-only, no sandbox or live scoring acceptance.
+
+Personal publication receipt: ordinary push87a764def5ade727fd5b155ddfd8e0ba4a97dcf4 succeeded; independent ls-remote equals localHEAD. .serena remains untouched. Benchmark scheduling review found a real throughput issue: source runs four fixed seed streams concurrently; serializing the first three historical attempts alone would exceed3hours. The adapter is receiving only the necessary four-seed scheduling correction, preserving within-seed order and the first-question four-result gate.
+
+
+## MAE contract implementation milestone
+
+- settings.json explicitly freezes numerical_limits={mean_abs_diff:0.03}; configure requires the same mapping in agent YAML. Tail/signed/ratio/K3 values remain diagnostics. Raw full-support sampling semantics are checked before comparison; structurally changed sampling becomes soft-unverified.
+- Every input is checked separately. Aggregates report the real global token numerator/denominator and MAE. Current native Megatron forward uses complete-row grouping (engine/utils.py prepare_micro_batches and seqlen_balancing.py rearrange_micro_batches), CP1 and dynamic_context_parallel=False. Thus max(per-input MAE) bounds each possible native pack MAE and any subsequent pack/time/DP mean. Report native_pack_mean_abs_diff=null, native_pack_boundary_observed=false, native_pack_acceptance=proven_bounded when that sufficient condition passes. This proves the adopted limit without inventing measured pack boundaries.
+- Actual native order computes old logprobs before TIS correction, so observer covers all eligible response tokens before rejection. Missing records, changed versions, wrong tokens/masks/positions and unsupported pack layouts cannot produce outer aggregate PASS. The diagnostic flattened metrics.status can pass despite a failed short input; acceptance consumes the outer by_training_step/step/all/comparisons/pair/status and per-input statuses.
+- Eleven alignment regressions PASS on hostPython3.10.6 and CPU Python3.12.13. Owning agent executed the real train aggregation function against a short-input dilution fault and version mismatch; actual AgentLoop rescore function checked raw full-support versus transformed sampling; four realHydra schema compositions PASS. These CPU results are not native GPU numerical qualification.
+- Check-progress self-check: milestone remains within01, all ten ticketsTODO; D1–D7 CLEAR because changes implement the now-defined criterion and stop after affected checks. No new scope/threshold/reference/FP32 expansion; S1–S6 no new inconsistency. Next route remains real environment/data, then both2stepqualifications and original benchmarks in parallel.
+- Fifth zero-GPU job exp-1106-020650-487444 created02:06:50HKT, launcher65336alive; exact target filesystem and content-copy result pending. No training GPU allocated.

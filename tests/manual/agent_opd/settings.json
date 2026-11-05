@@ -16,6 +16,9 @@
     0.5,
     2.0
   ],
+  "numerical_limits": {
+    "mean_abs_diff": 0.03
+  },
   "rollout_memory_utilization": 0.75,
   "teacher_memory_utilization": 0.75,
   "max_running_requests": 4,

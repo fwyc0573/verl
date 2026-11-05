@@ -44,7 +44,7 @@ for name, pair in pairs.items():
     agent = [{'name': 'prepared_turn_agent',
               '_target_': 'tests.manual.agent_opd.agent_loop.PreparedTurnAgentLoop',
               'reasoning_parser': pair['reasoning_parser'], 'tool_parser': pair['loop_tool_parser'],
-              'ratio_bounds': base['importance_ratio_bounds'], 'numerical_limits': None}]
+              'ratio_bounds': base['importance_ratio_bounds'], 'numerical_limits': base['numerical_limits']}]
     OmegaConf.save(OmegaConf.create(agent), records / f'{name}-agent.yaml')
     for steps in (2, 20):
         settings = dict(base, save_directory=str(cloud / f'configuration-only-{name}-{steps}'),

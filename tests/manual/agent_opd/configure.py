@@ -25,6 +25,8 @@ from pathlib import Path
 from hydra import compose, initialize_config_dir
 from omegaconf import OmegaConf
 
+from tests.manual.agent_opd.alignment import validate_numerical_limits
+
 RUNTIME_FIELDS = (
     "actor_gpus", "teacher_gpus", "actor_tp", "actor_pp", "actor_cp", "actor_ep", "actor_etp",
     "rollout_tp", "teacher_tp", "router_replay_mode", "inference_engine_kwargs",
@@ -34,6 +36,7 @@ SETTING_FIELDS = (
     "learning_rate", "seed", "save_directory", "project_name", "experiment_name", "optimizer_betas",
     "weight_decay", "clip_ratio", "clip_ratio_high", "importance_ratio_bounds",
     "rollout_memory_utilization", "teacher_memory_utilization", "max_running_requests", "chunked_prefill_size",
+    "numerical_limits",
 )
 
 
@@ -63,6 +66,7 @@ def recipe_overrides(pair, settings, *, dataset, agent_config, steps, repository
     runtime = pair["runtime"]
     require_fields(runtime, RUNTIME_FIELDS, "Pair runtime")
     require_fields(settings, SETTING_FIELDS, "Run settings")
+    validate_numerical_limits(settings["numerical_limits"])
     if steps <= 0 or settings["train_batch_size"] <= 0:
         raise ValueError("steps and train_batch_size must be positive")
     if settings["context_length"] <= settings["response_length"] or settings["response_length"] <= 0:
@@ -162,6 +166,7 @@ def recipe_overrides(pair, settings, *, dataset, agent_config, steps, repository
         "actor_rollout_ref.actor.megatron.tensor_model_parallel_size": runtime["actor_tp"],
         "actor_rollout_ref.actor.megatron.pipeline_model_parallel_size": runtime["actor_pp"],
         "actor_rollout_ref.actor.megatron.context_parallel_size": runtime["actor_cp"],
+        "actor_rollout_ref.actor.megatron.dynamic_context_parallel": False,
         "actor_rollout_ref.actor.megatron.expert_model_parallel_size": runtime["actor_ep"],
         "actor_rollout_ref.actor.megatron.expert_tensor_parallel_size": runtime["actor_etp"],
         "actor_rollout_ref.actor.megatron.router_replay.mode": runtime["router_replay_mode"],
@@ -229,6 +234,10 @@ def validate_assets(args, pair, settings):
         raise ValueError("Agent loop parsers differ from the selected pair registry")
     if list(entry.ratio_bounds) != list(settings["importance_ratio_bounds"]):
         raise ValueError("Agent observer ratio bounds differ from the training correction bounds")
+    if validate_numerical_limits(entry.get("numerical_limits")) != validate_numerical_limits(
+        settings["numerical_limits"]
+    ):
+        raise ValueError("Agent observer numerical limits differ from the explicit run settings")
 
 
 def main():

@@ -96,7 +96,7 @@ class PreparedTurnAgentLoop(SingleTurnAgentLoop):
             "tool_parser": type(self.tool_parser).__name__,
         }
 
-    async def _rescore_student(self, prompt_ids, response_ids, decode_logprobs, generation_fields):
+    async def _rescore_student(self, prompt_ids, response_ids, decode_logprobs, generation_fields, sampling_params):
         observation = {
             "status": "unverified",
             "training_logprobs_replaced": False,
@@ -106,8 +106,16 @@ class PreparedTurnAgentLoop(SingleTurnAgentLoop):
                 key: generation_fields.get(key) for key in ("global_steps", "min_global_steps", "max_global_steps")
             },
             "independent_prefill": False,
+            "sampling_params": dict(sampling_params),
         }
         try:
+            neutral_sampling = {
+                "temperature": 1.0, "top_p": 1.0, "top_k": -1, "repetition_penalty": 1.0,
+                "min_p": 0.0, "presence_penalty": 0.0, "frequency_penalty": 0.0,
+            }
+            if any(sampling_params.get(key, neutral) != neutral for key, neutral in neutral_sampling.items()):
+                raise ValueError("Raw-model comparison requires untransformed full-support sampling probabilities")
+            observation["probability_definition"] = "raw_model_logprob"
             engine_kwargs = self.rollout_config.engine_kwargs.get("sglang", {})
             if self.rollout_config.name != "sglang" or engine_kwargs.get("disable_radix_cache") is not True:
                 raise ValueError("Independent prefill requires SGLang engine_kwargs.sglang.disable_radix_cache=True")
@@ -201,7 +209,7 @@ class PreparedTurnAgentLoop(SingleTurnAgentLoop):
             },
         ]
         extra_fields["student_rescoring"] = await self._rescore_student(
-            prompt_ids, response_ids, response_logprobs, extra_fields
+            prompt_ids, response_ids, response_logprobs, extra_fields, sampling_params
         )
         source = kwargs["source"]
         extra_fields["student_rescoring"]["prompt_receipt"] = {

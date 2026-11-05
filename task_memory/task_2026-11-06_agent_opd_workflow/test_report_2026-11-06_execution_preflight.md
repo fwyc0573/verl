@@ -73,3 +73,20 @@ All above PASS. AST PASS for worker.py, benchmark.py and rjob_run.py. Worker dir
 Fourth stage exact submission: rjob_run.py --image artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504 --command-file /data/ycfeng/sota-engine/verl/tests/manual/agent_opd/environment.sh --gpus0 --replicas1 --cpus16 --memory-gb96 --name verl-agent-opd-env-cache-20261106d. Job exp-1106-015912-607567 created2026-11-06 01:59:12HKT; launcher19002 remains alive. Actual environment/input result pending.
 
 Numerical acceptance is now source-backed by user steering: Steptron Q59 requires native pack MAE and global token MAE≤0.03 per input/completion population; tails/K3 only diagnostic. No numerical runtime result has yet been measured or accepted in this task. Code adoption is independently in progress.
+
+
+Fourth worker FAILED before uv: exact cp metadata preservation errors, containerexit1/restart0, platform18:03:56Z. This does not invalidate the CPU five-wheel offline install proof; it shows target filesystem metadata behavior differs. Selected evidence runtime-environment-copy-failure.json records original logs and unknown mount type. Next command uses cp-R-n --no-preserve=all and reports target filesystem; expected contents/links copied without permission-preservation operations, then actual uv/import/data gates.
+
+Native evaluator import PASS in existing Python3.10.20 with cwd=/data/ycfeng/tmp and PYTHONPATH=/data/ycfeng/steptron/.worktrees/step3p6-native-eval-1015z:/data/ycfeng/steptron:/data/ycfeng/steptron/.worktrees/step3p6-native-eval-1015z/third_party/swe-agents/src:/data/ycfeng/steptron/.worktrees/step3p6-native-eval-1015z/third_party/step_align. Actual Miles native_benchmark.py, pipeline and scorer imported; no sandbox call. The prior stdin check from verl cwd failed due local tests precedence, corrected by explicit cwd/path used for source import inspection.
+
+
+## Adopted numerical contract regression checks
+
+```sh
+python3 -B -m unittest discover -s tests/manual/agent_opd -p test_alignment.py -v
+/data/ycfeng/envs/miles-agent-opd-cpu/bin/python -B -m unittest discover -s tests/manual/agent_opd -p test_alignment.py -v
+```
+
+Expected11cases cover MAE-only acceptance, diagnostic tails/K3, overflow-safe JSON, exact tokens/version, missing inputs, unsupported packing and a failed short input hidden by a low global token mean. Actual11/11PASS onPython3.10.6 and3.12.13. Direct function checks of train aggregation/AgentLoop rescore and four nativeHydra compositions also PASS in the existing CPU environment. Full-support probability semantics are mandatory. Source rationale: StepTron ppo_trainer.py2173–2180 uses mean(pack MAE), rlhf.py496 averages time/DP; current verl whole-row packing with CP1/nonDCP permits a strict max(per-input MAE) upper bound. Physical pack boundaries are explicitly unobserved; no tail/K3 threshold was introduced.
+
+Fifth zero-GPU stage uses the same exact resource/image/source contract with name verl-agent-opd-env-copy-20261106e, job exp-1106-020650-487444, launcher65336. It changes only cache copy metadata behavior and diagnostic identity/filesystem output. Result pending.

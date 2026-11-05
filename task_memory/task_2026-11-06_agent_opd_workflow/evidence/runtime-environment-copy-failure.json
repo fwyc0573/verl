@@ -1,0 +1,221 @@
+{
+  "job": {
+    "name": "exp-1106-015912-607567",
+    "uid": "1e015548-8956-46b4-b530-bb9395fd2d81",
+    "creator": "i-fengyicheng",
+    "status": {
+      "phase": "Failed",
+      "reason": "RJobFailed",
+      "message": "Tasks with failed status: [default]",
+      "taskStatuses": {
+        "default": {
+          "failed": 1,
+          "taskStage": "stepmind-task-stage-1"
+        }
+      },
+      "finishTime": "2026-11-05T18:03:56Z",
+      "taskStage": "stepmind-task-stage-1"
+    },
+    "stop_annotations": {
+      "rjob.brainpp.cn/system-stop-reason": "Some critical tasks failed."
+    }
+  },
+  "replica": {
+    "name": "exp-1106-015912-607567-cfcd2084",
+    "uid": "a7703131-365e-48e0-bfc3-c7f6e3735102",
+    "owners": [
+      {
+        "apiVersion": "rjob.brainpp.cn/v1alpha1",
+        "kind": "RJob",
+        "name": "exp-1106-015912-607567",
+        "uid": "1e015548-8956-46b4-b530-bb9395fd2d81",
+        "controller": true,
+        "blockOwnerDeletion": true
+      }
+    ],
+    "status": {
+      "conditions": [
+        {
+          "type": "Initialized",
+          "status": "True",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T17:59:18Z"
+        },
+        {
+          "type": "Ready",
+          "status": "False",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T18:03:43Z",
+          "reason": "PodFailed"
+        },
+        {
+          "type": "ContainersReady",
+          "status": "False",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T18:03:43Z",
+          "reason": "PodFailed"
+        },
+        {
+          "type": "PodScheduled",
+          "status": "True",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T17:59:18Z"
+        }
+      ],
+      "hostIP": "10.191.9.19",
+      "podIP": "10.191.9.19",
+      "podIPs": [
+        {
+          "ip": "10.191.9.19"
+        }
+      ],
+      "startTime": "2026-11-05T17:59:18Z",
+      "containerStatuses": [
+        {
+          "name": "default",
+          "state": {
+            "terminated": {
+              "exitCode": 1,
+              "reason": "Error",
+              "message": "user command: exit status 1",
+              "startedAt": "2026-11-05T18:03:36Z",
+              "finishedAt": "2026-11-05T18:03:40Z",
+              "containerID": "containerd://164b626eb933eec2b23211649c0b99d00122ba74f9086e915cb8075e5409af38"
+            }
+          },
+          "lastState": {},
+          "ready": false,
+          "restartCount": 0,
+          "image": "sha256:3eae996c8f0d4383bda9cc9448dd445eb960f253ac7d3e4cb4f0c6465cb706ae",
+          "imageID": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+          "containerID": "containerd://164b626eb933eec2b23211649c0b99d00122ba74f9086e915cb8075e5409af38",
+          "started": false
+        }
+      ],
+      "qosClass": "Guaranteed",
+      "phase": "Failed",
+      "nodeName": "gpu-h800-0195.host.platform.shaipower.com",
+      "finishTimestamp": "2026-11-05T18:03:55Z"
+    }
+  },
+  "events": [
+    {
+      "reason": "Scheduled",
+      "message": "Successfully assigned shai-core/exp-1106-015912-607567-cfcd2084 to gpu-h800-0195.host.platform.shaipower.com",
+      "event_time": "2026-11-05 17:59:18.675785+00:00",
+      "first_timestamp": null,
+      "last_timestamp": null,
+      "count": null,
+      "source": {
+        "component": null,
+        "host": null
+      }
+    },
+    {
+      "reason": "Pulling",
+      "message": "Pulling image \"artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504\"",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:59:22+00:00",
+      "last_timestamp": "2026-11-05 17:59:22+00:00",
+      "count": 1,
+      "source": {
+        "component": "kubelet",
+        "host": "gpu-h800-0195.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "Pulled",
+      "message": "Successfully pulled image \"artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504\" in 4m11.603619989s (4m11.603638873s including waiting)",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 18:03:34+00:00",
+      "last_timestamp": "2026-11-05 18:03:34+00:00",
+      "count": 1,
+      "source": {
+        "component": "kubelet",
+        "host": "gpu-h800-0195.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "Created",
+      "message": "Created container default",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 18:03:35+00:00",
+      "last_timestamp": "2026-11-05 18:03:35+00:00",
+      "count": 1,
+      "source": {
+        "component": "kubelet",
+        "host": "gpu-h800-0195.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "Started",
+      "message": "Started container default",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 18:03:36+00:00",
+      "last_timestamp": "2026-11-05 18:03:36+00:00",
+      "count": 1,
+      "source": {
+        "component": "kubelet",
+        "host": "gpu-h800-0195.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "Pulling",
+      "message": "Pulling image \"artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504\"",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:59:22+00:00",
+      "last_timestamp": "2026-11-05 17:59:22+00:00",
+      "count": null,
+      "source": {
+        "component": "rjob-controller",
+        "host": "gpu-h800-0195.host.platform.shaipower.com"
+      }
+    }
+  ],
+  "events_pagination_complete": true,
+  "persistent_log_snapshot": {
+    "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/fourth-environment-copy-failure.log",
+    "bytes": 318065,
+    "sha256": "fbf23eb9824c3975b18f3ac9833aaa2e3bfb4fd8e7cdc4b7ae0b9d05652b828e",
+    "permission_preservation_error_lines": 2048,
+    "tail": [
+      "cp: preserving permissions for \u2018/root/.cache/uv/./archive-v0/ISReZ33CuSoNrRw_/megatron_bridge-0.6.2.dist-info/licenses\u2019: Operation not supported",
+      "cp: preserving permissions for \u2018/root/.cache/uv/./archive-v0/ISReZ33CuSoNrRw_/megatron_bridge-0.6.2.dist-info\u2019: Operation not supported",
+      "cp: preserving permissions for \u2018/root/.cache/uv/./archive-v0/ISReZ33CuSoNrRw_\u2019: Operation not supported",
+      "cp: preserving permissions for \u2018/root/.cache/uv/./archive-v0\u2019: Operation not supported",
+      "cp: preserving permissions for \u2018/root/.cache/uv/.\u2019: Operation not supported"
+    ]
+  },
+  "source_samples": [
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache",
+      "mode": "0o775",
+      "uid": 10250,
+      "gid": 10250,
+      "xattr_names": []
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache/archive-v0/ISReZ33CuSoNrRw_/megatron_bridge-0.6.2.dist-info/WHEEL",
+      "mode": "0o664",
+      "uid": 10250,
+      "gid": 10250,
+      "xattr_names": []
+    }
+  ],
+  "root_cause": "The user command failed during GNU cp -a metadata preservation, before uv sync; target filesystem rejects preserving permissions.",
+  "copy_exit_code": {
+    "value": 1,
+    "evidence_type": "inferred_from_container_exit1_and_set_e_last_cp_command",
+    "direct_shell_status_receipt_available": false
+  },
+  "target_filesystem_type": "UNKNOWN",
+  "target_runtime_mount_or_symlink": "UNKNOWN",
+  "dockerfile_observation": "UV_CACHE_DIR=/root/.cache/uv is baked by prefetch stage; no explicit runtime bind or cache symlink is declared.",
+  "local_source_filesystem_type": "xfs",
+  "limits": [
+    "Actual worker mountinfo/readlink/stat-f was not captured before container exit.",
+    "Source sample xattrs are empty, so source ACL is not an established root cause.",
+    "No native uv sync/model/GPU execution reached.",
+    "No audits or DeepScan were queried for this minimal user-command failure follow-up."
+  ]
+}
