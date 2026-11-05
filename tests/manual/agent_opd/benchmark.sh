@@ -13,6 +13,9 @@ export TMPDIR="$session_dir"
 "$python_path" -B "$script_dir/benchmark.py" server-argv "$@" --work-dir "$session_dir" \
     > "$session_dir/server-argv"
 mapfile -d '' -t server_command < "$session_dir/server-argv"
+printf 'VERL_BENCHMARK_NVIDIA_SMI\n'
+nvidia-smi --query-gpu=index,name,uuid,memory.total,driver_version --format=csv,noheader \
+    | tee "$session_dir/nvidia-smi.csv"
 setsid "${server_command[@]}" > "$session_dir/server.log" 2>&1 &
 server_pid=$!
 cleanup() {

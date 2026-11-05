@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Record actual original serving, four infrastructure failures, and canonical token environment repair. |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
 | 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
 
@@ -11,7 +12,7 @@
 
 **Blocked by:** 01 runtime and verified fixed benchmark inputs; independent of either training dataset. Existing native benchmark preparation must pass before server/scoring starts.
 
-**Status:** in-progress — submitted exp-1106-030308-817360; platform Pending/queuing at03:04:17HKT, no serving or score yet. Existing benchmark preparation must validate the frozen membership before server/scoring.
+**Status:** in-progress — exp-1106-030308-817360 loaded original Qwen TP2 and model_info200, then failed all four first-question seeds with sandbox SessionRouter HTTP401. No valid grades. The literal ${SESSION_ROUTER_USER_TOKEN} reached native auth because only SR_USER_TOKEN was forwarded; the existing child environment now supplies the canonical name with canonical precedence. CPU native-config regression passed; same-population missing-only retry remains pending.
 
 - [ ] 验证 Qwen 原生工具和 reasoning 解析能完成真实 episode 与 grader。
 - [ ] 同一固定 20 题、四 seeds 得到 80 个有效结果；使用该模型适用且前后保持一致的 template 和采样合同。

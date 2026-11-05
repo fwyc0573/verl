@@ -443,7 +443,7 @@ Qwenoriginal exp-1106-030308-817360 actually loaded SGLang TP0/1 with triton lin
 ## 2. 偏离检测
 
 **结论：** 未偏移，正常推进。
-**检测窗口：** 1f5942c4独立提交至当前两个实际失败定位｜**当前前沿：** Qwen输入修复、GLM资格、两个原始benchmark
+**检测窗口：** 1f5942c4独立提交至实际128k输入重提与鉴权修复验证｜**当前前沿：** Qwen输入修复、GLM资格、两个原始benchmark
 
 | 模式 | 判定 | 依据 |
 | --- | --- | --- |
@@ -452,7 +452,7 @@ Qwenoriginal exp-1106-030308-817360 actually loaded SGLang TP0/1 with triton lin
 | D3 支线问题修补 | CLEAR | 两个缺陷分别阻挡01/07 |
 | D4 可并行任务停滞 | CLEAR | GLM两条已独立排队，Qwen输入与鉴权并行处理 |
 | D5 超范围镀金 | CLEAR | 同一80行类别要求/320评分矩阵，未加新功能 |
-| D6 分析空转 | CLEAR | 已取得具体异常并完成最小配置修复，鉴权修复由owner执行 |
+| D6 分析空转 | CLEAR | 已取得具体异常并完成最小配置修复，鉴权修复已通过原生配置解析回归，待同题单重提 |
 | D7 路线违背 | CLEAR | 调整自主冻结的技术预算前已说明并更新requirements，用户要求不变 |
 
 **文档检查：** S1–S6均未发现新的缺陷；64k为实现参数，未改变用户要求的类别/步数/数值/评分验收。
@@ -466,10 +466,15 @@ Qwenoriginal exp-1106-030308-817360 actually loaded SGLang TP0/1 with triton lin
 **接下去的路线：**
 1. 01：提交独立settings后实跑既有prepare → Qwen80/8、四类各20/2及2/20recipe均PASS。
 2. 并行：02/06继续观察已排队作业，取得真实训练/原始评分证据。
-3. 并行：07规范传入已有SessionRouter token环境名，经合成回归后以同题单新attempt恢复；只复用有效结果，当前4infra均missing。
+3. 并行：07已规范传入已有SessionRouter token环境名且合成原生解析回归PASS；提交后以同题单新attempt恢复；只复用有效结果，当前4infra均missing。
 
 ## 4. 最值得关注的 3 点
 
 1. 128k只是模型配置允许；实际输入、内存和MAE仍待验证。
 2. Qwen首题4个HTTP401均为基础设施missing，不能计零分或已完成4份。
 3. 已排队GLM作业继续，无重复提交或其他作业控制。
+
+Per-model context implementation committed/pushed as728344f58cb52b19f353ed313c9645d0c32490f6; independent remoteSHA matched. Immediately before retry, exact previous inputUID was re-read and stillFailed. New0GPU job exp-1106-032827-028041 created03:28:27HKT via unchangedprepare.sh, launcher92790alive,0GPU16CPU96GB/pinnedimage/currentNFS. Actualnewinput/config results pending. The prepared but unsubmitted Qwenqualification command now points to its intended inputnamespace and independentqwen-settings.json; submission remains gated on actual80/8/2/20PASS.
+
+
+Runtimeowner completed exact sandboxauth RCA and minimalrepair: benchmark.py canonicalizes already available SR_USER_TOKEN only when native SESSION_ROUTER_USER_TOKEN is absent/empty, preservingcanonicalpriority. Source binding: native sweagents_configs.py130 placeholder, ConfigManager substitution91–113 preserves missingvars, env.py294 forwards that literal toSessionRouterClient. Three syntheticenv cases×4realchildinvocations through nativePython3.10 parserPASS, missingtokenreadyFalse and no tokenvalue leakage; no credentials/install/backend/identity changes. benchmark.sh now retains actualnvidia-smiCSV through existing archive; archivefixture/shell/AST/diffPASS, temporaryfixtureconsumed. Selected actualRCA evidence/runtime-qwen-original-auth-failure.json. Existing same-root identity allows freshUUID missing-onlyrerun; fouroldinfra attempts remaininvalid and preserved. Re-submit only after commit/push+exactterminal/quotaquery.

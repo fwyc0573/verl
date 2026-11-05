@@ -366,6 +366,8 @@ def run(args):
                 "--server-log", str(server_log),
             ]
             environment = dict(os.environ, PYTHONPATH=args.native_pythonpath, PYTHONDONTWRITEBYTECODE="1")
+            if not environment.get("SESSION_ROUTER_USER_TOKEN") and environment.get("SR_USER_TOKEN"):
+                environment["SESSION_ROUTER_USER_TOKEN"] = environment["SR_USER_TOKEN"]
 
             def started(pid):
                 state.update(status="running", child_pid=pid)
@@ -436,7 +438,9 @@ def archive(args):
     target = cloud_path(args.output) / f"step{args.version}" / "engine-logs" / args.server_log.parent.name
     target.mkdir(parents=True, exist_ok=False)
     shutil.copy2(args.server_log, target / "server.log")
+    shutil.copy2(args.work_dir / "nvidia-smi.csv", target / "nvidia-smi.csv")
     args.server_log.unlink()
+    (args.work_dir / "nvidia-smi.csv").unlink()
     (args.work_dir / "server-argv").unlink()
     args.work_dir.rmdir()
     print("VERL_BENCHMARK_ENGINE_LOG_ARCHIVED", str(target), flush=True)

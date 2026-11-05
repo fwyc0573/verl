@@ -1,0 +1,159 @@
+{
+  "collected_at": "2026-11-05T19:27:33.468206+00:00",
+  "identity_verified_at": "2026-11-05T19:04:17.679131+00:00",
+  "terminal_observed_at": "2026-11-05T19:24:40.417445+00:00",
+  "job": {
+    "name": "exp-1106-030308-817360",
+    "uid": "b20e47ee-bc8e-4486-84fb-829209bd915b",
+    "status": {
+      "phase": "Failed",
+      "reason": "RJobFailed",
+      "message": "Tasks with failed status: [default]",
+      "taskStatuses": {
+        "default": {
+          "failed": 1,
+          "taskStage": "stepmind-task-stage-1"
+        }
+      },
+      "finishTime": "2026-11-05T19:24:24Z",
+      "taskStage": "stepmind-task-stage-1"
+    },
+    "stop_annotations": {
+      "rjob.brainpp.cn/system-stop-reason": "Some critical tasks failed."
+    },
+    "stop_timestamp": "2026-11-05T19:24:24Z"
+  },
+  "replica": {
+    "name": "exp-1106-030308-817360-cfcd2084",
+    "uid": "5d296e9a-4c5a-4c67-9504-07af26a1b347",
+    "owners": [
+      {
+        "apiVersion": "rjob.brainpp.cn/v1alpha1",
+        "kind": "RJob",
+        "name": "exp-1106-030308-817360",
+        "uid": "b20e47ee-bc8e-4486-84fb-829209bd915b",
+        "controller": true,
+        "blockOwnerDeletion": true
+      }
+    ],
+    "phase": "Failed",
+    "node": "gpu-h800-0057.host.platform.shaipower.com",
+    "container_statuses": [
+      {
+        "name": "default",
+        "state": {
+          "terminated": {
+            "exitCode": 1,
+            "reason": "Error",
+            "message": "user command: exit status 1",
+            "startedAt": "2026-11-05T19:22:09Z",
+            "finishedAt": "2026-11-05T19:24:22Z",
+            "containerID": "containerd://b11f23cb235e5c477a6d633293f353f274c8e80075baceacb7dac45ab076dfa1"
+          }
+        },
+        "lastState": {},
+        "ready": false,
+        "restartCount": 0,
+        "image": "sha256:3eae996c8f0d4383bda9cc9448dd445eb960f253ac7d3e4cb4f0c6465cb706ae",
+        "imageID": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+        "containerID": "containerd://b11f23cb235e5c477a6d633293f353f274c8e80075baceacb7dac45ab076dfa1",
+        "started": false
+      }
+    ],
+    "finish_timestamp": "2026-11-05T19:24:24Z"
+  },
+  "creator": "i-fengyicheng",
+  "group": "codesign",
+  "preemptible": "no",
+  "queue": "codesign-default",
+  "tasks": {
+    "default": {
+      "replicas": 1,
+      "positive_tags": [
+        "H800"
+      ],
+      "source_mount": "100.96.128.195:/data/ycfeng:/data/ycfeng",
+      "containers": [
+        {
+          "name": "default",
+          "image": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+          "resources": {
+            "limits": {
+              "cpu": "12",
+              "mellanox.com/mlnx_rdma": "1",
+              "memory": "150000Mi",
+              "nvidia.com/gpu": "2",
+              "rdma/mlnx_shared": "8"
+            },
+            "requests": {
+              "cpu": "12",
+              "memory": "150000Mi",
+              "nvidia.com/gpu": "2"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "initiating_failure": {
+    "phase": "Native SWE benchmark SessionRouter session creation before grading",
+    "exception": "HTTPStatusError: SessionRouter POST /session returned 401",
+    "response_body": {
+      "action": "decrypt_auth_token",
+      "error": "illegal base64 data at input byte 0"
+    },
+    "observed_config_value": "${SESSION_ROUTER_USER_TOKEN}",
+    "environment_presence_only": {
+      "SR_USER_TOKEN": true,
+      "SESSION_ROUTER_USER_TOKEN": false
+    },
+    "diagnosis": "Native configuration received an unexpanded authentication placeholder; actual token values are deliberately excluded.",
+    "business_evidence_owner": "/root/runtime_compat",
+    "evidence_method": "Business owner supplied observed exact native artifacts and hashes; this platform observer did not duplicate cloud/log reads."
+  },
+  "business_result": {
+    "question_index": 0,
+    "seeds": [
+      1729,
+      1730,
+      1731,
+      1732
+    ],
+    "generation": "failed in all four seed attempts",
+    "grading": "not reached",
+    "valid_count": 0,
+    "average": null,
+    "report_status": "incomplete",
+    "endpoint_identity_original_weights_version0": "PASS reported by business owner",
+    "workflow_accepted": false,
+    "numerical_agreement_verified": false,
+    "interpretation": "Infrastructure/authentication missing outcomes; not grader-backed model unresolved outcomes."
+  },
+  "retained_business_evidence": [
+    {
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/benchmarks/qwen/step0/attempts/question-00-seed-1729/attempt-41052743b13243de9cd8637976caa1fb/native.log",
+      "sha256": "74e2fad5bd0e9f04fa5667365f133aea83c60d28204cc6997005563793098da1"
+    },
+    {
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/benchmarks/qwen/step0/engine-logs/benchmark.UQWmPg/server.log",
+      "sha256": "d49e92fc28a3b09ab7670a68d816195d36315ed13f361244c5303bb3feb3239f"
+    },
+    {
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/benchmarks/qwen/step0/report.json"
+    }
+  ],
+  "coverage": {
+    "exact_personal_identity_owner_mount_image_resources": "PASS",
+    "terminal_container_error_exit1_restart0": "PASS",
+    "native_initiating_error": "Observed independently by /root/runtime_compat",
+    "raw_business_log_duplicate_reads": "NONE",
+    "additional_audit_deepscan_node_or_personal_scans": "NONE",
+    "job_controls": "NONE"
+  },
+  "limits": [
+    "This report contains no token values and omits the private SessionRouter hostname.",
+    "Endpoint identity PASS does not establish benchmark scores, GPU numerical qualification, or a successful agent trajectory.",
+    "Container state Error/exit1 is not OOMKilled; no broader kernel/event exclusion was attempted.",
+    "Finish-time system-stop annotation is later than the native command failure and does not identify an initiating manual-stop actor."
+  ]
+}
