@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Record incomplete checkpoint, exact queued jobs and preserved launcher continuation state. |
 | 2026-11-06 | Consume completed uv proof and correct future updated-benchmark component dependencies during the GPU queue wait. |
 | 2026-11-06 | Close Ticket01 using actual complete inputs and record both submitted qualifications. |
 | 2026-11-06 | Record actual Qwen candidate underfill, separate native context, and sandbox authentication failure. |
@@ -561,3 +562,20 @@ At04:32:25–26HKT onequota readeach codesign/step_main, rawresponses saved0600b
 1. 当前BLOCKED是计划状态；原生平台状态仍为Pending，不能据此推断调度原因或数值结果。
 2. 更新后scoring可以与尚未完成的原始scoring并行；完整reload与比较标准均保留。
 3. active模型、环境、数据和launcher仍被依赖，只有已消费proof被删除。
+
+## Incomplete checkpoint and continuation state
+
+At04:44:49HKT on2026-11-06 the selected status-only watcher again returned the same four exact jobs Pending/`RJob is queuing`, zero replicas, no pagination gap or API error. Totalrequested30H800; allocated0. Four local launcher sessions86165/41495/30922/13885 were independently polled after that snapshot and remainedalive. New selected receipt: evidence/checkpoint-gpu-status.json. No job was stopped, replaced or duplicated.
+
+Overall task remainsINCOMPLETE. Ticket01done;02/03/06/07BLOCKED on GPUworker;04/05/08/09/10unfinished. Actualoptimizerupdates0, numericalacceptanceNOTRUN, validSWEoutcomes0/320. The earlier originalQwenserver load is observed but its fourHTTP401outcomes are infrastructuremissing. The canonicaltoken repair has nativeCPUfixture evidence only; liveauth remainsunverified. English summary.md now records this incompletecheckpoint, exactjobs/UIDs/launchers and continuationroute, without claiming completion.
+
+Continuation pointers: commandfiles `/data/ycfeng/tmp/verl-agent-opd-commands-20261106/{qualification-glm,qualification-qwen,benchmark-original-glm,benchmark-original-qwen,learning20-glm,learning20-qwen}.sh`; only the finaltwo areunsubmitted. Cloudroot `/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106`. Existing platformwatcher session47777 writes `/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/platform-four-gpu-status-20261106-0338.jsonl`; re-read its latest timestamp and exact jobUID before any retry/control. Businessownership: alignment_contract GLMqualification;data_benchmark Qwenqualification;runtime_compat originalbenchmarks;platform_observer exactstatus. No newCPUharness/review/SSHpolling whilePending.
+
+Numbered nextactions:
+1. Preserve the fourqueue requests and launchers; on actualworker start verify native businessoutputs and diagnose any initiatingerror.
+2. Complete each same-modeltwo-update numerical/workflow/weight-change qualification, then independentfresh20 fromoriginalweights; do not launch learning before that gate.
+3. Verify actualfinal20export, startupdatedbenchmark with sharednewprocessreload evidence, collect all320validgraderoutcomes and completefinalcleanup/push.
+
+Requirements reread before this checkpoint. Latest check-progress result remainsPASS1/BLOCKED4/TODO5; its S1 correction has landed, no additional route or scope change. This checkpoint is a handoff of unavailable-resource blockers, not task completion.
+
+Checkpoint verification: Python3.10.6 checked the explicit INCOMPLETE label, ten ticket files, all referenced task records and the exact four-job JSON receipt; PASS. `git diff --check` PASS. These document checks do not add GPU or numerical evidence.

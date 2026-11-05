@@ -1,0 +1,88 @@
+{
+  "source": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/platform-four-gpu-status-20261106-0338.jsonl",
+  "snapshot": {
+    "collected_at": "2026-11-05T20:44:49.805470+00:00",
+    "jobs": [
+      {
+        "name": "exp-1106-030133-940211",
+        "uid": "b6976435-4e8a-4099-8777-800a18db25a1",
+        "creator": "i-fengyicheng",
+        "status": {
+          "phase": "Pending",
+          "reason": "RJob is queuing",
+          "message": "RJob is queuing",
+          "taskStatuses": {
+            "default": {
+              "taskStage": "stepmind-task-stage-1"
+            }
+          },
+          "taskStage": "stepmind-task-stage-1"
+        },
+        "stop_annotations": {}
+      },
+      {
+        "name": "exp-1106-030308-839669",
+        "uid": "f74fa974-ea86-4149-a823-3276ce493f8b",
+        "creator": "i-fengyicheng",
+        "status": {
+          "phase": "Pending",
+          "reason": "RJob is queuing",
+          "message": "RJob is queuing",
+          "taskStatuses": {
+            "default": {
+              "taskStage": "stepmind-task-stage-1"
+            }
+          },
+          "taskStage": "stepmind-task-stage-1"
+        },
+        "stop_annotations": {}
+      },
+      {
+        "name": "exp-1106-033246-436787",
+        "uid": "f5c97c61-7868-44f6-8a74-34ab529bd6b2",
+        "creator": "i-fengyicheng",
+        "status": {
+          "phase": "Pending",
+          "reason": "RJob is queuing",
+          "message": "RJob is queuing",
+          "taskStatuses": {
+            "default": {
+              "taskStage": "stepmind-task-stage-1"
+            }
+          },
+          "taskStage": "stepmind-task-stage-1"
+        },
+        "stop_annotations": {}
+      },
+      {
+        "name": "exp-1106-033627-955641",
+        "uid": "9ad17773-2d4e-4b21-8dc2-2150ab8a6f85",
+        "creator": "i-fengyicheng",
+        "status": {
+          "phase": "Pending",
+          "reason": "RJob is queuing",
+          "message": "RJob is queuing",
+          "taskStatuses": {
+            "default": {
+              "taskStage": "stepmind-task-stage-1"
+            }
+          },
+          "taskStage": "stepmind-task-stage-1"
+        },
+        "stop_annotations": {}
+      }
+    ],
+    "replicas": [],
+    "replica_error": null,
+    "replica_list_pagination_more": false
+  },
+  "interpretation": {
+    "planning_status": "BLOCKED",
+    "native_status": "Pending",
+    "requested_h800_gpus": 30,
+    "allocated_gpus": 0,
+    "optimizer_updates_observed": 0,
+    "valid_swe_outcomes": 0,
+    "numerical_acceptance": "NOT_RUN"
+  }
+}
