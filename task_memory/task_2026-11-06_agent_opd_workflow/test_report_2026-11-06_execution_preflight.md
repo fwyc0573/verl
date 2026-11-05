@@ -9,6 +9,14 @@
 
 Scope: native workflow adapters and environment preparation. No GPU training, numerical qualification, export/reload or benchmark acceptance is claimed.
 
+## Actual GLM data PASS and Qwen length rejection
+
+Input-only job exp-1106-024352-115509 actually prepared GLM80rows,80distinct sourceUIDs,20percategory, prompt10366–57113≤61440 and exact parquet roundtrip. Report: evidence/glm-input-preflight.json. Qwen then correctly rejected a63213-token rendered source instead of truncating. Containerexit1 at02:49:39HKT/platformFailed02:49:42; exact identity/logs in evidence/runtime-qwen-input-length-failure.json. No overall inputPASS or Qwen dataset was produced.
+
+The source adapter now selects from the same verified training bank by each student's actual complete rendered length, reusing unchanged Miles source/hash/token verification. Targeted Python3.12.13 fault checks PASS with `/data/ycfeng/envs/miles-agent-opd-cpu/bin/python -B /data/ycfeng/tmp/verl-agent-opd-qwen-selection-regression.py` and repository PYTHONPATH:80distinct/fourclasses20, deterministic selection,61440boundary, cached original rows, duplicate-prompt replenishment, preserved original metadata, source/template exception propagation and honest underfill counts. Historical Qwen counts remain unverified until execution.
+
+Reorganized prepare.sh independently publishes benchmark and per-pair receipts, with overall inputs.json only after allpass. bash-n/diff-check PASS. CPU Python3.12.13 executed actual inline parquet/agent/settings and realHydra composition in four flow cases: allpass exit0; Qwen turnfailure exit63 with earlier benchmark/GLMPASS; GLM20recipefailure exit42 whileQwencompletes; benchmarkfailure exit31 whilebothpairscomplete. All failure cases omit overall inputs.json and retain actual stage/exitcode. Fixture /data/ycfeng/tmp/opd-prepare-flow-1gu_80yf was consumed. These checks do not replace real Qwen preparation or GPU qualification.
+
 ## Actual repaired native runtime result
 
 The zero-GPU job exp-1106-023143-126576 ran /data/ycfeng/tmp/verl-agent-opd-commands-20261106/environment-repair.sh using installed Python3.12.13/torch2.13.0+cu130. The FA4 backport was actually applied with the expected final source SHA. runtime_probe.py returned PASS_CPU_PREFLIGHT, failures=[]/incomplete=[]; actual megatron.bridge import and GLM47FlashBridge/Qwen35VLBridge config-only dispatch PASS. Four pinned model configurations/tokenizers/index-shard metadata and two exact vocabulary/special-token comparisons PASS. Actual CUDA/model construction/weight conversion remains NOT RUN. Retained exact reports: evidence/runtime-preflight-cpu.json and evidence/runtime-fa4-repair.json.

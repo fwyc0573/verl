@@ -13,6 +13,8 @@
 
 **Status:** in-progress
 
+Independent readiness: native runtime and GLM80 input preflight have passed. GLM qualification can construct/check its first8 before native training; it does not depend on Qwen preparation. Original benchmarks require runtime and their own verified fixed membership before serving/scoring, and do not depend on either training dataset. The overall ticket remains open until all pair and benchmark deliverables pass.
+
 - [x] 记录“开始执行”的最新指令和采用的推荐矩阵：两组各 20 次更新、原始/更新后各 80 份有效评分；沿用来源单 turn 训练。
 - [ ] 固定模型 revision、tokenizer/template、真实输入及训练/评测排除关系；按各模型 tokenizer 验证长度和四种来源类别，超长样本不静默截断。
 - [ ] 采用用户指定 Steptron Q59 合同：native pack MAE 与 global token MAE 均≤0.03，tails/K3仅诊断；实现准确的 native 聚合及同版本/token-position-mask 检查，覆盖原始及更新后权重。标准已找到，实际实现与验证仍待完成。

@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "model_pair": "glm",
+  "student": "/mnt/codesign-exp/ycfeng/steptron/behavior-turn-replay-step3p6/glm-native-20261103/models/zai-org/GLM-4.7-Flash/7dd20894a642a0aa287e9827cb1a1f7f91386b67",
+  "prompt_format": "glm_role_only",
+  "source_preparer": "/data/ycfeng/sota-engine/miles/tests/manual/agent_opd/prepare_glm5_2.py",
+  "source_manifest_sha256": "4776f40e3567ed4a8047931cb56d567a87d648aa234bf52d519874ad78a47c34",
+  "rows": 80,
+  "distinct_source_uids": 80,
+  "categories": {
+    "control_and_thinking": 20,
+    "control_only": 20,
+    "thinking_only": 20,
+    "neither": 20
+  },
+  "prompt_token_range": [
+    10366,
+    57113
+  ],
+  "max_prompt_tokens": 61440,
+  "training_exclusion": {
+    "path": "/data/ycfeng/steptron/.worktrees/behavior-turn-replay-step3p6/task_memory/task_2026-10-23_swe_turn_replay/evidence/swe-common-175.json",
+    "sha256": "e0ff0b3f0618ee7b7cc7171cf35c16bb28e660dc7982a41c4fb198cfb7dfdaaa",
+    "bytes": 5889,
+    "task_count": 175
+  },
+  "isolation": "Inherited from unchanged full source bytes and pinned parent selection; all parent benchmark exclusions remain applicable",
+  "historical_completion_use": "Source classification and serialization evidence only; student generates OPD targets",
+  "history_representation": "Original unchanged messages in metadata_json",
+  "parquet_round_trip": "Exact rows, token IDs and source metadata match",
+  "temporary_source_files": "Removed after conversion",
+  "output": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-024352-115509/glm-learning.parquet"
+}

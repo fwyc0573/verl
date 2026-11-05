@@ -1,0 +1,270 @@
+{
+  "collected_at": "2026-11-05T18:51:47.015673+00:00",
+  "job": {
+    "name": "exp-1106-024352-115509",
+    "uid": "1a7ce280-1feb-42a6-9af7-b687a2ffb245",
+    "creator": "i-fengyicheng",
+    "group": "codesign",
+    "owner_references": null,
+    "status": {
+      "phase": "Failed",
+      "reason": "RJobFailed",
+      "message": "Tasks with failed status: [default]",
+      "taskStatuses": {
+        "default": {
+          "failed": 1,
+          "taskStage": "stepmind-task-stage-1"
+        }
+      },
+      "finishTime": "2026-11-05T18:49:42Z",
+      "taskStage": "stepmind-task-stage-1"
+    },
+    "stop_annotations": {
+      "rjob.brainpp.cn/system-stop-reason": "Some critical tasks failed."
+    },
+    "stop_timestamp": "2026-11-05T18:49:42Z"
+  },
+  "source_mount": {
+    "default": "100.96.128.195:/data/ycfeng:/data/ycfeng"
+  },
+  "replica": {
+    "name": "exp-1106-024352-115509-cfcd2084",
+    "uid": "da27848f-67de-40fa-8e91-c7f1c1903dff",
+    "creator": "i-fengyicheng",
+    "group": "codesign",
+    "owner_references": [
+      {
+        "apiVersion": "rjob.brainpp.cn/v1alpha1",
+        "kind": "RJob",
+        "name": "exp-1106-024352-115509",
+        "uid": "1a7ce280-1feb-42a6-9af7-b687a2ffb245",
+        "controller": true,
+        "blockOwnerDeletion": true
+      }
+    ],
+    "status": {
+      "conditions": [
+        {
+          "type": "Initialized",
+          "status": "True",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T18:43:58Z"
+        },
+        {
+          "type": "Ready",
+          "status": "False",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T18:49:40Z",
+          "reason": "PodFailed"
+        },
+        {
+          "type": "ContainersReady",
+          "status": "False",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T18:49:40Z",
+          "reason": "PodFailed"
+        },
+        {
+          "type": "PodScheduled",
+          "status": "True",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T18:43:58Z"
+        }
+      ],
+      "hostIP": "10.191.4.22",
+      "podIP": "10.191.4.22",
+      "podIPs": [
+        {
+          "ip": "10.191.4.22"
+        }
+      ],
+      "startTime": "2026-11-05T18:43:58Z",
+      "containerStatuses": [
+        {
+          "name": "default",
+          "state": {
+            "terminated": {
+              "exitCode": 1,
+              "reason": "Error",
+              "message": "user command: exit status 1",
+              "startedAt": "2026-11-05T18:47:41Z",
+              "finishedAt": "2026-11-05T18:49:39Z",
+              "containerID": "containerd://b3b0c2cdbbb9bb1776f729baa53fbdaa3ea266768cfaba73f2b43687ffa8083e"
+            }
+          },
+          "lastState": {},
+          "ready": false,
+          "restartCount": 0,
+          "image": "sha256:3eae996c8f0d4383bda9cc9448dd445eb960f253ac7d3e4cb4f0c6465cb706ae",
+          "imageID": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+          "containerID": "containerd://b3b0c2cdbbb9bb1776f729baa53fbdaa3ea266768cfaba73f2b43687ffa8083e",
+          "started": false
+        }
+      ],
+      "qosClass": "Guaranteed",
+      "phase": "Failed",
+      "nodeName": "gpu-h800-0406.host.platform.shaipower.com",
+      "finishTimestamp": "2026-11-05T18:49:41Z"
+    },
+    "stop_annotations": {},
+    "stop_timestamp": null
+  },
+  "log_snapshot": {
+    "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/seventh-input-failure-worker-logs.json",
+    "bytes": 5800,
+    "sha256": "e8078d4f72a5afa72c72d0f30efb9dec0895b599ce69dc0698ab21f20402c8ed",
+    "read_method": "RJobClient.logs_replica",
+    "tail_lines": 20,
+    "rows": 16,
+    "selected_incident_lines": [
+      {
+        "timestamp": "1793904513711435000",
+        "line": "[2026-11-06T02:48:33+08:00] exp-1106-024352-115509-cfcd2084 >> GLM5_2_DATASET_PREPARED 80",
+        "pod": "exp-1106-024352-115509-cfcd2084",
+        "node": "gpu-h800-0406.host.platform.shaipower.com",
+        "message": "GLM5_2_DATASET_PREPARED 80"
+      },
+      {
+        "timestamp": "1793904526235258000",
+        "line": "[2026-11-06T02:48:46+08:00] exp-1106-024352-115509-cfcd2084 >> VERL_AGENT_OPD_TURNS_PREPARED glm 80",
+        "pod": "exp-1106-024352-115509-cfcd2084",
+        "node": "gpu-h800-0406.host.platform.shaipower.com",
+        "message": "VERL_AGENT_OPD_TURNS_PREPARED glm 80"
+      },
+      {
+        "timestamp": "1793904569837781000",
+        "line": "[2026-11-06T02:49:29+08:00] exp-1106-024352-115509-cfcd2084 >> GLM5_2_DATASET_PREPARED 80",
+        "pod": "exp-1106-024352-115509-cfcd2084",
+        "node": "gpu-h800-0406.host.platform.shaipower.com",
+        "message": "GLM5_2_DATASET_PREPARED 80"
+      },
+      {
+        "timestamp": "1793904577821571000",
+        "line": "[2026-11-06T02:49:37+08:00] exp-1106-024352-115509-cfcd2084 >> Traceback (most recent call last):",
+        "pod": "exp-1106-024352-115509-cfcd2084",
+        "node": "gpu-h800-0406.host.platform.shaipower.com",
+        "message": "Traceback (most recent call last):"
+      },
+      {
+        "timestamp": "1793904577821613000",
+        "line": "[2026-11-06T02:49:37+08:00] exp-1106-024352-115509-cfcd2084 >>   File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/prepare_turns.py\", line 257, in <module>",
+        "pod": "exp-1106-024352-115509-cfcd2084",
+        "node": "gpu-h800-0406.host.platform.shaipower.com",
+        "message": "  File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/prepare_turns.py\", line 257, in <module>"
+      },
+      {
+        "timestamp": "1793904577822370000",
+        "line": "[2026-11-06T02:49:37+08:00] exp-1106-024352-115509-cfcd2084 >>   File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/prepare_turns.py\", line 253, in main",
+        "pod": "exp-1106-024352-115509-cfcd2084",
+        "node": "gpu-h800-0406.host.platform.shaipower.com",
+        "message": "  File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/prepare_turns.py\", line 253, in main"
+      },
+      {
+        "timestamp": "1793904577822376000",
+        "line": "[2026-11-06T02:49:37+08:00] exp-1106-024352-115509-cfcd2084 >>   File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/prepare_turns.py\", line 176, in prepare",
+        "pod": "exp-1106-024352-115509-cfcd2084",
+        "node": "gpu-h800-0406.host.platform.shaipower.com",
+        "message": "  File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/prepare_turns.py\", line 176, in prepare"
+      },
+      {
+        "timestamp": "1793904577822410000",
+        "line": "[2026-11-06T02:49:37+08:00] exp-1106-024352-115509-cfcd2084 >>     make_prepared_row(",
+        "pod": "exp-1106-024352-115509-cfcd2084",
+        "node": "gpu-h800-0406.host.platform.shaipower.com",
+        "message": "    make_prepared_row("
+      },
+      {
+        "timestamp": "1793904577822417000",
+        "line": "[2026-11-06T02:49:37+08:00] exp-1106-024352-115509-cfcd2084 >>   File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/prepare_turns.py\", line 69, in make_prepared_row",
+        "pod": "exp-1106-024352-115509-cfcd2084",
+        "node": "gpu-h800-0406.host.platform.shaipower.com",
+        "message": "  File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/prepare_turns.py\", line 69, in make_prepared_row"
+      },
+      {
+        "timestamp": "1793904577822420000",
+        "line": "[2026-11-06T02:49:37+08:00] exp-1106-024352-115509-cfcd2084 >>     raise ValueError(",
+        "pod": "exp-1106-024352-115509-cfcd2084",
+        "node": "gpu-h800-0406.host.platform.shaipower.com",
+        "message": "    raise ValueError("
+      },
+      {
+        "timestamp": "1793904577822422000",
+        "line": "[2026-11-06T02:49:37+08:00] exp-1106-024352-115509-cfcd2084 >> ValueError: Student-rendered source exceeds the prompt budget: 63213 > 61440",
+        "pod": "exp-1106-024352-115509-cfcd2084",
+        "node": "gpu-h800-0406.host.platform.shaipower.com",
+        "message": "ValueError: Student-rendered source exceeds the prompt budget: 63213 > 61440"
+      },
+      {
+        "timestamp": "1793904579677980000",
+        "line": "[2026-11-06T02:49:39+08:00] exp-1106-024352-115509-cfcd2084 >> ExitCode= 1",
+        "pod": "exp-1106-024352-115509-cfcd2084",
+        "node": "gpu-h800-0406.host.platform.shaipower.com",
+        "message": "ExitCode= 1"
+      }
+    ],
+    "tail_limit_reached": false
+  },
+  "glm_preparation": {
+    "path": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-024352-115509/glm-turns.json",
+    "sha256": "0e60b5368fbf2c7d21449b317e8f2a3e1ae0c8cf724375c7b770f240bba42991",
+    "report": {
+      "status": "passed",
+      "model_pair": "glm",
+      "student": "/mnt/codesign-exp/ycfeng/steptron/behavior-turn-replay-step3p6/glm-native-20261103/models/zai-org/GLM-4.7-Flash/7dd20894a642a0aa287e9827cb1a1f7f91386b67",
+      "prompt_format": "glm_role_only",
+      "source_preparer": "/data/ycfeng/sota-engine/miles/tests/manual/agent_opd/prepare_glm5_2.py",
+      "source_manifest_sha256": "4776f40e3567ed4a8047931cb56d567a87d648aa234bf52d519874ad78a47c34",
+      "rows": 80,
+      "distinct_source_uids": 80,
+      "categories": {
+        "control_and_thinking": 20,
+        "control_only": 20,
+        "thinking_only": 20,
+        "neither": 20
+      },
+      "prompt_token_range": [
+        10366,
+        57113
+      ],
+      "max_prompt_tokens": 61440,
+      "training_exclusion": {
+        "path": "/data/ycfeng/steptron/.worktrees/behavior-turn-replay-step3p6/task_memory/task_2026-10-23_swe_turn_replay/evidence/swe-common-175.json",
+        "sha256": "e0ff0b3f0618ee7b7cc7171cf35c16bb28e660dc7982a41c4fb198cfb7dfdaaa",
+        "bytes": 5889,
+        "task_count": 175
+      },
+      "isolation": "Inherited from unchanged full source bytes and pinned parent selection; all parent benchmark exclusions remain applicable",
+      "historical_completion_use": "Source classification and serialization evidence only; student generates OPD targets",
+      "history_representation": "Original unchanged messages in metadata_json",
+      "parquet_round_trip": "Exact rows, token IDs and source metadata match",
+      "temporary_source_files": "Removed after conversion",
+      "output": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-024352-115509/glm-learning.parquet"
+    }
+  },
+  "missing_receipts": [
+    "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-024352-115509/qwen-turns.json",
+    "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-024352-115509/inputs.json"
+  ],
+  "initiating_failure": {
+    "phase": "Qwen actual student-rendered input preparation",
+    "exception": "ValueError: Student-rendered source exceeds the prompt budget: 63213 > 61440",
+    "native_location": "tests/manual/agent_opd/prepare_turns.py:69 make_prepared_row; caller prepare:176",
+    "classification": "Observed Qwen rendered prompt exceeds configured input budget; no truncation, selection, or budget policy inferred or changed by observer.",
+    "repair_owner": "/root/data_benchmark"
+  },
+  "coverage": {
+    "exact_personal_objects": "PASS",
+    "current_local_source_mount": "PASS",
+    "native_worker_traceback_and_exit1": "PASS",
+    "glm_actual_input_report": "PASS",
+    "audit_or_deepscan": "NOT_REQUESTED: native initiator visible and root requested narrow RCA",
+    "node_or_other_job_scan": "NONE",
+    "control_or_submissions": "NONE"
+  },
+  "limits": [
+    "GLM prepared rows are input verification, not training or numerical agreement.",
+    "No final benchmark membership SHA exists in an inputs.json receipt for this job.",
+    "Package imports were not rerun by this input-only job; its native environment derives from the prior independent runtime preflight PASS.",
+    "Returned 16 log rows are below tail limit20; this does not establish complete log ingestion."
+  ]
+}

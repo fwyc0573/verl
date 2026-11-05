@@ -9,7 +9,7 @@
 
 **What to build:** 取得原始 Qwen 在同一固定题目上的真实 agent 评测基线。
 
-**Blocked by:** 01: 冻结并验证两组 workflow 合同.
+**Blocked by:** 01 runtime and verified fixed benchmark inputs; independent of either training dataset. Existing native benchmark preparation must pass before server/scoring starts.
 
 **Status:** pending — predecessor acceptance required.
 

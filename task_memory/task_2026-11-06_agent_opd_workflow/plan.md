@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Correct coarse prerequisites so model qualification and original benchmarks advance independently. |
 | 2026-11-06 | Adopt the user-selected Steptron numerical standard; record cache repair and native launch adapters. |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
 | 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
@@ -19,17 +20,17 @@
 | ID | Deliverable | Blocked by |
 | --- | --- | --- |
 | [01](tickets/01-workflow-contract.md) | 冻结两组执行合同，并验证真实数据和配置可到达运行入口 | None |
-| [02](tickets/02-glm-alignment.md) | GLM 真实两步 OPD 和同一 student 训推一致性 | 01 |
-| [03](tickets/03-qwen-alignment.md) | Frog/Qwen 真实两步 OPD 和同一 student 训推一致性 | 01 |
+| [02](tickets/02-glm-alignment.md) | GLM 真实两步 OPD 和同一 student 训推一致性 | 01: GLM runtime/input/config prerequisites |
+| [03](tickets/03-qwen-alignment.md) | Frog/Qwen 真实两步 OPD 和同一 student 训推一致性 | 01: Qwen runtime/input/config prerequisites |
 | [04](tickets/04-glm-update20.md) | GLM 20 次更新、精确最终权重导出和重载 | 02 |
 | [05](tickets/05-qwen-update20.md) | Frog/Qwen 20 次更新、精确最终权重导出和重载 | 03 |
-| [06](tickets/06-glm-original-benchmark.md) | 原始 GLM 在固定题目上的 80 个有效原生评分 | 01 |
-| [07](tickets/07-qwen-original-benchmark.md) | 原始 Qwen 在同一固定题目上的 80 个有效原生评分 | 01 |
+| [06](tickets/06-glm-original-benchmark.md) | 原始 GLM 在固定题目上的 80 个有效原生评分 | 01: runtime and fixed benchmark inputs |
+| [07](tickets/07-qwen-original-benchmark.md) | 原始 Qwen 在同一固定题目上的 80 个有效原生评分 | 01: runtime and fixed benchmark inputs |
 | [08](tickets/08-glm-updated-benchmark.md) | 第 20 步 GLM 的 80 个评分和前后比较 | 04, 06 |
 | [09](tickets/09-qwen-updated-benchmark.md) | 第 20 步 Qwen 的 80 个评分和前后比较 | 05, 07 |
 | [10](tickets/10-cleanup-and-delivery.md) | 两组结果归档、最终清理及分支同步 | 08, 09 |
 
-依赖：01 -> {02 -> 04, 03 -> 05, 06, 07}; {04,06} -> 08; {05,07} -> 09; {08,09} -> 10。
+依赖：01.GLM -> 02 -> 04; 01.Qwen -> 03 -> 05; 01.benchmark -> {06,07}; {04,06} -> 08; {05,07} -> 09; {08,09} -> 10。01整体在所有子交付完成后关闭；一个模型的输入失败不能阻挡已满足真实前提的另一模型。原生benchmark prepare可在对应worker启动阶段完成，必须在server/评分启动之前验证固定题单和真实digest。
 
 确认合同后，02、03、06、07 不互相等待，可在实测配额允许时并行运行独立 RJobs。运行合同的代码适配已由并行 sub-agents 协作实现。每项完成即可消费不再依赖的临时产物并推送代码/结论；10 仅负责最终核对，不能成为延迟日常清理或推送的理由。
 

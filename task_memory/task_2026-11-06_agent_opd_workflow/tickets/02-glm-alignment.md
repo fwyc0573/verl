@@ -9,9 +9,9 @@
 
 **What to build:** 让 GLM student 在真实 agent 输入上生成新 completion，由固定 Coder teacher 评分，完成两次有效更新，并通过约定的同 student 训推数值验收。
 
-**Blocked by:** 01: 冻结并验证两组 workflow 合同.
+**Blocked by:** 01 GLM runtime/input/config prerequisites; independent of Qwen training inputs and benchmark preparation.
 
-**Status:** pending — predecessor acceptance required.
+**Status:** in-progress — native CPU runtime and GLM80 source inputs passed; rank0 prepares the verified first8 before native recipe validation and training.
 
 - [ ] 使用冻结的真实数据与交互边界，teacher 实际评分的 token IDs 与当前 student 采样一致。
 - [ ] thinking、正文和工具信号的源字段、tokens、mask、实际生成覆盖分别可核验；MoE routes 按约定真实录制并 replay。

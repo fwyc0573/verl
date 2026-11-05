@@ -333,3 +333,63 @@ Sixth job applied the exact planned source backport and actual runtime probe ret
 Preparation then printed GLM5_2_DATASET_PREPARED80, followed by prepare_turns.py175 json.loads(line) JSONDecodeError: Unterminated string atline1column11. Exact jobUID/state/mount/native traceback retained in evidence/runtime-input-jsonl-failure.json; container02:35:43–02:38:38HKT exit1/restart0, platformFailed02:38:40. No complete inputs.json was produced. The source.jsonl temporary directory was automatically consumed on exception, so those exact raw bytes are unavailable; do not claim an observed separator count.
 
 Before another data attempt, hypothesis: Miles serializes JSONL with ensure_ascii=False and a physical LF delimiter, while our consumer uses str.splitlines(), which also splits U+0085/U+2028/U+2029 inside valid JSON strings. The repair must read physical LF-delimited records, preserve every record and still fail on an invalid physical JSON record. Targeted reproduction plus the next actual input preparation will test this cause; no sample skipping or content sanitization. Native environment is already verified, so the next zero-GPU command will execute prepare.sh directly without reinstalling or repeating unchanged native imports.
+
+The physical-record fix and exact native PASS/RCA evidence were committed/pushed asf4d1410c0ba62049310f4c0fb42ddd93cd9ed4d2; independent remoteSHA matched. Immediately before the nextsubmission, sixthUID/state was re-queried andstillFailed. New input-only zeroGPU job exp-1106-024352-115509 created02:43:52HKT, launcher77373alive; directcommand tests/manual/agent_opd/prepare.sh. UID1a7ce280-1feb-42a6-9af7-b687a2ffb245, replicaUIDda27848f-67de-40fa-8e91-c7f1c1903dff, H8000406; exact personalcreator/codesign/image/0GPU16CPU96000Mi/currentNFS match. At02:47:28HKT stillContainerCreating withnormalPulling andno failure/restart; dataresults pending. FourGPUcommandfiles now refer to this job's intended inputnamespace, and are still unsubmitted.
+
+Consumed prefetchcache cleanup after actual frozen installation/nativeimportsPASS: /data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache,1660regularfiles/5symlinks/1472526489regularfilebytes removed; rootabsentafter=True. Before deletion, a scoped installed-environment walk found no symlink or .pth/.egg-link references to this cache; installation used UV_LINK_MODE=copy. The dedicated installed environment, taskrecords, selected wheel receipts and all sharedmodels remain. Future workers use the installed interpreter; rebuilding fromscratch would first rerun the recorded CPU prefetch, rather than assuming the consumed cache still exists. Local cleanup receipt cache-consumed-cleanup.json retained under the downloads root.
+
+## 1. 规划完成情况
+
+**汇总：** PASS0｜BLOCKED/FAILED/SKIPPED1｜TODO9
+
+| 子任务 | 状态 | 简要依据 |
+| --- | --- | --- |
+| 01 | FAILED | native runtime/GLM80实际PASS；Qwen63213>61440拒绝，整体未完成 |
+| 02 | TODO | 独立前提就绪；rank0沿用既有8行切片验证后进入nativeworker |
+| 03 | TODO | 当前student长度筛选代码完成，实际Qwen候选待测 |
+| 04 | TODO | 等待02 |
+| 05 | TODO | 等待03 |
+| 06 | TODO | 可独立以现有benchmark prepare冻结题单后启动 |
+| 07 | TODO | 可独立以现有benchmark prepare冻结题单后启动 |
+| 08 | TODO | 等待04/06 |
+| 09 | TODO | 等待05/07 |
+| 10 | TODO | 已消费1.47GBcache；最终清理待业务结果 |
+
+## 2. 偏离检测
+
+**结论：** 已偏离：命中D4；已纠正依赖并立即启动独立路线。
+**检测窗口：** 第六次nativePASS至第七次Qwen长度失败｜**当前前沿：** GLM资格、原始benchmarks、Qwen输入
+
+| 模式 | 判定 | 依据 |
+| --- | --- | --- |
+| D1 工具打磨 | CLEAR | 支持代码稳定后停止；新增仅解决实际长度和独立阶段发布 |
+| D2 细节反复重试 | CLEAR | nativeimport和JSONL各有事前假设并实际修复；长度为新实测输入限制 |
+| D3 支线问题修补 | CLEAR | 均在真实运行前提内 |
+| D4 可并行任务停滞 | HIT | GLM80/runtime已PASS，但原plan整体01依赖仍等待Qwen；benchmark与训练数据无真实依赖 |
+| D5 超范围镀金 | CLEAR | 不改模型、预算、20/80矩阵或数值门槛 |
+| D6 分析空转 | CLEAR | 实际GLM输入已通过，接下去直接提交GPU资格 |
+| D7 路线违背 | CLEAR | 在启动前修正技术依赖，保留全部验收标准 |
+
+**文档检查：** S1：旧plan和02/03/06/07把01整体作为前提，错误串行化独立组件；已改为组件实际前提。其他S项无新缺陷。
+**归因：** D4由S1导致。
+
+## 3. 纠正建议
+
+**分支：** B：spec/tickets存在缺陷，先更新文档再继续。
+
+**文档更新（先执行）：**
+1. plan和02/03/06/07：记录模型各自runtime/input/config前提及benchmark独立题单前提（可直接执行；已应用）。
+2. requirements：记录按当前student实际长度从同一验证trainbank选择20/类，不截断、不扩来源（可直接执行；已应用）。
+
+**需停止的偏离行为：** D4：停止等待整个01完成；满足实际前提的GLM及benchmark分别推进。
+
+**接下去的路线：**
+1. 02：立即提交GLM16GPU资格，rank0先完成已有80表的8行切片验证。
+2. 并行：06/07使用已有nativebenchmark prepare，实际题单/digest通过后启动原始模型serving与评分。
+3. 并行：Qwen zeroGPU准备按真实长度筛选；不足时如实报告计数，不提高预算或改类别。
+
+## 4. 最值得关注的 3 点
+
+1. GLM已具备独立资格输入；整体01未关闭不代表GLM仍需等Qwen。
+2. 原始benchmark题单准备不依赖任何训练parquet，不伪造整体inputPASS。
+3. 当前数值PASS和有效SWE分数仍为零，后续均据真实GPU输出判定。

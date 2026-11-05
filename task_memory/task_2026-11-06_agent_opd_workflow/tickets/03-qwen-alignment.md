@@ -9,7 +9,7 @@
 
 **What to build:** 让 Qwen student 使用 FrogNano teacher 完成真实两步 OPD，并取得 Qwen 自己的训推一致性结果。
 
-**Blocked by:** 01: 冻结并验证两组 workflow 合同.
+**Blocked by:** 01 Qwen runtime/input/config prerequisites; independent of GLM training inputs and original benchmarks.
 
 **Status:** pending — predecessor acceptance required.
 

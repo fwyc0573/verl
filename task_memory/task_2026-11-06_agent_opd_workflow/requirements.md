@@ -65,6 +65,8 @@ Apply that common numerical contract to both pairs. Keep this task's model-speci
 
 ## Acceptance common to both pairs
 
+Implementation decision after actual Qwen length rejection: training candidates stay in the same verified source manifest's training bank and retain all source-byte/token/exclusion checks. Each student's own complete rendered prompt determines eligibility under61440tokens. Choose20percategory deterministically without truncation; original GLM length alone does not exclude an otherwise eligible Qwen candidate. The two pairs need not select identical80turns. Report actual checked/rejected/selected counts; an exhausted group below20 fails. This changes neither the training objective nor the fixed benchmark population.
+
 - 数据来源、student/teacher 身份、tokenizer/template 和历史消息对应关系可追溯。历史 completion 用于来源分类和检查；OPD loss 使用当前 student 新生成的 completion。
 - thinking、普通正文和 tool call（包括 submit）的表示、原始 tokens 和训练 loss mask 可验证。来源类别、序列化测试和真实生成的类别覆盖分别报告，缺失类别不能凭空记为已覆盖。
 - Frozen teacher 实际为 student 采样 tokens 评分；两组的训练更新有限、梯度有效、权重变化及发布版本有证据。

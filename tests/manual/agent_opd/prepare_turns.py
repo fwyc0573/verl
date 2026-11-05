@@ -35,6 +35,21 @@ def _load_renderer(miles_root):
     return module
 
 
+def _load_preparer(miles_root):
+    path = miles_root / "tests/manual/agent_opd/prepare_glm5_2.py"
+    spec = importlib.util.spec_from_file_location("miles_opd_source_preparer", path)
+    module = importlib.util.module_from_spec(spec)
+    sys.path.insert(0, str(miles_root))
+    try:
+        spec.loader.exec_module(module)
+    finally:
+        sys.path.pop(0)
+    renderer = sys.modules[module.encode_glm_turn.__module__]
+    if Path(renderer.__file__).resolve() != miles_root / "examples/agentic_opd/glm_turns.py":
+        raise ValueError("The source preparer imported a renderer outside the explicit Miles root")
+    return module
+
+
 def _glm_prompt(row, tokenizer, renderer):
     prompt = row["prompt"]
     ids = tokenizer.encode(prompt, add_special_tokens=False)
@@ -62,13 +77,9 @@ def _qwen_prompt(row, tokenizer, renderer):
 PROMPT_FORMATS = {"glm_role_only": _glm_prompt, "qwen_chat_template": _qwen_prompt}
 
 
-def make_prepared_row(row, *, tokenizer, renderer, pair_name, prompt_format, max_prompt_tokens):
+def make_prepared_row(row, *, tokenizer, renderer, pair_name, prompt_format):
     """Preserve source metadata while recording the exact student input."""
     prompt, ids, thinking = PROMPT_FORMATS[prompt_format](row, tokenizer, renderer)
-    if len(ids) > max_prompt_tokens:
-        raise ValueError(
-            f"Student-rendered source exceeds the prompt budget: {len(ids)} > {max_prompt_tokens}"
-        )
     metadata = copy.deepcopy(row["metadata"])
     source = metadata["source"]
     if prompt_format == "qwen_chat_template":
@@ -89,6 +100,88 @@ def make_prepared_row(row, *, tokenizer, renderer, pair_name, prompt_format, max
         "metadata_json": json.dumps(metadata, ensure_ascii=False, separators=(",", ":")),
         "thinking_enabled": thinking,
     }
+
+
+def select_prepared_rows(
+    manifest,
+    source_rows,
+    *,
+    tokenizer,
+    renderer,
+    source_preparer,
+    glm_tokenizer,
+    pair_name,
+    prompt_format,
+    turns_per_category,
+    max_prompt_tokens,
+):
+    """Select verified source turns using the current student's actual budget."""
+
+    def key(category, source):
+        return category, source["file"], source["source_item_index"], source["assistant_turn_index"]
+
+    cached = {
+        key(row["metadata"]["source"]["category"], row["metadata"]["source"]): row
+        for row in source_rows
+    }
+    selected, statistics = {}, {}
+    used_source_prompts, used_student_prompts = set(), set()
+    for category, bank in manifest["categories"].items():
+        candidates = sorted(
+            bank["train"],
+            key=lambda row: (row["prompt_token_count"], row["source_item_index"], row["assistant_turn_index"]),
+        )
+        turns, groups = [], set()
+        counts = {
+            "manifest_candidates": len(candidates),
+            "verified_candidates_checked": 0,
+            "over_budget_candidates": 0,
+            "duplicate_source_candidates": 0,
+            "duplicate_student_prompts": 0,
+            "selected": 0,
+            "pool_exhausted": True,
+        }
+        for position, candidate in enumerate(candidates):
+            if candidate["group_id"] in groups or candidate["prompt_sha256"] in used_source_prompts:
+                counts["duplicate_source_candidates"] += 1
+                continue
+            source_row = cached.get(key(category, candidate))
+            if source_row is None:
+                file = manifest["files"][candidate["file"]]
+                conversation = source_preparer._read_conversation(file, candidate)
+                source_row, _ = source_preparer._make_row(
+                    glm_tokenizer, conversation, file, candidate, category
+                )
+            prepared = make_prepared_row(
+                source_row, tokenizer=tokenizer, renderer=renderer,
+                pair_name=pair_name, prompt_format=prompt_format,
+            )
+            counts["verified_candidates_checked"] += 1
+            if len(prepared["prepared_prompt_ids"]) > max_prompt_tokens:
+                counts["over_budget_candidates"] += 1
+                continue
+            student_hash = token_hash(prepared["prepared_prompt_ids"])
+            if student_hash in used_student_prompts:
+                counts["duplicate_student_prompts"] += 1
+                continue
+            turns.append(prepared)
+            groups.add(candidate["group_id"])
+            used_source_prompts.add(candidate["prompt_sha256"])
+            used_student_prompts.add(student_hash)
+            counts["selected"] = len(turns)
+            if len(turns) == turns_per_category:
+                counts["pool_exhausted"] = position + 1 == len(candidates)
+                break
+        selected[category] = turns
+        statistics[category] = counts
+    print("VERL_AGENT_OPD_SOURCE_ELIGIBILITY", pair_name, json.dumps(statistics, sort_keys=True), flush=True)
+    if any(len(turns) != turns_per_category for turns in selected.values()):
+        raise ValueError(
+            "Insufficient verified student-length-eligible source turns: "
+            + json.dumps(statistics, sort_keys=True)
+        )
+    rows = [turns[position] for position in range(turns_per_category) for turns in selected.values()]
+    return rows, statistics
 
 
 class PreparedTurnDataset(RLHFDataset):
@@ -172,17 +265,17 @@ def prepare(args):
         source_receipt = json.loads(source_report.read_text())
         # Unicode line separators inside JSON strings are not record boundaries.
         with source_path.open(encoding="utf-8") as stream:
-            rows = [
-                make_prepared_row(
-                    json.loads(line),
-                    tokenizer=tokenizer,
-                    renderer=renderer,
-                    pair_name=args.pair,
-                    prompt_format=prompt_format,
-                    max_prompt_tokens=args.max_prompt_tokens,
-                )
-                for line in stream
-            ]
+            source_rows = [json.loads(line) for line in stream]
+        source_preparer = _load_preparer(miles_root)
+        source_tokenizer = tokenizer if student == glm_tokenizer else AutoTokenizer.from_pretrained(
+            glm_tokenizer, local_files_only=True
+        )
+        rows, selection = select_prepared_rows(
+            manifest, source_rows, tokenizer=tokenizer, renderer=renderer,
+            source_preparer=source_preparer, glm_tokenizer=source_tokenizer,
+            pair_name=args.pair, prompt_format=prompt_format,
+            turns_per_category=args.turns_per_category, max_prompt_tokens=args.max_prompt_tokens,
+        )
     counts = Counter(row["source_category"] for row in rows)
     expected = {category: args.turns_per_category for category in manifest["categories"]}
     if counts != expected or len({row["source_uid"] for row in rows}) != len(rows):
@@ -220,6 +313,15 @@ def prepare(args):
         "categories": dict(counts),
         "prompt_token_range": [min(lengths), max(lengths)],
         "max_prompt_tokens": args.max_prompt_tokens,
+        "selection_order": "Miles prompt_token_count, source_item_index, assistant_turn_index within each category",
+        "selection_budget": "Actual student-rendered length; no source GLM-length cutoff or truncation",
+        "selection": selection,
+        "turns": [
+            {"source_uid": row["source_uid"], "category": row["source_category"],
+             "student_prompt_tokens": len(row["prepared_prompt_ids"]),
+             "student_prompt_sha256": token_hash(row["prepared_prompt_ids"])}
+            for row in rows
+        ],
         "training_exclusion": source_receipt["training_exclusion"],
         "isolation": source_receipt["isolation"],
         "historical_completion_use": (

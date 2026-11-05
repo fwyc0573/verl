@@ -9,7 +9,7 @@
 
 **What to build:** 使用固定原始 GLM 权重完成真实 SWE agent、工具执行和原生 grader 的 20 题四 seed 基线。
 
-**Blocked by:** 01: 冻结并验证两组 workflow 合同.
+**Blocked by:** 01 runtime and verified fixed benchmark inputs; independent of either training dataset. Existing native benchmark preparation must pass before server/scoring starts.
 
 **Status:** pending — predecessor acceptance required.
 
