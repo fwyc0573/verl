@@ -31,6 +31,7 @@ The inspected Miles task is an evolving record, not a snapshot of current platfo
 | Initial tracked diff whitespace | no whitespace diagnostics | git diff --check exited 0; new files were still untracked, so staged validation is required below | LIMITED PASS |
 | Staged diff whitespace | no whitespace diagnostics across new files | first check failed on extra EOF blank lines; task-only correction followed by exit 0 | PASS after correction |
 | Staged scope | exactly the intended Markdown files | 15 files; .serena/ excluded; checked credential markers absent | PASS |
+| Initial personal publication | ordinary push succeeds and independent remote SHA matches | fe8c108edf6dc72b7810fde9917cf7ac0698d2bc on both local HEAD and origin/agent-opd | PASS |
 
 ## Exact local document check
 
@@ -92,4 +93,15 @@ Expected and observed: the starting branch was main, only .serena/ was untracked
 
 These checks validate planning artifacts only. Neither model pair has been run under this task. Training/inference agreement, numerical error budgets, GPU/runtime compatibility, final-weight export/reload, native benchmark completeness and cleanup of runtime outputs remain unverified.
 
-Final staged-content and remote-publication receipts are recorded in progress.md after the corresponding operations.
+Staged-content and initial remote-publication receipts are recorded in progress.md. The receipt follow-up changes documentation only; its final tip is independently checked in the terminal after ordinary push.
+
+Publication commands executed successfully:
+
+```sh
+git add -- GLOSSARY.md task_memory/task_2026-11-06_agent_opd_workflow
+git diff --cached --check
+git commit -m "docs: draft two-pair agent OPD workflow qualification" -m "Record Miles source scope, unresolved execution decisions, independent numerical acceptance, and ten draft tickets before runtime work." -m "Co-authored-by: OpenAI Codex"
+git push -u origin agent-opd
+git rev-parse HEAD
+git ls-remote --heads origin refs/heads/agent-opd
+```

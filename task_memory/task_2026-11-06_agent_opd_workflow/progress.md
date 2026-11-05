@@ -14,7 +14,7 @@
 - completed: 创建用户要求的 task、GLOSSARY 和 10 个 draft tickets；文档直接验证通过，精确命令见 test_report_2026-11-06_planning.md。
 - in-progress: 依次访谈，第一项为两组是否采用相同的 20 步及前后 benchmark 范围。
 - completed: 暂存范围检查，仅 15 个本任务 Markdown 文件；git diff --cached --check 通过。
-- pending: 提交、普通 push 和远端 SHA 复核。
+- completed: 规划提交 fe8c108edf6dc72b7810fde9917cf7ac0698d2bc 已普通 push 到个人 origin/agent-opd；独立 ls-remote 返回相同 SHA。本文补录回执后作为文档跟进提交同步。
 - pending: 所有 GPU 运行、环境安装、训推数值资格、导出/重载和 benchmark。当前没有本任务提交的 job，也没有待清理的本任务运行产物。
 
 ## Investigation commands and conclusions
@@ -41,17 +41,18 @@
 
 ## Next actions
 
-1. 验证并推送规划草案，保留明确的未执行状态。
-2. 确定两组完整测试矩阵，再明确训练交互边界和数值通过标准。
-3. 更新同一目录内的 requirements、plan 与 tickets；访谈达成共识后按依赖执行。
+1. 确定两组完整测试矩阵，第一题推荐两组均做 20 步及原始/更新后各 20 题 avg@4。
+2. 明确训练交互边界和数值通过标准，核验运行配置及必要前提。
+3. 更新同一目录内的 requirements、plan 与 tickets 并及时推送；访谈达成共识后按依赖执行。
 
 ## 1. 规划完成情况
 
-**汇总：** PASS 1｜BLOCKED/FAILED/SKIPPED 0｜TODO 10
+**汇总：** PASS 2｜BLOCKED/FAILED/SKIPPED 0｜TODO 10
 
 | 子任务 | 状态 | 简要依据 |
 | --- | --- | --- |
 | 规划草案与本地直接检查 | PASS | 新 branch、来源核对、10 个草案及结构检查完成 |
+| 个人分支首次同步 | PASS | fe8c108e 本地与独立远端 SHA 一致 |
 | 01 合同 | TODO | 测试矩阵、训练交互和数值预算待访谈 |
 | 02 GLM 两步一致性 | TODO | 依赖 01，未运行 |
 | 03 Qwen 两步一致性 | TODO | 依赖 01，未运行 |
@@ -66,7 +67,7 @@
 ## 2. 偏离检测
 
 **结论：** 未偏移，正常推进。
-**检测窗口：** 本轮创建规划草案至今｜**当前前沿：** 01 访谈与已授权的草案推送
+**检测窗口：** 本轮创建规划草案至首次 push 复核｜**当前前沿：** 01 访谈
 
 | 模式 | 判定 | 依据 |
 | --- | --- | --- |
@@ -87,7 +88,7 @@
 **需停止的偏离行为：** 无。
 
 **接下去的路线：**
-1. 暂存并检查本任务文档，普通提交/push并复核个人远端 SHA；完成标志为远端同步且 .serena/ 保持未暂存。
+1. 本次仅补录首次推送和检查回执，按相同路径同步；.serena/ 始终保持未暂存。
 2. 01：逐题完成访谈，更新同一组文件；完成标志为范围、交互、数值预算和真实配置均可执行且有依据。
 3. 合同完成后按实际配额并行推进 02、03、06、07，阶段完成即消费产物并推送结论。
 
@@ -100,3 +101,7 @@
 ## Staged verification
 
 首次 git diff --cached --check 返回 exit 2，原因是新建文档末尾多了一个空行；此前未暂存的 diff 检查没有覆盖这些新文件。仅修正本次 15 个 Markdown 的末尾空行，重新暂存后检查 exit 0。随后 Python 3.10.6 检查确认暂存范围恰为 GLOSSARY.md 与本任务目录共 15 个文件，未包含 .serena/，未发现所检查的 credential markers。没有实现代码或运行参数变化；这是一次文档格式修正，不影响未决实验范围。
+
+## Publication receipt
+
+执行 git commit 创建 fe8c108edf6dc72b7810fde9917cf7ac0698d2bc（含 Co-authored-by: OpenAI Codex）。git push -u origin agent-opd 成功新建个人远端分支，随后 git rev-parse HEAD 和 git ls-remote --heads origin refs/heads/agent-opd 均返回该完整 SHA。没有发起 PR 或触碰上游。当前仍未运行 GPU；所有 tickets 保持 draft。此回执跟进仅修改 progress 和 test_report，随后普通提交和 push；最终 tip 由当次终端回执核对。
