@@ -126,3 +126,25 @@
 ### Check-progress self-check after adapter CPU milestone
 
 Ticket01 remains TODO; tickets02–10 remain TODO behind recorded dependencies. Mainline frontier is the real environment/data/config qualification in01; runtime, exact-input, trainer observations and native benchmark adaptation progressed in parallel. D1–D7 CLEAR: each adapter supplies evidence required by the next workflow stage, no repeated parameter-tuning loop, and the single environment repair tests the documented cache hypothesis. S1–S6 show no immediate contradiction requiring a scope change. Numerical limits remain deliberately unset rather than copied from Miles residual errors. Next route: finish persistent imports/data receipts, run independent calibration and freeze justified limits, then native qualification and baseline benchmark. Do not add general framework features or broaden CPU test machinery.
+
+## Consumed RCA artifacts cleanup
+
+Selected errors, exact identities, terminal states, event order and query limits are retained in the two evidence/runtime-environment-*.json records. After those receipts were reviewed, task-owned raw collector directories were consumed and removed:
+
+- /data/ycfeng/tmp/rca-exp-1106-012337-418890: 10 files, 93793 bytes; absent after cleanup=True.
+- /data/ycfeng/tmp/rca-exp-1106-013411-959935: 10 files, 44678 bytes; absent after cleanup=True.
+
+No model weights, Miles files, active job outputs or unrelated temporary directories were touched. The native environment and live environment-stage log remain in use.
+
+## Native observer commit and second environment diagnosis
+
+- Published initial native adapter milestone `1c1f93f619bdbbb2e0216fabde2e5e9af05eea6f`: ordinary push succeeded and independent ls-remote matched HEAD.
+- Native AgentLoop + trainer observer completed in `0fe1880f4a79d7385adee8f192127bb14cfbb46d`. It subclasses the supported native runner/trainer seam, preserves OPD tensors, and observes before actual updates. Completion/parser failures are auxiliary unverified observations. Native optimizer success, one full mini-batch and one epoch establish successful-update counting; final HF receipt waits for native fit/async save completion. Locked native imports/execution still pending.
+- Environment repair `exp-1106-013411-959935`, UID `e9b3961b-3178-4be2-9363-695596a0eef6`, failed after container execution on gpu-h800-0080. Pinned tokenspeed PyPI wheel fetch received proxy authorization failure. Container17:38:24–17:38:28Z, exit1/restart0; platformFailed17:38:31Z. Two audit queries timed out and remain unavailable. Selected evidence: evidence/runtime-environment-online-failure.json.
+- Handbook already documents pip proxy407 and direct internal PyPI; applying the platform proxy to all package sources was an avoidable routing mistake. CPU host tests show exact PyPI artifact direct200 and exact GitHub artifact through deploy proxy200; the opposite paths timed out. The next hypothesis is PyPI proxy bypass with GitHub proxy retained, keeping exact original URLs/lock hashes. Worker HEAD checks precede sync so the worker route is measured rather than inferred from CPU host.
+- Third zero-GPU environment/input job `exp-1106-014156-052221` created01:41:56HKT, launcher session46445. Same personal identity/source/digest/resource shape; no duplicate live environment job. The command now includes prepare.sh after runtime probe: both actual80-turn datasets, exact first8 qualification rows (source preparer interleaves categories), four normal recipe constructions, and frozen native20-question membership. Each output uses its exact new job namespace; no previous output is overwritten.
+- Runtime/config review repaired cloud symlink confinement. Pinned MCore uses independent dense and expert rank grids, so GLM world8/TP4/ETP1/EP8 yields denseDP2/expertDP1; the real formula is checked before launch. This topology remains unverified at GPU collective/model execution.
+
+### Check-progress after native observation milestone
+
+All ten tickets remain TODO because actual environment/data/GPU gates are incomplete. D1–D7 remain CLEAR in this window: native observer and benchmark adapters advance01, and the next environment attempt has an explicit source-specific network hypothesis and worker precheck. This is not repeated tolerance tuning or backend substitution. The two failed environment attempts narrowed different causes (missing offline artifact, then routing policy). Do not repeat after an identical route failure; use CPU-host artifact acquisition with the original hashes if worker egress is unavailable. S1–S6: no new scope defect identified; numerical qualification remains an explicit unsatisfied gate. Next action is the current worker's route/sync/import/data output, while benchmark and multi-node native launch integration finish in parallel.

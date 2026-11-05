@@ -1,0 +1,534 @@
+{
+  "stage": "zero_gpu_online_environment_materialization",
+  "result": "FAIL",
+  "initiating_cause": "Native uv online sync could not fetch the pinned tokenspeed-triton wheel: worker HTTPS tunnel returned proxy authorization required.",
+  "job": {
+    "kind": "RJob",
+    "apiVersion": "rjob.brainpp.cn/v1alpha1",
+    "metadata": {
+      "name": "exp-1106-013411-959935",
+      "uid": "e9b3961b-3178-4be2-9363-695596a0eef6",
+      "creationTimestamp": "2026-11-05T17:34:12Z",
+      "deletionTimestamp": null,
+      "ownerReferences": null
+    },
+    "creator": "i-fengyicheng",
+    "preemptible": "no",
+    "quota_group": "codesign",
+    "stop_annotations": {
+      "rjob.brainpp.cn/system-stop-reason": "Some critical tasks failed."
+    },
+    "stop_spec": {
+      "stopTimestamp": "2026-11-05T17:38:31Z"
+    },
+    "status": {
+      "phase": "Failed",
+      "reason": "RJobFailed",
+      "message": "Tasks with failed status: [default]",
+      "taskStatuses": {
+        "default": {
+          "failed": 1,
+          "taskStage": "stepmind-task-stage-1"
+        }
+      },
+      "finishTime": "2026-11-05T17:38:31Z",
+      "taskStage": "stepmind-task-stage-1"
+    }
+  },
+  "replica": {
+    "kind": "Replica",
+    "apiVersion": "rjob.brainpp.cn/v1alpha1",
+    "metadata": {
+      "name": "exp-1106-013411-959935-cfcd2084",
+      "uid": "f666f98d-f755-4ed2-87b6-42b0bf07aad8",
+      "creationTimestamp": "2026-11-05T17:34:15Z",
+      "deletionTimestamp": null,
+      "ownerReferences": [
+        {
+          "apiVersion": "rjob.brainpp.cn/v1alpha1",
+          "kind": "RJob",
+          "name": "exp-1106-013411-959935",
+          "uid": "e9b3961b-3178-4be2-9363-695596a0eef6",
+          "controller": true,
+          "blockOwnerDeletion": true
+        }
+      ]
+    },
+    "creator": "i-fengyicheng",
+    "preemptible": "no",
+    "quota_group": "codesign",
+    "stop_annotations": {},
+    "stop_spec": {},
+    "status": {
+      "conditions": [
+        {
+          "type": "Initialized",
+          "status": "True",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T17:34:16Z"
+        },
+        {
+          "type": "Ready",
+          "status": "False",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T17:38:30Z",
+          "reason": "PodFailed"
+        },
+        {
+          "type": "ContainersReady",
+          "status": "False",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T17:38:30Z",
+          "reason": "PodFailed"
+        },
+        {
+          "type": "PodScheduled",
+          "status": "True",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T17:34:16Z"
+        }
+      ],
+      "hostIP": "10.191.5.21",
+      "podIP": "10.191.5.21",
+      "podIPs": [
+        {
+          "ip": "10.191.5.21"
+        }
+      ],
+      "startTime": "2026-11-05T17:34:16Z",
+      "containerStatuses": [
+        {
+          "name": "default",
+          "state": {
+            "terminated": {
+              "exitCode": 1,
+              "reason": "Error",
+              "message": "user command: exit status 1",
+              "startedAt": "2026-11-05T17:38:24Z",
+              "finishedAt": "2026-11-05T17:38:28Z",
+              "containerID": "containerd://1ae6bdd766677600075087b969a9bedf033266406c4bae5d79e1cb31d2d1eef7"
+            }
+          },
+          "lastState": {},
+          "ready": false,
+          "restartCount": 0,
+          "image": "sha256:3eae996c8f0d4383bda9cc9448dd445eb960f253ac7d3e4cb4f0c6465cb706ae",
+          "imageID": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+          "containerID": "containerd://1ae6bdd766677600075087b969a9bedf033266406c4bae5d79e1cb31d2d1eef7",
+          "started": false
+        }
+      ],
+      "qosClass": "Guaranteed",
+      "phase": "Failed",
+      "nodeName": "gpu-h800-0080.host.platform.shaipower.com",
+      "finishTimestamp": "2026-11-05T17:38:31Z"
+    }
+  },
+  "verified_creator": "i-fengyicheng",
+  "verified_local_source_mount": "100.96.128.195:/data/ycfeng:/data/ycfeng",
+  "image": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+  "events": [
+    {
+      "reason": "Scheduled",
+      "message": "Successfully assigned shai-core/exp-1106-013411-959935-cfcd2084 to gpu-h800-0080.host.platform.shaipower.com",
+      "event_time": "2026-11-05 17:34:16.205742+00:00",
+      "first_timestamp": null,
+      "last_timestamp": null,
+      "count": null,
+      "involved_object": {
+        "api_version": "v1",
+        "field_path": null,
+        "kind": "Pod",
+        "name": "exp-1106-013411-959935-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "45370093170",
+        "uid": "9c2fe596-9895-4eb2-9cf1-5e29d656860f"
+      },
+      "source": {
+        "component": null,
+        "host": null
+      }
+    },
+    {
+      "reason": "Pulling",
+      "message": "Pulling image \"artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504\"",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:34:20+00:00",
+      "last_timestamp": "2026-11-05 17:34:20+00:00",
+      "count": 1,
+      "involved_object": {
+        "api_version": "v1",
+        "field_path": "spec.containers{default}",
+        "kind": "Pod",
+        "name": "exp-1106-013411-959935-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "45370093309",
+        "uid": "9c2fe596-9895-4eb2-9cf1-5e29d656860f"
+      },
+      "source": {
+        "component": "kubelet",
+        "host": "gpu-h800-0080.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "Pulled",
+      "message": "Successfully pulled image \"artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504\" in 4m3.502430547s (4m3.502507462s including waiting)",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:38:23+00:00",
+      "last_timestamp": "2026-11-05 17:38:23+00:00",
+      "count": 1,
+      "involved_object": {
+        "api_version": "v1",
+        "field_path": "spec.containers{default}",
+        "kind": "Pod",
+        "name": "exp-1106-013411-959935-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "45370093309",
+        "uid": "9c2fe596-9895-4eb2-9cf1-5e29d656860f"
+      },
+      "source": {
+        "component": "kubelet",
+        "host": "gpu-h800-0080.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "Created",
+      "message": "Created container default",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:38:24+00:00",
+      "last_timestamp": "2026-11-05 17:38:24+00:00",
+      "count": 1,
+      "involved_object": {
+        "api_version": "v1",
+        "field_path": "spec.containers{default}",
+        "kind": "Pod",
+        "name": "exp-1106-013411-959935-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "45370093309",
+        "uid": "9c2fe596-9895-4eb2-9cf1-5e29d656860f"
+      },
+      "source": {
+        "component": "kubelet",
+        "host": "gpu-h800-0080.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "Started",
+      "message": "Started container default",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:38:24+00:00",
+      "last_timestamp": "2026-11-05 17:38:24+00:00",
+      "count": 1,
+      "involved_object": {
+        "api_version": "v1",
+        "field_path": "spec.containers{default}",
+        "kind": "Pod",
+        "name": "exp-1106-013411-959935-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "45370093309",
+        "uid": "9c2fe596-9895-4eb2-9cf1-5e29d656860f"
+      },
+      "source": {
+        "component": "kubelet",
+        "host": "gpu-h800-0080.host.platform.shaipower.com"
+      }
+    },
+    {
+      "reason": "Pulling",
+      "message": "Pulling image \"artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504\"",
+      "event_time": null,
+      "first_timestamp": "2026-11-05 17:34:20+00:00",
+      "last_timestamp": "2026-11-05 17:34:20+00:00",
+      "count": null,
+      "involved_object": {
+        "api_version": "rjob.brainpp.cn/v1alpha1",
+        "field_path": null,
+        "kind": "Replica",
+        "name": "exp-1106-013411-959935-cfcd2084",
+        "namespace": "shai-core",
+        "resource_version": "1632332407",
+        "uid": "f666f98d-f755-4ed2-87b6-42b0bf07aad8"
+      },
+      "source": {
+        "component": "rjob-controller",
+        "host": "gpu-h800-0080.host.platform.shaipower.com"
+      }
+    }
+  ],
+  "incident_logs": {
+    "request": {
+      "method": "GET",
+      "path": "/kapis/rjob.brainpp.cn/v1alpha1/tenants/shai/projects/shai-core/rjobs/exp-1106-013411-959935/logs/query_range",
+      "parameters": {
+        "replicas": "exp-1106-013411-959935-cfcd2084",
+        "start": "1793900300000000000",
+        "end": "1793900320000000000",
+        "direction": "forward",
+        "limit": 500
+      },
+      "http_status": 200
+    },
+    "rows": [
+      {
+        "timestamp": "1793900304341542000",
+        "line": "[2026-11-06T01:38:24+08:00] exp-1106-013411-959935-cfcd2084 >> {\"@caller\":\"gitlab.basemind.com/basemind/brainpp/projects/kubebrain/cmd/worker-init/app/options.(*Options).Run\",\"@file\":\"projects/kubebrain/cmd/worker-init/app/options/options.go:80\",\"@level\":\"info\",\"@msg\":\"SSHD not enabled\",\"@timestamp\":\"2026-11-05T17:38:24.341Z\"}",
+        "pod": "exp-1106-013411-959935-cfcd2084",
+        "node": "gpu-h800-0080.host.platform.shaipower.com",
+        "message": "{\"@caller\":\"gitlab.basemind.com/basemind/brainpp/projects/kubebrain/cmd/worker-init/app/options.(*Options).Run\",\"@file\":\"projects/kubebrain/cmd/worker-init/app/options/options.go:80\",\"@level\":\"info\",\"@msg\":\"SSHD not enabled\",\"@timestamp\":\"2026-11-05T17:38:24.341Z\"}"
+      },
+      {
+        "timestamp": "1793900304371963000",
+        "line": "[2026-11-06T01:38:24+08:00] exp-1106-013411-959935-cfcd2084 >> 2026/11/05 17:38:24 [DEBUG] packaging-url , packaging-dir /workdir/src/rjob, Starting packaging server",
+        "pod": "exp-1106-013411-959935-cfcd2084",
+        "node": "gpu-h800-0080.host.platform.shaipower.com",
+        "message": "2026/11/05 17:38:24 [DEBUG] packaging-url , packaging-dir /workdir/src/rjob, Starting packaging server"
+      },
+      {
+        "timestamp": "1793900304423164000",
+        "line": "[2026-11-06T01:38:24+08:00] exp-1106-013411-959935-cfcd2084 >> warning: `VIRTUAL_ENV=/workspace/verl/.venv` does not match the project environment path `/data/ycfeng/envs/verl-agent-opd-megatron-sglang` and will be ignored; use `--active` to target the active environment instead",
+        "pod": "exp-1106-013411-959935-cfcd2084",
+        "node": "gpu-h800-0080.host.platform.shaipower.com",
+        "message": "warning: `VIRTUAL_ENV=/workspace/verl/.venv` does not match the project environment path `/data/ycfeng/envs/verl-agent-opd-megatron-sglang` and will be ignored; use `--active` to target the active environment instead"
+      },
+      {
+        "timestamp": "1793900304625644000",
+        "line": "[2026-11-06T01:38:24+08:00] exp-1106-013411-959935-cfcd2084 >>    Building verl @ file:///data/ycfeng/sota-engine/verl",
+        "pod": "exp-1106-013411-959935-cfcd2084",
+        "node": "gpu-h800-0080.host.platform.shaipower.com",
+        "message": "   Building verl @ file:///data/ycfeng/sota-engine/verl"
+      },
+      {
+        "timestamp": "1793900308833647000",
+        "line": "[2026-11-06T01:38:28+08:00] exp-1106-013411-959935-cfcd2084 >>   × Failed to download `tokenspeed-triton==3.9.10.post20261008`",
+        "pod": "exp-1106-013411-959935-cfcd2084",
+        "node": "gpu-h800-0080.host.platform.shaipower.com",
+        "message": "  × Failed to download `tokenspeed-triton==3.9.10.post20261008`"
+      },
+      {
+        "timestamp": "1793900308834043000",
+        "line": "[2026-11-06T01:38:28+08:00] exp-1106-013411-959935-cfcd2084 >>   ├─▶ Request failed after 3 retries in 4.2s",
+        "pod": "exp-1106-013411-959935-cfcd2084",
+        "node": "gpu-h800-0080.host.platform.shaipower.com",
+        "message": "  ├─▶ Request failed after 3 retries in 4.2s"
+      },
+      {
+        "timestamp": "1793900308834046000",
+        "line": "[2026-11-06T01:38:28+08:00] exp-1106-013411-959935-cfcd2084 >>   ├─▶ Failed to fetch:",
+        "pod": "exp-1106-013411-959935-cfcd2084",
+        "node": "gpu-h800-0080.host.platform.shaipower.com",
+        "message": "  ├─▶ Failed to fetch:"
+      },
+      {
+        "timestamp": "1793900308834049000",
+        "line": "[2026-11-06T01:38:28+08:00] exp-1106-013411-959935-cfcd2084 >>   │   `https://files.pythonhosted.org/packages/1c/79/ffd666bee268dc27ee34ed471e43f0357f9154c93d5180381861f8673c21/tokenspeed_triton-3.9.10.post20261008-cp312-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl`",
+        "pod": "exp-1106-013411-959935-cfcd2084",
+        "node": "gpu-h800-0080.host.platform.shaipower.com",
+        "message": "  │   `https://files.pythonhosted.org/packages/1c/79/ffd666bee268dc27ee34ed471e43f0357f9154c93d5180381861f8673c21/tokenspeed_triton-3.9.10.post20261008-cp312-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl`"
+      },
+      {
+        "timestamp": "1793900308834052000",
+        "line": "[2026-11-06T01:38:28+08:00] exp-1106-013411-959935-cfcd2084 >>   ├─▶ error sending request for url",
+        "pod": "exp-1106-013411-959935-cfcd2084",
+        "node": "gpu-h800-0080.host.platform.shaipower.com",
+        "message": "  ├─▶ error sending request for url"
+      },
+      {
+        "timestamp": "1793900308834053000",
+        "line": "[2026-11-06T01:38:28+08:00] exp-1106-013411-959935-cfcd2084 >>   │   (https://files.pythonhosted.org/packages/1c/79/ffd666bee268dc27ee34ed471e43f0357f9154c93d5180381861f8673c21/tokenspeed_triton-3.9.10.post20261008-cp312-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl)",
+        "pod": "exp-1106-013411-959935-cfcd2084",
+        "node": "gpu-h800-0080.host.platform.shaipower.com",
+        "message": "  │   (https://files.pythonhosted.org/packages/1c/79/ffd666bee268dc27ee34ed471e43f0357f9154c93d5180381861f8673c21/tokenspeed_triton-3.9.10.post20261008-cp312-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl)"
+      },
+      {
+        "timestamp": "1793900308834054000",
+        "line": "[2026-11-06T01:38:28+08:00] exp-1106-013411-959935-cfcd2084 >>   ├─▶ client error (Connect)",
+        "pod": "exp-1106-013411-959935-cfcd2084",
+        "node": "gpu-h800-0080.host.platform.shaipower.com",
+        "message": "  ├─▶ client error (Connect)"
+      },
+      {
+        "timestamp": "1793900308834056000",
+        "line": "[2026-11-06T01:38:28+08:00] exp-1106-013411-959935-cfcd2084 >>   ╰─▶ tunnel error: proxy authorization required",
+        "pod": "exp-1106-013411-959935-cfcd2084",
+        "node": "gpu-h800-0080.host.platform.shaipower.com",
+        "message": "  ╰─▶ tunnel error: proxy authorization required"
+      },
+      {
+        "timestamp": "1793900308834057000",
+        "line": "[2026-11-06T01:38:28+08:00] exp-1106-013411-959935-cfcd2084 >> ",
+        "pod": "exp-1106-013411-959935-cfcd2084",
+        "node": "gpu-h800-0080.host.platform.shaipower.com",
+        "message": ""
+      },
+      {
+        "timestamp": "1793900308840318000",
+        "line": "[2026-11-06T01:38:28+08:00] exp-1106-013411-959935-cfcd2084 >> hint: `tokenspeed-triton` (v3.9.10.post20261008) was included because `verl[sglang]` depends on `sglang` (v0.5.20) which depends on `tokenspeed-mla` (v0.1.8) which depends on `tokenspeed-triton`ExitCode= 1",
+        "pod": "exp-1106-013411-959935-cfcd2084",
+        "node": "gpu-h800-0080.host.platform.shaipower.com",
+        "message": "hint: `tokenspeed-triton` (v3.9.10.post20261008) was included because `verl[sglang]` depends on `sglang` (v0.5.20) which depends on `tokenspeed-mla` (v0.1.8) which depends on `tokenspeed-triton`ExitCode= 1"
+      }
+    ]
+  },
+  "persistent_worker_log": "/data/ycfeng/tmp/verl-agent-opd-20261106/environment-sync.log",
+  "cpu_host_route_probes": {
+    "method": "curl --head --location --max-time 15 --output /dev/null --write-out http_code,http_connect; direct uses --noproxy *, proxy uses deploy httpproxy environment and --noproxy empty",
+    "results": [
+      {
+        "source": "exact tokenspeed wheel on files.pythonhosted.org",
+        "route": "direct",
+        "curl_exit_code": 0,
+        "http_code": 200,
+        "http_connect": 0
+      },
+      {
+        "source": "exact tokenspeed wheel on files.pythonhosted.org",
+        "route": "deploy_proxy",
+        "curl_exit_code": 28,
+        "http_code": 0,
+        "http_connect": 200
+      },
+      {
+        "source": "exact deep-ep wheel on github.com",
+        "route": "direct",
+        "curl_exit_code": 28,
+        "http_code": 0,
+        "http_connect": 0
+      },
+      {
+        "source": "exact deep-ep wheel on github.com",
+        "route": "deploy_proxy",
+        "curl_exit_code": 0,
+        "http_code": 200,
+        "http_connect": 200
+      },
+      {
+        "source": "http://mirrors.i.basemind.com/pypi/simple/tokenspeed-triton/",
+        "route": "direct",
+        "curl_exit_code": 0,
+        "http_code": 200,
+        "http_connect": 0
+      }
+    ],
+    "limits": [
+      "HEAD verifies reachability only; no package bytes were downloaded or hash-verified.",
+      "CPU-host routes differ from worker routes and cannot establish worker download success.",
+      "Index HTTP200 does not establish that it serves the pinned wheel or all dependencies."
+    ]
+  },
+  "handbook_sources": [
+    "/data/ycfeng/stepfun-env-handbook/stepmind-python-rjob.md:642-652",
+    "/data/ycfeng/stepfun-env-handbook/python-package-mirror.md"
+  ],
+  "query_coverage": [
+    {
+      "query": "rjob-historical-events",
+      "ok": true
+    },
+    {
+      "query": "replica-historical-events",
+      "ok": true
+    },
+    {
+      "query": "rjob-live-events",
+      "ok": true
+    },
+    {
+      "query": "replica-live-events",
+      "ok": true
+    },
+    {
+      "query": "incident-logs",
+      "ok": true
+    },
+    {
+      "query": "rjob-audit",
+      "ok": false
+    },
+    {
+      "query": "replica-audit",
+      "ok": false
+    },
+    {
+      "query": "existing-deepscan",
+      "ok": true
+    }
+  ],
+  "audit_queries": {
+    "rjob": {
+      "query": "rjob-audit",
+      "job": "exp-1106-013411-959935",
+      "replica": "exp-1106-013411-959935-cfcd2084",
+      "rjob_uid": "e9b3961b-3178-4be2-9363-695596a0eef6",
+      "replica_uid": "f666f98d-f755-4ed2-87b6-42b0bf07aad8",
+      "started_at": "2026-11-05T17:40:39.160753+00:00",
+      "ok": false,
+      "error": {
+        "type": "ReadTimeout",
+        "message": "HTTPSConnectionPool(host='platform.shaipower.com', port=443): Read timed out. (read timeout=20.0)"
+      },
+      "request": {
+        "method": "GET",
+        "path": "/kapi/auditlogger.kubebrain.io/api/v1alpha1/audit",
+        "parameters": {
+          "resourceType": "rjobs",
+          "resourceName": "exp-1106-013411-959935",
+          "projectName": "shai-core",
+          "pageType": "shai-core",
+          "page": 1,
+          "pageSize": 100
+        },
+        "timeout_seconds": 20.0,
+        "scope": "/shai/shai-core"
+      },
+      "finished_at": "2026-11-05T17:41:00.322316+00:00"
+    },
+    "replica": {
+      "query": "replica-audit",
+      "job": "exp-1106-013411-959935",
+      "replica": "exp-1106-013411-959935-cfcd2084",
+      "rjob_uid": "e9b3961b-3178-4be2-9363-695596a0eef6",
+      "replica_uid": "f666f98d-f755-4ed2-87b6-42b0bf07aad8",
+      "started_at": "2026-11-05T17:40:39.161921+00:00",
+      "ok": false,
+      "error": {
+        "type": "ReadTimeout",
+        "message": "HTTPSConnectionPool(host='platform.shaipower.com', port=443): Read timed out. (read timeout=20.0)"
+      },
+      "request": {
+        "method": "GET",
+        "path": "/kapi/auditlogger.kubebrain.io/api/v1alpha1/audit",
+        "parameters": {
+          "resourceType": "replicas",
+          "resourceName": "exp-1106-013411-959935-cfcd2084",
+          "projectName": "shai-core",
+          "pageType": "shai-core",
+          "page": 1,
+          "pageSize": 100
+        },
+        "timeout_seconds": 20.0,
+        "scope": "/shai/shai-core"
+      },
+      "finished_at": "2026-11-05T17:41:00.315788+00:00"
+    }
+  },
+  "existing_deepscan": {
+    "count": 0,
+    "pagination_complete": true
+  },
+  "raw_evidence_directory": "/data/ycfeng/tmp/rca-exp-1106-013411-959935",
+  "interpretation": [
+    "The pinned image successfully pulled and container started at 17:38:24Z, then user command exited1 at17:38:28Z; RJobFailed17:38:31Z.",
+    "The offline-cache error from the first job is distinct from this online proxy-connect error.",
+    "No GPU was allocated and no model training or numerical acceptance was performed.",
+    "No OOMKilled or incident-bound preemption event appears in the returned state/events; node/kernel coverage remains limited."
+  ],
+  "unknown": {
+    "initiating_manual_stop_actor": "UNKNOWN",
+    "initiating_manual_stop_reason": "UNKNOWN",
+    "initiating_manual_stop_request_time": "UNKNOWN"
+  },
+  "limits": [
+    "Both all-operation audit queries failed with ReadTimeout20s; do not interpret unavailable audit rows as no stop.",
+    "Collector exit1 denotes audit read failures; six other evidence sources succeeded."
+  ]
+}
