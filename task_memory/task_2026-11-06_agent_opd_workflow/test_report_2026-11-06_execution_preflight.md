@@ -2,12 +2,30 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Record complete Qwen underfill and verify independent 64k/128k native recipe composition. |
 | 2026-11-06 | Adopt the user-selected Steptron numerical standard; record cache repair and native launch adapters. |
 | 2026-11-06 | Record adapter CPU checks and the exact zero-GPU environment failure. |
 
 # Ticket01 execution preflight
 
 Scope: native workflow adapters and environment preparation. No GPU training, numerical qualification, export/reload or benchmark acceptance is claimed.
+
+## Complete Qwen source-bank result and native context repair
+
+Actual input job exp-1106-030308-851863, UID008947c3-7bc4-4fb9-9571-73b8608acb31, independently passed benchmark and GLM80/8/native2/20 configurations. Qwen failed in turns preparation: `ValueError: Insufficient verified student-length-eligible source turns`. The full-runtime forward query returned26rows belowlimit1000 and exposed the previously missing eligibility summary and traceback; an earlier14-row tail had incomplete coverage. Selected evidence: evidence/runtime-qwen-input-underfill.json.
+
+| Category | Verified candidates checked | Over61440 | Selected | Pool exhausted |
+| --- | --- | --- | --- | --- |
+| control_and_thinking | 242 | 228 | 14 | true |
+| control_only | 241 | 226 | 15 | true |
+| thinking_only | 239 | 222 | 17 | true |
+| neither | 20 | 0 | 20 | false |
+
+No source/token/template validation exception occurred. Complete selection failed honestly; no Qwen learning/qualification/configuration or overall inputPASS was published. Duplicate source/group skip counts14/15/17/18 and zero duplicate student prompts are retained in the selected evidence. No estimate is made for unscanned neither candidates.
+
+Both exact pinned Qwen and Frog config.json files were read through personal read-only SSH:3161bytes each, identical SHA ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670; text_config.max_position_embeddings262144, default RoPE/no scaling. New Qwen-only settings use context131072, response4096 and ppo_max_token_len_per_gpu131072. GLM settings remain65536/4096/65536. CP1 means native dynamic microbatch budget must cover a complete single sequence; TP2 does not double that budget. Existing actor/rollout/teacher topology, recomputation and precision remain unchanged.
+
+CPU Python3.12.13 direct execution with PYTHONPATH=/data/ycfeng/sota-engine/verl used configure.py --dry-run for both models at2/20updates. All four actual Hydra compositions PASS. Reloaded fields were explicitly asserted: data.max_prompt_length61440/126976, response4096, student and teacher max_model_len65536/131072, actor train and logprob token budgets65536/131072, requested updates2/20. The two settings files differ only in context_length and ppo_max_token_len_per_gpu. bash-n prepare.sh and git diff--check PASS. Temporary composition outputs were consumed automatically. Real128k Qwen inputs and GPU construction/memory/numerics remain UNVERIFIED; Miles's historical64k/eight-turn qualification is not inherited as128k training evidence.
 
 ## Actual GLM data PASS and Qwen length rejection
 

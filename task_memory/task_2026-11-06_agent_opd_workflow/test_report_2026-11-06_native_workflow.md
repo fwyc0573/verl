@@ -2,11 +2,12 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Distinguish actual Qwen serving from four infrastructure failures and still-queued GLM runs. |
 | 2026-11-06 | Record independent GPU submissions, exact prerequisites, and initial platform state. |
 
 # Native agent OPD workflow
 
-This report covers actual worker execution and scientific acceptance separately. Current GPU results are NOT RUN: the first three GPU jobs are queued, and no native numerical or SWE score is accepted yet.
+This report covers actual worker execution and scientific acceptance separately. GLM qualification and original benchmark are queued. Qwen original serving actually loaded, but all four first-question seeds failed in sandbox authentication; no native numerical or SWE score is accepted yet.
 
 ## Source and environment
 
@@ -66,13 +67,13 @@ The separate input job uses the reorganized existing prepare.sh. Benchmark and e
 
 | Gate | Passing condition | Current result |
 | --- | --- | --- |
-| Native GPU | Actual requested workers/nvidia-smi, Ray topology, model construction/conversion, correct teacher/student paths | NOT RUN |
+| Native GPU | Actual requested workers/nvidia-smi, Ray topology, model construction/conversion, correct teacher/student paths | Qwen original SGLang loaded TP0/1; training/teacher and actual nvidia-smi receipt remain unverified |
 | Two-step workflow | Two finite native optimizer updates, valid nonzero gradients, teacher scores actual student tokens | NOT RUN |
 | Same-weight numerics | Decode/prefill/trainer same token-position-mask/probability and versions0then1; per-input/global-token MAE≤0.03; native-pack limit measured or strictly proven under the documented whole-row condition | NOT RUN |
 | GLM R3 | Real route payload plus native replay initialization/old-logprob/update return; independent kernel route-consumption audit not claimed | NOT RUN |
 | Fresh20 | Separate run from original weights, exactly20successful updates; not the qualification weights | NOT RUN |
 | Export/reload | Complete exact step20HF identity/inventory, observed changed weight, new SGLang process and actual generation | NOT RUN |
-| SWE | Each pair/version80valid grader results,320total; valid unresolved0, infrastructure failures missing; avg@4 fixed denominator | NOT RUN |
+| SWE | Each pair/version80valid grader results,320total; valid unresolved0, infrastructure failures missing; avg@4 fixed denominator | Qwen first-question four seeds infrastructure HTTP401, zero valid grades; remaining scores NOT RUN |
 | Cleanup | Consume task-owned temporary artifacts after their dependents, preserve shared models/data and other jobs | Partial cache cleanup only |
 
 Auxiliary observation errors are unverified evidence, not grounds to terminate healthy native training. Native failures retain their normal handling. Final conclusions require business outputs and explicit comparisons, not Running/SERVER_READY/exit0 alone.

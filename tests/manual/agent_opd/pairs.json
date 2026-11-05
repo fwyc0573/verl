@@ -1,5 +1,6 @@
 {
   "glm": {
+    "training_settings": "tests/manual/agent_opd/settings.json",
     "student": "/mnt/codesign-exp/ycfeng/steptron/behavior-turn-replay-step3p6/glm-native-20261103/models/zai-org/GLM-4.7-Flash/7dd20894a642a0aa287e9827cb1a1f7f91386b67",
     "teacher": "/mnt/codesign-exp/ycfeng/steptron/behavior-turn-replay-step3p6/glm-native-20261103/models/whitecircle/GLM-4.7-Flash-Coder/d3c65039ae0797fb41d87cfa0c26438d7c425aa9",
     "reasoning_parser": "glm45",
@@ -28,6 +29,7 @@
     }
   },
   "qwen": {
+    "training_settings": "tests/manual/agent_opd/qwen-settings.json",
     "student": "/mnt/codesign-exp/ycfeng/opd-assets/models/Qwen/Qwen3.5-4B/851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
     "teacher": "/mnt/codesign-exp/ycfeng/opd-assets/models/microsoft/FrogNano-4B-2609/b90468c11a913c1916b4542b4b7a530ec42024a4",
     "reasoning_parser": "qwen3",

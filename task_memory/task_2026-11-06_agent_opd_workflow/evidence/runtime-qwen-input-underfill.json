@@ -1,0 +1,278 @@
+{
+  "collected_at": "2026-11-05T19:17:35.742911+00:00",
+  "identity_verified_at": "2026-11-05T19:04:17.679131+00:00",
+  "terminal_observed_at": "2026-11-05T19:16:01.978025+00:00",
+  "job": {
+    "name": "exp-1106-030308-851863",
+    "uid": "008947c3-7bc4-4fb9-9571-73b8608acb31",
+    "status": {
+      "phase": "Failed",
+      "reason": "RJobFailed",
+      "message": "Tasks with failed status: [default]",
+      "taskStatuses": {
+        "default": {
+          "failed": 1,
+          "taskStage": "stepmind-task-stage-1"
+        }
+      },
+      "finishTime": "2026-11-05T19:15:17Z",
+      "taskStage": "stepmind-task-stage-1"
+    },
+    "stop_annotations": {
+      "rjob.brainpp.cn/system-stop-reason": "Some critical tasks failed."
+    },
+    "stop_timestamp": "2026-11-05T19:15:17Z"
+  },
+  "replica": {
+    "name": "exp-1106-030308-851863-cfcd2084",
+    "uid": "cd3967cb-748c-4e00-8db9-f0ce730b97db",
+    "owners": [
+      {
+        "apiVersion": "rjob.brainpp.cn/v1alpha1",
+        "kind": "RJob",
+        "name": "exp-1106-030308-851863",
+        "uid": "008947c3-7bc4-4fb9-9571-73b8608acb31",
+        "controller": true,
+        "blockOwnerDeletion": true
+      }
+    ],
+    "phase": "Failed",
+    "node": "gpu-h800-0344.host.platform.shaipower.com",
+    "container_statuses": [
+      {
+        "name": "default",
+        "state": {
+          "terminated": {
+            "exitCode": 1,
+            "reason": "Error",
+            "message": "user command: exit status 1",
+            "startedAt": "2026-11-05T19:06:39Z",
+            "finishedAt": "2026-11-05T19:15:15Z",
+            "containerID": "containerd://0851b568dae251b623e9268d0c96de2ed9720ec34c6c8d1be57516a04f05f146"
+          }
+        },
+        "lastState": {},
+        "ready": false,
+        "restartCount": 0,
+        "image": "sha256:3eae996c8f0d4383bda9cc9448dd445eb960f253ac7d3e4cb4f0c6465cb706ae",
+        "imageID": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+        "containerID": "containerd://0851b568dae251b623e9268d0c96de2ed9720ec34c6c8d1be57516a04f05f146",
+        "started": false
+      }
+    ],
+    "finish_timestamp": "2026-11-05T19:15:17Z"
+  },
+  "creator": "i-fengyicheng",
+  "group": "codesign",
+  "preemptible": "no",
+  "queue": "codesign-default",
+  "tasks": {
+    "default": {
+      "replicas": 1,
+      "positive_tags": [
+        "H800"
+      ],
+      "source_mount": "100.96.128.195:/data/ycfeng:/data/ycfeng",
+      "containers": [
+        {
+          "name": "default",
+          "image": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+          "resources": {
+            "limits": {
+              "cpu": "16",
+              "memory": "96000Mi",
+              "nvidia.com/gpu": "0"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "96000Mi",
+              "nvidia.com/gpu": "0"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "native_stage_markers": [
+    {
+      "timestamp": "1793905599903803000",
+      "pod": "exp-1106-030308-851863-cfcd2084",
+      "node": "gpu-h800-0344.host.platform.shaipower.com",
+      "receipt": {
+        "status": "PASS_BENCHMARK_INPUT_PREFLIGHT",
+        "cloud_inputs": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-030308-851863",
+        "exit_code": 0,
+        "training_started": false,
+        "numerical_agreement_verified": false,
+        "membership": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-030308-851863/benchmark/membership.json",
+        "membership_sha256": "bbe3d0ac3e42ef9fcc5ae22d5aadd6b41ff5ce12f67a548ee8bbd95150af3976"
+      }
+    },
+    {
+      "timestamp": "1793905674118451000",
+      "pod": "exp-1106-030308-851863-cfcd2084",
+      "node": "gpu-h800-0344.host.platform.shaipower.com",
+      "receipt": {
+        "status": "PASS_TRAINING_INPUT_PREFLIGHT",
+        "cloud_inputs": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-030308-851863",
+        "exit_code": 0,
+        "training_started": false,
+        "numerical_agreement_verified": false,
+        "pair": "glm",
+        "learning_dataset": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-030308-851863/glm-learning.parquet",
+        "qualification_dataset": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-030308-851863/glm-qualification.parquet",
+        "source_turn_report": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-030308-851863/glm-turns.json",
+        "agent_config": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-030308-851863/glm-agent.yaml",
+        "recipes": {
+          "2": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-030308-851863/glm-2-recipe.yaml",
+          "20": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-030308-851863/glm-20-recipe.yaml"
+        }
+      }
+    },
+    {
+      "timestamp": "1793906115469593000",
+      "pod": "exp-1106-030308-851863-cfcd2084",
+      "node": "gpu-h800-0344.host.platform.shaipower.com",
+      "receipt": {
+        "status": "FAILED_TRAINING_INPUT_PREFLIGHT",
+        "cloud_inputs": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-030308-851863",
+        "exit_code": 1,
+        "training_started": false,
+        "numerical_agreement_verified": false,
+        "failed_stage": "turns"
+      }
+    }
+  ],
+  "initiating_failure": {
+    "status": "CONFIRMED_NATIVE_INPUT_ELIGIBILITY_FAILURE",
+    "observed": "The Qwen selector exhausted three original training categories before collecting 20 distinct student-length-eligible source groups per category.",
+    "specific_qwen_exception": "ValueError: Insufficient verified student-length-eligible source turns: {\"control_and_thinking\": {\"duplicate_source_candidates\": 14, \"duplicate_student_prompts\": 0, \"manifest_candidates\": 256, \"over_budget_candidates\": 228, \"pool_exhausted\": true, \"selected\": 14, \"verified_candidates_checked\": 242}, \"control_only\": {\"duplicate_source_candidates\": 15, \"duplicate_student_prompts\": 0, \"manifest_candidates\": 256, \"over_budget_candidates\": 226, \"pool_exhausted\": true, \"selected\": 15, \"verified_candidates_checked\": 241}, \"neither\": {\"duplicate_source_candidates\": 18, \"duplicate_student_prompts\": 0, \"manifest_candidates\": 256, \"over_budget_candidates\": 0, \"pool_exhausted\": false, \"selected\": 20, \"verified_candidates_checked\": 20}, \"thinking_only\": {\"duplicate_source_candidates\": 17, \"duplicate_student_prompts\": 0, \"manifest_candidates\": 256, \"over_budget_candidates\": 222, \"pool_exhausted\": true, \"selected\": 17, \"verified_candidates_checked\": 239}}",
+    "exception_timestamp_ns": "1793906114195166000",
+    "exception_timestamp_utc": "2026-11-05T19:15:14.195166+00:00",
+    "source": "/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/prepare_turns.py:179",
+    "diagnosis_owner": "/root/data_benchmark",
+    "constraints": {
+      "context_length": 65536,
+      "response_length": 4096,
+      "max_prompt_tokens": 61440,
+      "required_per_category": 20,
+      "source_pool": "Unchanged pinned manifest train banks",
+      "truncation": false
+    },
+    "actual_qwen_eligibility": {
+      "control_and_thinking": {
+        "duplicate_source_candidates": 14,
+        "duplicate_student_prompts": 0,
+        "manifest_candidates": 256,
+        "over_budget_candidates": 228,
+        "pool_exhausted": true,
+        "selected": 14,
+        "verified_candidates_checked": 242
+      },
+      "control_only": {
+        "duplicate_source_candidates": 15,
+        "duplicate_student_prompts": 0,
+        "manifest_candidates": 256,
+        "over_budget_candidates": 226,
+        "pool_exhausted": true,
+        "selected": 15,
+        "verified_candidates_checked": 241
+      },
+      "neither": {
+        "duplicate_source_candidates": 18,
+        "duplicate_student_prompts": 0,
+        "manifest_candidates": 256,
+        "over_budget_candidates": 0,
+        "pool_exhausted": false,
+        "selected": 20,
+        "verified_candidates_checked": 20
+      },
+      "thinking_only": {
+        "duplicate_source_candidates": 17,
+        "duplicate_student_prompts": 0,
+        "manifest_candidates": 256,
+        "over_budget_candidates": 222,
+        "pool_exhausted": true,
+        "selected": 17,
+        "verified_candidates_checked": 239
+      }
+    },
+    "native_eligibility_timestamp_ns": "1793906114184232000",
+    "causal_interpretation": "The initiating error is verified Qwen source-pool underfill at the configured prompt budget, followed by the shell turns-stage failure and container exit1. No source hash, token hash, or target-template exception appears in this captured traceback.",
+    "remaining_gates": "No Qwen learning/qualification parquet, complete turn report, 2/20-step recipes, training updates, or numerical acceptance were published.",
+    "limits": "Counts describe the deterministic scan under existing group/source-prompt distinctness. The neither category stopped at 20 and was not exhausted; its total eligible population is unknown. Selected Qwen per-turn token lengths and hashes were not published because preparation failed before output."
+  },
+  "log_snapshot": {
+    "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/eighth-input-failure-worker-logs.json",
+    "bytes": 14242,
+    "sha256": "eb84dfe4b113cc59ffb5f2329a09b4e17899458fbf46afdbd50e56c1367a22b4",
+    "read_method": "RJobClient.logs_replica",
+    "tail_limit": 40,
+    "returned_rows": 14,
+    "tail_limit_reached": false,
+    "known_credentials_scan": "No personal AK/SK bytes found"
+  },
+  "stop_interpretation": "Container Error/exit1 and native stage exit1 precede finish-time system-stop Some critical tasks failed; no initiating manual-stop actor is established.",
+  "coverage": {
+    "exact_owner_uid_objects": "PASS",
+    "personal_creator_current_nfs_pinned_image_requested_resources": "PASS",
+    "native_bounded_tail": "PASS",
+    "audits_deepscan_events": "NOT_REQUESTED: command self-exit with stage failure observed; root requested minimal coordinated RCA",
+    "extra_quota_personal_global_scans": "NONE",
+    "job_controls": "NONE",
+    "native_bounded_forward_runtime_window": "PASS: 26 returned rows below limit1000, including actual Qwen eligibility and initiating traceback"
+  },
+  "limits": [
+    "GPU jobs remained queued at terminal observation; this input job is zeroGPU.",
+    "No training or numerical agreement has been established.",
+    "Log response14rows belowlimit40 does not prove complete ingestion.",
+    "Container state is Error rather than OOMKilled; no broader event/kernel coverage was collected.",
+    "The initiating source-level exception is established by the later forward response; logs outside its explicit runtime window were not queried."
+  ],
+  "initial_log_interpretation": {
+    "observed": "FAILED_TRAINING_INPUT_PREFLIGHT, failed_stage turns, exit_code1, after independent benchmark and GLM input preparation PASS",
+    "specific_qwen_exception": "UNKNOWN in returned stdout",
+    "diagnosis_owner": "/root/data_benchmark",
+    "limits": "No Qwen eligibility summary, ValueError or traceback was returned in this tail. Source-pool underfill is not inferred."
+  },
+  "forward_log_snapshot": {
+    "job": "exp-1106-030308-851863",
+    "job_uid": "008947c3-7bc4-4fb9-9571-73b8608acb31",
+    "replica": "exp-1106-030308-851863-cfcd2084",
+    "replica_uid": "cd3967cb-748c-4e00-8db9-f0ce730b97db",
+    "identity_source": "platform observer exact object receipt",
+    "endpoint": "/kapis/rjob.brainpp.cn/v1alpha1/tenants/shai/projects/shai-core/rjobs/exp-1106-030308-851863/logs/query_range",
+    "parameters": {
+      "replicas": "exp-1106-030308-851863-cfcd2084",
+      "start": "1793905590000000000",
+      "end": "1793906130000000000",
+      "direction": "forward",
+      "limit": 1000
+    },
+    "collected_at": "2026-11-05T19:21:33.758063+00:00",
+    "http_status": 200,
+    "rows": 26,
+    "raw_response": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/eighth-input-forward-native-logs.json",
+    "raw_bytes": 22118,
+    "raw_sha256": "1a479b2ed50f58230e66de47f18429ae68e2ad5b9bc7cba0aad049634daea7c6",
+    "reached_limit": false,
+    "credential_scan": "No current personal or sandbox credential values found",
+    "read_method": "Authenticated personal RJobClient identity with native HTTP GET logs/query_range; explicit UTC runtime window and forward direction"
+  },
+  "log_coverage_correction": {
+    "initial_response": {
+      "rows": 14,
+      "limit": 40,
+      "sha256": "eb84dfe4b113cc59ffb5f2329a09b4e17899458fbf46afdbd50e56c1367a22b4",
+      "interpretation": "The initial 14-row backward snapshot omitted the Qwen eligibility summary and traceback; being below the tail limit did not establish complete ingestion."
+    },
+    "subsequent_response": {
+      "rows": 26,
+      "limit": 1000,
+      "sha256": "1a479b2ed50f58230e66de47f18429ae68e2ad5b9bc7cba0aad049634daea7c6",
+      "interpretation": "The later 26-row forward runtime-window response includes both the actual eligibility summary and initiating traceback. The cause is now confirmed; the earlier UNKNOWN referred only to that earlier returned coverage."
+    },
+    "sdk_channel_limit": "brainpp2.8.6 logs_replica exposes no stdout/stderr stream selector. No invented stderr parameter or output-channel conclusion was used."
+  },
+  "diagnosis_updated_at": "2026-11-05T19:25:10.505153+00:00"
+}

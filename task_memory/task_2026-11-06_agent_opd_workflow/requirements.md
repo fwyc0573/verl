@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Select separate native Qwen context settings after actual source-bank underfill at 61440 tokens. |
 | 2026-11-06 | Adopt the user-selected Steptron numerical standard; record cache repair and native launch adapters. |
 | 2026-11-06 | Record execution steering and carry the recommended symmetric test matrix into execution. |
 | 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
@@ -65,7 +66,9 @@ Apply that common numerical contract to both pairs. Keep this task's model-speci
 
 ## Acceptance common to both pairs
 
-Implementation decision after actual Qwen length rejection: training candidates stay in the same verified source manifest's training bank and retain all source-byte/token/exclusion checks. Each student's own complete rendered prompt determines eligibility under61440tokens. Choose20percategory deterministically without truncation; original GLM length alone does not exclude an otherwise eligible Qwen candidate. The two pairs need not select identical80turns. Report actual checked/rejected/selected counts; an exhausted group below20 fails. This changes neither the training objective nor the fixed benchmark population.
+Implementation decision after actual Qwen length rejection: training candidates stay in the same verified source manifest's training bank and retain all source-byte/token/exclusion checks. Each student's own complete rendered prompt determines eligibility under its explicitly frozen run settings. Choose20percategory deterministically without truncation; original GLM length alone does not exclude an otherwise eligible Qwen candidate. The two pairs need not select identical80turns. Report actual checked/rejected/selected counts; an exhausted group below20 fails. This changes neither the training objective nor the fixed benchmark population.
+
+The first complete Qwen candidate scan at61440tokens actually selected14/15/17/20 across the four categories and correctly failed; it did not publish an80-row dataset. The next implementation configuration uses Qwen-only context131072, response4096, prompt126976 and actor/logprob token budget131072 via qwen-settings.json. Both pinned Qwen and Frog text configs declare max_position_embeddings262144, so this requires no RoPE scaling. Keep GLM context65536/prompt61440 unchanged in settings.json, including its already queued live-source command. The larger Qwen configuration must still pass actual input preparation and GPU model/memory/numerical qualification; config support alone grants no PASS. Preserve all category counts, complete histories, source exclusions, optimizer settings and the0.03 numerical standard.
 
 - 数据来源、student/teacher 身份、tokenizer/template 和历史消息对应关系可追溯。历史 completion 用于来源分类和检查；OPD loss 使用当前 student 新生成的 completion。
 - thinking、普通正文和 tool call（包括 submit）的表示、原始 tokens 和训练 loss mask 可验证。来源类别、序列化测试和真实生成的类别覆盖分别报告，缺失类别不能凭空记为已覆盖。

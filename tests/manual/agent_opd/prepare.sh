@@ -20,15 +20,32 @@ prepare_benchmark() {
 
 prepare_pair() {
     local pair=$1
-    local steps phase
+    local steps phase settings max_prompt_tokens
+    failed_stage=settings
+    settings=$("$python" -B - "$pair" <<'PY'
+import json
+import sys
+from pathlib import Path
+pairs = json.loads(Path('tests/manual/agent_opd/pairs.json').read_text())
+print(pairs[sys.argv[1]]['training_settings'])
+PY
+    ) || return
+    max_prompt_tokens=$("$python" -B - "$settings" <<'PY'
+import json
+import sys
+from pathlib import Path
+settings = json.loads(Path(sys.argv[1]).read_text())
+print(settings['context_length'] - settings['response_length'])
+PY
+    ) || return
     failed_stage=turns
     "$python" -B tests/manual/agent_opd/prepare_turns.py \
         --miles-root /data/ycfeng/sota-engine/miles --manifest "$manifest" \
         --pairs tests/manual/agent_opd/pairs.json --pair "$pair" \
         --output "$cloud/$pair-learning.parquet" --report "$records/$pair-turns.json" \
-        --work-dir "$stage" --turns-per-category 20 --max-prompt-tokens 61440 || return
+        --work-dir "$stage" --turns-per-category 20 --max-prompt-tokens "$max_prompt_tokens" || return
     failed_stage=qualification
-    "$python" -B - "$cloud" "$records" "$pair" <<'PY' || return
+    "$python" -B - "$cloud" "$records" "$pair" "$settings" <<'PY' || return
 import json
 import sys
 from collections import Counter
@@ -39,7 +56,7 @@ from omegaconf import OmegaConf
 cloud, records = map(Path, sys.argv[1:3])
 name = sys.argv[3]
 pairs = json.loads(Path('tests/manual/agent_opd/pairs.json').read_text())
-base = json.loads(Path('tests/manual/agent_opd/settings.json').read_text())
+base = json.loads(Path(sys.argv[4]).read_text())
 pair = pairs[name]
 table = pq.read_table(cloud / f'{name}-learning.parquet')
 qualification = table.slice(0, 8)

@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Record actual Qwen candidate underfill, separate native context, and sandbox authentication failure. |
 | 2026-11-06 | Adopt the user-selected Steptron numerical standard; record cache repair and native launch adapters. |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
 | 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
@@ -410,3 +411,65 @@ The jobs requested22GPUs and had0 allocated at that snapshot. Before submission,
 The actual GLM80 source preflight is reused. The temporary rank0 startup prefix checks/publishes the existing first8 before entering ordinaryworker, preserving exact category and parquet checks. Bothoriginalbenchmarks use the existing benchmark.py prepare under fcntl locking to create/validate one canonical fixed membership at cloudroot/inputs/fixed-benchmark/benchmark/membership.json before SG starts. Both consume its actual digest; no overall inputPASS is fabricated. The newzeroGPUprepare publishes independent receipts and cannot hold readyGPU phases behind Qwen.
 
 Business observers have separate ownership: GLM actualR3/version/numerics; originalSG/SWE outputs; actualQweninput eligibility; platformstatus/identity. No newsourcecode or harness is being added while these runs wait. Detailed exact commands/resources/gates: test_report_2026-11-06_native_workflow.md. No native updates, numericalPASS or validgrader results yet.
+
+
+## Complete Qwen eligibility and independent native context
+
+Eighth input job actually passed benchmark and GLM80/8/2/20 preflights, then failed Qwen turns. Full-runtime native forward query returned26lines (limit1000), exposing actual underfill and ValueError absent from the earlier14line tail. Actual checked/overbudget/selected: control_and_thinking242/228/14; control_only241/226/15; thinking_only239/222/17; neither20/0/20. First three pools exhausted; fourth stopped after20. No source/token/template exception or truncation. Container03:06:39–03:15:15HKT exit1, platformFailed03:15:17; local launcher49616 raised wait failure at03:15:19 then cleanupstop, after the initiating business failure. Exact selected evidence: evidence/runtime-qwen-input-underfill.json.
+
+Before the next preparation, hypothesis: the common64k training context, rather than invalid source records, prevents Qwen's tokenizer/template from preserving20complete histories in each class. The same verified bank under native-supported128k Qwen context can supply80without changing source exclusions/category counts. Falsifier: actual preparation under126976prompt budget still underfills or a pinned model/provider refuses131072. Both pinned HF configs declare262144; no RoPE scaling. ActualGPU memory and numerical behavior remain unverified.
+
+Implementation changes only per-model run settings: pairs.json registers existing GLMsettings.json and newqwen-settings.json; prepare.sh derives the real prompt budget from that file and uses the same settings for2/20recipes. Qwencontext andactor/logprob token budgets131072, response4096; GLM remains65536/65536/4096, preserving its live queued command. No new prep path, source change, count reduction or numerical relaxation. Four real CPU Hydra compositions and explicit length/budget assertionsPASS with Python3.12.13; shell syntax/diffPASS. Dataowner independently confirmed the scoped diff. Rerun existing0GPUprepare after commit/push, then submitQwenqualification only after its80/8/2/20actualPASS.
+
+Qwenoriginal exp-1106-030308-817360 actually loaded SGLang TP0/1 with triton linear backend and returned model_info200, but firstquestion4seeds all failed immediately with HTTPStatusError, no validgrade. Native SessionRouter POST/session returned401/decrypt_auth_token/illegalbase64; traceback shows literal ${SESSION_ROUTER_USER_TOKEN}, while forwarded credentials hadSR_USER_TOKEN present andSESSION_ROUTER_USER_TOKEN absent. Runtimeowner owns the smallest canonical-env repair and synthetic verification; no newcredential, timeout/retry or model change. Platform container03:22:09–03:24:22exit1, Failed03:24:24; launchercleanup is subsequent. Canonical fixedmembership now exists, actualSHA0f4ab340bedb7a64f3089af679be829aefcf8ecbbeb11c3a164578ba6b702877. GLMqualification andGLMoriginal remain independentlyqueued, no controls.
+
+## 1. 规划完成情况
+
+**汇总：** PASS0｜BLOCKED/FAILED/SKIPPED2｜TODO8
+
+| 子任务 | 状态 | 简要依据 |
+| --- | --- | --- |
+| 01 | FAILED | GLM及benchmark输入PASS；Qwen64k实际不足，128k配置CPU通过待实测 |
+| 02 | TODO | GLM资格已提交，Pending |
+| 03 | TODO | 等Qwen新预算真实输入 |
+| 04 | TODO | 等02 |
+| 05 | TODO | 等03 |
+| 06 | TODO | GLM原始已提交，Pending |
+| 07 | FAILED | Qwen服务已加载，sandbox token原生环境变量未解析，0有效评分 |
+| 08 | TODO | 等04/06 |
+| 09 | TODO | 等05/07 |
+| 10 | TODO | 已及时消费cache，最终清理待后续 |
+
+## 2. 偏离检测
+
+**结论：** 未偏移，正常推进。
+**检测窗口：** 1f5942c4独立提交至当前两个实际失败定位｜**当前前沿：** Qwen输入修复、GLM资格、两个原始benchmark
+
+| 模式 | 判定 | 依据 |
+| --- | --- | --- |
+| D1 工具打磨 | CLEAR | 只修真实输入/原生鉴权阻碍，未扩展harness |
+| D2 细节反复重试 | CLEAR | 实测完整候选计数证实容量限制；下一假设及证伪条件已先记录 |
+| D3 支线问题修补 | CLEAR | 两个缺陷分别阻挡01/07 |
+| D4 可并行任务停滞 | CLEAR | GLM两条已独立排队，Qwen输入与鉴权并行处理 |
+| D5 超范围镀金 | CLEAR | 同一80行类别要求/320评分矩阵，未加新功能 |
+| D6 分析空转 | CLEAR | 已取得具体异常并完成最小配置修复，鉴权修复由owner执行 |
+| D7 路线违背 | CLEAR | 调整自主冻结的技术预算前已说明并更新requirements，用户要求不变 |
+
+**文档检查：** S1–S6均未发现新的缺陷；64k为实现参数，未改变用户要求的类别/步数/数值/评分验收。
+**归因：** 无。
+
+## 3. 纠正建议
+
+**分支：** A：spec/tickets合理，无需改动。
+**需停止的偏离行为：** 无。
+
+**接下去的路线：**
+1. 01：提交独立settings后实跑既有prepare → Qwen80/8、四类各20/2及2/20recipe均PASS。
+2. 并行：02/06继续观察已排队作业，取得真实训练/原始评分证据。
+3. 并行：07规范传入已有SessionRouter token环境名，经合成回归后以同题单新attempt恢复；只复用有效结果，当前4infra均missing。
+
+## 4. 最值得关注的 3 点
+
+1. 128k只是模型配置允许；实际输入、内存和MAE仍待验证。
+2. Qwen首题4个HTTP401均为基础设施missing，不能计零分或已完成4份。
+3. 已排队GLM作业继续，无重复提交或其他作业控制。

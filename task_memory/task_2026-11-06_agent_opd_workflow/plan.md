@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Use model-specific run settings to resolve measured Qwen input underfill without changing populations. |
 | 2026-11-06 | Correct coarse prerequisites so model qualification and original benchmarks advance independently. |
 | 2026-11-06 | Adopt the user-selected Steptron numerical standard; record cache repair and native launch adapters. |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
@@ -11,7 +12,9 @@
 
 ## Execution status
 
-用户已指示“开始执行”。按上一轮推荐的两组对称 20 步及前后评测推进，使用已创建的 agent-opd 分支。01 正在落实真实数据、原生锁定环境与技术验收；其余 tickets 依赖不变。代码、配置和每阶段结论及时提交/push，临时产物随消费随清理。
+用户已指示“开始执行”。按上一轮推荐的两组对称 20 步及前后评测推进，使用已创建的 agent-opd 分支。01 的 native runtime、GLM 输入和 benchmark 题单已实际通过，Qwen 输入仍待复核。GLM 资格与原始评测已独立提交；原始 Qwen 已启动服务后因原生 sandbox token 环境变量未解析而失败，正在修复。代码、配置和每阶段结论及时提交/push，临时产物随消费随清理。
+
+Qwen 在原61440预算下真实候选不足14/15/17/20；采用模型原生支持内的独立 qwen-settings.json：context131072、response4096、训练/logprob预算131072。prepare.sh 从 pairs.json 的既有模型条目选择明确 settings 文件并推导 prompt 预算，复用同一 preparation/configuration 路径。GLM settings.json 的65536合同保持。新的Qwen输入须实际80/8行和2/20步配置PASS后才提交其8GPU资格；不截断、不减类别、不降低数值门槛。
 
 首选 native megatron+sglang，固定 company image amd64 digest，创建挂载本地目录中的持久环境。先在 CPU host 补齐原锁定 GitHub wheels 并验证完整 cache 合并后的 frozen/offline 安装，再用零 GPU CPU worker 从镜像及补充 cache materialize 环境并执行真实 imports/config/tokenizer/index preflight；该环境此后由训练直接使用，正常训练不安装依赖。该阶段不读大 tensor，不把配置检查当作模型加载或数值通过。
 
