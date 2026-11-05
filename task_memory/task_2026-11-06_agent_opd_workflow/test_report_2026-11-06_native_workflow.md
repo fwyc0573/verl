@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Record current four GPU job identities, resources and queued state. |
 | 2026-11-06 | Distinguish actual Qwen serving from four infrastructure failures and still-queued GLM runs. |
 | 2026-11-06 | Record independent GPU submissions, exact prerequisites, and initial platform state. |
 
@@ -93,3 +94,29 @@ The existing identity excludes sourceGitSHA/credentials; model/pair/version/memb
 
 
 Exact CPU fixture entry: `PYTHONPATH=/data/ycfeng/sota-engine/verl timeout 60s /data/ycfeng/envs/miles-agent-opd-cpu/bin/python -B -` with an inline driver. Native child interpreter: `/data/ycfeng/steptron/.worktrees/step3p6-replay-v1/.venv/br-native-swe-py310-1008am/environment/bin/python`; child PYTHONPATH=`/data/ycfeng/steptron/.worktrees/step3p6-native-eval-1015z/third_party/swe-agents/src`. Actual child call: `ConfigManager._substitute_env_vars({'env': {'session_router_user_token': '${SESSION_ROUTER_USER_TOKEN}'}})`. Unique child stdout NATIVE_TOKEN_RESOLVED; final driver statusPASS/cases3×native_children4/actual_native_config_substitutionPASS/token_values_loggedfalse/missing_credentials_rejectedtrue/archive_preserves_gpu_receipttrue/GPU_or_network_callsfalse. The inline fixture directory `/data/ycfeng/tmp/opd-benchmark-token-pprq797h` was removed after consumption.
+
+
+## Current four GPU jobs after verified preparation and auth repair
+
+At03:37:58HKT all four jobs were Pending/RJob is queuing, with no replicas or allocatedGPUs. Totalrequested30H800. The originalGLMqualification exp-1106-030133-940211 (2×8) andGLMoriginal exp-1106-030308-839669 (4) retain their initialidentities/launchers. Two new calls use the same rjob_run.py/image/personal/currentNFS setup:
+
+| Ticket | RJob / UID | Command / resources | Launcher |
+| --- | --- | --- | --- |
+| 07 | exp-1106-033246-436787 / f5c97c61-7868-44f6-8a74-34ab529bd6b2 | same benchmark-original-qwen.sh; --gpus2 --replicas1 --cpus12 --memory-gb150 --sandbox-auth | 30922 |
+| 03 | exp-1106-033627-955641 / 9ad17773-2d4e-4b21-8dc2-2150ab8a6f85 | qualification-qwen.sh; --gpus8 --replicas1 --cpus32 --memory-gb300 | 13885 |
+
+The07retry followed source3c7541c1998c4bde1f63d662693364bb98178712 commit/push and independent remoteSHA match; immediate previous-job API read verified originalUID andFailed. The03 firstsubmission followed actual complete input/configPASS, not an inferred sourceMiles result. Its command is:
+
+```sh
+bash /data/ycfeng/sota-engine/verl/tests/manual/agent_opd/worker.sh \
+  --pair qwen --steps 2 \
+  --dataset /mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-032827-028041/qwen-qualification.parquet \
+  --output-root /mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification \
+  --settings /data/ycfeng/sota-engine/verl/tests/manual/agent_opd/qwen-settings.json \
+  --pairs /data/ycfeng/sota-engine/verl/tests/manual/agent_opd/pairs.json \
+  --shared-dir /data/ycfeng/tmp/verl-agent-opd-20261106/rendezvous \
+  --nodes 1 --gpus-per-node 8 --gpu-type H800 \
+  --startup-timeout 1800 --training-timeout 14400
+```
+
+Quota-only03:32:37–38HKT HTTP200 selectedfields: totalgpu/H800128, chargedgpu127, usedgpu120, nonpreemptiblequota/usedgpu127, preemptiblequota/usedgpu1; enabled best-utilqueue. Inconsistent field meanings do not prove immediatelyschedulablefreeH800; that value remainsUNKNOWN. Two localparser-shape failures caused repeatedreads before fields were selected; this observer defect was corrected by stoppingrequests and requiring raw-response preservation for futureparsing. It did not change quota or jobs. Existing launcher processes remain alive; inputlauncher92790 returned succeeded03:35:02 after nativecompletion and its cleanupstop was subsequent.

@@ -1,0 +1,13 @@
+{
+  "status": "PASS_INPUT_AND_CONFIG_PREFLIGHT",
+  "cloud_inputs": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-032827-028041",
+  "membership": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-032827-028041/benchmark/membership.json",
+  "membership_sha256": "7196960f9291e5b23d576b814920a0a0c001444d8fbf0aa48debf710c6ca779e",
+  "input_receipts": {
+    "benchmark": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-032827-028041/benchmark-inputs.json",
+    "glm": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-032827-028041/glm-inputs.json",
+    "qwen": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-032827-028041/qwen-inputs.json"
+  },
+  "training_started": false,
+  "numerical_agreement_verified": false
+}

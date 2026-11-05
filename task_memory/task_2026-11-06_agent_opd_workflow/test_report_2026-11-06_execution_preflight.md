@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Record actual both-model input/configuration PASS and preserve qualification length limits. |
 | 2026-11-06 | Record complete Qwen underfill and verify independent 64k/128k native recipe composition. |
 | 2026-11-06 | Adopt the user-selected Steptron numerical standard; record cache repair and native launch adapters. |
 | 2026-11-06 | Record adapter CPU checks and the exact zero-GPU environment failure. |
@@ -151,3 +152,16 @@ Benchmark scheduling correction: source Miles uses four fixed seed streams; meas
 
 
 Decoder-only configuration check: pinned MegatronBridge0.6.2 GLM47 provider takes HF num_nextn_predict_layers and defaults MTP loss scaling0.3. The model mtp.enable=False alone does not clear that provider field for GLM. The recipe now explicitly freezes model.mtp.enable=False and existing override_transformer_config.mtp_num_layers=0 for both pairs, matching the source decoder-only objective through the existing override mechanism. The first Hydra composition rejected a missing struct key; using its documented + addition syntax (also used by the repo's Qwen3.8/27B example) resolved it. Actual GLM/Qwen×2/20 Hydra compose and assertions PASS under CPU Python3.12.13. No core module, interface or loss implementation changed; actual provider construction/export still requires native execution.
+
+
+## Complete actual input/configuration acceptance
+
+Ninth input job exp-1106-032827-028041 / UID44674359-0cfb-46e0-9419-24c0d78ec5b4 actually completed unchanged prepare.sh with registered per-model settings. Container03:32:42–03:34:54HKT onH800-0329 exited0/Completed/restart0; platformSucceeded03:34:59. Exact personal creator, image and currentNFS were verified; platform evidence/input-complete-terminal.json alone does not prove business acceptance.
+
+Actual qwen-inputs.json PASS_TRAINING_INPUT_PREFLIGHT and finalinputs.json PASS_INPUT_AND_CONFIG_PREFLIGHT were separately inspected. Both models'80chosenUID/order exactly match original Miles selection; source manifestSHA4776f40e3567ed4a8047931cb56d567a87d648aa234bf52d519874ad78a47c34, inherited training_exclusion/isolation unchanged. Each model has80distinct UID and targetprompt hashes, fourcategories20each, first8 fourcategories2each. Actual Qwen80prompt11430–67951; maximum+4096response72047<131072. Each class selected its first20verified candidates with0overbudget. Qwenfirst8lengths48129,33327,38553,11430,47408,40169,45556,19169: qualification does not itself exercise a prompt above64k.
+
+All four actual2/20recipes were reloaded from native preparation outputs, not --dry-run. Student/teacher pinned paths, data paths and steps were correct. Qwenprompt126976,response4096,student/teachercontext131072,actor/train-logprob budgets131072; GLM values remain61440/4096/65536/65536. Exact prepared source-token metadata and Parquet roundtrip were verified by native preparation and independent receipt review. Selected evidence/qwen-input-preflight.json and inputs-complete-preflight.json preserve the reports. QwenreportSHA25a5cc8939217978b8936da945bc983ed7df7bdd8b282bb0b8c929f70f3f6634; qwen-inputsSHA bfa4190dee5238a9740190d688deec385cd2f3dcd5a15f01039051fb4b997f65;2recipeSHA87afc52aaa94aa2f259b0084096f3652bf75311452f06652f38d19e97f598324;20recipeSHA629291b827a7edd06cffb84422f3fb5815268695835c59efc7e4e0eb9592ab12;finalinputsSHAfd4701c755c6fd40aae19051fb1232fe6119a996c94f05a0e08eb12d32955d47.
+
+The job-specific CPUbenchmark membershipSHA7196960f9291e5b23d576b814920a0a0c001444d8fbf0aa48debf710c6ca779e is not substituted for the already frozen canonical fixed-benchmark membership consumed by GPUbenchmarks (SHA0f4ab340bedb7a64f3089af679be829aefcf8ecbbeb11c3a164578ba6b702877). Dataset/source selection is fixed; path-bearing rawreceipt hashes may differ across namespaces.
+
+Ticket01 closes only the native runtime/input/configuration contract. GPU training, native weight versions, numerical agreement, actualHFchangedvalues/reload and grader acceptance remain open in02–09.

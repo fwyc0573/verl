@@ -1,0 +1,215 @@
+{
+  "status": "PASS_INPUT_BUSINESS_VALIDATION",
+  "job": "exp-1106-032827-028041",
+  "local_records": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-032827-028041",
+  "cloud_inputs": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-032827-028041",
+  "source_manifest_sha256": "4776f40e3567ed4a8047931cb56d567a87d648aa234bf52d519874ad78a47c34",
+  "files": {
+    "benchmark-inputs.json": {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-032827-028041/benchmark-inputs.json",
+      "sha256": "7bb7a43e4789ad74638a96baa90fe20b962beac1bea4481af558d467dd687891"
+    },
+    "glm-inputs.json": {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-032827-028041/glm-inputs.json",
+      "sha256": "97bf100ad4e850daa40f1ed8406a905b18fd7056c33029878bbd94ee4174267b"
+    },
+    "qwen-inputs.json": {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-032827-028041/qwen-inputs.json",
+      "sha256": "bfa4190dee5238a9740190d688deec385cd2f3dcd5a15f01039051fb4b997f65"
+    },
+    "inputs.json": {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-032827-028041/inputs.json",
+      "sha256": "fd4701c755c6fd40aae19051fb1232fe6119a996c94f05a0e08eb12d32955d47"
+    },
+    "glm-turns.json": {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-032827-028041/glm-turns.json",
+      "sha256": "835ffd1135804d00ff8b2535bd14aecb3d028bed202bd735c47c365ea2c967f8"
+    },
+    "qwen-turns.json": {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-032827-028041/qwen-turns.json",
+      "sha256": "25a5cc8939217978b8936da945bc983ed7df7bdd8b282bb0b8c929f70f3f6634"
+    },
+    "glm-2-recipe.yaml": {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-032827-028041/glm-2-recipe.yaml",
+      "sha256": "5e9bd6f4fa6faf124500fd7e7b62da298649b0baba0202643c3af5e264a4c03c"
+    },
+    "glm-20-recipe.yaml": {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-032827-028041/glm-20-recipe.yaml",
+      "sha256": "80ca605b5043236bb66ad708a0f3ec7c748329c01ae6ca862e29677dc2ee6b1f"
+    },
+    "qwen-2-recipe.yaml": {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-032827-028041/qwen-2-recipe.yaml",
+      "sha256": "87afc52aaa94aa2f259b0084096f3652bf75311452f06652f38d19e97f598324"
+    },
+    "qwen-20-recipe.yaml": {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-032827-028041/qwen-20-recipe.yaml",
+      "sha256": "629291b827a7edd06cffb84422f3fb5815268695835c59efc7e4e0eb9592ab12"
+    }
+  },
+  "pairs": {
+    "glm": {
+      "rows": 80,
+      "distinct_source_uids": 80,
+      "source_categories": {
+        "control_and_thinking": 20,
+        "control_only": 20,
+        "thinking_only": 20,
+        "neither": 20
+      },
+      "prompt_token_range": [
+        10366,
+        57113
+      ],
+      "max_prompt_tokens": 61440,
+      "response_cap": 4096,
+      "context_length": 65536,
+      "qualification_rows": 8,
+      "qualification_prompt_tokens": [
+        40380,
+        28408,
+        33616,
+        10366,
+        41047,
+        35074,
+        39175,
+        16967
+      ],
+      "qualification_source_categories": {
+        "control_and_thinking": 2,
+        "control_only": 2,
+        "thinking_only": 2,
+        "neither": 2
+      },
+      "selection": {
+        "control_and_thinking": {
+          "manifest_candidates": 256,
+          "verified_candidates_checked": 20,
+          "over_budget_candidates": 0,
+          "duplicate_source_candidates": 12,
+          "duplicate_student_prompts": 0,
+          "selected": 20,
+          "pool_exhausted": false
+        },
+        "control_only": {
+          "manifest_candidates": 256,
+          "verified_candidates_checked": 20,
+          "over_budget_candidates": 0,
+          "duplicate_source_candidates": 13,
+          "duplicate_student_prompts": 0,
+          "selected": 20,
+          "pool_exhausted": false
+        },
+        "thinking_only": {
+          "manifest_candidates": 256,
+          "verified_candidates_checked": 20,
+          "over_budget_candidates": 0,
+          "duplicate_source_candidates": 17,
+          "duplicate_student_prompts": 0,
+          "selected": 20,
+          "pool_exhausted": false
+        },
+        "neither": {
+          "manifest_candidates": 256,
+          "verified_candidates_checked": 20,
+          "over_budget_candidates": 0,
+          "duplicate_source_candidates": 18,
+          "duplicate_student_prompts": 0,
+          "selected": 20,
+          "pool_exhausted": false
+        }
+      },
+      "recipe_updates": [
+        2,
+        20
+      ]
+    },
+    "qwen": {
+      "rows": 80,
+      "distinct_source_uids": 80,
+      "source_categories": {
+        "control_and_thinking": 20,
+        "control_only": 20,
+        "thinking_only": 20,
+        "neither": 20
+      },
+      "prompt_token_range": [
+        11430,
+        67951
+      ],
+      "max_prompt_tokens": 126976,
+      "response_cap": 4096,
+      "context_length": 131072,
+      "qualification_rows": 8,
+      "qualification_prompt_tokens": [
+        48129,
+        33327,
+        38553,
+        11430,
+        47408,
+        40169,
+        45556,
+        19169
+      ],
+      "qualification_source_categories": {
+        "control_and_thinking": 2,
+        "control_only": 2,
+        "thinking_only": 2,
+        "neither": 2
+      },
+      "selection": {
+        "control_and_thinking": {
+          "manifest_candidates": 256,
+          "verified_candidates_checked": 20,
+          "over_budget_candidates": 0,
+          "duplicate_source_candidates": 12,
+          "duplicate_student_prompts": 0,
+          "selected": 20,
+          "pool_exhausted": false
+        },
+        "control_only": {
+          "manifest_candidates": 256,
+          "verified_candidates_checked": 20,
+          "over_budget_candidates": 0,
+          "duplicate_source_candidates": 13,
+          "duplicate_student_prompts": 0,
+          "selected": 20,
+          "pool_exhausted": false
+        },
+        "thinking_only": {
+          "manifest_candidates": 256,
+          "verified_candidates_checked": 20,
+          "over_budget_candidates": 0,
+          "duplicate_source_candidates": 17,
+          "duplicate_student_prompts": 0,
+          "selected": 20,
+          "pool_exhausted": false
+        },
+        "neither": {
+          "manifest_candidates": 256,
+          "verified_candidates_checked": 20,
+          "over_budget_candidates": 0,
+          "duplicate_source_candidates": 18,
+          "duplicate_student_prompts": 0,
+          "selected": 20,
+          "pool_exhausted": false
+        }
+      },
+      "recipe_updates": [
+        2,
+        20
+      ]
+    }
+  },
+  "prior_exact_local_audit": {
+    "source_uid_order_matches_original_miles_first_20_per_category": true,
+    "source_exclusion_and_isolation_match_original_manifest": true,
+    "original_glm_token_counts_and_hashes_match_source": true,
+    "actual_student_prompt_hashes_are_distinct": true,
+    "four_recipe_datasets_and_model_paths_match_registry": true,
+    "context_response_and_actor_prefill_budgets_match_pair_settings": true
+  },
+  "verification_scope": "Actual job-produced local reports and resolved recipes, plus the exact local source-manifest and selection audit; cloud parquet roundtrip is the producer validation, not a second independent byte read.",
+  "training_started": false,
+  "numerical_agreement_verified": false,
+  "qwen_long_prompt_limit": "The actual eight qualification prompts range from 11430 to 48129 tokens. Qualification cannot establish GPU behavior above 65536 tokens. The fresh twenty-update dataset includes the selected 67951-token prompt."
+}

@@ -1,0 +1,555 @@
+{
+  "status": "passed",
+  "model_pair": "qwen",
+  "student": "/mnt/codesign-exp/ycfeng/opd-assets/models/Qwen/Qwen3.5-4B/851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+  "prompt_format": "qwen_chat_template",
+  "source_preparer": "/data/ycfeng/sota-engine/miles/tests/manual/agent_opd/prepare_glm5_2.py",
+  "source_manifest_sha256": "4776f40e3567ed4a8047931cb56d567a87d648aa234bf52d519874ad78a47c34",
+  "rows": 80,
+  "distinct_source_uids": 80,
+  "categories": {
+    "control_and_thinking": 20,
+    "control_only": 20,
+    "thinking_only": 20,
+    "neither": 20
+  },
+  "prompt_token_range": [
+    11430,
+    67951
+  ],
+  "max_prompt_tokens": 126976,
+  "selection_order": "Miles prompt_token_count, source_item_index, assistant_turn_index within each category",
+  "selection_budget": "Actual student-rendered length; no source GLM-length cutoff or truncation",
+  "selection": {
+    "control_and_thinking": {
+      "manifest_candidates": 256,
+      "verified_candidates_checked": 20,
+      "over_budget_candidates": 0,
+      "duplicate_source_candidates": 12,
+      "duplicate_student_prompts": 0,
+      "selected": 20,
+      "pool_exhausted": false
+    },
+    "control_only": {
+      "manifest_candidates": 256,
+      "verified_candidates_checked": 20,
+      "over_budget_candidates": 0,
+      "duplicate_source_candidates": 13,
+      "duplicate_student_prompts": 0,
+      "selected": 20,
+      "pool_exhausted": false
+    },
+    "thinking_only": {
+      "manifest_candidates": 256,
+      "verified_candidates_checked": 20,
+      "over_budget_candidates": 0,
+      "duplicate_source_candidates": 17,
+      "duplicate_student_prompts": 0,
+      "selected": 20,
+      "pool_exhausted": false
+    },
+    "neither": {
+      "manifest_candidates": 256,
+      "verified_candidates_checked": 20,
+      "over_budget_candidates": 0,
+      "duplicate_source_candidates": 18,
+      "duplicate_student_prompts": 0,
+      "selected": 20,
+      "pool_exhausted": false
+    }
+  },
+  "turns": [
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:262:175",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 48129,
+      "student_prompt_sha256": "dcd14838405b966058e439db40c3b25e0ba7dd889c28eb6102f4f02ab3b500df"
+    },
+    {
+      "source_uid": "d52a450378d9fdf0cac3f0f3c281dad3b1437a444a7ff6fc746473e3252190d4:435:134",
+      "category": "control_only",
+      "student_prompt_tokens": 33327,
+      "student_prompt_sha256": "f55fe58cf822617083a41761d58efe100078bdb36bacca3edbf44a9ecceb6f4d"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:459:154",
+      "category": "thinking_only",
+      "student_prompt_tokens": 38553,
+      "student_prompt_sha256": "5f9f3a2d06188c6f986c1c59e04b3f1665b6c95d93e1505b2b38e8c0e058e31e"
+    },
+    {
+      "source_uid": "7b8a183eef2142de98554a8e275b1e07941ed070e39305bd551857e5a2f6846d:30:18",
+      "category": "neither",
+      "student_prompt_tokens": 11430,
+      "student_prompt_sha256": "d38ab85457ce8dac748b542a04410d3b3cde84dfae6089a767aabd3934feb08a"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:55:192",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 47408,
+      "student_prompt_sha256": "bd97bc8182ca087cc72e5377ffc59479e911f15b15db72098eeb68ac928ef7ed"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:459:160",
+      "category": "control_only",
+      "student_prompt_tokens": 40169,
+      "student_prompt_sha256": "f04268d8af837e9bbef51c7db792309580575712a0bf7f7172f970212f773563"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:423:144",
+      "category": "thinking_only",
+      "student_prompt_tokens": 45556,
+      "student_prompt_sha256": "603800a738d774bb187b130e0ab953c3084dc126187f7846b343dcb82017bccf"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:448:33",
+      "category": "neither",
+      "student_prompt_tokens": 19169,
+      "student_prompt_sha256": "40b9de003bc47af598740a487c10b0a46abba447ad10cabd7cc6492345897c9d"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:423:148",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 48529,
+      "student_prompt_sha256": "b45abafb77267a05083d631ee27c35ba11d5bef3a904741cd678392da63ef0c7"
+    },
+    {
+      "source_uid": "d52a450378d9fdf0cac3f0f3c281dad3b1437a444a7ff6fc746473e3252190d4:453:144",
+      "category": "control_only",
+      "student_prompt_tokens": 43439,
+      "student_prompt_sha256": "ba6fe0a2a15ecc2dc72a7a8ec54fe20a4e80768b0b2639124e4cd5bc7b097782"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:55:188",
+      "category": "thinking_only",
+      "student_prompt_tokens": 46279,
+      "student_prompt_sha256": "9bec5ad8f8409d41218a0ce1dddfa4d6dc8de41dc3fe8b6af51019453b00f8bf"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:99:66",
+      "category": "neither",
+      "student_prompt_tokens": 26202,
+      "student_prompt_sha256": "8347c729540b96181b12706c8684fa895ab938293dd28044a11a1092d76e209f"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:447:240",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 49219,
+      "student_prompt_sha256": "285f9e655b5b3d8aa7094670c53eab4b07d72f292c647e93e38c63a839a1b3d2"
+    },
+    {
+      "source_uid": "03a138d3272bec93831642dd6402b1718899d261812092c185ab0528ee68f662:320:168",
+      "category": "control_only",
+      "student_prompt_tokens": 50844,
+      "student_prompt_sha256": "9c36a4b8db220d3a17329416dd1f528679ba320862110a11884aab2eb9c5c053"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:447:236",
+      "category": "thinking_only",
+      "student_prompt_tokens": 48645,
+      "student_prompt_sha256": "109bf718ce3e4eccf4257d8a576d14f77d4a46279dd88b783c7556bfbcb94984"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:163:72",
+      "category": "neither",
+      "student_prompt_tokens": 27380,
+      "student_prompt_sha256": "a55e017a8ab24b92130e0b65d99e45b563a9be143d9e3ef3ede51c4092d4305f"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:320:137",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 50748,
+      "student_prompt_sha256": "69bfba0cc678414858d71b8caeb9c5ea2b0cd369bbf3cace55fb6c5e91b207d1"
+    },
+    {
+      "source_uid": "7b8a183eef2142de98554a8e275b1e07941ed070e39305bd551857e5a2f6846d:76:169",
+      "category": "control_only",
+      "student_prompt_tokens": 49320,
+      "student_prompt_sha256": "b83a6f1a492bce2671fb1c0438f1bca236f987ef4a9473fc3c77544d4fbfea08"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:70:156",
+      "category": "thinking_only",
+      "student_prompt_tokens": 53267,
+      "student_prompt_sha256": "71299242fe89870b662749c1162e70eb76f1d5b2614530e13533cd69f6f9a6c8"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:459:132",
+      "category": "neither",
+      "student_prompt_tokens": 33439,
+      "student_prompt_sha256": "cb65c2a00fa6b7423c57408d6d6da81d70e6f99de4bdc8f67360c1de98c51857"
+    },
+    {
+      "source_uid": "d5b933155df1f412f83734f53c420032c275c8fbe44b3f5c9fe6c6619fd3646c:212:170",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 50563,
+      "student_prompt_sha256": "075e041bb8d65fc9373b5594ac0e6f9ed567c136bbfa6fe134563afe5823814e"
+    },
+    {
+      "source_uid": "03a138d3272bec93831642dd6402b1718899d261812092c185ab0528ee68f662:135:168",
+      "category": "control_only",
+      "student_prompt_tokens": 53632,
+      "student_prompt_sha256": "46acf2cb91c92aa4c51115bb0f17a15502f5ef7f777bc29733bb8bac6e4878e2"
+    },
+    {
+      "source_uid": "7b8a183eef2142de98554a8e275b1e07941ed070e39305bd551857e5a2f6846d:35:182",
+      "category": "thinking_only",
+      "student_prompt_tokens": 54131,
+      "student_prompt_sha256": "d139a1e41004392c202e5b4fedb93a48a8947904e7c9a5599d1eacc1b3fdc909"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:423:116",
+      "category": "neither",
+      "student_prompt_tokens": 35864,
+      "student_prompt_sha256": "287f0df7138fe422c39a15d10ccfda2f35da7efaa417108d3352467f01e73729"
+    },
+    {
+      "source_uid": "d5b933155df1f412f83734f53c420032c275c8fbe44b3f5c9fe6c6619fd3646c:392:190",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 56876,
+      "student_prompt_sha256": "1a2013d13be4c76e74f2ab6529b605d233ed4abd7399c11c081092e57d95b4b2"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:70:160",
+      "category": "control_only",
+      "student_prompt_tokens": 53935,
+      "student_prompt_sha256": "5c6ec8350ec04e4bec8c4b82824d23aad03cf39d8d3655ae4394839dbaf17b3b"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:405:224",
+      "category": "thinking_only",
+      "student_prompt_tokens": 54412,
+      "student_prompt_sha256": "f6c34828cac629c28cc962e17693747038747c63870a859be95491656d78a638"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:394:88",
+      "category": "neither",
+      "student_prompt_tokens": 39772,
+      "student_prompt_sha256": "75353b059c7c81f4386d721ec25b2988d19edc6d33b7f3bb5d20d5565fcaf993"
+    },
+    {
+      "source_uid": "d5b933155df1f412f83734f53c420032c275c8fbe44b3f5c9fe6c6619fd3646c:138:164",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 58463,
+      "student_prompt_sha256": "ba4c11cfc3f5dae6a129f4a9612abfc1eba17942b0d77b7e4b6190d375b7ca18"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:255:178",
+      "category": "control_only",
+      "student_prompt_tokens": 54152,
+      "student_prompt_sha256": "15a1a7ff1b169e405ad3aae1f0970451fb2c18b0a2fa0b40e05cb5538566c266"
+    },
+    {
+      "source_uid": "7b8a183eef2142de98554a8e275b1e07941ed070e39305bd551857e5a2f6846d:45:168",
+      "category": "thinking_only",
+      "student_prompt_tokens": 55320,
+      "student_prompt_sha256": "1dc2bb788ac62191a48fe74acbd14677cf954aae20578dc3a73813529166cc99"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:55:174",
+      "category": "neither",
+      "student_prompt_tokens": 41509,
+      "student_prompt_sha256": "0a91db7467ce7e0bd4bda30e8b141076a7ac2071feb05ef80b043b0d5ff9d1c0"
+    },
+    {
+      "source_uid": "d5b933155df1f412f83734f53c420032c275c8fbe44b3f5c9fe6c6619fd3646c:188:194",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 57557,
+      "student_prompt_sha256": "b6470229acc939d2a309faccc6e528749354dcc4691e90d885976ece0f000b78"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:220:157",
+      "category": "control_only",
+      "student_prompt_tokens": 56721,
+      "student_prompt_sha256": "356ff70d14fbbb1226954521db261103b12d724a68e801d5b303c438d552f6f6"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:168:172",
+      "category": "thinking_only",
+      "student_prompt_tokens": 57272,
+      "student_prompt_sha256": "418bf1b1370eae8a0d4a5aa5ba68ce1e07cef00928573f47bdbb4da2b21ace7a"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:363:111",
+      "category": "neither",
+      "student_prompt_tokens": 41515,
+      "student_prompt_sha256": "63cc094281fb6377e27cea066d42be70d5078ed7e0d9afb50c7affe92dadd964"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:168:176",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 58105,
+      "student_prompt_sha256": "1c642001d662326a62b98e071256e0605e3a95f1e7bc28ec4dcf8ce9ac71ef91"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:306:158",
+      "category": "control_only",
+      "student_prompt_tokens": 56929,
+      "student_prompt_sha256": "cb80715920d8cfed50f5f8e2b47e0f257b108c35a5e4e3a58aae08926cea73c6"
+    },
+    {
+      "source_uid": "7b8a183eef2142de98554a8e275b1e07941ed070e39305bd551857e5a2f6846d:25:166",
+      "category": "thinking_only",
+      "student_prompt_tokens": 59010,
+      "student_prompt_sha256": "1063df6138c80e90b31a0beddc0315e18d636d9bd540e57b810672f673cdde01"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:168:134",
+      "category": "neither",
+      "student_prompt_tokens": 45156,
+      "student_prompt_sha256": "e2ee02b85805a4a0b8dcf7a6f651e40e4e19f7904b074e9f84e64bafa7a24992"
+    },
+    {
+      "source_uid": "d5b933155df1f412f83734f53c420032c275c8fbe44b3f5c9fe6c6619fd3646c:217:175",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 58099,
+      "student_prompt_sha256": "7bbdf4bac947a8736655f4731a10806a9427e0d61749015417d38e74bbc1e70b"
+    },
+    {
+      "source_uid": "d52a450378d9fdf0cac3f0f3c281dad3b1437a444a7ff6fc746473e3252190d4:373:162",
+      "category": "control_only",
+      "student_prompt_tokens": 56526,
+      "student_prompt_sha256": "a393cbd15ac249cfb1d3f96dcdea9cc0f993d013defc2a823c0182b15d28eed5"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:363:180",
+      "category": "thinking_only",
+      "student_prompt_tokens": 57093,
+      "student_prompt_sha256": "68bf87513370aef788b2c2915ba1c22165c222eecdc2b68dcbd99aa91f538bbb"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:70:128",
+      "category": "neither",
+      "student_prompt_tokens": 44797,
+      "student_prompt_sha256": "129f0d44e4ac09b51db7bec15a2d43d72112238b4b92aa8ee70583b2d13ce34d"
+    },
+    {
+      "source_uid": "f9be77c6019ac52038c47cc70f847e1666633f2fb4c1aaad3c2584e0f7e7f518:88:156",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 58363,
+      "student_prompt_sha256": "1a33dbefb9f4922251ce7b5ba597ebcb6992d33fdb3ac4349cc4e41dcd77c96b"
+    },
+    {
+      "source_uid": "7b8a183eef2142de98554a8e275b1e07941ed070e39305bd551857e5a2f6846d:45:172",
+      "category": "control_only",
+      "student_prompt_tokens": 56629,
+      "student_prompt_sha256": "c3c7c41ecac70e7bd6dd45d4e8c81c741fec8544b62bd57691d4efb0c952cb2e"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:119:163",
+      "category": "thinking_only",
+      "student_prompt_tokens": 58364,
+      "student_prompt_sha256": "220bb3f4358f25c98ebfbf27b819f6abbe1ec7b5c5179adffc147aad11a2766b"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:406:89",
+      "category": "neither",
+      "student_prompt_tokens": 46095,
+      "student_prompt_sha256": "ffeccd97d672d7933657de36d8667cbe1e4257db47824df58b75b9c74b67d762"
+    },
+    {
+      "source_uid": "7b8a183eef2142de98554a8e275b1e07941ed070e39305bd551857e5a2f6846d:332:150",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 59554,
+      "student_prompt_sha256": "8b332f3451d4c1a41caff5d5ec67b2d0b52a62b1fb6b54109b95cd4659f71cbc"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:363:184",
+      "category": "control_only",
+      "student_prompt_tokens": 57657,
+      "student_prompt_sha256": "6e58259264d4a3ac8dc07726631e8784eed398124356391622b7d72c88599373"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:27:150",
+      "category": "thinking_only",
+      "student_prompt_tokens": 59521,
+      "student_prompt_sha256": "ceec51a20c35eddac5911dc7317bd381789fd9c6d5aac0f0d355602de6ed6265"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:405:192",
+      "category": "neither",
+      "student_prompt_tokens": 45691,
+      "student_prompt_sha256": "2df90444c070cc1e2703a648a45d37f34e427b57a57febe7ab71d4ce4e53b681"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:228:150",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 60160,
+      "student_prompt_sha256": "6705763d4123f6f348e6076a4d5f6144b9f74209e52c0407d25a0b53b7584108"
+    },
+    {
+      "source_uid": "03a138d3272bec93831642dd6402b1718899d261812092c185ab0528ee68f662:317:184",
+      "category": "control_only",
+      "student_prompt_tokens": 59973,
+      "student_prompt_sha256": "1654cadd2a8c9acc1fce9ee380303b86867113cb2d24965a4bb12c57c50f55ec"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:406:158",
+      "category": "thinking_only",
+      "student_prompt_tokens": 59900,
+      "student_prompt_sha256": "9c7c37d9f49e1a81264c7491f529957322cdf106e2bddcb4423c60c77767b947"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:447:232",
+      "category": "neither",
+      "student_prompt_tokens": 48251,
+      "student_prompt_sha256": "d0d721e63b878ff784c0447f976349828659bbcde99b20bcf532ed9ff28db381"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:267:174",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 63213,
+      "student_prompt_sha256": "ad46f1b5ff93fba444a9a2f415ede37600b79eccc27bf856ca2410b2a9d85be2"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:119:167",
+      "category": "control_only",
+      "student_prompt_tokens": 60012,
+      "student_prompt_sha256": "2a4a3a75691a9ac7f731d68ac36efa5f8d3997bfac07856d232df9f24d7551d8"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:57:162",
+      "category": "thinking_only",
+      "student_prompt_tokens": 59588,
+      "student_prompt_sha256": "70f782a4bf309e073a897aa9f32dfb47bb9c15262d7b8c6df252436644637847"
+    },
+    {
+      "source_uid": "7b8a183eef2142de98554a8e275b1e07941ed070e39305bd551857e5a2f6846d:35:140",
+      "category": "neither",
+      "student_prompt_tokens": 47725,
+      "student_prompt_sha256": "8394601da6994c0142a2c3fed7d55cd82518e1ffed0b1d2d07971a54f9f77459"
+    },
+    {
+      "source_uid": "03a138d3272bec93831642dd6402b1718899d261812092c185ab0528ee68f662:461:169",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 62677,
+      "student_prompt_sha256": "cb7bdac62260247833b90fc25a66119fc393c6d722c0ee32cbd26296d5f9c39d"
+    },
+    {
+      "source_uid": "03a138d3272bec93831642dd6402b1718899d261812092c185ab0528ee68f662:118:156",
+      "category": "control_only",
+      "student_prompt_tokens": 61715,
+      "student_prompt_sha256": "73c847337e5b5390da510ec5c983a70393d784282201a9ec243b94c68c9d1152"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:424:168",
+      "category": "thinking_only",
+      "student_prompt_tokens": 61415,
+      "student_prompt_sha256": "c803b726428b5a8530e58f946a49f1edc2320a4ab4ca381fbda35c1bdf2ea302"
+    },
+    {
+      "source_uid": "7b8a183eef2142de98554a8e275b1e07941ed070e39305bd551857e5a2f6846d:45:140",
+      "category": "neither",
+      "student_prompt_tokens": 48224,
+      "student_prompt_sha256": "f0601198124818a75670b3d376c2a5af638868c79020d446943b921480a35518"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:353:174",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 66377,
+      "student_prompt_sha256": "7b82ca696c1fa68664689ddac821cf70533ffa6cbb64dbb2714e3dcdd41507f5"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:281:184",
+      "category": "control_only",
+      "student_prompt_tokens": 62033,
+      "student_prompt_sha256": "e7feb46a1cd0b6b13f4414fb252fd7c6aebc790b7b8da1f9f5ff9898643093f2"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:163:170",
+      "category": "thinking_only",
+      "student_prompt_tokens": 61787,
+      "student_prompt_sha256": "09de13eff828b8c6ed9e679bb6e1022fb8e4c03400d04923a410bad908e4843f"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:424:130",
+      "category": "neither",
+      "student_prompt_tokens": 48610,
+      "student_prompt_sha256": "184e9d011044fd734ccf3e773aaf98dec77bc8348abe43b6861df6268fda361d"
+    },
+    {
+      "source_uid": "d5b933155df1f412f83734f53c420032c275c8fbe44b3f5c9fe6c6619fd3646c:18:186",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 64176,
+      "student_prompt_sha256": "24d3aeecb0da058c05011552ed49166725513fb2046f0c1dfe0049892e31acf2"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:313:184",
+      "category": "control_only",
+      "student_prompt_tokens": 63370,
+      "student_prompt_sha256": "86a3b52c6657aebf4ba674d558401f34579288705d28d4adc99404b4bd25a620"
+    },
+    {
+      "source_uid": "7b8a183eef2142de98554a8e275b1e07941ed070e39305bd551857e5a2f6846d:27:152",
+      "category": "thinking_only",
+      "student_prompt_tokens": 62007,
+      "student_prompt_sha256": "7f4f6b10267495f8808cfd263cde622798065f0f4e368c852ef13c75a8510eb4"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:119:133",
+      "category": "neither",
+      "student_prompt_tokens": 51062,
+      "student_prompt_sha256": "a919588d05173c906bb0e8bfd298aabd0f98be4bbc4d6f007a6ef2644e7cd976"
+    },
+    {
+      "source_uid": "7b8a183eef2142de98554a8e275b1e07941ed070e39305bd551857e5a2f6846d:10:202",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 63065,
+      "student_prompt_sha256": "89c079059b0b3e7849dd0904c749e4efcf777c9e16b05598588ddaa4d8346aca"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:297:224",
+      "category": "control_only",
+      "student_prompt_tokens": 67951,
+      "student_prompt_sha256": "5aeb52e48e21f24c601ec5aab83e7f2135f52e1aed516d4b61f7bd975a84950b"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:99:148",
+      "category": "thinking_only",
+      "student_prompt_tokens": 62189,
+      "student_prompt_sha256": "d159b763b3101a8edda1610f242ce14c93aa22e638cbc8d330d2b0b4c82c4c91"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:57:124",
+      "category": "neither",
+      "student_prompt_tokens": 51156,
+      "student_prompt_sha256": "2aa4be3a788b3dfd60da5a7107a418616b045936fcb3954a01876c4a11cbd860"
+    },
+    {
+      "source_uid": "d5b933155df1f412f83734f53c420032c275c8fbe44b3f5c9fe6c6619fd3646c:407:217",
+      "category": "control_and_thinking",
+      "student_prompt_tokens": 64476,
+      "student_prompt_sha256": "d01f8c8e7395eb82bf93f1258036855177cb03ccac41ada9a03a747b34a9c307"
+    },
+    {
+      "source_uid": "03a138d3272bec93831642dd6402b1718899d261812092c185ab0528ee68f662:264:216",
+      "category": "control_only",
+      "student_prompt_tokens": 65557,
+      "student_prompt_sha256": "188e9f78254893f7ee4692bca60fbeff09432b7cd549afad4ec5cc7ce4ff1ac8"
+    },
+    {
+      "source_uid": "7b8a183eef2142de98554a8e275b1e07941ed070e39305bd551857e5a2f6846d:10:196",
+      "category": "thinking_only",
+      "student_prompt_tokens": 60871,
+      "student_prompt_sha256": "3566f34cf183ad177db892032bac1c8d49f7b5459bf42bc616928346583085c8"
+    },
+    {
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:129:119",
+      "category": "neither",
+      "student_prompt_tokens": 51845,
+      "student_prompt_sha256": "5ec64b20bd770443b52229f0270222faf4b1a5082b798dc000e0ed194b317717"
+    }
+  ],
+  "training_exclusion": {
+    "path": "/data/ycfeng/steptron/.worktrees/behavior-turn-replay-step3p6/task_memory/task_2026-10-23_swe_turn_replay/evidence/swe-common-175.json",
+    "sha256": "e0ff0b3f0618ee7b7cc7171cf35c16bb28e660dc7982a41c4fb198cfb7dfdaaa",
+    "bytes": 5889,
+    "task_count": 175
+  },
+  "isolation": "Inherited from unchanged full source bytes and pinned parent selection; all parent benchmark exclusions remain applicable",
+  "historical_completion_use": "Source classification and serialization evidence only; student generates OPD targets",
+  "history_representation": "Original unchanged messages in metadata_json",
+  "parquet_round_trip": "Exact rows, token IDs and source metadata match",
+  "temporary_source_files": "Removed after conversion",
+  "output": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-032827-028041/qwen-learning.parquet"
+}

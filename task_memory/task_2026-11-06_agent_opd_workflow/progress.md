@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Close Ticket01 using actual complete inputs and record both submitted qualifications. |
 | 2026-11-06 | Record actual Qwen candidate underfill, separate native context, and sandbox authentication failure. |
 | 2026-11-06 | Adopt the user-selected Steptron numerical standard; record cache repair and native launch adapters. |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
@@ -478,3 +479,63 @@ Per-model context implementation committed/pushed as728344f58cb52b19f353ed313c96
 
 
 Runtimeowner completed exact sandboxauth RCA and minimalrepair: benchmark.py canonicalizes already available SR_USER_TOKEN only when native SESSION_ROUTER_USER_TOKEN is absent/empty, preservingcanonicalpriority. Source binding: native sweagents_configs.py130 placeholder, ConfigManager substitution91–113 preserves missingvars, env.py294 forwards that literal toSessionRouterClient. Three syntheticenv cases×4realchildinvocations through nativePython3.10 parserPASS, missingtokenreadyFalse and no tokenvalue leakage; no credentials/install/backend/identity changes. benchmark.sh now retains actualnvidia-smiCSV through existing archive; archivefixture/shell/AST/diffPASS, temporaryfixtureconsumed. Selected actualRCA evidence/runtime-qwen-original-auth-failure.json. Existing same-root identity allows freshUUID missing-onlyrerun; fouroldinfra attempts remaininvalid and preserved. Re-submit only after commit/push+exactterminal/quotaquery.
+
+
+## Ticket01 completed; both qualifications submitted
+
+Ninthinputjob exp-1106-032827-028041 actuallyPASS: both80distinct sourceUID/order match originalMiles, fourcategories20each, targetprompt hashesdistinct, inheritedexclusion/isolation unchanged, first8fourcategories2each, actual2/20recipes correct. Qwen80prompt11430–67951; first8max48129, so above64k GPUbehavior remains forfresh20. Fullactualinput/config andplatformexit0/Succeeded evidence archived separately. See executionpreflight report and evidence/qwen-input-preflight.json, inputs-complete-preflight.json, input-complete-terminal.json. Ticket01done covers runtime/input/config only.
+
+Qwenqualification exp-1106-033627-955641 created03:36:28HKT, UID9ad17773-2d4e-4b21-8dc2-2150ab8a6f85,1×8H80032CPU300GB; launcher13885alive. Qwenoriginalauthretry exp-1106-033246-436787 created03:32:46, UIDf5c97c61-7868-44f6-8a74-34ab529bd6b2,1×2H80012CPU150GB; launcher30922alive. Bothsource3c7541c1/personalcreator/currentNFS/pinnedimage/nonpreemptible were verified. At03:37:58 all4GPUjobs(alsoGLMqualification16GPU,GLMoriginal4GPU) Pending/queuing/noreplicas:30requested,0allocated. No numericalPASS, actualoptimizerupdate orvalidgrader result yet.
+
+Dataowner now observes only actualQwenqualification business outputs; alignmentowner retainsGLMqualification; runtimeowner owns originalbenchmarks; platformowner status-only exact4jobs. No additionalCPU review/harness. Quota03:32 selectedresponse fieldsemantics remaininconsistent/freeH800UNKNOWN, andobserver's repeatedGET-for-parser-error was stopped; futurequery must retainrawresponsebeforelocalparsing.
+
+## 1. 规划完成情况
+
+**汇总：** PASS1｜BLOCKED/FAILED/SKIPPED0｜TODO9
+
+| 子任务 | 状态 | 简要依据 |
+| --- | --- | --- |
+| 01 | PASS | nativeCPU runtime、两组80/8和2/20配置、固定题单实际通过 |
+| 02 | TODO | GLM资格16GPU已提交，Pending |
+| 03 | TODO | Qwen资格8GPU已提交，Pending |
+| 04 | TODO | 等02实际资格 |
+| 05 | TODO | 等03实际资格 |
+| 06 | TODO | GLM原始4GPU已提交，Pending |
+| 07 | TODO | 旧attempt4infra；鉴权修复后2GPU新作业Pending，0有效评分 |
+| 08 | TODO | 等04/06 |
+| 09 | TODO | 等05/07 |
+| 10 | TODO | cache已及时消费，最终业务清理待后续 |
+
+## 2. 偏离检测
+
+**结论：** 已偏离：命中D2，已停止并纠正。
+**检测窗口：** 实际128k准备至Ticket01完成/四GPU路线已提交｜**当前前沿：** 02/03/06/07真实GPU结果
+
+| 模式 | 判定 | 依据 |
+| --- | --- | --- |
+| D1 工具打磨 | CLEAR | 输入与鉴权阻碍解决后停止改代码，无新CPU探针 |
+| D2 细节反复重试 | HIT | 平台observer为同一quota JSON shape解析错误重复GET；应在首次保存后本地解析 |
+| D3 支线问题修补 | CLEAR | 输入/鉴权均属01/07实际前提 |
+| D4 可并行任务停滞 | CLEAR | 02/03/06/07全已独立提交，当前都在平台队列 |
+| D5 超范围镀金 | CLEAR | 未改20更新/80评分/类别/0.03标准 |
+| D6 分析空转 | CLEAR | 两个实测错误最小修复，01已完成 |
+| D7 路线违背 | CLEAR | Qwen独立技术预算事前记录，其他源合同保持 |
+
+**文档检查：** S1–S6未发现新缺陷；已将01实际完成、03与07新作业身份更新到tickets和plan。
+**归因：** D2执行偏离（observer读取脚本），非spec缺陷。
+
+## 3. 纠正建议
+
+**分支：** A：spec/tickets合理，无需改动。
+**需停止的偏离行为：** D2：停止因本地解析错误重复平台请求；先保留响应，只从同份JSON解析。该行为已停止，当前quota不再读取。
+
+**接下去的路线：**
+1. 并行02/03：观察各自native模型/teacher/optimizer/refit与三路数值；两步实际成功、MAE合同及HF2真实权重变化齐全后才PASS。
+2. 并行06/07：观察真实server/sandbox/grader；固定题单每版本80有效结果，infra仍missing。
+3. 每模型资格PASS后独立fresh20；任何其他模型排队不成为其阻碍。
+
+## 4. 最值得关注的 3 点
+
+1. 01实际完成仅证明前提，不代表训练或训推数值PASS。
+2. 全4GPU作业已排队，30requested/0allocated；不重复提交、不动其他作业。
+3. Qwen首8最长48129，完整80最长67951；>64k GPU与数值覆盖在fresh20据实验证。

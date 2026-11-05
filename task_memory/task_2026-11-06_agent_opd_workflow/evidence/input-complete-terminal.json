@@ -1,0 +1,106 @@
+{
+  "collected_at": "2026-11-05T19:35:36.828809+00:00",
+  "job": {
+    "name": "exp-1106-032827-028041",
+    "uid": "44674359-0cfb-46e0-9419-24c0d78ec5b4",
+    "creator": "i-fengyicheng",
+    "status": {
+      "phase": "Succeeded",
+      "reason": "RJobSucceeded",
+      "message": "RJob succeeded",
+      "taskStatuses": {
+        "default": {
+          "succeeded": 1,
+          "taskStage": "stepmind-task-stage-1"
+        }
+      },
+      "finishTime": "2026-11-05T19:34:59Z",
+      "taskStage": "stepmind-task-stage-1"
+    },
+    "stop_annotations": {}
+  },
+  "replicas": [
+    {
+      "name": "exp-1106-032827-028041-cfcd2084",
+      "uid": "627cfcfb-2b6b-400a-aaee-bf3d3ee9d919",
+      "creator": "i-fengyicheng",
+      "owners": [
+        {
+          "apiVersion": "rjob.brainpp.cn/v1alpha1",
+          "kind": "RJob",
+          "name": "exp-1106-032827-028041",
+          "uid": "44674359-0cfb-46e0-9419-24c0d78ec5b4",
+          "controller": true,
+          "blockOwnerDeletion": true
+        }
+      ],
+      "status": {
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-05T19:28:36Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-05T19:34:55Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-05T19:34:55Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-05T19:28:36Z"
+          }
+        ],
+        "hostIP": "10.191.0.34",
+        "podIP": "10.191.0.34",
+        "podIPs": [
+          {
+            "ip": "10.191.0.34"
+          }
+        ],
+        "startTime": "2026-11-05T19:28:36Z",
+        "containerStatuses": [
+          {
+            "name": "default",
+            "state": {
+              "terminated": {
+                "exitCode": 0,
+                "reason": "Completed",
+                "startedAt": "2026-11-05T19:32:42Z",
+                "finishedAt": "2026-11-05T19:34:54Z",
+                "containerID": "containerd://303f852f9580154354407480e9816d12119a02d8d8619dac2362d9e3c00fe99a"
+              }
+            },
+            "lastState": {},
+            "ready": false,
+            "restartCount": 0,
+            "image": "sha256:3eae996c8f0d4383bda9cc9448dd445eb960f253ac7d3e4cb4f0c6465cb706ae",
+            "imageID": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+            "containerID": "containerd://303f852f9580154354407480e9816d12119a02d8d8619dac2362d9e3c00fe99a",
+            "started": false
+          }
+        ],
+        "qosClass": "Guaranteed",
+        "phase": "Succeeded",
+        "nodeName": "gpu-h800-0329.host.platform.shaipower.com",
+        "finishTimestamp": "2026-11-05T19:34:56Z"
+      }
+    }
+  ],
+  "source": "Filtered exact-job metadata/status observation; no business-log reads.",
+  "business_acceptance": "Delegated to data_benchmark owner; Succeeded/exit0 alone is not 80/8/config acceptance.",
+  "source_snapshot_path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/platform-four-status-20261106-0334.jsonl"
+}
