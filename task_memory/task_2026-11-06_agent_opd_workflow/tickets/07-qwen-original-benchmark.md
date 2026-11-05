@@ -11,7 +11,7 @@
 
 **Blocked by:** 01 runtime and verified fixed benchmark inputs; independent of either training dataset. Existing native benchmark preparation must pass before server/scoring starts.
 
-**Status:** pending — predecessor acceptance required.
+**Status:** in-progress — submitted exp-1106-030308-817360; platform Pending/queuing at03:04:17HKT, no serving or score yet. Existing benchmark preparation must validate the frozen membership before server/scoring.
 
 - [ ] 验证 Qwen 原生工具和 reasoning 解析能完成真实 episode 与 grader。
 - [ ] 同一固定 20 题、四 seeds 得到 80 个有效结果；使用该模型适用且前后保持一致的 template 和采样合同。

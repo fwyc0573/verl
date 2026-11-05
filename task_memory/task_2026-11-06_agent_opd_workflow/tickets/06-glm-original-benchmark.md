@@ -11,7 +11,7 @@
 
 **Blocked by:** 01 runtime and verified fixed benchmark inputs; independent of either training dataset. Existing native benchmark preparation must pass before server/scoring starts.
 
-**Status:** pending — predecessor acceptance required.
+**Status:** in-progress — submitted exp-1106-030308-839669; platform Pending/queuing at03:04:17HKT, no serving or score yet. Existing benchmark preparation must validate the frozen membership before server/scoring.
 
 - [ ] 确认 benchmark 范围后，对冻结的 20 题和四 seeds 获取 80 个有效原生评分，模型权重/环境/采样/超时身份完整。
 - [ ] 基础设施错误保留为 missing，合法 unresolved 作为模型失败；先取得可用的原生结果再扩大提交。

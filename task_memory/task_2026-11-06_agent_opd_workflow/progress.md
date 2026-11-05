@@ -393,3 +393,20 @@ Consumed prefetchcache cleanup after actual frozen installation/nativeimportsPAS
 1. GLM已具备独立资格输入；整体01未关闭不代表GLM仍需等Qwen。
 2. 原始benchmark题单准备不依赖任何训练parquet，不伪造整体inputPASS。
 3. 当前数值PASS和有效SWE分数仍为零，后续均据真实GPU输出判定。
+
+## Independent native jobs submitted
+
+Source1f5942c4c8df7acddaeed94992dd503913b8146f was committed/pushed and independently matched on origin. At03:04:17HKT platform verified all four personal identities, currentNFS, immutableimage, resources and non-preemptiblecodesign queue:
+
+| Slice | RJob / UID | Local launcher | Observed phase |
+| --- | --- | --- | --- |
+| 02 GLM qualification,2×8GPU | exp-1106-030133-940211 / b6976435-4e8a-4099-8777-800a18db25a1 | 86165 | Pending/queuing, no replicas |
+| 06 GLM original,4GPU | exp-1106-030308-839669 / f74fa974-ea86-4149-a823-3276ce493f8b | 41495 | Pending/queuing, no replicas |
+| 07 Qwen original,2GPU | exp-1106-030308-817360 / b20e47ee-bc8e-4486-84fb-829209bd915b | 34265 | Pending/queuing, no replicas |
+| 01 independent inputs,0GPU | exp-1106-030308-851863 / 008947c3-7bc4-4fb9-9571-73b8608acb31 | 49616 | Starting/ContainerCreating onH8000344 |
+
+The jobs requested22GPUs and had0 allocated at that snapshot. Before submission, the quota read at02:57:53–54HKT returned total128/used128, nonpreemptible127+preemptible1, and an enabled best-util queue; immediately schedulable capacity remained UNKNOWN. No unrelated job was controlled.
+
+The actual GLM80 source preflight is reused. The temporary rank0 startup prefix checks/publishes the existing first8 before entering ordinaryworker, preserving exact category and parquet checks. Bothoriginalbenchmarks use the existing benchmark.py prepare under fcntl locking to create/validate one canonical fixed membership at cloudroot/inputs/fixed-benchmark/benchmark/membership.json before SG starts. Both consume its actual digest; no overall inputPASS is fabricated. The newzeroGPUprepare publishes independent receipts and cannot hold readyGPU phases behind Qwen.
+
+Business observers have separate ownership: GLM actualR3/version/numerics; originalSG/SWE outputs; actualQweninput eligibility; platformstatus/identity. No newsourcecode or harness is being added while these runs wait. Detailed exact commands/resources/gates: test_report_2026-11-06_native_workflow.md. No native updates, numericalPASS or validgrader results yet.
