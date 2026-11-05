@@ -54,7 +54,10 @@
       "chat_template_kwargs": {
         "enable_thinking": true
       },
-      "server_args": []
+      "server_args": [
+        "--linear-attn-prefill-backend",
+        "triton"
+      ]
     }
   }
 }

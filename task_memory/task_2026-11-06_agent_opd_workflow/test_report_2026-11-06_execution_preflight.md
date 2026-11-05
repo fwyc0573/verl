@@ -9,6 +9,19 @@
 
 Scope: native workflow adapters and environment preparation. No GPU training, numerical qualification, export/reload or benchmark acceptance is claimed.
 
+## Completed export adapter checks
+
+Exact root checks:
+
+```sh
+/data/ycfeng/envs/miles-agent-opd-cpu/bin/python -B -m tests.manual.agent_opd.export --help
+git diff --check
+```
+
+Both PASS; Python3.10 AST parsing of export.py and exact Qwen benchmark registry assertions also PASS. The owning agent executed fifteen small synthetic acceptance/fault cases using the inline entrypoint `PYTHONPATH=/data/ycfeng/sota-engine/verl /data/ycfeng/envs/miles-agent-opd-cpu/bin/python -B -` with an inline fixture (no retained standalone script), Python3.12.13/torch2.11.0+cu130. Expected: complete strict Qwen and explicitly decoder-only GLM exports can publish a receipt; missing or corrupted GLM aliases, wrong step/duplicate update sequence, wrong role, dtype/inventory/index/shard defects, unchanged weights and unfinished native fit cannot. Actual:15PASS. The fake cloud-path mapping was limited to the CPU fixture; these checks are not actual model export/reload verification. Fixture /data/ycfeng/tmp/opd-export-fixtures-8rbte95d,154files/100611bytes, was consumed and removed.
+
+SGLang0.5.20 installed source was inspected without native imports: ExecMamba.linear_attn_prefill_backend in arg_groups/fields/exec_.py:411, allowed triton in choices.py:194–195, constructor assembly in server_args.py:527–551 and underscore-to-hyphen CLI rule in arg_utils.py:353. Qwen benchmark args now use the supported triton backend, matching training. Actual kernel execution remains NOT RUN.
+
 ## Exact CPU checks
 
 Working directory: /data/ycfeng/sota-engine/verl. Branch: agent-opd.
