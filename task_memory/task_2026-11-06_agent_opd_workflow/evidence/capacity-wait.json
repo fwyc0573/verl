@@ -1,0 +1,47 @@
+{
+  "collected_utc": {
+    "quota": "2026-11-05T20:32:25Z/2026-11-05T20:32:26Z",
+    "personal_H200_usage": "2026-11-05T20:33:39Z/2026-11-05T20:33:40Z"
+  },
+  "scope": "Read-only capacity alternatives for the four queued task jobs; no controls or hardware change",
+  "codesign": {
+    "quota_total_gpu": 128,
+    "quota_used_gpu": 124,
+    "charged_gpu": 123,
+    "nonpreemptible_used_gpu": 127,
+    "preemptible_used_gpu": 1,
+    "queue_enabled": true,
+    "immediately_schedulable_free_H800": "UNKNOWN"
+  },
+  "step_main": {
+    "quota_total_H200": 512,
+    "quota_used_gpu": 488,
+    "ledger_difference": 24,
+    "immediately_schedulable_free_H200": "UNKNOWN",
+    "personal_active_jobs": 9,
+    "personal_running_replicas": 9,
+    "personal_running_H200_gpu": 72,
+    "personal_nonpreemptible_gpu": 56,
+    "personal_preemptible_gpu": 16,
+    "configured_nonpreemptible_limit": 32,
+    "additional_nonpreemptible_headroom": 0,
+    "active_job_pagination_complete": true,
+    "replica_pagination_complete": true
+  },
+  "decision": "No available authorized nonpreemptible H200 alternative. Keep all four existing H800/codesign jobs queued. Existing unrelated jobs remain outside this task control.",
+  "selected_sources": [
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/capacity-choice-personal-step-main-20261106-0433.json",
+      "sha256": "078c127e7f6b0de3dc46dffee838df8639f9b1b9ea4528d27eb319cb4dd0381f"
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/capacity-choice-quotas-20261105T203225Z.json",
+      "sha256": "8d5750e9203e019e47fbf30a2ddcdf6fc0d29d68b0b424862b06d04781acce41"
+    }
+  ],
+  "limits": [
+    "Ledger differences and differing quota field meanings are not physical placement guarantees.",
+    "Only aggregate personal capacity is archived here; unrelated job identities and quota raw responses stay in permission-restricted local temporary storage.",
+    "No inference about why other tasks use their current resources."
+  ]
+}

@@ -503,6 +503,8 @@ Long-waitcheck-progress found futureS1: old08/09edges requiredall04/05reload and
 
 Runtimeowner independently checked onlyplan/04/05/08/09diff plus existingexport/benchmarkentries: correctedcomponentsmatchactualimplementation. Verifiedexportstillrequiresall20nativeupdates/step20manifest/fullinventory/realchangedvalue. UpdatedbenchmarkbindstheverifiedreceiptbytesSHA/modelpath, checksnewservermodel_info path+version, then actualgeneration; firstrealgeneration/seed_verified/engine requestscanprovide04/05reload evidence while80scoringcontinues. exportnew_process_reload_verified=falseisnotrelabeledPASS. Baselinereportisnotreadbyrun, onlyfinalsummarize. No code/tests/SSH/platformreadsorstandardrelaxationwereintroducedbythisreview.
 
+At04:32:25–26HKT onequota readeach codesign/step_main, rawresponses saved0600beforeparsing with no retries. codesigntotal128/used124/charged123/nonpreemptibleused127/preemptibleused1, physicalfreeUNKNOWN. step_maintotal512/used488 givesledger24, notplacementavailability. Conditionalpersonalstep_mainactive/ownerboundreplica query04:33:39–40found9Runningjobs/replicas,72H200=56nonpreemptible+16preemptible; paginationcomplete. Under current32nonpreemptiblelimit there is0additionalheadroom for this task, so no validH200alternative and nohardware/submission/control change. Otherjobsremainoutsideourtaskcontrol; no assumptionabouttheirpriorauthorization. Archiveonlyaggregate evidence/capacity-wait.json, keepunrelatedidentities/rawresponses0600local. Stopadditionalcapacityqueries; existing4H800queue remains the route.
+
 ## 1. 规划完成情况
 
 **汇总：** PASS1｜BLOCKED/FAILED/SKIPPED4｜TODO5
@@ -523,7 +525,7 @@ Runtimeowner independently checked onlyplan/04/05/08/09diff plus existingexport/
 ## 2. 偏离检测
 
 **结论：** 未偏移，正常推进。
-**检测窗口：** Ticket01完成至长期GPU排队及消费uvproof｜**当前前沿：** 02/03/06/07等待实际worker
+**检测窗口：** Ticket01完成至长期GPU排队、消费uvproof及一次容量备选核对｜**当前前沿：** 02/03/06/07等待实际worker
 
 | 模式 | 判定 | 依据 |
 | --- | --- | --- |
@@ -532,7 +534,7 @@ Runtimeowner independently checked onlyplan/04/05/08/09diff plus existingexport/
 | D3 支线问题修补 | CLEAR | 无不相关代码修复 |
 | D4 可并行任务停滞 | CLEAR | 四个独立前沿全已提交，缺GPUworker；后续尚无满足资格前提的run |
 | D5 超范围镀金 | CLEAR | 未改模型/数据类别/20更新/320分母/0.03标准 |
-| D6 分析空转 | CLEAR | 主线外部等待；完成一次必要依赖纠正后停止设计工作 |
+| D6 分析空转 | CLEAR | 主线外部等待；一次容量核对确认H200无新增余量后停止，依赖纠正完成后停止设计 |
 | D7 路线违背 | CLEAR | 实际run合同保持，未把CPU/排队标为数值PASS |
 
 **文档检查：** S1：plan旧{04,06}->08/{05,07}->09过度串行，04/05reload由既有benchmarkserver提供时还造成组件环；已明确export/start/reload/scoring/comparison边界。S2–S6无新缺陷。

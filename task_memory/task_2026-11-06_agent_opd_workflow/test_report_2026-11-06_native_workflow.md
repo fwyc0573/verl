@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Record one bounded capacity-alternative check and preserve the existing H800 queue. |
 | 2026-11-06 | Record current four GPU job identities, resources and queued state. |
 | 2026-11-06 | Distinguish actual Qwen serving from four infrastructure failures and still-queued GLM runs. |
 | 2026-11-06 | Record independent GPU submissions, exact prerequisites, and initial platform state. |
@@ -120,3 +121,8 @@ bash /data/ycfeng/sota-engine/verl/tests/manual/agent_opd/worker.sh \
 ```
 
 Quota-only03:32:37–38HKT HTTP200 selectedfields: totalgpu/H800128, chargedgpu127, usedgpu120, nonpreemptiblequota/usedgpu127, preemptiblequota/usedgpu1; enabled best-utilqueue. Inconsistent field meanings do not prove immediatelyschedulablefreeH800; that value remainsUNKNOWN. Two localparser-shape failures caused repeatedreads before fields were selected; this observer defect was corrected by stoppingrequests and requiring raw-response preservation for futureparsing. It did not change quota or jobs. Existing launcher processes remain alive; inputlauncher92790 returned succeeded03:35:02 after nativecompletion and its cleanupstop was subsequent.
+
+
+## Capacity alternatives during the external queue wait
+
+At04:32–04:33HKT a single current quota request percodesign/step_main followed by the conditionally authorized personal H200 activejob/owner-replica read was completed. Rawquota JSON was retained0600before localparsing; no retry. Aggregate selected evidence/capacity-wait.json records exact selected source paths andSHA. codesigntotal128,used124,charged123,nonpreemptibleused127/preemptibleused1 still does not identify immediatefreeH800. step_maintotal512/used488 gives onlyledger24; personal H200 currently has56nonpreemptible and16preemptibleGPU across9Runningreplicas, completepagination. Under the configured32nonpreemptible cap, addedheadroom for this task is0. No H200 submission or otherjobcontrol was performed; existing4H800jobs remainqueued. Other tasks' historical authorizations are outside this record. This is externalcapacity evidence, not model/workflow failure or scientificacceptance.
