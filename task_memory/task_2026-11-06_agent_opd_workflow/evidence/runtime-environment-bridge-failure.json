@@ -1,0 +1,674 @@
+{
+  "job": {
+    "kind": "RJob",
+    "apiVersion": "rjob.brainpp.cn/v1alpha1",
+    "metadata": {
+      "name": "exp-1106-020650-487444",
+      "uid": "afb81efe-0f75-4614-8d57-58e865f069fe",
+      "creationTimestamp": "2026-11-05T18:06:50Z",
+      "deletionTimestamp": null,
+      "ownerReferences": null
+    },
+    "creator": "i-fengyicheng",
+    "preemptible": "no",
+    "quota_group": "codesign",
+    "stop_annotations": {
+      "rjob.brainpp.cn/system-stop-reason": "Some critical tasks failed."
+    },
+    "stop_spec": {
+      "stopTimestamp": "2026-11-05T18:21:49Z"
+    },
+    "status": {
+      "phase": "Failed",
+      "reason": "RJobFailed",
+      "message": "Tasks with failed status: [default]",
+      "taskStatuses": {
+        "default": {
+          "failed": 1,
+          "taskStage": "stepmind-task-stage-1"
+        }
+      },
+      "finishTime": "2026-11-05T18:21:49Z",
+      "taskStage": "stepmind-task-stage-1"
+    }
+  },
+  "replica": {
+    "kind": "Replica",
+    "apiVersion": "rjob.brainpp.cn/v1alpha1",
+    "metadata": {
+      "name": "exp-1106-020650-487444-cfcd2084",
+      "uid": "8db3e1f1-fac9-4891-b499-69a14daabd31",
+      "creationTimestamp": "2026-11-05T18:06:55Z",
+      "deletionTimestamp": null,
+      "ownerReferences": [
+        {
+          "apiVersion": "rjob.brainpp.cn/v1alpha1",
+          "kind": "RJob",
+          "name": "exp-1106-020650-487444",
+          "uid": "afb81efe-0f75-4614-8d57-58e865f069fe",
+          "controller": true,
+          "blockOwnerDeletion": true
+        }
+      ]
+    },
+    "creator": "i-fengyicheng",
+    "preemptible": "no",
+    "quota_group": "codesign",
+    "stop_annotations": {},
+    "stop_spec": {},
+    "status": {
+      "conditions": [
+        {
+          "type": "Initialized",
+          "status": "True",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T18:06:55Z"
+        },
+        {
+          "type": "Ready",
+          "status": "False",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T18:21:48Z",
+          "reason": "PodFailed"
+        },
+        {
+          "type": "ContainersReady",
+          "status": "False",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T18:21:48Z",
+          "reason": "PodFailed"
+        },
+        {
+          "type": "PodScheduled",
+          "status": "True",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T18:06:55Z"
+        }
+      ],
+      "hostIP": "10.191.5.15",
+      "podIP": "10.191.5.15",
+      "podIPs": [
+        {
+          "ip": "10.191.5.15"
+        }
+      ],
+      "startTime": "2026-11-05T18:06:55Z",
+      "containerStatuses": [
+        {
+          "name": "default",
+          "state": {
+            "terminated": {
+              "exitCode": 1,
+              "reason": "Error",
+              "message": "user command: exit status 1",
+              "startedAt": "2026-11-05T18:10:41Z",
+              "finishedAt": "2026-11-05T18:21:47Z",
+              "containerID": "containerd://f8db9ed3d0e3766babaadaa415e97196b0bba6a64b6d4e93298a101622d89e2b"
+            }
+          },
+          "lastState": {},
+          "ready": false,
+          "restartCount": 0,
+          "image": "sha256:3eae996c8f0d4383bda9cc9448dd445eb960f253ac7d3e4cb4f0c6465cb706ae",
+          "imageID": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+          "containerID": "containerd://f8db9ed3d0e3766babaadaa415e97196b0bba6a64b6d4e93298a101622d89e2b",
+          "started": false
+        }
+      ],
+      "qosClass": "Guaranteed",
+      "phase": "Failed",
+      "nodeName": "gpu-h800-0064.host.platform.shaipower.com",
+      "finishTimestamp": "2026-11-05T18:21:49Z"
+    }
+  },
+  "source_mount": {
+    "server": "100.96.128.195",
+    "path": "/data/ycfeng",
+    "mount_path": "/data/ycfeng",
+    "provenance": "Exact job source mount verified during starting/running inspection; collector does not include full spec."
+  },
+  "root_cause": {
+    "observed_failure": "Native runtime preflight import megatron.bridge raised AttributeError: module cutlass.cute.core has no attribute ThrMma.",
+    "evidence": {
+      "status": "IMPORT_FAILED",
+      "type": "AttributeError",
+      "message": "module 'cutlass.cute.core' has no attribute 'ThrMma'"
+    },
+    "worker_complete_traceback_available": false,
+    "source_compatibility_diagnosis_owner": "/root/runtime_compat",
+    "classification": "Runtime dependency import failure after successful native installation."
+  },
+  "successful_environment_steps": {
+    "cache_merge_command": "cp -R -n --no-preserve=all supplemental-cache/. /root/.cache/uv/",
+    "cache_target_filesystem": "overlayfs",
+    "installation_marker": "Installed 300 packages in 1m 14s",
+    "installation_marker_present": true,
+    "other_imports": {
+      "verl": {
+        "status": "PASS",
+        "file": "/data/ycfeng/sota-engine/verl/verl/__init__.py",
+        "source_matches_repository": true
+      },
+      "torch": {
+        "status": "PASS",
+        "file": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/torch/__init__.py"
+      },
+      "transformers": {
+        "status": "PASS",
+        "file": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/transformers/__init__.py"
+      },
+      "ray": {
+        "status": "PASS",
+        "file": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/ray/__init__.py"
+      },
+      "sglang": {
+        "status": "PASS",
+        "file": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/sglang/__init__.py"
+      }
+    },
+    "workflow_accepted": false
+  },
+  "preflight_source": {
+    "repository": "/data/ycfeng/sota-engine/verl",
+    "revision": "0f83981b18c85b52a460883cb3b0eb176f3dcc08",
+    "status": "M task_memory/task_2026-11-06_agent_opd_workflow/progress.md\n?? .serena/\n?? tests/manual/agent_opd/export.py",
+    "uv_lock_sha256": "df508db0b957fa181c229fb75885cd3863cb651fd5233d0fa5af95e990bda0be"
+  },
+  "preflight_created_at": "2026-11-05T18:20:20.996027+00:00",
+  "preflight_result": {
+    "status": "FAIL_RUNTIME_PREFLIGHT",
+    "failures": [
+      "import megatron.bridge: IMPORT_FAILED"
+    ],
+    "incomplete": [
+      "glm/student/bridge: UNVERIFIED",
+      "qwen/student/bridge: UNVERIFIED"
+    ],
+    "workflow_accepted": false
+  },
+  "native_interpreter": {
+    "executable": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/bin/python",
+    "python": "3.12.13"
+  },
+  "packages": {
+    "TransferQueue": {
+      "required": true,
+      "locked_versions": [
+        "0.1.11"
+      ],
+      "version": "0.1.11",
+      "location": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages",
+      "status": "PASS"
+    },
+    "flash-attn": {
+      "required": true,
+      "locked_versions": [
+        "2.8.3"
+      ],
+      "version": "2.8.3",
+      "location": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages",
+      "status": "PASS"
+    },
+    "flash-linear-attention": {
+      "required": true,
+      "locked_versions": [
+        "0.5.2"
+      ],
+      "version": "0.5.2",
+      "location": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages",
+      "status": "PASS"
+    },
+    "liger-kernel": {
+      "required": false,
+      "locked_versions": [
+        "0.8.4"
+      ],
+      "version": "0.8.4",
+      "location": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages",
+      "status": "PASS"
+    },
+    "megatron-bridge": {
+      "required": true,
+      "locked_versions": [
+        "0.6.2"
+      ],
+      "version": "0.6.2",
+      "location": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages",
+      "status": "PASS"
+    },
+    "megatron-core": {
+      "required": true,
+      "locked_versions": [
+        "0.19.2"
+      ],
+      "version": "0.19.2",
+      "location": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages",
+      "status": "PASS"
+    },
+    "ray": {
+      "required": true,
+      "locked_versions": [
+        "2.55.1"
+      ],
+      "version": "2.55.1",
+      "location": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages",
+      "status": "PASS"
+    },
+    "sglang": {
+      "required": true,
+      "locked_versions": [
+        "0.5.20"
+      ],
+      "version": "0.5.20",
+      "location": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages",
+      "status": "PASS"
+    },
+    "sglang-kernel": {
+      "required": true,
+      "locked_versions": [
+        "0.4.7"
+      ],
+      "version": "0.4.7",
+      "location": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages",
+      "status": "PASS"
+    },
+    "tensordict": {
+      "required": true,
+      "locked_versions": [
+        "0.10.0"
+      ],
+      "version": "0.10.0",
+      "location": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages",
+      "status": "PASS"
+    },
+    "torch": {
+      "required": true,
+      "locked_versions": [
+        "2.13.0+cu130"
+      ],
+      "version": "2.13.0+cu130",
+      "location": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages",
+      "status": "PASS"
+    },
+    "transformer-engine": {
+      "required": true,
+      "locked_versions": [
+        "2.20.2"
+      ],
+      "version": "2.20.2",
+      "location": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages",
+      "status": "PASS"
+    },
+    "transformers": {
+      "required": true,
+      "locked_versions": [
+        "5.16.1"
+      ],
+      "version": "5.16.1",
+      "location": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages",
+      "status": "PASS"
+    },
+    "vllm": {
+      "required": false,
+      "locked_versions": [
+        "0.32.0"
+      ],
+      "status": "NOT_INSTALLED"
+    }
+  },
+  "incident_logs": {
+    "query": "incident-logs",
+    "job": "exp-1106-020650-487444",
+    "replica": "exp-1106-020650-487444-cfcd2084",
+    "rjob_uid": "afb81efe-0f75-4614-8d57-58e865f069fe",
+    "replica_uid": "8db3e1f1-fac9-4891-b499-69a14daabd31",
+    "started_at": "2026-11-05T18:25:54.667293+00:00",
+    "ok": true,
+    "response": {
+      "method": "GET",
+      "path": "/kapis/rjob.brainpp.cn/v1alpha1/tenants/shai/projects/shai-core/rjobs/exp-1106-020650-487444/logs/query_range",
+      "parameters": {
+        "replicas": "exp-1106-020650-487444-cfcd2084",
+        "start": "1793902890000000000",
+        "end": "1793902925000000000",
+        "direction": "forward",
+        "limit": 3000
+      },
+      "timeout_seconds": 15.0,
+      "scope": "/shai/shai-core",
+      "http_status": 200,
+      "body": {
+        "status": "Success",
+        "code": 200,
+        "data": [
+          {
+            "timestamp": "1793902906569414000",
+            "line": "[2026-11-06T02:21:46+08:00] exp-1106-020650-487444-cfcd2084 >> {\"output\": \"/data/ycfeng/tmp/verl-agent-opd-20261106/runtime-preflight.json\", \"status\": \"FAIL_RUNTIME_PREFLIGHT\", \"failures\": [\"import megatron.bridge: IMPORT_FAILED\"], \"incomplete\": [\"glm/student/bridge: UNVERIFIED\", \"qwen/student/bridge: UNVERIFIED\"], \"workflow_accepted\": false}",
+            "pod": "exp-1106-020650-487444-cfcd2084",
+            "node": "gpu-h800-0064.host.platform.shaipower.com",
+            "message": "{\"output\": \"/data/ycfeng/tmp/verl-agent-opd-20261106/runtime-preflight.json\", \"status\": \"FAIL_RUNTIME_PREFLIGHT\", \"failures\": [\"import megatron.bridge: IMPORT_FAILED\"], \"incomplete\": [\"glm/student/bridge: UNVERIFIED\", \"qwen/student/bridge: UNVERIFIED\"], \"workflow_accepted\": false}"
+          },
+          {
+            "timestamp": "1793902907357231000",
+            "line": "[2026-11-06T02:21:47+08:00] exp-1106-020650-487444-cfcd2084 >> ExitCode= 1",
+            "pod": "exp-1106-020650-487444-cfcd2084",
+            "node": "gpu-h800-0064.host.platform.shaipower.com",
+            "message": "ExitCode= 1"
+          }
+        ]
+      }
+    },
+    "finished_at": "2026-11-05T18:25:55.837202+00:00"
+  },
+  "events": {
+    "rjob-historical-events": {
+      "query": "rjob-historical-events",
+      "job": "exp-1106-020650-487444",
+      "replica": "exp-1106-020650-487444-cfcd2084",
+      "rjob_uid": "afb81efe-0f75-4614-8d57-58e865f069fe",
+      "replica_uid": "8db3e1f1-fac9-4891-b499-69a14daabd31",
+      "started_at": "2026-11-05T18:25:54.662678+00:00",
+      "ok": true,
+      "response": {
+        "pages": [
+          {
+            "parameters": {
+              "name": "exp-1106-020650-487444",
+              "kind": "RJob",
+              "uid": "afb81efe-0f75-4614-8d57-58e865f069fe",
+              "sortBy": "lastTimestamp:desc",
+              "page": 1,
+              "pageSize": 100
+            },
+            "response": {
+              "method": "GET",
+              "path": "/kapis/v1/tenants/shai/projects/shai-core/events",
+              "parameters": {
+                "name": "exp-1106-020650-487444",
+                "kind": "RJob",
+                "uid": "afb81efe-0f75-4614-8d57-58e865f069fe",
+                "sortBy": "lastTimestamp:desc",
+                "page": 1,
+                "pageSize": 100
+              },
+              "timeout_seconds": 15.0,
+              "scope": "/shai/shai-core",
+              "http_status": 200,
+              "body": {
+                "status": "Success",
+                "code": 200,
+                "data": {
+                  "total": 2,
+                  "data": [
+                    {
+                      "metadata": {
+                        "creationTimestamp": null
+                      },
+                      "involvedObject": {},
+                      "reason": "Pulling",
+                      "message": "Pulling image \"artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504\"",
+                      "source": {
+                        "host": "gpu-h800-0064.host.platform.shaipower.com"
+                      },
+                      "firstTimestamp": null,
+                      "lastTimestamp": "2026-11-05T18:06:59Z",
+                      "eventTime": null,
+                      "reportingComponent": "",
+                      "reportingInstance": ""
+                    },
+                    {
+                      "metadata": {
+                        "creationTimestamp": null
+                      },
+                      "involvedObject": {},
+                      "reason": "Start replica",
+                      "message": "Start replica/exp-1106-020650-487444-cfcd2084",
+                      "source": {},
+                      "firstTimestamp": null,
+                      "lastTimestamp": "2026-11-05T18:06:55Z",
+                      "eventTime": null,
+                      "reportingComponent": "",
+                      "reportingInstance": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "count": 2,
+        "pagination_complete": true
+      },
+      "finished_at": "2026-11-05T18:25:55.872125+00:00"
+    },
+    "replica-historical-events": {
+      "query": "replica-historical-events",
+      "job": "exp-1106-020650-487444",
+      "replica": "exp-1106-020650-487444-cfcd2084",
+      "rjob_uid": "afb81efe-0f75-4614-8d57-58e865f069fe",
+      "replica_uid": "8db3e1f1-fac9-4891-b499-69a14daabd31",
+      "started_at": "2026-11-05T18:25:54.664417+00:00",
+      "ok": true,
+      "response": {
+        "pages": [
+          {
+            "parameters": {
+              "name": "exp-1106-020650-487444-cfcd2084",
+              "kind": "Replica",
+              "uid": "8db3e1f1-fac9-4891-b499-69a14daabd31",
+              "sortBy": "lastTimestamp:desc",
+              "page": 1,
+              "pageSize": 100
+            },
+            "response": {
+              "method": "GET",
+              "path": "/kapis/v1/tenants/shai/projects/shai-core/events",
+              "parameters": {
+                "name": "exp-1106-020650-487444-cfcd2084",
+                "kind": "Replica",
+                "uid": "8db3e1f1-fac9-4891-b499-69a14daabd31",
+                "sortBy": "lastTimestamp:desc",
+                "page": 1,
+                "pageSize": 100
+              },
+              "timeout_seconds": 15.0,
+              "scope": "/shai/shai-core",
+              "http_status": 200,
+              "body": {
+                "status": "Success",
+                "code": 200,
+                "data": {
+                  "total": 1,
+                  "data": [
+                    {
+                      "metadata": {
+                        "creationTimestamp": null
+                      },
+                      "involvedObject": {},
+                      "reason": "Pulling",
+                      "message": "Pulling image \"artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504\"",
+                      "source": {
+                        "host": "gpu-h800-0064.host.platform.shaipower.com"
+                      },
+                      "firstTimestamp": null,
+                      "lastTimestamp": "2026-11-05T18:06:59Z",
+                      "eventTime": null,
+                      "reportingComponent": "",
+                      "reportingInstance": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "count": 1,
+        "pagination_complete": true
+      },
+      "finished_at": "2026-11-05T18:25:55.879200+00:00"
+    },
+    "rjob-live-events": {
+      "query": "rjob-live-events",
+      "job": "exp-1106-020650-487444",
+      "replica": "exp-1106-020650-487444-cfcd2084",
+      "rjob_uid": "afb81efe-0f75-4614-8d57-58e865f069fe",
+      "replica_uid": "8db3e1f1-fac9-4891-b499-69a14daabd31",
+      "started_at": "2026-11-05T18:25:54.665480+00:00",
+      "ok": true,
+      "response": {
+        "request": {
+          "method": "GET",
+          "path": "/api/v1/namespaces/shai-core/events",
+          "field_selector": "involvedObject.name=exp-1106-020650-487444"
+        },
+        "pages": [
+          {
+            "api_version": "v1",
+            "items": [],
+            "kind": "EventList",
+            "metadata": {
+              "_continue": null,
+              "remaining_item_count": null,
+              "resource_version": "45372081597",
+              "self_link": null,
+              "shard_info": null
+            }
+          }
+        ],
+        "count": 0,
+        "pagination_complete": true
+      },
+      "finished_at": "2026-11-05T18:25:54.927888+00:00"
+    },
+    "replica-live-events": {
+      "query": "replica-live-events",
+      "job": "exp-1106-020650-487444",
+      "replica": "exp-1106-020650-487444-cfcd2084",
+      "rjob_uid": "afb81efe-0f75-4614-8d57-58e865f069fe",
+      "replica_uid": "8db3e1f1-fac9-4891-b499-69a14daabd31",
+      "started_at": "2026-11-05T18:25:54.666728+00:00",
+      "ok": true,
+      "response": {
+        "request": {
+          "method": "GET",
+          "path": "/api/v1/namespaces/shai-core/events",
+          "field_selector": "involvedObject.name=exp-1106-020650-487444-cfcd2084"
+        },
+        "pages": [
+          {
+            "api_version": "v1",
+            "items": [],
+            "kind": "EventList",
+            "metadata": {
+              "_continue": null,
+              "remaining_item_count": null,
+              "resource_version": "45372081632",
+              "self_link": null,
+              "shard_info": null
+            }
+          }
+        ],
+        "count": 0,
+        "pagination_complete": true
+      },
+      "finished_at": "2026-11-05T18:25:55.037521+00:00"
+    }
+  },
+  "query_coverage": [
+    {
+      "query": "rjob-historical-events",
+      "ok": true,
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/rca-fifth-20261106/rjob-historical-events.json",
+      "count": 2,
+      "pagination_complete": true
+    },
+    {
+      "query": "replica-historical-events",
+      "ok": true,
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/rca-fifth-20261106/replica-historical-events.json",
+      "count": 1,
+      "pagination_complete": true
+    },
+    {
+      "query": "rjob-live-events",
+      "ok": true,
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/rca-fifth-20261106/rjob-live-events.json",
+      "count": 0,
+      "pagination_complete": true
+    },
+    {
+      "query": "replica-live-events",
+      "ok": true,
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/rca-fifth-20261106/replica-live-events.json",
+      "count": 0,
+      "pagination_complete": true
+    },
+    {
+      "query": "incident-logs",
+      "ok": true,
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/rca-fifth-20261106/incident-logs.json",
+      "count": null,
+      "pagination_complete": null
+    },
+    {
+      "query": "rjob-audit",
+      "ok": false,
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/rca-fifth-20261106/rjob-audit.json",
+      "error": {
+        "type": "ReadTimeout",
+        "message": "HTTPSConnectionPool(host='platform.shaipower.com', port=443): Read timed out. (read timeout=15.0)"
+      }
+    },
+    {
+      "query": "replica-audit",
+      "ok": false,
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/rca-fifth-20261106/replica-audit.json",
+      "error": {
+        "type": "ReadTimeout",
+        "message": "HTTPSConnectionPool(host='platform.shaipower.com', port=443): Read timed out. (read timeout=15.0)"
+      }
+    },
+    {
+      "query": "existing-deepscan",
+      "ok": true,
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/rca-fifth-20261106/existing-deepscan.json",
+      "count": 0,
+      "pagination_complete": true
+    }
+  ],
+  "stop": {
+    "system_stop_annotation": {
+      "rjob.brainpp.cn/system-stop-reason": "Some critical tasks failed."
+    },
+    "stop_timestamp": {
+      "stopTimestamp": "2026-11-05T18:21:49Z"
+    },
+    "initiating_manual_stop_actor": "UNKNOWN",
+    "initiating_manual_stop_reason": "UNKNOWN",
+    "initiating_manual_stop_request_time": "UNKNOWN",
+    "interpretation": "Worker reported preflight failure before exit 1; finish-time system stop follows the failed critical task. Audit queries timed out and do not identify an initiating manual stop."
+  },
+  "artifacts": [
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/fifth-runtime-preflight.json",
+      "bytes": 13012,
+      "sha256": "cc5713995ce3911f34aa8f02221c0c7ae2c64b0b7e78c32cb80391645224cf23"
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/fifth-environment-sync.log",
+      "bytes": 8350,
+      "sha256": "bc4d16793bc1abd6e3429b14f4dcaac1dd3071bd494bde895c893a68c8074e57"
+    }
+  ],
+  "collector_directory": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/rca-fifth-20261106",
+  "limits": [
+    "Worker probe retained exception type/message only, not a full traceback.",
+    "CPUhost Bridge import encounters an earlier GLIBCXX_3.4.32 missing boundary and is not a reproduction of this worker AttributeError.",
+    "RJob and replica all-operation audit queries each reached 15-second ReadTimeout; neither was retried.",
+    "Existing DeepScan read succeeded with zero flows.",
+    "Live Event reads succeeded with zero events; historical Events show startup image pull only.",
+    "No positive OOM or preemption evidence occurs in these returned sources; empty coverage cannot exclude all platform events.",
+    "This was a zero-GPU environment job; no training, numerical consistency, export, or benchmark acceptance is established."
+  ],
+  "created_at": "2026-11-05T18:26:51.023554+00:00"
+}

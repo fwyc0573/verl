@@ -35,6 +35,7 @@ curl --noproxy '*' --head --fail --silent --show-error --max-time 30 --output /d
     https://files.pythonhosted.org/packages/1c/79/ffd666bee268dc27ee34ed471e43f0357f9154c93d5180381861f8673c21/tokenspeed_triton-3.9.10.post20261008-cp312-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
 uv sync --frozen --extra sglang --extra megatron \
     --python /data/ycfeng/envs/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12
+"$UV_PROJECT_ENVIRONMENT/bin/python" -B tests/manual/agent_opd/fa4_detection.py
 "$UV_PROJECT_ENVIRONMENT/bin/python" -B tests/manual/agent_opd/runtime_probe.py \
     --pairs tests/manual/agent_opd/pairs.json --output "$stage/runtime-preflight.json"
 bash tests/manual/agent_opd/prepare.sh

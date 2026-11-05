@@ -259,3 +259,63 @@ Fifth zero-GPU job completed the frozen installation of300packages (native Pytho
 The export.py adapter is complete: it requires actual native successful update steps1..20, final native manifest step20/HF-only actor/Bridge identity, complete tensor names/shapes/dtypes/shards, full equality of required GLM shared MTP aliases, and an observed changed decoder weight slice. It publishes a consumable receipt only after those checks; new-process reload and numerical agreement remain independent and false in this receipt. The owning agent's fifteen synthetic CPU cases passed, including absent/corrupted aliases, wrong steps/role, incomplete or altered inventory and unchanged weights. Exact inline entrypoint and limits are in the test report; the consumed154-file/100611-byte fixture was removed. Root independently checked the actual CLI help, AST and registry, then stopped extending this adapter.
 
 Pinned SGLang0.5.20 source confirms `--linear-attn-prefill-backend triton`; only Qwen's benchmark.server_args now includes it, matching its existing training inference kwargs. This is source/CLI verification, not an executed Qwen kernel result. Actual original-benchmark command files are being prepared independently of the Bridge diagnosis.
+
+## 1. 规划完成情况
+
+**汇总：** PASS0｜BLOCKED/FAILED/SKIPPED1｜TODO9
+
+| 子任务 | 状态 | 简要依据 |
+| --- | --- | --- |
+| 01 | FAILED | frozen安装已完成；实际Bridge import失败，正在修复 |
+| 02 | TODO | 等待实际环境/输入 |
+| 03 | TODO | 等待实际环境/输入 |
+| 04 | TODO | 导出检查已交付；实际20步依赖02 |
+| 05 | TODO | 导出检查已交付；实际20步依赖03 |
+| 06 | TODO | 固定四seed执行入口完成，等待输入/原生server |
+| 07 | TODO | Qwen CLI参数已核验，等待输入/原生server |
+| 08 | TODO | 依赖04/06 |
+| 09 | TODO | 依赖05/07 |
+| 10 | TODO | 已完成局部清理；最终交付待实测 |
+
+## 2. 偏离检测
+
+**结论：** 未偏移，正常推进。
+**检测窗口：** 上次MAE交付checkpoint至第五次环境终态｜**当前前沿：** 01真实环境和输入
+
+| 模式 | 判定 | 依据 |
+| --- | --- | --- |
+| D1 工具打磨 | CLEAR | export.py覆盖明确导出验收后停止扩展；其余支持脚本稳定 |
+| D2 细节反复重试 | CLEAR | copy修复具有事前假设且已通过；新失败为实际首次native API错误，先定位再修改 |
+| D3 支线问题修补 | CLEAR | API兼容直接阻塞01原生训练入口 |
+| D4 可并行任务停滞 | CLEAR | 导出、原始benchmark命令和API定位并行推进；真实GPU共享未完成输入 |
+| D5 超范围镀金 | CLEAR | 未增加尾差门槛、FP32校准或新目标能力 |
+| D6 分析空转 | CLEAR | frozen实际安装完成，错误定位到具体eager import顺序 |
+| D7 路线违背 | CLEAR | 模型/backend/lock/矩阵未变；数值合同按最新用户指定docs执行 |
+
+**文档检查：** S1–S6未发现新缺陷；01的FAILED是当前检查结果，ticket保持in-progress以继续修复。
+**归因：** 无。
+
+## 3. 纠正建议
+
+**分支：** A：spec/tickets合理，无需改动。
+
+**需停止的偏离行为：** 无。
+
+**接下去的路线：**
+1. 01：修复已确认的FA4检测顺序，复核真实Bridge/config/tokenizer和80/8turn输入，成功后才关闭01。
+2. 并行准备02/03及06/07精确命令；输入和环境就绪即提交独立GPU RJobs。
+3. 资格通过的组独立从初始权重继续20步、HF导出检查及更新后评测。
+
+## 4. 最值得关注的 3 点
+
+1. 实际nativeimport失败已经保留；安装成功不等于运行资格通过。
+2. 原始benchmark仍无有效分数；不将命令准备或mock结果记为GPU成果。
+3. 下一次环境验证应直接使用已安装环境，不在训练GPU中安装依赖或重复下载。
+
+## Fifth native import RCA and repair hypothesis
+
+Fifth exact job exp-1106-020650-487444, UIDafb81efe-0f75-4614-8d57-58e865f069fe, replicaUID8db3e1f1-fac9-4891-b499-69a14daabd31, nodeH8000064: creator/local NFS match; containerError/exit1 at18:21:47Z and platformFailed18:21:49Z. Selected evidence/runtime-environment-bridge-failure.json retains the actual package/import/model results and query limits. Collector6/8PASS; two audit queries timed out, so no inferred initiator or OOM cause. Worker probe did not retain a full traceback; the CPU host's earlier GLIBCXX error is a distinct boundary, not a replay of the worker error.
+
+Before the next validation, the source-backed hypothesis is that pinned MCore0.19.2 attention.py imports flash_attn.cute before checking the flash-attn-4 distribution metadata. FA4 is explicitly excluded by this repository, while FA2.8.3 contains an older cute path incompatible with CUTLASS DSL4.6.2 (ThrMma location). TE already checks package metadata first. NVIDIA's current attention.py uses metadata before conditional import, and downstream MCore calls FA4 only under HAVE_FA4. Apply that same detection-order repair to the exact known0.19.2 file; preserve FA2/FA3 and every dependency version, expose real unexpected import errors, and reject unknown source. Falsifier: Bridge still fails after this exact guard repair; record the newly exposed exception before any further change.
+
+The next zero-GPU command is /data/ycfeng/tmp/verl-agent-opd-commands-20261106/environment-repair.sh (bash-nPASS). It uses the installed interpreter without reinstalling/cache copying, preserves individual repair/probe statuses, and independently executes prepare.sh even if the runtime check remains unsuccessful. Thus real input checks no longer wait unnecessarily for the optional-import diagnosis. The command exits nonzero if repair/probe fails; independent preparation cannot relabel environment acceptance. Actual input paths will use the new preparation job identity, not the fifth job that never reached preparation.

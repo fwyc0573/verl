@@ -9,6 +9,14 @@
 
 Scope: native workflow adapters and environment preparation. No GPU training, numerical qualification, export/reload or benchmark acceptance is claimed.
 
+## Native optional-FA4 import repair
+
+Fifth job installed300packages, then failed Bridge import with `cutlass.cute.core.ThrMma` AttributeError. Actual package/import/model results, terminal identity and query limits are retained in evidence/runtime-environment-bridge-failure.json. The installed MCore0.19.2 attention.py imported flash_attn.cute before checking flash-attn-4 metadata, despite this repository explicitly excluding FA4. Its FA2 package's old cute API conflicts with installed CUTLASS DSL4.6.2. TE's metadata-first detection did not require a change. CPUhost GLIBCXX failure is a separate boundary, not the worker traceback.
+
+fa4_detection.py backports the exact metadata-first guard from [NVIDIA upstream commit90f4d5279b951a408d7bf605a24776c248357c03](https://github.com/NVIDIA/Megatron-LM/blob/90f4d5279b951a408d7bf605a24776c248357c03/megatron/core/transformer/attention.py). It accepts only active-environment Core0.19.2 and the exact original/patched file; an unknown source is refused. No package version, FA2/FA3 execution path or actual installed-FA4 unexpected exception is changed. Original whole-file SHA a019cd00a708a22237383456a7ba85bf522201c14a5b7cb0c1e4f0f12eac9837; expected patched SHA a733e2a6b5eb24e99fe4ca55a68f88bddf56ab0e5fd7ffd56a4b231c7262f5c8.
+
+CPU13checks PASS under Python3.12.13 using inline `PYTHONPATH=/data/ycfeng/sota-engine/verl /data/ycfeng/envs/miles-agent-opd-cpu/bin/python -B -`: exact original and patched hashes, single block change, idempotence, unknown-source refusal, original missing-metadata ThrMma reproduction, repaired missing/b19/b20 import behavior, existing optional ImportError behavior and propagation of real AttributeError when FA4 is present. AST and120-column checks PASS. No persistent fixture and no host native-environment mutation occurred. Actual worker import is the next check; CPU mocks are not native qualification.
+
 ## Completed export adapter checks
 
 Exact root checks:
