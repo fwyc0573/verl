@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Adopt the user-selected Steptron numerical standard; record cache repair and native launch adapters. |
 | 2026-11-06 | Record execution steering and carry the recommended symmetric test matrix into execution. |
 | 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
 
@@ -21,7 +22,7 @@
   - GLM-4.7-Flash-Coder → GLM-4.7-Flash。
   - FrogNano-4B-2609 → Qwen3.5-4B。
 - 两组均须取得真实 workflow 和训推一致性验收结果。准备完成、训练进程退出成功、参数已启用、teacher/student 分布不同，均不能替代同一 student 的训推数值验证。
-- 创建 task 和逐项 tickets，按 grill-with-docs 逐题确定关键设计选择。当前文件是可审阅草案；尚未确认的方案不得作为执行决定。
+- 创建 task 和逐项 tickets，保留 grill-with-docs 调查及决策；“开始执行”后的执行决定见下文，未有依据的验收结论不得声明通过。
 - 在新 branch 工作，及时将已验证的阶段成果推送到个人 repo。已核对 origin 为 https://github.com/fwyc0573/verl.git；本次新建 branch 为 agent-opd，起点为 e41dd697abd7d5a583c0b46b1cedb821ba402db3。
 - 及时清理本任务不再被依赖的临时数据、原始日志、编译缓存、测试权重和 benchmark 产物；保留可复用代码及精简 Markdown 验证结论。保护共享模型、原始数据、miles 的工作和其他任务。
 - 当前仓库原有未跟踪的 .serena/ 与本任务无关，保持原状，不暂存。
@@ -50,9 +51,17 @@
 
 - 将该指令作为从已推送草案进入实施的明确要求，按上一轮推荐 A 执行：两组各 20 次成功更新，原始和更新后各 20 题 × 4 seeds，总计 320 个有效评分。用户未逐项重述矩阵，此处记录执行解释；如有后续纠正，以新指令为准。
 - 复刻来源的固定历史前缀 + 当前 student 新单 turn；完整 SWE 工具交互与 grader 在 benchmark 执行。若需要训练中多轮工具交互，属于另一个明确能力，不混淆两者证据。
-- 不继续等待逐题访谈。后端、配置、数值校准和资源布局按源代码、锁定环境和真实检查自主确定并记录；未有依据的数值 PASS 不得宣称。
+- 不继续等待逐题访谈。后端、配置、数值合同和资源布局按源代码、锁定环境和真实检查自主确定并记录；未有依据的数值 PASS 不得宣称。
 - 使用当前 verl 的 uv.lock 及原生 megatron+sglang 作为首选；已从公司镜像代理解析 uv.cu130.dev5 的 amd64 manifest digest 466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504。该解析只证明镜像身份，实际环境尚待验证。
 - 20 步学习测试在各组两步资格完成后独立从原始权重启动；资格两步不混入 20 步计数。
+
+## Numerical acceptance steering
+
+[Original Request] 参考steptron的训推一致要求的相关docs的标准
+
+Adopt the engineering standard explicitly accepted under Q59 in `/data/ycfeng/steptron/.worktrees/behavior-turn-replay-step3p6/task_memory/task_2026-10-25_swe_behavior_turn_replay/requirements.md` and `glm-numerical-acceptance-proposal.md`: require both native pack MAE and global token MAE ≤0.03, separately for each input/completion population, on every loss-eligible token before TIS. Compare the same actual student weight version, token IDs, positions, masks and probability definition. p95/p99/max, signed error, importance-ratio outliers and K3 are diagnostics without additional invented thresholds. Known structural mismatches block qualification even when a mean passes.
+
+Apply that common numerical contract to both pairs. Keep this task's model-specific Megatron/SGLang topology and generated-current-student population. The source task's fixed rule2 historical-completion population and TP4/PP2 implementation are not part of this replication's training objective. A native pack mean must use the actual aggregation and denominators; a mean over arbitrary turns must not be relabelled as a native pack observation. Cross-engine and same-engine decode/prefill results remain separately reported. The prior missing-budget question is resolved; an independent FP32/calibration expansion is not required to select a tolerance.
 
 ## Acceptance common to both pairs
 

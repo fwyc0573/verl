@@ -1,0 +1,109 @@
+{
+  "job": {
+    "name": "exp-1106-014156-052221",
+    "uid": "401da978-7273-421c-b232-f510b22cd367",
+    "creator": "i-fengyicheng",
+    "status": {
+      "phase": "Failed",
+      "reason": "RJobFailed",
+      "message": "Tasks with failed status: [default]",
+      "taskStatuses": {
+        "default": {
+          "failed": 1,
+          "taskStage": "stepmind-task-stage-1"
+        }
+      },
+      "finishTime": "2026-11-05T17:45:37Z",
+      "taskStage": "stepmind-task-stage-1"
+    }
+  },
+  "replica": {
+    "name": "exp-1106-014156-052221-cfcd2084",
+    "uid": "1407f5f4-ab53-4761-b018-b491f8baaaa8",
+    "owners": [
+      {
+        "apiVersion": "rjob.brainpp.cn/v1alpha1",
+        "kind": "RJob",
+        "name": "exp-1106-014156-052221",
+        "uid": "401da978-7273-421c-b232-f510b22cd367",
+        "controller": true,
+        "blockOwnerDeletion": true
+      }
+    ],
+    "status": {
+      "conditions": [
+        {
+          "type": "Initialized",
+          "status": "True",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T17:42:01Z"
+        },
+        {
+          "type": "Ready",
+          "status": "False",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T17:45:35Z",
+          "reason": "PodFailed"
+        },
+        {
+          "type": "ContainersReady",
+          "status": "False",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T17:45:35Z",
+          "reason": "PodFailed"
+        },
+        {
+          "type": "PodScheduled",
+          "status": "True",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T17:42:01Z"
+        }
+      ],
+      "hostIP": "10.191.6.43",
+      "podIP": "10.191.6.43",
+      "podIPs": [
+        {
+          "ip": "10.191.6.43"
+        }
+      ],
+      "startTime": "2026-11-05T17:42:01Z",
+      "containerStatuses": [
+        {
+          "name": "default",
+          "state": {
+            "terminated": {
+              "exitCode": 22,
+              "reason": "Error",
+              "message": "user command: exit status 22",
+              "startedAt": "2026-11-05T17:45:32Z",
+              "finishedAt": "2026-11-05T17:45:32Z",
+              "containerID": "containerd://a430ed4a11b47bac23966f750358c283b212d040598bed1c98b291e9e1b44811"
+            }
+          },
+          "lastState": {},
+          "ready": false,
+          "restartCount": 0,
+          "image": "sha256:3eae996c8f0d4383bda9cc9448dd445eb960f253ac7d3e4cb4f0c6465cb706ae",
+          "imageID": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+          "containerID": "containerd://a430ed4a11b47bac23966f750358c283b212d040598bed1c98b291e9e1b44811",
+          "started": false
+        }
+      ],
+      "qosClass": "Guaranteed",
+      "phase": "Failed",
+      "nodeName": "gpu-h800-0039.host.platform.shaipower.com",
+      "finishTimestamp": "2026-11-05T17:45:37Z"
+    }
+  },
+  "worker_sync_log_tail": [
+    "  \u251c\u2500\u25b6 client error (Connect)",
+    "  \u2570\u2500\u25b6 tunnel error: proxy authorization required",
+    "",
+    "hint: `tokenspeed-triton` (v3.9.10.post20261008) was included because `verl[sglang]` depends on `sglang` (v0.5.20) which depends on `tokenspeed-mla` (v0.1.8) which depends on `tokenspeed-triton`PYPI_PINNED_WHEEL_HTTP=200",
+    "curl: (22) The requested URL returned error: 407",
+    "GITHUB_PINNED_WHEEL_HTTP=000"
+  ],
+  "limits": [
+    "Selected exact objects and persistent user-command log only; full audits and DeepScan not queried in this minimal follow-up."
+  ]
+}

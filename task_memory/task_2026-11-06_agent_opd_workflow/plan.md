@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Adopt the user-selected Steptron numerical standard; record cache repair and native launch adapters. |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
 | 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
 
@@ -11,7 +12,7 @@
 
 用户已指示“开始执行”。按上一轮推荐的两组对称 20 步及前后评测推进，使用已创建的 agent-opd 分支。01 正在落实真实数据、原生锁定环境与技术验收；其余 tickets 依赖不变。代码、配置和每阶段结论及时提交/push，临时产物随消费随清理。
 
-首选 native megatron+sglang，固定 company image amd64 digest，创建挂载本地目录中的持久环境。先用零 GPU CPU worker 从原镜像的离线 uv cache materialize 环境并执行真实 imports/config/tokenizer/index preflight；该环境此后由训练直接使用，正常训练不安装依赖。该阶段不读大 tensor，不把配置检查当作模型加载或数值通过。
+首选 native megatron+sglang，固定 company image amd64 digest，创建挂载本地目录中的持久环境。先在 CPU host 补齐原锁定 GitHub wheels 并验证完整 cache 合并后的 frozen/offline 安装，再用零 GPU CPU worker 从镜像及补充 cache materialize 环境并执行真实 imports/config/tokenizer/index preflight；该环境此后由训练直接使用，正常训练不安装依赖。该阶段不读大 tensor，不把配置检查当作模型加载或数值通过。
 
 ## Tickets
 
@@ -45,7 +46,7 @@
 ## Verification and operational boundaries
 
 1. 规划阶段已完成并推送。当前执行阶段依次验证持久环境、真实输入、两组 GPU 资格及后续 20 步/评测。
-2. ticket01 冻结实际命令、uv 管理的 Python 环境、镜像、模型 revision、精度、后端、batch/length/loss/sampling、数值阈值及固定题目。不得从示例默认参数推断已经批准的实验参数。
+2. ticket01 冻结实际命令、uv 管理的 Python 环境、镜像、模型 revision、精度、后端、batch/length/loss/sampling、采用 Steptron Q59 的双 MAE≤0.03 合同及固定题目。不得从示例默认参数推断已经批准的实验参数。
 3. 每个执行 ticket 以真实输入和运行证据判定，记录预期、实测值和 PASS/FAIL/UNVERIFIED；只添加必要的可重复回归测试。
 4. 运行前遵循 StepMind handbook、个人 RJobBackend、H800/codesign 默认、当前机器 source mount 和 launcher 生命周期要求。所有云读写限制在 /mnt/codesign-exp/ycfeng 内本任务或明确复用的共享输入。
 5. 本任务临时本地根建议 /data/ycfeng/tmp/verl-agent-opd-20261106；云端根建议 /mnt/codesign-exp/ycfeng/verl/agent-opd-20261106。本地目录已由环境 job 创建；云端根尚待真实数据阶段创建。为每次运行保留独立身份，不复用 miles 输出目录。

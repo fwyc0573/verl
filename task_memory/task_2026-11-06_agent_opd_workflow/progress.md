@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Adopt the user-selected Steptron numerical standard; record cache repair and native launch adapters. |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
 | 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
 
@@ -148,3 +149,75 @@ No model weights, Miles files, active job outputs or unrelated temporary directo
 ### Check-progress after native observation milestone
 
 All ten tickets remain TODO because actual environment/data/GPU gates are incomplete. D1–D7 remain CLEAR in this window: native observer and benchmark adapters advance01, and the next environment attempt has an explicit source-specific network hypothesis and worker precheck. This is not repeated tolerance tuning or backend substitution. The two failed environment attempts narrowed different causes (missing offline artifact, then routing policy). Do not repeat after an identical route failure; use CPU-host artifact acquisition with the original hashes if worker egress is unavailable. S1–S6: no new scope defect identified; numerical qualification remains an explicit unsatisfied gate. Next action is the current worker's route/sync/import/data output, while benchmark and multi-node native launch integration finish in parallel.
+
+
+## Native worker/benchmark entrypoints and cache repair
+
+- Stable worker.py/worker.sh join the exact allocated Ray replicas, verify actual devices/interpreters and native update/export receipts, preserve platform NCCL variables and archive/consume task-owned local caches. Stable benchmark.py/benchmark.sh reuse Miles native SWE preparation, RunCheckPipeline, tools, grader and summaries, preserve the frozen 20×4 population, gate further work on four valid first-question seeds, and distinguish valid unresolved from infrastructure missing. Updated runs require the exact step20 export receipt. CPU fixture results validate interfaces/recovery only, not a live benchmark.
+- rjob_run.py now optionally forwards only existing native sandbox auth fields after presence checks; values are never printed or stored in task records. No native sandbox call has yet passed.
+- Root checks: Python3.10.6 six alignment unittests PASS; bash syntax for benchmark/worker/environment PASS; AST for benchmark/worker/launcher PASS; benchmark run help PASS; worker help PASS with repo PYTHONPATH under CPU Python3.12.13. A direct worker script without that PYTHONPATH failed import tests; the authorized worker.sh supplies it. Prefetch CLI requires Python3.12 tomllib and passed under mounted CPython3.12.13; host3.10 lacks tomllib.
+- Third zero-GPU job exp-1106-014156-052221, UID401da978-7273-421c-b232-f510b22cd367, replica1407f5f4-ab53-4761-b018-b491f8baaaa8 on gpu-h800-0039: container17:45:32Z exit22/restart0; platformFailed17:45:37Z. PyPI pinned wheel direct200; worker GitHub proxy407. This disproves transporting CPU-host GitHub route assumptions to workers. Selected evidence: evidence/runtime-environment-route-failure.json. No fourth route-only rerun was submitted.
+- CPU host acquired the original five locked native wheels through the original wheelhouse registry and fixed versions. Final cache has five archives/1,472,510,706bytes, original uv.lock SHA df508db0b957fa181c229fb75885cd3863cb651fd5233d0fa5af95e990bda0be. Complete cp-a merged cache followed by uv0.11.16 frozen/offline sync PASS: all five packages, prepare0.59ms/install605ms. This is metadata/cache consumption only. The initial test omitted archive-v0; its failure does not prove a registry-vs-URL cache incompatibility. Retained receipt: evidence/runtime-native-wheel-prefetch.json. Original lock wheel entries do not supply ZIP hashes, so extracted-content hashes are not advertised as lock hash verification.
+- Consumed duplicate/target/proof cache artifacts:7,642,059,117bytes removed with per-path receipts. The required supplemental cache and uv0.11.16 tool remain until native environment installation completes, because cache symlinks are absolute. Native venv uses UV_LINK_MODE=copy so its installed files will not depend on that cache afterward.
+- After that CPU proof, fourth zero-GPU job exp-1106-015912-607567 was submitted01:59:12HKT, launcher19002. Same immutable image/personal identity/local source/0GPU16CPU96GB. environment.sh non-destructively merges the full supplemental cache into the image cache, retains PyPI direct bypass and uses original frozen lock. Complete sync/import/model/config/data outputs remain pending.
+
+## User-selected numerical standard
+
+[Original Request] 参考steptron的训推一致要求的相关docs的标准
+
+Found and inspected source requirements.md Q59 (lines143–151) and glm-numerical-acceptance-proposal.md (lines10–22) in the behavior-turn-replay-step3p6 task. Adopted engineering standard: both native pack and global token MAE≤0.03, separately per input/completion population, before TIS, same student weight version/token-position-mask/probability. Tails and K3 are diagnostics. This corrects the earlier conclusion that no usable threshold was available. Original Lark retained-response SHA b37402e99ac0c49b2c699720d1975e95930317e6b49e683123fabc95cffba607 was verified by the source-reading agent. This task applies the common standard to both pairs' newly generated completions; it does not inherit the older task's historical rule2 population or model/topology. Numerical code is being aligned with MAE-only acceptance; no artificial tail budgets or independent FP32 expansion.
+
+## 1. 规划完成情况
+
+**汇总：** PASS0｜BLOCKED/FAILED/SKIPPED0｜TODO10
+
+| 子任务 | 状态 | 简要依据 |
+| --- | --- | --- |
+| 01 | TODO | 缓存安装证明与native入口已交付；完整环境/data、聚合合同待验证 |
+| 02 | TODO | GLM真实两步未运行 |
+| 03 | TODO | Qwen真实两步未运行 |
+| 04 | TODO | 依赖02 |
+| 05 | TODO | 依赖03 |
+| 06 | TODO | 等待环境/data |
+| 07 | TODO | 等待环境/data |
+| 08 | TODO | 依赖04/06 |
+| 09 | TODO | 依赖05/07 |
+| 10 | TODO | 局部消费已清理，最终交付未到 |
+
+## 2. 偏离检测
+
+**结论：** 未偏移，正常推进。
+**检测窗口：** 上次native observation checkpoint至今；环境阻塞回溯首次提交｜**当前前沿：** 01环境、真实输入及数值合同
+
+| 模式 | 判定 | 依据 |
+| --- | --- | --- |
+| D1 工具打磨 | CLEAR | worker/benchmark稳定后停止扩展，cache仅补齐缺失依赖 |
+| D2 细节反复重试 | CLEAR | 三次环境结果分别收窄离线缺包、PyPI代理、worker GitHub出口；第四次提交前完整复制offline证明通过 |
+| D3 支线问题修补 | CLEAR | 均属于01真实运行前提 |
+| D4 可并行任务停滞 | CLEAR | 环境、数值来源、worker和benchmark并行；真实运行共享未完成环境 |
+| D5 超范围镀金 | CLEAR | 用户标准找到后停止额外FP32/calibration范围 |
+| D6 分析空转 | CLEAR | 结果落实为可安装cache、native入口与明确阈值 |
+| D7 路线违背 | CLEAR | 当前用户指令支持执行和标准选择，未变更模型/backend/lock |
+
+**文档检查：** S5：旧预算未决及草案措辞被最新执行指令和用户指定标准取代，已在requirements/plan/01更新；S1–S4、S6未发现新缺陷。
+**归因：** 无。
+
+## 3. 纠正建议
+
+**分支：** B：spec/tickets存在过期内容，先更新文档再继续。
+
+**文档更新（先执行）：**
+1. requirements/plan/01：记录用户指定Steptron标准和来源，删除额外校准作为阈值前置的旧解释（可直接执行；已应用）。
+
+**需停止的偏离行为：** 无。
+
+**接下去的路线：**
+1. 01：当前zeroGPU job完成锁定imports、四组真实配置和两组80turn数据回执。
+2. 并行：落实双MAE数值合同；环境就绪后02/03与06/07在实际资源允许下独立启动。
+3. 各资格通过后分别从初始权重执行20次有效更新、精确导出与新进程重载，再进行更新后固定评测。
+
+## 4. 最值得关注的 3 点
+
+1. CPU缓存PASS尚未证明完整native环境或模型可用。
+2. 数值标准已确定为双MAE≤0.03；实现必须忠实表达原生聚合，不能虚标。
+3. 当前没有训练GPU或有效benchmark；继续按真实业务证据推进。

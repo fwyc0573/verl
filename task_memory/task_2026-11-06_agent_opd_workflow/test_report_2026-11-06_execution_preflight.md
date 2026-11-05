@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Adopt the user-selected Steptron numerical standard; record cache repair and native launch adapters. |
 | 2026-11-06 | Record adapter CPU checks and the exact zero-GPU environment failure. |
 
 # Ticket01 execution preflight
@@ -53,3 +54,22 @@ CPU host bounded HEAD checks: exact PyPI artifact directHTTP200; same request th
 Third command-file revision appends files.pythonhosted.org/pypi.org/download.pytorch.org to proxy bypass, retains GitHub deploy proxy, and executes two explicit pinned-artifact HEAD checks before frozen sync. This changes routing only; uv.lock and package versions are unchanged. The same zero-GPU resource/image/source command submitted exp-1106-014156-052221. Result pending.
 
 Native observer review found and repaired completion parser propagation and premature asynchronous HF inventory reading. Six pure fault tests, Python syntax and staged whitespace checks PASS; actual Ray/Bridge/parser/trainer execution remains NOT RUN. Commit0fe1880f contains only agent_loop.py/train.py.
+
+
+## Fourth environment stage prerequisites and adapter checks
+
+The third worker route check failed before sync: exact PyPI wheel directHTTP200, GitHub through proxy407, containerexit22/restart0. Selected exact evidence: evidence/runtime-environment-route-failure.json. The fourth stage was not another network-route retry: CPU host first prefetched all five original native wheels and validated complete cp-a cache merging using uv0.11.16 frozen/offline install. Result PASS, prepare0.59ms/install605ms; five exact versions, no CUDA import. Receipt evidence/runtime-native-wheel-prefetch.json records extracted file hashes, absent upstream wheel ZIP hashes and consumed-cache cleanup. Preserved cache1,472,510,706bytes; consumed duplicates/proofs7,642,059,117bytes. No lock/version change.
+
+```sh
+python3 -B -m unittest discover -s tests/manual/agent_opd -p test_alignment.py -v
+bash -n tests/manual/agent_opd/benchmark.sh tests/manual/agent_opd/worker.sh tests/manual/agent_opd/environment.sh
+python3 -B tests/manual/agent_opd/benchmark.py run --help
+PYTHONPATH=/data/ycfeng/sota-engine/verl /data/ycfeng/envs/miles-agent-opd-cpu/bin/python -B tests/manual/agent_opd/worker.py --help
+/data/ycfeng/envs/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12 -B tests/manual/agent_opd/prefetch.py --help
+```
+
+All above PASS. AST PASS for worker.py, benchmark.py and rjob_run.py. Worker direct script without repository PYTHONPATH failed import tests, then passed with worker.sh's explicit environment; host3.10 prefetch failed missing tomllib, then exact mounted3.12 CLI passed. These are interpreter/interface constraints, not hidden model failures. Worker agent's lifecycle/fault fixtures and benchmark agent's synthetic 80-outcome/resume/failure checks passed; all remain CPU/mock validation without a live native engine, sandbox or grader outcome.
+
+Fourth stage exact submission: rjob_run.py --image artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504 --command-file /data/ycfeng/sota-engine/verl/tests/manual/agent_opd/environment.sh --gpus0 --replicas1 --cpus16 --memory-gb96 --name verl-agent-opd-env-cache-20261106d. Job exp-1106-015912-607567 created2026-11-06 01:59:12HKT; launcher19002 remains alive. Actual environment/input result pending.
+
+Numerical acceptance is now source-backed by user steering: Steptron Q59 requires native pack MAE and global token MAE≤0.03 per input/completion population; tails/K3 only diagnostic. No numerical runtime result has yet been measured or accepted in this task. Code adoption is independently in progress.

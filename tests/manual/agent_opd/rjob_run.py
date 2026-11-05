@@ -20,6 +20,7 @@ def main():
     parser.add_argument("--cpus", type=int, required=True)
     parser.add_argument("--memory-gb", type=int, required=True)
     parser.add_argument("--name", required=True)
+    parser.add_argument("--sandbox-auth", action="store_true", help="Forward existing native benchmark credentials")
     args = parser.parse_args()
     if os.environ.get("STEPMIND_BACKEND") != "rjob":
         raise RuntimeError("Initialize STEPMIND_BACKEND=rjob before submission")
@@ -36,6 +37,18 @@ def main():
 
     os.chdir(source)
     os.environ["EXP_ID"] = args.name
+    sandbox_env = {}
+    if args.sandbox_auth:
+        for key in ("AK_BASEMIND", "SK_BASEMIND"):
+            if not os.environ.get(key):
+                raise RuntimeError(f"Missing native sandbox credential: {key}")
+        if not (os.environ.get("SR_USER_TOKEN") or os.environ.get("SESSION_ROUTER_USER_TOKEN")):
+            raise RuntimeError("Missing native session-router token")
+        sandbox_env = {
+            key: os.environ[key]
+            for key in ("AK_BASEMIND", "SK_BASEMIND", "SR_USER_TOKEN", "SESSION_ROUTER_USER_TOKEN")
+            if os.environ.get(key)
+        }
     cfg = ResourceConfig(
         cpu=args.cpus,
         gpu=args.gpus,
@@ -45,7 +58,7 @@ def main():
         positive_tags=["H800"],
         extra_requirements=[],
         mounts=["juicefs+s3://oss.i.shaipower.com/codesign-exp:/mnt/codesign-exp"],
-        envs={},
+        envs=sandbox_env,
         command="{COMMAND}",
         preemptible=False,
         task_specs={"default": {"is_critical": True}},

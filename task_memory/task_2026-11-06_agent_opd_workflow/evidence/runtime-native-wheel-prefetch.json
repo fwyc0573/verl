@@ -1,0 +1,320 @@
+{
+  "lock": "/data/ycfeng/sota-engine/verl/uv.lock",
+  "lock_sha256": "df508db0b957fa181c229fb75885cd3863cb651fd5233d0fa5af95e990bda0be",
+  "uv_version": "uv 0.11.16 (x86_64-unknown-linux-gnu)",
+  "python": "/data/ycfeng/envs/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+  "cache": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache",
+  "wheels": [
+    {
+      "name": "apex",
+      "version": "0.1",
+      "registry": "https://verl-project.github.io/verl-wheelhouse/cu130/torch2.13/simple/",
+      "url": "https://github.com/verl-project/verl-wheelhouse/releases/download/apex-master-py3.12-torch2.13.0-cu130/apex-0.1-cp312-cp312-linux_x86_64.whl"
+    },
+    {
+      "name": "deep-ep",
+      "version": "1.2.1",
+      "registry": "https://verl-project.github.io/verl-wheelhouse/cu130/torch2.13/simple/",
+      "url": "https://github.com/verl-project/verl-wheelhouse/releases/download/deep-ep-3f601f7ac1c062c46502646ff04c535013bfca00-py3.12-torch2.13.0-cu130/deep_ep-1.2.1-cp312-cp312-linux_x86_64.whl"
+    },
+    {
+      "name": "flash-attn",
+      "version": "2.8.3",
+      "registry": "https://verl-project.github.io/verl-wheelhouse/cu130/torch2.13/simple/",
+      "url": "https://github.com/verl-project/verl-wheelhouse/releases/download/flash-attention-v2.8.3-py3.12-torch2.13.0-cu130/flash_attn-2.8.3-cp312-cp312-linux_x86_64.whl"
+    },
+    {
+      "name": "megatron-bridge",
+      "version": "0.6.2",
+      "registry": "https://verl-project.github.io/verl-wheelhouse/cu130/torch2.13/simple/",
+      "url": "https://github.com/verl-project/verl-wheelhouse/releases/download/megatron-bridge-v0.6.2-py3.12-torch2.13.0-cu132/megatron_bridge-0.6.2-py3-none-any.whl"
+    },
+    {
+      "name": "transformer-engine",
+      "version": "2.20.2",
+      "registry": "https://verl-project.github.io/verl-wheelhouse/cu130/torch2.13/simple/",
+      "url": "https://github.com/verl-project/verl-wheelhouse/releases/download/transformer-engine-v2.20.2-py3.12-torch2.13.0-cu130/transformer_engine-2.20.2-cp312-cp312-linux_x86_64.whl"
+    }
+  ],
+  "lock_wheel_hashes_available": false,
+  "imports_performed": false,
+  "command": [
+    "uv",
+    "pip",
+    "install",
+    "--no-deps",
+    "--target",
+    "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/native-wheel-target-0_ok5can",
+    "--python",
+    "/data/ycfeng/envs/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+    "--link-mode",
+    "copy",
+    "--index-url",
+    "https://verl-project.github.io/verl-wheelhouse/cu130/torch2.13/simple/",
+    "apex==0.1",
+    "deep-ep==1.2.1",
+    "flash-attn==2.8.3",
+    "megatron-bridge==0.6.2",
+    "transformer-engine==2.20.2"
+  ],
+  "install_exit_code": 0,
+  "distributions": [
+    {
+      "name": "deep_ep",
+      "version": "1.2.1",
+      "metadata_sha256": "b680df6d99f76c35ae0cd59b4a633482ec2bb62500f2e260a1b59035b2a43621",
+      "wheel_metadata": "Wheel-Version: 1.0\nGenerator: setuptools (78.1.0)\nRoot-Is-Purelib: false\nTag: cp312-cp312-linux_x86_64\n\n"
+    },
+    {
+      "name": "apex",
+      "version": "0.1",
+      "metadata_sha256": "ca68644c616f0d1487c6c8ab0d1fa4bbdb6b65feda3800b836d7f3ee8801ec7c",
+      "wheel_metadata": "Wheel-Version: 1.0\nGenerator: setuptools (78.1.0)\nRoot-Is-Purelib: false\nTag: cp312-cp312-linux_x86_64\n\n"
+    },
+    {
+      "name": "megatron-bridge",
+      "version": "0.6.2",
+      "metadata_sha256": "f8a5f235cb5f6953d01412078278d14dab1ad12492ae21677d421cc74d2b5ad8",
+      "wheel_metadata": "Wheel-Version: 1.0\nGenerator: setuptools (78.1.0)\nRoot-Is-Purelib: true\nTag: py3-none-any\n\n"
+    },
+    {
+      "name": "transformer_engine",
+      "version": "2.20.2",
+      "metadata_sha256": "c30d9b4eac495bdfb3acdcf2878b61984e9f8e4747e4b52cc7ef89c7b75e97d4",
+      "wheel_metadata": "Wheel-Version: 1.0\nGenerator: setuptools (78.1.0)\nRoot-Is-Purelib: false\nTag: cp312-cp312-linux_x86_64\n\n"
+    },
+    {
+      "name": "flash_attn",
+      "version": "2.8.3",
+      "metadata_sha256": "fd99de1a1d51fd1c246a67e9aa65cf1e49b9070c6eb05311f7f46a2a05168089",
+      "wheel_metadata": "Wheel-Version: 1.0\nGenerator: setuptools (78.1.0)\nRoot-Is-Purelib: false\nTag: cp312-cp312-linux_x86_64\n\n"
+    }
+  ],
+  "archives": [
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache/archive-v0/ISReZ33CuSoNrRw_",
+      "distributions": [
+        {
+          "name": "megatron-bridge",
+          "version": "0.6.2"
+        }
+      ],
+      "files": 822,
+      "bytes": 8441761,
+      "file_manifest_sha256": "bf5121515a121243a53b9d045c239ce2ed78d039af58086280ea4e99b719ce38"
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache/archive-v0/NnDq5pruZU3MNZ0f",
+      "distributions": [
+        {
+          "name": "flash_attn",
+          "version": "2.8.3"
+        }
+      ],
+      "files": 105,
+      "bytes": 980689660,
+      "file_manifest_sha256": "0ab507b5ce8678ea8b66d89b0a7f73d97882f02b67aa836884607c0815f5a55f"
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache/archive-v0/Sxaa81cirHw_g7cV",
+      "distributions": [
+        {
+          "name": "deep_ep",
+          "version": "1.2.1"
+        }
+      ],
+      "files": 13,
+      "bytes": 29611128,
+      "file_manifest_sha256": "493f3810c50ce73ea85b5db33475e1a278c695bf55f9ad891c84a8b84fe6fedd"
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache/archive-v0/da-ONg5rJky9dpov",
+      "distributions": [
+        {
+          "name": "apex",
+          "version": "0.1"
+        }
+      ],
+      "files": 133,
+      "bytes": 215152033,
+      "file_manifest_sha256": "602bf7235e7280352fc71687494b554df48fb3bf6e9b0ac3203c1108ad55d925"
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache/archive-v0/h7RpIpPAiGWRLVpg",
+      "distributions": [
+        {
+          "name": "transformer_engine",
+          "version": "2.20.2"
+        }
+      ],
+      "files": 571,
+      "bytes": 238616124,
+      "file_manifest_sha256": "44f734850adb9ccc0eaf002494fa2b634b9e62d0d0662603ad5583e4c593de18"
+    }
+  ],
+  "cache_links": [
+    {
+      "path": "wheels-v6/index/d896fbe82c1cd76c/apex/0.1-cp312-cp312-linux_x86_64",
+      "target": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache/archive-v0/da-ONg5rJky9dpov",
+      "relative": false,
+      "valid": true
+    },
+    {
+      "path": "wheels-v6/index/d896fbe82c1cd76c/deep-ep/1.2.1-cp312-cp312-linux_x86_64",
+      "target": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache/archive-v0/Sxaa81cirHw_g7cV",
+      "relative": false,
+      "valid": true
+    },
+    {
+      "path": "wheels-v6/index/d896fbe82c1cd76c/flash-attn/2.8.3-cp312-cp312-linux_x86_64",
+      "target": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache/archive-v0/NnDq5pruZU3MNZ0f",
+      "relative": false,
+      "valid": true
+    },
+    {
+      "path": "wheels-v6/index/d896fbe82c1cd76c/megatron-bridge/0.6.2-py3-none-any",
+      "target": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache/archive-v0/ISReZ33CuSoNrRw_",
+      "relative": false,
+      "valid": true
+    },
+    {
+      "path": "wheels-v6/index/d896fbe82c1cd76c/transformer-engine/2.20.2-cp312-cp312-linux_x86_64",
+      "target": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache/archive-v0/h7RpIpPAiGWRLVpg",
+      "relative": false,
+      "valid": true
+    }
+  ],
+  "status": "PASS",
+  "limits": [
+    "Cache file manifests hash extracted wheel content, not original wheel ZIP bytes.",
+    "GitHub lock entries provide no wheel hash; URL and version matching is not lock hash validation.",
+    "Worker uv compatibility and merged-cache consumption require a separate offline verification."
+  ],
+  "temporary_install_target_removed": true,
+  "subsequent_validation": {
+    "status": "PASS",
+    "uv_version": "0.11.16",
+    "python_version": "3.12.13",
+    "scope": "Five native wheel cache entries only; not full verl environment or imports",
+    "source_cache": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache",
+    "copy_command": [
+      "cp",
+      "-a",
+      "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache",
+      "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/merged-cache-check"
+    ],
+    "offline_command": [
+      "uv",
+      "sync",
+      "--frozen",
+      "--offline",
+      "--no-install-project",
+      "--directory",
+      "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/offline-registry-check",
+      "--python",
+      "/data/ycfeng/envs/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+      "--link-mode",
+      "copy"
+    ],
+    "offline_environment": {
+      "UV_CACHE_DIR": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/merged-cache-check",
+      "UV_PROJECT_ENVIRONMENT": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/offline-check-env"
+    },
+    "offline_exit_code": 0,
+    "stdout_stderr": "Using CPython 3.12.13 interpreter at: /data/ycfeng/envs/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12\nCreating virtual environment at: /data/ycfeng/tmp/verl-agent-opd-downloads-20261106/offline-check-env\nPrepared 5 packages in 0.59ms\nInstalled 5 packages in 605ms\n + apex==0.1\n + deep-ep==1.2.1\n + flash-attn==2.8.3\n + megatron-bridge==0.6.2\n + transformer-engine==2.20.2\n",
+    "supplement_merge_command": "cp -a -n /data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache/. /root/.cache/uv/",
+    "limits": [
+      "Full cache copy is required: wheel metadata alone failed without archive-v0.",
+      "The five cache symlinks are absolute and point at the mounted source cache; preserve source path until installation completes.",
+      "No original wheel ZIP hash is available from uv; extracted-file manifests are recorded separately."
+    ],
+    "cleanup": [
+      {
+        "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/merged-cache-check",
+        "files": 1660,
+        "bytes": 1472526489,
+        "absent_after_cleanup": true
+      },
+      {
+        "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/offline-check-env",
+        "files": 1669,
+        "bytes": 1472542011,
+        "absent_after_cleanup": true
+      },
+      {
+        "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-tool-cache",
+        "files": 20,
+        "bytes": 64227505,
+        "absent_after_cleanup": true
+      }
+    ]
+  },
+  "initial_consumed_artifacts": [
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache/wheels-v6/url",
+      "files": 8,
+      "bytes": 4864,
+      "absent_after_cleanup": true
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/registry-target",
+      "files": 1655,
+      "bytes": 1472511622,
+      "absent_after_cleanup": true
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-version-offline-target",
+      "files": 137,
+      "bytes": 215152457,
+      "absent_after_cleanup": true
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/offline-registry-check/.venv",
+      "files": 1669,
+      "bytes": 1472542066,
+      "absent_after_cleanup": true
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/offline-check-env",
+      "files": 15,
+      "bytes": 30389,
+      "absent_after_cleanup": true
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/merged-cache-check",
+      "files": 20,
+      "bytes": 11008,
+      "absent_after_cleanup": true
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache/archive-v0/z0xrNHFGXRQMfiHZ",
+      "files": 822,
+      "bytes": 8441761,
+      "absent_after_cleanup": true
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache/archive-v0/XhTkZyjviurT00Rt",
+      "files": 13,
+      "bytes": 29611128,
+      "absent_after_cleanup": true
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache/archive-v0/MZdabL95XMYnwbSz",
+      "files": 133,
+      "bytes": 215152033,
+      "absent_after_cleanup": true
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache/archive-v0/gQfYmY_OMrmGdkOW",
+      "files": 571,
+      "bytes": 238616124,
+      "absent_after_cleanup": true
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-cache/archive-v0/-NYRFLB8rIuMWu85",
+      "files": 105,
+      "bytes": 980689660,
+      "absent_after_cleanup": true
+    }
+  ]
+}
