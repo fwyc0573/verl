@@ -21,7 +21,9 @@ import time
 import urllib.error
 import urllib.request
 import uuid
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+from threading import Event
 
 
 PRESERVED_STATUSES = frozenset(("reserved", "running", "interrupted_pending_audit"))
@@ -175,7 +177,7 @@ def served_model(args):
 
 def server_argv(args):
     pair = pair_config(args)
-    membership(args.membership, args.membership_sha256)
+    bank, _ = membership(args.membership, args.membership_sha256)
     model_identity(args, pair)
     if not credentials()["ready"]:
         raise RuntimeError("Native sandbox credentials are incomplete; use credentials for presence-only status")
@@ -207,7 +209,7 @@ def server_argv(args):
         "--tp-size", str(args.tp_size), "--dtype", "bfloat16", "--load-format", "safetensors",
         "--context-length", str(pair["benchmark"]["context_tokens"]),
         "--mem-fraction-static", str(args.memory_fraction),
-        "--chunked-prefill-size", str(args.prefill_tokens), "--max-running-requests", "1",
+        "--chunked-prefill-size", str(args.prefill_tokens), "--max-running-requests", str(len(bank["seeds"])),
         "--disable-cuda-graph", "--enable-deterministic-inference",
         "--reasoning-parser", pair["reasoning_parser"], "--tool-call-parser", pair["tool_parser"],
         "--log-requests", "--log-requests-level", "1", "--log-requests-format", "json",
@@ -266,16 +268,23 @@ def attempt_roots(output, version):
     return sorted((output / f"step{version}" / "attempts").glob("*/attempt-*"))
 
 
-def execute_native(command, environment, log, timeout, on_start=None):
+def execute_native(command, environment, log, timeout, on_start, stop):
     process = subprocess.Popen(
         command, env=environment, stdout=log, stderr=subprocess.STDOUT, start_new_session=True
     )
     try:
-        if on_start is not None:
-            on_start(process.pid)
-        return {"status": "returned", "returncode": process.wait(timeout=timeout)}
-    except subprocess.TimeoutExpired:
-        return {"status": "timeout"}
+        on_start(process.pid)
+        deadline = time.monotonic() + timeout
+        while True:
+            if stop.is_set():
+                raise InterruptedError("The benchmark owner interrupted the native attempt")
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                return {"status": "timeout"}
+            try:
+                return {"status": "returned", "returncode": process.wait(timeout=min(1, remaining))}
+            except subprocess.TimeoutExpired:
+                continue
     finally:
         try:
             os.killpg(process.pid, signal.SIGTERM)
@@ -312,79 +321,91 @@ def run(args):
     endpoint = wait_server(args)
     source_summary = load_miles(args.miles_root, "summarize_benchmark")
     args.work_dir.mkdir(parents=True, exist_ok=True)
-    gate_passed = False
-    for index, task in enumerate(bank["task_ids"]):
-        valid = 0
-        for seed in bank["seeds"]:
-            group = version_root / "attempts" / f"question-{index:02d}-seed-{seed}"
-            group.mkdir(parents=True, exist_ok=True)
-            with (group / "lock").open("a") as lock:
-                fcntl.flock(lock, fcntl.LOCK_EX)
-                roots = sorted(group.glob("attempt-*"))
-                result = source_summary._read_model(roots, {"task_ids": [task], "seeds": [seed]}, args.version)
-                if result["valid_attempts"]:
-                    valid += 1
-                    continue
-                states = [json.loads((root / "state.json").read_text()) for root in roots]
-                if any(state["status"] in PRESERVED_STATUSES for state in states):
-                    print("VERL_BENCHMARK_RUNNING_PRESERVED", args.version, index, seed, flush=True)
-                    continue
-                attempt = group / f"attempt-{uuid.uuid4().hex}"
-                reservation = group / (".reserved-" + attempt.name)
-                reservation.mkdir()
-                state = {
-                    "status": "reserved", "task_id": task, "seed": seed, "started": time.time(),
-                    "owner": {"host": socket.gethostname(), "pid": os.getpid(),
-                              "job_name": os.environ.get("RJOB_NAME") or os.environ.get("EXP_ID"),
-                              "job_uid": os.environ.get("RJOB_UID")},
-                }
-                write_json(reservation / "state.json", state)
-                reservation.rename(attempt)
-            with tempfile.TemporaryDirectory(prefix="native-swe-", dir=args.work_dir) as temporary:
-                directory = Path(temporary)
-                server_log = directory / "server.log"
-                server_log.symlink_to(args.server_log.resolve())
-                native_output = attempt / f"step{args.version}" / f"seed-{seed}"
-                command = [
-                    str(args.native_python), "-B", str(Path(__file__).resolve()), "native",
-                    "--miles-root", str(args.miles_root), "--pairs", str(args.pairs.resolve()),
-                    "--pair", args.pair, "--membership", str(args.membership),
-                    "--membership-sha256", args.membership_sha256,
-                    "--version", str(args.version), "--port", str(args.port),
-                    "--seed", str(seed), "--task-index", str(index),
-                    "--sandbox-backend", args.sandbox_backend, "--output", str(native_output),
-                    "--server-log", str(server_log),
-                ]
-                environment = dict(os.environ, PYTHONPATH=args.native_pythonpath, PYTHONDONTWRITEBYTECODE="1")
+    stop = Event()
 
-                def started(pid):
-                    state.update(status="running", child_pid=pid)
-                    write_json(attempt / "state.json", state)
+    def run_attempt(index, seed):
+        if stop.is_set():
+            return 0
+        task = bank["task_ids"][index]
+        group = version_root / "attempts" / f"question-{index:02d}-seed-{seed}"
+        group.mkdir(parents=True, exist_ok=True)
+        with (group / "lock").open("a") as lock:
+            fcntl.flock(lock, fcntl.LOCK_EX)
+            roots = sorted(group.glob("attempt-*"))
+            result = source_summary._read_model(roots, {"task_ids": [task], "seeds": [seed]}, args.version)
+            if result["valid_attempts"]:
+                return 1
+            states = [json.loads((root / "state.json").read_text()) for root in roots]
+            if any(state["status"] in PRESERVED_STATUSES for state in states):
+                print("VERL_BENCHMARK_RUNNING_PRESERVED", args.version, index, seed, flush=True)
+                return 0
+            attempt = group / f"attempt-{uuid.uuid4().hex}"
+            reservation = group / (".reserved-" + attempt.name)
+            reservation.mkdir()
+            state = {
+                "status": "reserved", "task_id": task, "seed": seed, "started": time.time(),
+                "owner": {"host": socket.gethostname(), "pid": os.getpid(),
+                          "job_name": os.environ.get("RJOB_NAME") or os.environ.get("EXP_ID"),
+                          "job_uid": os.environ.get("RJOB_UID")},
+            }
+            write_json(reservation / "state.json", state)
+            reservation.rename(attempt)
+        with tempfile.TemporaryDirectory(prefix="native-swe-", dir=args.work_dir) as temporary:
+            directory = Path(temporary)
+            server_log = directory / "server.log"
+            server_log.symlink_to(args.server_log.resolve())
+            native_output = attempt / f"step{args.version}" / f"seed-{seed}"
+            command = [
+                str(args.native_python), "-B", str(Path(__file__).resolve()), "native",
+                "--miles-root", str(args.miles_root), "--pairs", str(args.pairs.resolve()),
+                "--pair", args.pair, "--membership", str(args.membership),
+                "--membership-sha256", args.membership_sha256,
+                "--version", str(args.version), "--port", str(args.port),
+                "--seed", str(seed), "--task-index", str(index),
+                "--sandbox-backend", args.sandbox_backend, "--output", str(native_output),
+                "--server-log", str(server_log),
+            ]
+            environment = dict(os.environ, PYTHONPATH=args.native_pythonpath, PYTHONDONTWRITEBYTECODE="1")
 
-                try:
-                    with (directory / "native.log").open("w") as log:
-                        state.update(execute_native(command, environment, log, args.attempt_timeout, started))
-                except BaseException as error:
-                    state.update(
-                        status="interrupted" if "child_pid" in state else "interrupted_pending_audit",
-                        error_type=type(error).__name__,
-                    )
-                    raise
-                finally:
-                    # All native writers have exited before archival and temporary cleanup.
-                    shutil.copy2(directory / "native.log", attempt / "native.log")
-                    native_work = directory / f"step{args.version}"
-                    if native_work.exists():
-                        shutil.copytree(native_work, attempt / "native")
-                    state["finished"] = time.time()
-                    write_json(attempt / "state.json", state)
-            result = source_summary._read_model([attempt], {"task_ids": [task], "seeds": [seed]}, args.version)
-            valid += result["valid_attempts"]
-            print("VERL_BENCHMARK_ATTEMPT_FINISHED", args.version, index, seed, result["valid_attempts"], flush=True)
-        if index == 0:
-            gate_passed = valid == len(bank["seeds"])
-            if not gate_passed:
-                break
+            def started(pid):
+                state.update(status="running", child_pid=pid)
+                write_json(attempt / "state.json", state)
+
+            try:
+                with (directory / "native.log").open("w") as log:
+                    state.update(execute_native(command, environment, log, args.attempt_timeout, started, stop))
+            except BaseException as error:
+                state.update(
+                    status="interrupted" if "child_pid" in state else "interrupted_pending_audit",
+                    error_type=type(error).__name__,
+                )
+                raise
+            finally:
+                # All native writers have exited before archival and temporary cleanup.
+                shutil.copy2(directory / "native.log", attempt / "native.log")
+                native_work = directory / f"step{args.version}"
+                if native_work.exists():
+                    shutil.copytree(native_work, attempt / "native")
+                state["finished"] = time.time()
+                write_json(attempt / "state.json", state)
+        result = source_summary._read_model([attempt], {"task_ids": [task], "seeds": [seed]}, args.version)
+        print("VERL_BENCHMARK_ATTEMPT_FINISHED", args.version, index, seed, result["valid_attempts"], flush=True)
+        return result["valid_attempts"]
+
+    def remaining_questions(seed):
+        for index in range(1, len(bank["task_ids"])):
+            if stop.is_set():
+                return
+            run_attempt(index, seed)
+
+    pool = ThreadPoolExecutor(max_workers=len(bank["seeds"]))
+    try:
+        gate = list(pool.map(lambda seed: run_attempt(0, seed), bank["seeds"]))
+        if sum(gate) == len(bank["seeds"]):
+            list(pool.map(remaining_questions, bank["seeds"]))
+    finally:
+        stop.set()
+        pool.shutdown(wait=True, cancel_futures=True)
     with (version_root / "report.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
         result = source_summary._read_model(attempt_roots(output, args.version), bank, args.version)
