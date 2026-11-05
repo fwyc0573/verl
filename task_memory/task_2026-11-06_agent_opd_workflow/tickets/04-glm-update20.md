@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Reuse the updated benchmark's first native server/generation for reload acceptance after verified export. |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
 | 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
 
@@ -12,6 +13,8 @@
 **Blocked by:** 02: GLM 两步真实 OPD 与训推一致性.
 
 **Status:** pending — predecessor acceptance required.
+
+Verified complete update20 HF export releases08 serving/scoring before this ticket closes. Reuse that benchmark's new native SGLang process and actual generation for the reload criterion below. The first real reload/generation can close this ticket while08 continues scoring; no separate inference job or completed baseline is required.
 
 - [ ] 在确认的实验范围内完成 20 次成功 optimizer update，逐步记录版本和有效数值；原先两步资格是否另起运行由合同明确。
 - [ ] 保持已通过的一致性配置，检查运行期间版本、tokens、routes 和误差观测；异常按原生故障与观测缺失分别处理。

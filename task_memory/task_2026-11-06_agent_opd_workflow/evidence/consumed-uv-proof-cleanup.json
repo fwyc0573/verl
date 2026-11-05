@@ -1,0 +1,23 @@
+{
+  "collected_at": "2026-11-05T20:23:14.944171+00:00",
+  "scope": "Consumed task-only standalone uv proof and offline registry fixture; native environment, shared toolchain, all model/data sources and active jobs preserved",
+  "paths": [
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-0.11.16",
+      "regular_files": 15,
+      "regular_file_bytes": 60733618,
+      "symlinks": 0,
+      "root_absent_after": true
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/offline-registry-check",
+      "regular_files": 2,
+      "regular_file_bytes": 2123,
+      "symlinks": 0,
+      "root_absent_after": true
+    }
+  ],
+  "regular_file_bytes_removed": 60735741,
+  "durable_uv": "/data/ycfeng/toolchain/bin/uv",
+  "runtime_scripts_reference_removed_paths": false
+}

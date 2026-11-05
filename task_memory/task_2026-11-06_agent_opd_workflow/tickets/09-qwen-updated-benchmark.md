@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Allow updated scoring after export; require baseline completion only for the final comparison. |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
 | 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
 
@@ -9,7 +10,7 @@
 
 **What to build:** 在确认的对称范围内完成 Qwen 更新后评测和前后比较，取得第二组独立的完整测试结论。
 
-**Blocked by:** 05: Frog/Qwen 第 20 次更新的导出与重载; 07: 原始 Qwen 的固定 20 题评测.
+**Blocked by:** 05 verified complete update20 HF export for serving/scoring. This benchmark's first new native server/generation supplies05 reload evidence. Completed07 is required only for final before/after comparison, not for launching updated-model scoring.
 
 **Status:** pending — predecessor acceptance required.
 

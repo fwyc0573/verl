@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Allow updated scoring after export; require baseline completion only for the final comparison. |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
 | 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
 
@@ -9,7 +10,7 @@
 
 **What to build:** 用精确第 20 次更新 GLM 完成同题同 seed 评测，与原始基线比较并报告学习结果。
 
-**Blocked by:** 04: GLM 第 20 次更新的导出与重载; 06: 原始 GLM 的固定 20 题评测.
+**Blocked by:** 04 verified complete update20 HF export for serving/scoring. This benchmark's first new native server/generation supplies04 reload evidence. Completed06 is required only for final before/after comparison, not for launching updated-model scoring.
 
 **Status:** pending — predecessor acceptance required.
 

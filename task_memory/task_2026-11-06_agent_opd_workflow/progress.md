@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Consume completed uv proof and correct future updated-benchmark component dependencies during the GPU queue wait. |
 | 2026-11-06 | Close Ticket01 using actual complete inputs and record both submitted qualifications. |
 | 2026-11-06 | Record actual Qwen candidate underfill, separate native context, and sandbox authentication failure. |
 | 2026-11-06 | Adopt the user-selected Steptron numerical standard; record cache repair and native launch adapters. |
@@ -489,53 +490,72 @@ Qwenqualification exp-1106-033627-955641 created03:36:28HKT, UID9ad17773-2d4e-4b
 
 Dataowner now observes only actualQwenqualification business outputs; alignmentowner retainsGLMqualification; runtimeowner owns originalbenchmarks; platformowner status-only exact4jobs. No additionalCPU review/harness. Quota03:32 selectedresponse fieldsemantics remaininconsistent/freeH800UNKNOWN, andobserver's repeatedGET-for-parser-error was stopped; futurequery must retainrawresponsebeforelocalparsing.
 
+
+## Queue wait, consumed proof cleanup, and correct updated-benchmark prerequisites
+
+At04:12:26HKT all four local launchers86165/41495/30922/13885 were independently polled and remainalive. At04:16:12HKT selected exact platform status stillallPending/noreplicas. No new business artifacts, optimizer updates, numericalPASS orvalidscores. GPU allocation is the current unavailable prerequisite; its scheduler cause/freecapacity remainsUNKNOWN beyond nativequeue status. Businessowners now wait for platformStarting/Running rather than repeatedlyreading absentdirectories. No otherjob/control/backend/hardwarechange.
+
+Prepared only standby fresh20 commandfiles learning20-glm.sh andlearning20-qwen.sh under /data/ycfeng/tmp/verl-agent-opd-commands-20261106; bothbash-nPASS, NOTSUBMITTED. They use originalstudents and real80learningdatasets (GLMinputjob024352, Qweninputjob032827), separatelearningoutputroot, identicalqualifiedsettings/topology, steps20. Each remains gated on actualsame-modelqualificationPASS.
+
+Consumed finished standaloneuvproof andofflineregistryfixture:17regularfiles/60735741bytes,0symlinks, exactrootsabsent; globaldurableuv0.11.14 unchangedbefore/after. No runtime/reference dependency on removedpaths. Nativeenv/sharedmodels/inputs/currentwatchers preserved. Receipt evidence/consumed-uv-proof-cleanup.json. Earliernativefrozen/offlineproof used0.11.16; no claimitranwithglobal0.11.14. No furtherlargeunconsumedproofcache found; activeartifacts remainneeded.
+
+Long-waitcheck-progress found futureS1: old08/09edges requiredall04/05reload andoriginal80scores before updatedserving, though sameexistingbenchmarkserver canprovide reload andupdatedscores do not requirebaselinescores. Correctedplan/04/05/08/09 using explicitcomponents beforethosephasesbecomeeligible. Verified20export releasesupdatedbenchmark; its actualnewprocess/generation supplies04/05reload; completebaseline+updated80scoresgatefinalcomparison. No acceptance relaxed, separateinferencejob orneworchestrator introduced.
+
+Runtimeowner independently checked onlyplan/04/05/08/09diff plus existingexport/benchmarkentries: correctedcomponentsmatchactualimplementation. Verifiedexportstillrequiresall20nativeupdates/step20manifest/fullinventory/realchangedvalue. UpdatedbenchmarkbindstheverifiedreceiptbytesSHA/modelpath, checksnewservermodel_info path+version, then actualgeneration; firstrealgeneration/seed_verified/engine requestscanprovide04/05reload evidence while80scoringcontinues. exportnew_process_reload_verified=falseisnotrelabeledPASS. Baselinereportisnotreadbyrun, onlyfinalsummarize. No code/tests/SSH/platformreadsorstandardrelaxationwereintroducedbythisreview.
+
 ## 1. 规划完成情况
 
-**汇总：** PASS1｜BLOCKED/FAILED/SKIPPED0｜TODO9
+**汇总：** PASS1｜BLOCKED/FAILED/SKIPPED4｜TODO5
 
 | 子任务 | 状态 | 简要依据 |
 | --- | --- | --- |
-| 01 | PASS | nativeCPU runtime、两组80/8和2/20配置、固定题单实际通过 |
-| 02 | TODO | GLM资格16GPU已提交，Pending |
-| 03 | TODO | Qwen资格8GPU已提交，Pending |
+| 01 | PASS | 实际runtime/input/config合同完成 |
+| 02 | BLOCKED | 已提交GLM资格，平台Pending无worker |
+| 03 | BLOCKED | 已提交Qwen资格，平台Pending无worker |
 | 04 | TODO | 等02实际资格 |
 | 05 | TODO | 等03实际资格 |
-| 06 | TODO | GLM原始4GPU已提交，Pending |
-| 07 | TODO | 旧attempt4infra；鉴权修复后2GPU新作业Pending，0有效评分 |
-| 08 | TODO | 等04/06 |
-| 09 | TODO | 等05/07 |
-| 10 | TODO | cache已及时消费，最终业务清理待后续 |
+| 06 | BLOCKED | 已提交GLM原始，平台Pending无worker |
+| 07 | BLOCKED | 鉴权修复后新作业Pending无worker，0有效评分 |
+| 08 | TODO | 等04 verifiedexport；原始分数只阻挡比较 |
+| 09 | TODO | 等05 verifiedexport；原始分数只阻挡比较 |
+| 10 | TODO | 已及时消费完成cache/proof，最终清理待业务消费者 |
 
 ## 2. 偏离检测
 
-**结论：** 已偏离：命中D2，已停止并纠正。
-**检测窗口：** 实际128k准备至Ticket01完成/四GPU路线已提交｜**当前前沿：** 02/03/06/07真实GPU结果
+**结论：** 未偏移，正常推进。
+**检测窗口：** Ticket01完成至长期GPU排队及消费uvproof｜**当前前沿：** 02/03/06/07等待实际worker
 
 | 模式 | 判定 | 依据 |
 | --- | --- | --- |
-| D1 工具打磨 | CLEAR | 输入与鉴权阻碍解决后停止改代码，无新CPU探针 |
-| D2 细节反复重试 | HIT | 平台observer为同一quota JSON shape解析错误重复GET；应在首次保存后本地解析 |
-| D3 支线问题修补 | CLEAR | 输入/鉴权均属01/07实际前提 |
-| D4 可并行任务停滞 | CLEAR | 02/03/06/07全已独立提交，当前都在平台队列 |
-| D5 超范围镀金 | CLEAR | 未改20更新/80评分/类别/0.03标准 |
-| D6 分析空转 | CLEAR | 两个实测错误最小修复，01已完成 |
-| D7 路线违背 | CLEAR | Qwen独立技术预算事前记录，其他源合同保持 |
+| D1 工具打磨 | CLEAR | 未扩展harness；仅用户明确要求的已消费产物清理，完成后停止 |
+| D2 细节反复重试 | CLEAR | 只读现有job等待，不重复提交/改参数/重试quota |
+| D3 支线问题修补 | CLEAR | 无不相关代码修复 |
+| D4 可并行任务停滞 | CLEAR | 四个独立前沿全已提交，缺GPUworker；后续尚无满足资格前提的run |
+| D5 超范围镀金 | CLEAR | 未改模型/数据类别/20更新/320分母/0.03标准 |
+| D6 分析空转 | CLEAR | 主线外部等待；完成一次必要依赖纠正后停止设计工作 |
+| D7 路线违背 | CLEAR | 实际run合同保持，未把CPU/排队标为数值PASS |
 
-**文档检查：** S1–S6未发现新缺陷；已将01实际完成、03与07新作业身份更新到tickets和plan。
-**归因：** D2执行偏离（observer读取脚本），非spec缺陷。
+**文档检查：** S1：plan旧{04,06}->08/{05,07}->09过度串行，04/05reload由既有benchmarkserver提供时还造成组件环；已明确export/start/reload/scoring/comparison边界。S2–S6无新缺陷。
+**归因：** 无执行HIT；S1在造成运行等待前发现并纠正。
 
 ## 3. 纠正建议
 
-**分支：** A：spec/tickets合理，无需改动。
-**需停止的偏离行为：** D2：停止因本地解析错误重复平台请求；先保留响应，只从同份JSON解析。该行为已停止，当前quota不再读取。
+**分支：** B：spec/tickets存在缺陷，先更新文档再继续。
+
+**文档更新（先执行）：**
+1. plan：export释放更新后serving/scoring，原始评分只依赖于最终比较（可直接执行，已应用）。
+2. 04/05：共享更新后benchmark实际server/generation作为重载证据；完整重载验收不放宽（可直接执行，已应用）。
+3. 08/09：入口要求verifiedexport，最终关闭要求双版本80分；不另开重复server（可直接执行，已应用）。
+
+**需停止的偏离行为：** 无。
 
 **接下去的路线：**
-1. 并行02/03：观察各自native模型/teacher/optimizer/refit与三路数值；两步实际成功、MAE合同及HF2真实权重变化齐全后才PASS。
-2. 并行06/07：观察真实server/sandbox/grader；固定题单每版本80有效结果，infra仍missing。
-3. 每模型资格PASS后独立fresh20；任何其他模型排队不成为其阻碍。
+1. 并行02/03/06/07：保持原队列/launcher；Starting/Running后读取真实业务结果，故障先取原生证据。
+2. 各资格真正PASS后独立fresh20；原始benchmark继续。
+3. 各verified20export后启动更新后benchmark，共享其重载证据；两版本有效80分齐全才比较/清理。
 
 ## 4. 最值得关注的 3 点
 
-1. 01实际完成仅证明前提，不代表训练或训推数值PASS。
-2. 全4GPU作业已排队，30requested/0allocated；不重复提交、不动其他作业。
-3. Qwen首8最长48129，完整80最长67951；>64k GPU与数值覆盖在fresh20据实验证。
+1. 当前BLOCKED是计划状态；原生平台状态仍为Pending，不能据此推断调度原因或数值结果。
+2. 更新后scoring可以与尚未完成的原始scoring并行；完整reload与比较标准均保留。
+3. active模型、环境、数据和launcher仍被依赖，只有已消费proof被删除。

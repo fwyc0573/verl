@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Consume unused standalone uv proof after confirming durable toolchain and runtime independence. |
 | 2026-11-06 | Record actual both-model input/configuration PASS and preserve qualification length limits. |
 | 2026-11-06 | Record complete Qwen underfill and verify independent 64k/128k native recipe composition. |
 | 2026-11-06 | Adopt the user-selected Steptron numerical standard; record cache repair and native launch adapters. |
@@ -165,3 +166,10 @@ All four actual2/20recipes were reloaded from native preparation outputs, not --
 The job-specific CPUbenchmark membershipSHA7196960f9291e5b23d576b814920a0a0c001444d8fbf0aa48debf710c6ca779e is not substituted for the already frozen canonical fixed-benchmark membership consumed by GPUbenchmarks (SHA0f4ab340bedb7a64f3089af679be829aefcf8ecbbeb11c3a164578ba6b702877). Dataset/source selection is fixed; path-bearing rawreceipt hashes may differ across namespaces.
 
 Ticket01 closes only the native runtime/input/configuration contract. GPU training, native weight versions, numerical agreement, actualHFchangedvalues/reload and grader acceptance remain open in02–09.
+
+
+## Consumed standalone tool proof cleanup
+
+Scoped du after earlier cache consumption found only60MB under the task downloads root, including58MiB in its standalone uv0.11.16 proof. Read-only checks: current command-v/readlink-f uv resolves /data/ycfeng/toolchain/bin/uv, and rg found no removed-path reference in tests/manual/agent_opd or task commandfiles. Normal GPU workers select the installed native Python and do not install dependencies. environment.sh uses image uv; historical CPU proof0.11.16 is not relabelled as the global version.
+
+At04:23:14HKT consumed only /data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-0.11.16 (15regularfiles/60733618bytes/0symlinks) and offline-registry-check (2files/2123bytes). Total60735741regularfilebytes, bothroots absent afterwards. /data/ycfeng/toolchain/bin/uv --version returned0.11.14 identically before/after. The active native environment, task observations, shared inputs/models and all job launchers remain. Selected exact receipt: evidence/consumed-uv-proof-cleanup.json. This verifies cleanup, not GPU acceptance.

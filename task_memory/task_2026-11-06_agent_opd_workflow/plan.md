@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Release updated-model scoring after verified export; share reload evidence with that server and wait for baseline scores only for comparison. |
 | 2026-11-06 | Close verified input/configuration prerequisites and record four independent GPU jobs. |
 | 2026-11-06 | Use model-specific run settings to resolve measured Qwen input underfill without changing populations. |
 | 2026-11-06 | Correct coarse prerequisites so model qualification and original benchmarks advance independently. |
@@ -30,11 +31,11 @@ Qwen 在原61440预算下真实候选不足14/15/17/20；采用模型原生支�
 | [05](tickets/05-qwen-update20.md) | Frog/Qwen 20 次更新、精确最终权重导出和重载 | 03 |
 | [06](tickets/06-glm-original-benchmark.md) | 原始 GLM 在固定题目上的 80 个有效原生评分 | 01: runtime and fixed benchmark inputs |
 | [07](tickets/07-qwen-original-benchmark.md) | 原始 Qwen 在同一固定题目上的 80 个有效原生评分 | 01: runtime and fixed benchmark inputs |
-| [08](tickets/08-glm-updated-benchmark.md) | 第 20 步 GLM 的 80 个评分和前后比较 | 04, 06 |
-| [09](tickets/09-qwen-updated-benchmark.md) | 第 20 步 Qwen 的 80 个评分和前后比较 | 05, 07 |
+| [08](tickets/08-glm-updated-benchmark.md) | 第 20 步 GLM 的 80 个评分和前后比较 | 04 verified export for serving/scoring; 06 only for final comparison |
+| [09](tickets/09-qwen-updated-benchmark.md) | 第 20 步 Qwen 的 80 个评分和前后比较 | 05 verified export for serving/scoring; 07 only for final comparison |
 | [10](tickets/10-cleanup-and-delivery.md) | 两组结果归档、最终清理及分支同步 | 08, 09 |
 
-依赖：01.GLM -> 02 -> 04; 01.Qwen -> 03 -> 05; 01.benchmark -> {06,07}; {04,06} -> 08; {05,07} -> 09; {08,09} -> 10。01整体在所有子交付完成后关闭；一个模型的输入失败不能阻挡已满足真实前提的另一模型。原生benchmark prepare可在对应worker启动阶段完成，必须在server/评分启动之前验证固定题单和真实digest。
+依赖：01.GLM -> 02 -> 04.export -> 08.scoring; 01.Qwen -> 03 -> 05.export -> 09.scoring; 01.benchmark -> {06,07}; 08.reload -> 04.done; 09.reload -> 05.done; {06,08.scoring} -> 08.comparison; {07,09.scoring} -> 09.comparison; {04,05,08,09} -> 10。04/05导出通过后即可启动更新后benchmark的新SGLang进程；其实际身份检查和生成同时提供04/05重载证据，不另开重复推理作业，也不等待原始benchmark评分全部完成。两版本80个有效结果齐全后才能关闭前后比较。01整体在所有子交付完成后关闭；一个模型的输入失败不能阻挡已满足真实前提的另一模型。原生benchmark prepare可在对应worker启动阶段完成，必须在server/评分启动之前验证固定题单和真实digest。
 
 确认合同后，02、03、06、07 不互相等待，可在实测配额允许时并行运行独立 RJobs。运行合同的代码适配已由并行 sub-agents 协作实现。每项完成即可消费不再依赖的临时产物并推送代码/结论；10 仅负责最终核对，不能成为延迟日常清理或推送的理由。
 
