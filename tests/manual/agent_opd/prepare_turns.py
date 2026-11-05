@@ -170,17 +170,19 @@ def prepare(args):
         ]
         subprocess.run(command, env=environment, cwd=miles_root, check=True)
         source_receipt = json.loads(source_report.read_text())
-        rows = [
-            make_prepared_row(
-                json.loads(line),
-                tokenizer=tokenizer,
-                renderer=renderer,
-                pair_name=args.pair,
-                prompt_format=prompt_format,
-                max_prompt_tokens=args.max_prompt_tokens,
-            )
-            for line in source_path.read_text().splitlines()
-        ]
+        # Unicode line separators inside JSON strings are not record boundaries.
+        with source_path.open(encoding="utf-8") as stream:
+            rows = [
+                make_prepared_row(
+                    json.loads(line),
+                    tokenizer=tokenizer,
+                    renderer=renderer,
+                    pair_name=args.pair,
+                    prompt_format=prompt_format,
+                    max_prompt_tokens=args.max_prompt_tokens,
+                )
+                for line in stream
+            ]
     counts = Counter(row["source_category"] for row in rows)
     expected = {category: args.turns_per_category for category in manifest["categories"]}
     if counts != expected or len({row["source_uid"] for row in rows}) != len(rows):

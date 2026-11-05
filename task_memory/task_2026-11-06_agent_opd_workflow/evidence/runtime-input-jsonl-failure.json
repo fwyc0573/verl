@@ -1,0 +1,172 @@
+{
+  "collected_at": "2026-11-05T18:40:23.601360+00:00",
+  "job": {
+    "name": "exp-1106-023143-126576",
+    "uid": "fcb63990-ae00-49fd-adb0-a0548c8559ad",
+    "creation_timestamp": "2026-11-05T18:31:43Z",
+    "owner_references": null,
+    "creator": "i-fengyicheng",
+    "group": "codesign",
+    "preemptible": "no",
+    "stop_annotations": {
+      "rjob.brainpp.cn/system-stop-reason": "Some critical tasks failed."
+    },
+    "stop_timestamp": "2026-11-05T18:38:40Z",
+    "status": {
+      "phase": "Failed",
+      "reason": "RJobFailed",
+      "message": "Tasks with failed status: [default]",
+      "taskStatuses": {
+        "default": {
+          "failed": 1,
+          "taskStage": "stepmind-task-stage-1"
+        }
+      },
+      "finishTime": "2026-11-05T18:38:40Z",
+      "taskStage": "stepmind-task-stage-1"
+    }
+  },
+  "source_mount": {
+    "default": "100.96.128.195:/data/ycfeng:/data/ycfeng"
+  },
+  "requested": {
+    "default": {
+      "replicas": 1,
+      "positive_tags": [
+        "H800"
+      ],
+      "containers": [
+        {
+          "resources": {
+            "limits": {
+              "cpu": "16",
+              "memory": "96000Mi",
+              "nvidia.com/gpu": "0"
+            },
+            "requests": {
+              "cpu": "16",
+              "memory": "96000Mi",
+              "nvidia.com/gpu": "0"
+            }
+          },
+          "image": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504"
+        }
+      ]
+    }
+  },
+  "replica": {
+    "name": "exp-1106-023143-126576-cfcd2084",
+    "uid": "789b70f4-18e8-467d-846f-0829b02fdf9f",
+    "creation_timestamp": "2026-11-05T18:31:45Z",
+    "owner_references": [
+      {
+        "apiVersion": "rjob.brainpp.cn/v1alpha1",
+        "kind": "RJob",
+        "name": "exp-1106-023143-126576",
+        "uid": "fcb63990-ae00-49fd-adb0-a0548c8559ad",
+        "controller": true,
+        "blockOwnerDeletion": true
+      }
+    ],
+    "creator": "i-fengyicheng",
+    "group": "codesign",
+    "preemptible": "no",
+    "stop_annotations": {},
+    "stop_timestamp": null,
+    "status": {
+      "conditions": [
+        {
+          "type": "Initialized",
+          "status": "True",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T18:31:46Z"
+        },
+        {
+          "type": "Ready",
+          "status": "False",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T18:38:39Z",
+          "reason": "PodFailed"
+        },
+        {
+          "type": "ContainersReady",
+          "status": "False",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T18:38:39Z",
+          "reason": "PodFailed"
+        },
+        {
+          "type": "PodScheduled",
+          "status": "True",
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-11-05T18:31:46Z"
+        }
+      ],
+      "hostIP": "10.191.9.15",
+      "podIP": "10.191.9.15",
+      "podIPs": [
+        {
+          "ip": "10.191.9.15"
+        }
+      ],
+      "startTime": "2026-11-05T18:31:46Z",
+      "containerStatuses": [
+        {
+          "name": "default",
+          "state": {
+            "terminated": {
+              "exitCode": 1,
+              "reason": "Error",
+              "message": "user command: exit status 1",
+              "startedAt": "2026-11-05T18:35:43Z",
+              "finishedAt": "2026-11-05T18:38:38Z",
+              "containerID": "containerd://3065db124f074eebb2688b994a83345ff1c5ea2055319281dc55ec4999e4f98a"
+            }
+          },
+          "lastState": {},
+          "ready": false,
+          "restartCount": 0,
+          "image": "sha256:3eae996c8f0d4383bda9cc9448dd445eb960f253ac7d3e4cb4f0c6465cb706ae",
+          "imageID": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+          "containerID": "containerd://3065db124f074eebb2688b994a83345ff1c5ea2055319281dc55ec4999e4f98a",
+          "started": false
+        }
+      ],
+      "qosClass": "Guaranteed",
+      "phase": "Failed",
+      "nodeName": "gpu-h800-0206.host.platform.shaipower.com",
+      "finishTimestamp": "2026-11-05T18:38:40Z"
+    }
+  },
+  "log_snapshot": {
+    "source": "/data/ycfeng/tmp/verl-agent-opd-20261106/environment-sync.log",
+    "snapshot": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/sixth-environment-repair-input-failure.log",
+    "bytes": 3026,
+    "sha256": "15f31a0d16b95770fd21b25412625c30588ccb03b69023c8df04390a76a9aba4"
+  },
+  "initiating_failure": {
+    "phase": "Actual input preparation after successful runtime import preflight",
+    "producer_marker": "GLM5_2_DATASET_PREPARED 80",
+    "exception": "json.decoder.JSONDecodeError: Unterminated string starting at: line 1 column 11 (char 10)",
+    "caller": "tests/manual/agent_opd/prepare_turns.py:175 json.loads(line)",
+    "source_or_parser_diagnosis": "Owned by /root/data_benchmark; not inferred in this observer report."
+  },
+  "inputs_receipt_present": false,
+  "coverage": {
+    "personal_python_exact_job_and_replica": "PASS",
+    "live_events": "PASS",
+    "raw_log_bytes": "PASS",
+    "historical_events": "NOT_REQUESTED",
+    "audits": "NOT_REQUESTED: immediate native exception observed before failed exit; no unknown initiating SIGTERM/stop",
+    "existing_deepscan": "NOT_REQUESTED: root requested minimal self-exit RCA",
+    "control_operations": "NONE"
+  },
+  "limits": [
+    "Native imports/config-only dispatch PASS does not establish GPU construction, tensor conversion, training or numerical agreement.",
+    "This observer has not inspected or altered source training examples or prepared cloud artifacts.",
+    "No positive OOM or preemption evidence occurs in returned container state/events; no global node/log scan performed."
+  ],
+  "source_receipt_sha256": "3dda2859eb5089956ea74814cae5fa4e5cb935b4ff1f4a5f3de4daf2d7f5f027",
+  "runtime_preflight_evidence": "runtime-preflight-cpu.json",
+  "fa4_detection_evidence": "runtime-fa4-repair.json"
+}

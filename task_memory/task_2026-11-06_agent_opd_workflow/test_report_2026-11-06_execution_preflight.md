@@ -9,6 +9,14 @@
 
 Scope: native workflow adapters and environment preparation. No GPU training, numerical qualification, export/reload or benchmark acceptance is claimed.
 
+## Actual repaired native runtime result
+
+The zero-GPU job exp-1106-023143-126576 ran /data/ycfeng/tmp/verl-agent-opd-commands-20261106/environment-repair.sh using installed Python3.12.13/torch2.13.0+cu130. The FA4 backport was actually applied with the expected final source SHA. runtime_probe.py returned PASS_CPU_PREFLIGHT, failures=[]/incomplete=[]; actual megatron.bridge import and GLM47FlashBridge/Qwen35VLBridge config-only dispatch PASS. Four pinned model configurations/tokenizers/index-shard metadata and two exact vocabulary/special-token comparisons PASS. Actual CUDA/model construction/weight conversion remains NOT RUN. Retained exact reports: evidence/runtime-preflight-cpu.json and evidence/runtime-fa4-repair.json.
+
+Actual prepare.sh then failed after its source producer reported80records: prepare_turns.py175 json.loads(line) raised `JSONDecodeError: Unterminated string starting at: line 1 column 11 (char 10)`. Container exit1 at02:38:38HKT; platformFailed02:38:40HKT. Selected identity/mount/traceback/query limits: evidence/runtime-input-jsonl-failure.json. No complete inputs.json. Producer temporary JSONL was automatically removed on failure; its exact bytes and Unicode separator counts are unavailable. The next test targets the consumer's JSONL delimiter contract; malformed physical records must continue to raise.
+
+Targeted JSONL regression PASS under hostPython3.10.6 via an inline stdlib check executing the actual Miles writer AST and current reader AST. Three records containing U+0085/U+2028/U+2029 in prompt/history became9segments under the old splitlines reader, reproducing the same position10 Unterminated string error. Physical file iteration restored exactly3records, identical row values and unchanged original bytes. An actually malformed physical JSON record still raised JSONDecodeError. prepare_turns.py now only replaces splitlines with UTF-8 file-line iteration; no skipping or content normalization. Source compile, bash-n prepare.sh and git diff--check PASS. The actual dataset rerun is still required.
+
 ## Native optional-FA4 import repair
 
 Fifth job installed300packages, then failed Bridge import with `cutlass.cute.core.ThrMma` AttributeError. Actual package/import/model results, terminal identity and query limits are retained in evidence/runtime-environment-bridge-failure.json. The installed MCore0.19.2 attention.py imported flash_attn.cute before checking flash-attn-4 metadata, despite this repository explicitly excluding FA4. Its FA2 package's old cute API conflicts with installed CUTLASS DSL4.6.2. TE's metadata-first detection did not require a change. CPUhost GLIBCXX failure is a separate boundary, not the worker traceback.
