@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Resume GLM qualification and prepare Qwen native fused output after actual old-logprob OOM. |
 | 2026-11-06 | Record both observed initialization/dispatch repairs and the current qualification attempts; original benchmarks continue with real valid grades. |
 | 2026-11-06 | Resume after two actual teacher-context initialization failures; preserve running original benchmarks. |
 | 2026-11-06 | Release updated-model scoring after verified export; share reload evidence with that server and wait for baseline scores only for comparison. |
@@ -16,7 +17,7 @@
 
 ## Execution status
 
-Resumed execution: actual teacher-context and four-prompt/eight-worker dispatch failures have scoped fixes and passing native regressions. Further actual qualification attempts exposed default task scoring despite disabled task rewards, and a vLLM detokenize output option forwarded into SGLang sampling. Use the existing zero-task-reward output field and the shared SGLang parameter translation; native CPU dispatch and teacher-produced sampled/top-k requests verify these fixes. GLM exp-1106-140852-369748 failed at teacher scoring and needs another qualification; Qwen exp-1106-143409-709386 is active. Exact UIDs, launchers, code-identity limits and selected evidence are in tickets02/03 and progress.md. Numerical acceptance, optimizer updates and weight change still require actual GPU evidence. Original GLM/Qwen benchmarks continue under their existing identities with valid native grader results. Earlier Pending/zero-score snapshots remain historical evidence.
+Resumed execution: actual teacher-context and four-prompt/eight-worker dispatch failures have scoped fixes and passing native regressions. Further actual qualification attempts exposed default task scoring despite disabled task rewards, and a vLLM detokenize output option forwarded into SGLang sampling. Use the existing zero-task-reward output field and the shared SGLang parameter translation; native CPU dispatch and teacher-produced sampled/top-k requests verify these fixes. GLM exp-1106-144604-954702 / UID731dd5f3-f5db-485b-a8e3-ba8879043933 is running from pushed59222710 after the shared teacher translation repair. Qwen exp-1106-143409-709386 failed at native old-logprob logits.clone OOM before any update. Enable the existing fused output head only in Qwen settings; all four native2/20config checks pass, but CUDA/memory/numerical/update gates require a fresh qualification. Exact UIDs, launchers, code-identity limits and selected evidence are in tickets02/03 and progress.md. GLM fourth qualification has actual step1 numerical FAIL (all three global token MAEs exceed0.03), while native training continues. Full numerical acceptance, two optimizer updates and weight change remain open. Original GLM/Qwen benchmarks continue under their existing identities with valid native grader results. Earlier Pending/zero-score snapshots remain historical evidence.
 
 用户已指示“开始执行”。按上一轮推荐的两组对称 20 步及前后评测推进，使用已创建的 agent-opd 分支。01 的 native runtime、两组80/8输入、2/20配置和 benchmark 题单均已实际通过并关闭。两组资格与原始评测均已独立提交；原始 Qwen 的 sandbox token 环境变量解析已修复，实际鉴权、工具交互与有效 grader 评分已有证据。两原始评测仍未完成全部80个有效结果。代码、配置和每阶段结论及时提交/push，临时产物随消费随清理。
 

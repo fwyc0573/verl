@@ -1,0 +1,54 @@
+{
+  "collected_at": "2026-11-06T06:50:29.504549+00:00",
+  "name": "exp-1106-144604-954702",
+  "uid": "731dd5f3-f5db-485b-a8e3-ba8879043933",
+  "created_at": "2026-11-06T06:46:05Z",
+  "creator": "i-fengyicheng",
+  "status": {
+    "phase": "Running",
+    "reason": "RJobRunning",
+    "message": "Tasks is running: [default]",
+    "taskStatuses": {
+      "default": {
+        "active": 2,
+        "taskStage": "stepmind-task-stage-1"
+      }
+    },
+    "taskStage": "stepmind-task-stage-1"
+  },
+  "configuration_labels": {
+    "quotagroup.brainpp.cn/preemptible": "no",
+    "quotagroup.brainpp.cn/quotagroup": "codesign"
+  },
+  "source_mount": "100.96.128.195:/data/ycfeng:/data/ycfeng",
+  "tasks": {
+    "default": {
+      "replicas": 2,
+      "positive_tags": [
+        "H800"
+      ],
+      "source_mount": "100.96.128.195:/data/ycfeng:/data/ycfeng",
+      "containers": [
+        {
+          "name": "default",
+          "image": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+          "resources": {
+            "limits": {
+              "cpu": "48",
+              "mellanox.com/mlnx_rdma": "1",
+              "memory": "600000Mi",
+              "nvidia.com/gpu": "8",
+              "rdma/mlnx_shared": "8"
+            },
+            "requests": {
+              "cpu": "48",
+              "memory": "600000Mi",
+              "nvidia.com/gpu": "8"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "controls": "NONE"
+}

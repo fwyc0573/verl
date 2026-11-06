@@ -1,0 +1,58 @@
+{
+  "collected_at": "2026-11-06T06:59:16.597907+00:00",
+  "method": "One exact terminal RJob read; no business logs or job control",
+  "name": "exp-1106-145012-595571",
+  "uid": "ef494491-785b-46ff-b40c-e5248eb9129a",
+  "created_at": "2026-11-06T06:50:12Z",
+  "creator": "i-fengyicheng",
+  "status": {
+    "phase": "Succeeded",
+    "reason": "RJobSucceeded",
+    "message": "RJob succeeded",
+    "taskStatuses": {
+      "default": {
+        "succeeded": 1,
+        "taskStage": "stepmind-task-stage-1"
+      }
+    },
+    "finishTime": "2026-11-06T06:54:27Z",
+    "taskStage": "stepmind-task-stage-1"
+  },
+  "stop_annotations": {},
+  "configuration_labels": {
+    "quotagroup.brainpp.cn/preemptible": "no",
+    "quotagroup.brainpp.cn/quotagroup": "codesign"
+  },
+  "source_mount": "100.96.128.195:/data/ycfeng:/data/ycfeng",
+  "tasks": {
+    "default": {
+      "replicas": 1,
+      "positive_tags": [
+        "H800"
+      ],
+      "containers": [
+        {
+          "name": "default",
+          "image": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+          "resources": {
+            "limits": {
+              "cpu": "4",
+              "memory": "8000Mi",
+              "nvidia.com/gpu": "0"
+            },
+            "requests": {
+              "cpu": "4",
+              "memory": "8000Mi",
+              "nvidia.com/gpu": "0"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "launcher_timeline_from_root": {
+    "native_succeeded_hkt": "2026-11-06 14:54:28",
+    "exit_handler_job_stop_hkt": "2026-11-06 14:54:29",
+    "interpretation": "Reported native success precedes launcher exit-handler cleanup stop; these are not queried business/audit fields."
+  }
+}

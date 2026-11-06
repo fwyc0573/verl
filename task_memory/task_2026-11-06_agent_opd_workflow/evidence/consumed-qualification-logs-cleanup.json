@@ -1,0 +1,420 @@
+{
+  "job": "exp-1106-145012-595571",
+  "started_at_utc": "2026-11-06T06:54:25.383753+00:00",
+  "status": "PASS",
+  "manifest_path": "/data/ycfeng/tmp/verl-agent-opd-consumed-artifacts-20261106/failed-qualification-log-cleanup-proposal.json",
+  "manifest_sha256": "c295266f4349afb8ea270a1f5b5faf4ea73dacbd01196b9bc06fff4417f7825e",
+  "terminal_receipt_path": "/data/ycfeng/sota-engine/verl/task_memory/task_2026-11-06_agent_opd_workflow/evidence/consumed-qualification-terminal-read.json",
+  "terminal_receipt_sha256": "69e7bb4b915df9c4f51ed8db0ffd4dc5115dba2903312cdb2ad8025c501814ef",
+  "preflight_all_52_files_verified": true,
+  "deleted": [
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/logs/rank-0/gcs_server.err",
+      "bytes": 0,
+      "mtime_ns": 1793924499368968862,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/logs/rank-0/ray-start.log",
+      "bytes": 2102,
+      "mtime_ns": 1793924507500981073,
+      "sha256": "775e9a28af60bf89f5898bdebcba4b42c87929bd954b9d4ecef1203f587c5f27"
+    },
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/logs/rank-0/ray-stop.log",
+      "bytes": 94707,
+      "mtime_ns": 1793924648761193256,
+      "sha256": "f39ab295e641a80031ec307d65280b338049f811e5a85fbab3c5bb53c47f49e1"
+    },
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/logs/rank-0/raylet.err",
+      "bytes": 0,
+      "mtime_ns": 1793924504372976376,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/logs/rank-0/raylet.out",
+      "bytes": 112108,
+      "mtime_ns": 1793924643733185702,
+      "sha256": "9c1e8ea50ba48003d18adec8a1529c338b071b27a1f594b1ff1f44f906d295e2"
+    },
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/logs/rank-0/training.log",
+      "bytes": 22525,
+      "mtime_ns": 1793924641981183070,
+      "sha256": "75bb4d6b1c1ce9f9782e572aacb6681931168b2d0a0e0c07bcfb46bee8d26776"
+    },
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/logs/rank-1/ray-start.log",
+      "bytes": 481,
+      "mtime_ns": 1793924543508049927,
+      "sha256": "e8fd5d7527712ef93263a2fecd2f75b6eafdcf0b04c58526a40f3b1f23650a2b"
+    },
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/logs/rank-1/ray-stop.log",
+      "bytes": 20202,
+      "mtime_ns": 1793924656385549124,
+      "sha256": "24b627516498837f49abcca53abbc9cb3dfe7380cb327d862764e78776f0ca1c"
+    },
+    {
+      "job": "exp-1106-033627-955641",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/logs/rank-0/gcs_server.err",
+      "bytes": 0,
+      "mtime_ns": 1793923360141525014,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "job": "exp-1106-033627-955641",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/logs/rank-0/ray-start.log",
+      "bytes": 2102,
+      "mtime_ns": 1793923368429646464,
+      "sha256": "c4d7cd349d75557a4eab88100f4526e13faf143c3fe83fd72446b808f6a853e1"
+    },
+    {
+      "job": "exp-1106-033627-955641",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/logs/rank-0/ray-stop.log",
+      "bytes": 82357,
+      "mtime_ns": 1793923474379199645,
+      "sha256": "32f8c0e1757a9293139053e75edeb6c193f545f408f5d3ef708ea5f2b7243006"
+    },
+    {
+      "job": "exp-1106-033627-955641",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/logs/rank-0/raylet.err",
+      "bytes": 0,
+      "mtime_ns": 1793923365305600685,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "job": "exp-1106-033627-955641",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/logs/rank-0/raylet.out",
+      "bytes": 58337,
+      "mtime_ns": 1793923469451127375,
+      "sha256": "78c71310ad2fc829cf4ceb4a3dc071ae52704106656dc8e097299d1f914d8467"
+    },
+    {
+      "job": "exp-1106-033627-955641",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/logs/rank-0/training.log",
+      "bytes": 27707,
+      "mtime_ns": 1793923467451098047,
+      "sha256": "84a3188e62bab9dd746442ef236235bd71aacd03de448bfc58ce4edc8e7826fe"
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/logs/rank-0/gcs_server.err",
+      "bytes": 0,
+      "mtime_ns": 1793944045374416261,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/logs/rank-0/ray-start.log",
+      "bytes": 2097,
+      "mtime_ns": 1793944054834538918,
+      "sha256": "88593566d135d655e0979eb8269513292b9f81f8e08f427c5cfcff00f1e30d76"
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/logs/rank-0/ray-stop.log",
+      "bytes": 94744,
+      "mtime_ns": 1793944690302746860,
+      "sha256": "c259c742aa21eabc91304ac2135de2e4fb83f9ee77daad1e2e87c5e3de869f6f"
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/logs/rank-0/raylet.err",
+      "bytes": 0,
+      "mtime_ns": 1793944050690485190,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/logs/rank-0/raylet.out",
+      "bytes": 434554,
+      "mtime_ns": 1793944668686468332,
+      "sha256": "dad52256e04f5a41c0b026707d322693f613fe0ead0b8a256b94be504b1fca74"
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/logs/rank-0/training.log",
+      "bytes": 30092,
+      "mtime_ns": 1793944663694404005,
+      "sha256": "fe1a339589d9353b3729b8e5073fc5a63fc5a459a1691089f2559ae9d5250e96"
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/logs/rank-1/ray-start.log",
+      "bytes": 480,
+      "mtime_ns": 1793944099922320842,
+      "sha256": "1cad8aed959cfb487f920d335b98c667cbba7c69a1df9ab4bcd92432ad63af96"
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/logs/rank-1/ray-stop.log",
+      "bytes": 20163,
+      "mtime_ns": 1793944705518742543,
+      "sha256": "fe0f8b4b528433d867359e45d3295b264582fecb0076caf7a1390210f69faf1b"
+    },
+    {
+      "job": "exp-1106-134403-815066",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/logs/rank-0/gcs_server.err",
+      "bytes": 0,
+      "mtime_ns": 1793944558983562492,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "job": "exp-1106-134403-815066",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/logs/rank-0/ray-start.log",
+      "bytes": 2102,
+      "mtime_ns": 1793944568535672973,
+      "sha256": "2f7096e98795522584068cd40c31562f07c589766e0aa6a89e8383a739ac84d5"
+    },
+    {
+      "job": "exp-1106-134403-815066",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/logs/rank-0/ray-stop.log",
+      "bytes": 45300,
+      "mtime_ns": 1793944961336319373,
+      "sha256": "863214bf0f4978795168c35b7b69379394ae3233934d7440a6ef93921f34ec73"
+    },
+    {
+      "job": "exp-1106-134403-815066",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/logs/rank-0/raylet.err",
+      "bytes": 0,
+      "mtime_ns": 1793944564423625394,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "job": "exp-1106-134403-815066",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/logs/rank-0/raylet.out",
+      "bytes": 280694,
+      "mtime_ns": 1793944958068280075,
+      "sha256": "a31b7b39108f9e8d8a06e749cd79c1b5d49c4ac7fe0b64de838566872750926c"
+    },
+    {
+      "job": "exp-1106-134403-815066",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/logs/rank-0/training.log",
+      "bytes": 27194,
+      "mtime_ns": 1793944953088220204,
+      "sha256": "1bc49a045d58c2715985ee26bc66c6ba422e7235ea72f8ea097279b5d28a4a7c"
+    }
+  ],
+  "retained": [
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/agent.yaml",
+      "bytes": 217,
+      "mtime_ns": 1793924542843052473,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/cluster.json",
+      "bytes": 290,
+      "mtime_ns": 1793924542693545472,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/rank-0-result.json",
+      "bytes": 528,
+      "mtime_ns": 1793924649067796296,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/rank-1-result.json",
+      "bytes": 174,
+      "mtime_ns": 1793924656641229405,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/recipe.yaml",
+      "bytes": 38146,
+      "mtime_ns": 1793924543799052755,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/settings.json",
+      "bytes": 730,
+      "mtime_ns": 1793924542839052471,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-033627-955641",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/agent.yaml",
+      "bytes": 225,
+      "mtime_ns": 1793923370642581436,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-033627-955641",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/cluster.json",
+      "bytes": 155,
+      "mtime_ns": 1793923370491565921,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-033627-955641",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/rank-0-result.json",
+      "bytes": 529,
+      "mtime_ns": 1793923474646233646,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-033627-955641",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/recipe.yaml",
+      "bytes": 38148,
+      "mtime_ns": 1793923371654581765,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-033627-955641",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/settings.json",
+      "bytes": 733,
+      "mtime_ns": 1793923370638581435,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/agent.yaml",
+      "bytes": 217,
+      "mtime_ns": 1793944100271446691,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/cluster.json",
+      "bytes": 288,
+      "mtime_ns": 1793944100110999992,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/observations/training.json",
+      "bytes": 588,
+      "mtime_ns": 1793944654935969586,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/rank-0-result.json",
+      "bytes": 528,
+      "mtime_ns": 1793944690629372126,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/rank-1-result.json",
+      "bytes": 560,
+      "mtime_ns": 1793944705824079590,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/recipe.yaml",
+      "bytes": 38145,
+      "mtime_ns": 1793944101327446839,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/settings.json",
+      "bytes": 730,
+      "mtime_ns": 1793944100267446689,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134403-815066",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/agent.yaml",
+      "bytes": 225,
+      "mtime_ns": 1793944570931542693,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134403-815066",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/cluster.json",
+      "bytes": 155,
+      "mtime_ns": 1793944570776626952,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134403-815066",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/observations/training.json",
+      "bytes": 588,
+      "mtime_ns": 1793944950952274454,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134403-815066",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/rank-0-result.json",
+      "bytes": 529,
+      "mtime_ns": 1793944961663429369,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134403-815066",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/recipe.yaml",
+      "bytes": 38148,
+      "mtime_ns": 1793944571983542956,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134403-815066",
+      "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/settings.json",
+      "bytes": 733,
+      "mtime_ns": 1793944570931542693,
+      "size_mtime_preserved": true
+    }
+  ],
+  "directories_removed": false,
+  "permissions_changed": false,
+  "physical_space_reclaimed_verified": false,
+  "terminal_collected_at": "2026-11-06T06:24:06.820726+00:00",
+  "exact_failed_identities": [
+    {
+      "name": "exp-1106-030133-940211",
+      "uid": "b6976435-4e8a-4099-8777-800a18db25a1",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T00:24:12Z"
+    },
+    {
+      "name": "exp-1106-033627-955641",
+      "uid": "9ad17773-2d4e-4b21-8dc2-2150ab8a6f85",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T00:04:37Z"
+    },
+    {
+      "name": "exp-1106-134352-384471",
+      "uid": "66f0521c-831e-4336-abba-6a1dfeae74bd",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T05:58:28Z"
+    },
+    {
+      "name": "exp-1106-134403-815066",
+      "uid": "41b7cae1-d62e-4624-bfb1-cd5839d4617e",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T06:02:46Z"
+    }
+  ],
+  "available_hashes_verified": 38,
+  "all_28_candidate_paths_absent": true,
+  "all_24_retained_stats_match": true,
+  "deleted_count": 28,
+  "deleted_bytes": 1360048,
+  "retained_count": 24,
+  "retained_bytes": 161309,
+  "finished_at_utc": "2026-11-06T06:54:25.994705+00:00"
+}

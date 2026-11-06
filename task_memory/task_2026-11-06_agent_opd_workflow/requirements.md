@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Record the actual Qwen old-logprob allocation failure and reuse its existing fused output configuration. |
 | 2026-11-06 | Resume execution and reserve the native teacher's extra scoring token after actual initialization failures. |
 | 2026-11-06 | Select separate native Qwen context settings after actual source-bank underfill at 61440 tokens. |
 | 2026-11-06 | Adopt the user-selected Steptron numerical standard; record cache repair and native launch adapters. |
@@ -95,3 +96,8 @@ The first complete Qwen candidate scan at61440tokens actually selected14/15/17/2
 ## Out of scope unless separately requested
 
 正式长训练、视觉训练资格、训练算法的大范围改写、上游 PR、miles 作业控制及产物删除。未发生需要 ADR 的长期架构取舍；暂不创建 ADR。
+
+
+## Existing native fused output head after actual Qwen OOM
+
+Qwen qualification exp-1106-143409-709386 reached native trainer old-logprob inference after generation and the native teacher-scoring path returned. It failed at the entropy branch logits.clone allocation:37.04GiB requested,33.80GiB free. No optimizer update completed. Select the existing actor_rollout_ref.model.use_fused_kernels option through the current explicit model run settings:Qwen true,GLM false. Reuse the existing Triton fused LM-head path and preserve the GDN decoder, full input population, context/prompt/response caps, batch4, dynamic token budgets, CP1/nonDCP, optimizer and all numerical/benchmark acceptance. Source inspection supports the pinned Qwen35VLBridge hook path; actual CUDA runtime/memory/numerical/update acceptance still requires a fresh qualification. Do not add an entropy override, smaller histories, static slicing, exception fallback or new backend. The four native composed2/20recipes verify only the intended Qwen option changes; no GPU PASS is inferred.

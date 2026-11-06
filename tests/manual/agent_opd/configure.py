@@ -37,7 +37,7 @@ SETTING_FIELDS = (
     "learning_rate", "seed", "save_directory", "project_name", "experiment_name", "optimizer_betas",
     "weight_decay", "clip_ratio", "clip_ratio_high", "importance_ratio_bounds",
     "rollout_memory_utilization", "teacher_memory_utilization", "max_running_requests", "chunked_prefill_size",
-    "numerical_limits",
+    "numerical_limits", "use_fused_kernels",
 )
 
 
@@ -145,6 +145,7 @@ def recipe_overrides(pair, settings, *, dataset, agent_config, steps, repository
         "algorithm.rollout_correction.rollout_rs_threshold": f"{1.0 / upper}_{1.0 / lower}",
         "actor_rollout_ref.model.path": cloud_path(pair["student"]),
         "actor_rollout_ref.model.use_remove_padding": True,
+        "actor_rollout_ref.model.use_fused_kernels": settings["use_fused_kernels"],
         "actor_rollout_ref.model.mtp.enable": False,
         "actor_rollout_ref.actor.ppo_mini_batch_size": settings["train_batch_size"],
         "actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu": 1,

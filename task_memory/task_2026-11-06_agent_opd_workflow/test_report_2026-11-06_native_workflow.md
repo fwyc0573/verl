@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Record Qwen native old-logprob OOM, the scoped fused option check and consumed-log cleanup. |
 | 2026-11-06 | Separate the actual Qwen task-reward failure from the non-blocking prefill API error; verify the native no-task-reward dispatch repair. |
 | 2026-11-06 | Record actual initialization failures, real partial native scores and corrected fresh qualification submissions. |
 | 2026-11-06 | Record one bounded capacity-alternative check and preserve the existing H800 queue. |
@@ -11,7 +12,7 @@
 
 # Native agent OPD workflow
 
-This report covers actual worker execution and scientific acceptance separately. GLM qualification and original benchmark are queued. Qwen original serving actually loaded, but all four first-question seeds failed in sandbox authentication; no native numerical or SWE score is accepted yet.
+This report preserves dated execution evidence separately from scientific acceptance. Current15:00HKT:GLM fourth qualification is initializing; Qwen fourth qualification failed in native old-logprob CUDA allocation, with its existing fused output configuration verified for the next attempt. Original GLM/Qwen benchmarks have16/49valid grades and continue. Neither training pair has an observed completed optimizer update or numerical PASS. Earlier queued/auth-failure sections are historical.
 
 ## Source and environment
 
@@ -184,3 +185,23 @@ Shared fix in async_sglang_server.py consumes detokenize beside the existing max
 Exact affected check uses the preceding timeout/env/native-interpreter command, with `-m unittest tests.workers.rollout.test_sglang_teacher_sampling_on_cpu -v`. Final result:1test/2subcases/OK, covering native teacher-produced prompt_logprobs0 and2. The real SGLangHttpServer.generate creates the real GenerateReqInput, whose sampling dictionary is accepted by pinned SamplingParams; input IDs, max_new_tokens1, temperature1, return_logprobtrue, logprob_start_len0, optional topK, output IDs/logprobs and native prompt-logprob extraction all match explicit expectations. Tokenizer responses/Ray actor-name context are fixtures, not GPU scoring. The old direct SamplingParams(detokenize=false) negative case reproduces TypeError. Evidence: evidence/native-sglang-teacher-translation-regression.json. Three earlier test iterations failed due fixture setup/expectation only (read-only LoRA property, missing disabled MTP field, native None topK default); no extra production change was made for them. The12existing native dispatch/alignment checks had passed; no unrelated test expansion follows.
 
 Qwen exp-1106-143409-709386 /UIDa0ed2fa1-9007-4456-8196-f24c148be472 was submitted14:34:09 after7965a385 push/remote match and a14:33:43 exact previous Failed reread. Launcher72859, same8H800/32CPU300GB/command/input/image/currentNFS, actual worker14:35:39/H8000128. It remains initializing while shared adapter source was edited; actual behavior must establish which repair it loaded. No healthy run was canceled.
+
+
+## Qwen old-logprob memory failure and native fused output setting
+
+Actual exp-1106-143409-709386 / UIDa0ed2fa1-9007-4456-8196-f24c148be472 failed at14:47:43HKT native RayPPOTrainer._compute_old_log_prob -> Megatron forward_only -> transformer_impl.py1205 logits.clone. CUDA requested37.04GiB, free33.80GiB, capacity79.19GiB; worker exit1/Error14:47:57 and jobFailed14:47:59. This is CUDA allocation failure, not platformOOMKilled. Training receipt0calls/0updates/native_fit_returnedfalse/exportnull; turns/aggregate absent. Native teacher scoring returned by the uncaught awaited control flow and score-row assertion, but raw finite teacher values and independent-prefill success are not retained. Exact recipe/input/memory/error-chain evidence: evidence/qwen-qualification-old-logprob-oom.json. The inferred80072logit rows are explicitly an upper-bound calculation, not an observed tensor shape.
+
+Change only the existing model.use_fused_kernels setting totrue for Qwen, explicitfalse for GLM. Existing Qwen35VLBridge -> Qwen3VLModel -> Qwen3VLGPTModel(GPTModel) forwards native output_processor/context before full logits materialization. Existing Triton linear_cross_entropy computes numerical logprobs/entropy; GDN, token populations, lengths, masks, packing and loss stay unchanged. No engine code or entropy switch was added.
+
+Exact CPU entry: timeout60s env PYTHONPATH=/data/ycfeng/sota-engine/verl PYTHONNOUSERSITE=1 PYTHONDONTWRITEBYTECODE=1 TMPDIR=/data/ycfeng/tmp /data/ycfeng/envs/verl-agent-opd-megatron-sglang/bin/python -B - with the inline four-case driver. Python3.12.13. The driver uses actual recipe_overrides/Hydra compose/native DistillationConfig for GLM/Qwen×2/20; verifies Qwen's sole changed override is model.use_fused_kernelstrue, GLM none; checks full context/token budgets, batch, CP1/nonDCP, remove-padding/MTPdisabled and k1 teacher-PG settings. Actual4/4PASS. Receipt: evidence/native-qwen-fused-config-regression.json. An initial driver unnecessarily instantiated HFModelConfig, whose tokenizer side effects cannot read unmounted canonical cloud assets on this host; it failed and was corrected to inspect the composed model config and instantiate only DistillationConfig. No model tensor was read.
+
+Attempted existing check: timeout60s with the same env/interpreter, -m pytest tests/models/test_model_forward_fused.py -q -p no:cacheprovider. Actual collectionBLOCKED before tests: OSError /lib/x86_64-linux-gnu/libstdc++.so.6: version GLIBCXX_3.4.32 not found (required by transformer_engine/libtransformer_engine.so). This known CPU-host boundary was not patched; no testPASS claimed. Actual fused CUDA compilation/runtime, memory, three-way MAE≤0.03, optimizer updates and weight changes remain pending the next real worker. Do not expand host environment work.
+
+## Exact consumed old-log cleanup
+
+0GPU exp-1106-145012-595571 / UIDef494491-785b-46ff-b40c-e5248eb9129a, same rjob_run.py/image/personal/currentNFS, command /data/ycfeng/tmp/verl-agent-opd-commands-20261106/cleanup-consumed-qualification-logs.sh; --gpus0 --replicas1 --cpus4 --memory-gb8, launcher52396. Command SHA7e6184fccc0a1ea81ab17648aaf8155d6cbc2cf571ed91c2332321957e5b8bd5, bash-nPASS. Native API Succeededfinish14:54:27 precedes launcher observed success14:54:28 and exit cleanupstop14:54:29. Worker normal mount ownership used; no chmod/sudo/trash operations.
+
+Expected/actualPASS: all52manifest files preflight verified,38available hashes verified; exactly28old raw logs/1,360,048bytes deleted and absent;24retained files/161,309bytes size/mtime preserved. Receipt canonical /mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/cleanup/exp-1106-145012-595571/receipt.json,17633bytes,SHAcee4f7a899c2a951c495520ceba7692c3fc2ca6e0240afc211347cb98fcc4965, independently read through readonlySSH alias. Selected full receipt and platform terminal are in evidence/consumed-qualification-logs-cleanup.json and evidence/consumed-qualification-logs-cleanup-platform.json. Physical reclaimed space unverified; no directories/permissions changed.
+
+
+GLM fourth qualification produced actual step1 numerical FAIL before this commit: four inputs / 1,265 loss-eligible tokens at version0. Global token MAE decode/prefill=0.0390841902, decode/trainer=0.0310881366, prefill/trainer=0.0382872158; every pair exceeds0.03. Per-input maxima0.0418422823/0.0357459613/0.0419510390 also prevent whole-input bounds from proving native-pack acceptance. Token/version checks match; two turns pass and two fail. Native training continues normally for the remaining update/version/HF2 evidence. GLM fresh20 remains gated on full numerical qualification; do not relax thresholds. Selected source-backed diagnosis is pending.

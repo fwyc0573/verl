@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Verify native Qwen fused configuration and exact consumed-log cleanup; preserve GPU acceptance gates. |
 | 2026-11-06 | Resume from actual native initialization failures and partial original-benchmark scores. |
 | 2026-11-06 | Record incomplete checkpoint, exact queued jobs and preserved launcher continuation state. |
 | 2026-11-06 | Consume completed uv proof and correct future updated-benchmark component dependencies during the GPU queue wait. |
@@ -804,3 +805,24 @@ The new shared-adapter regression initially had fixture defects: assigning read-
 3. 新Qwen和两baseline持续运行，所有训练/数值/HF/320评分最终门槛仍未完成。
 
 Route correction applied: the affected native shared-adapter test now passes1test/two sampled-topK subcases after correcting the fixture's native None expectation. The production change remains only consumption of the vLLM output-format option at the existing SGLang translation boundary. No further fixture or harness expansion is needed. The task caller's narrower removal has been replaced by the shared path. Submit/push this verified step and release only the next GLM qualification; Qwen709386 has actually entered fit0/2 and continues. No numerical or update acceptance is inferred.
+
+
+## 15:02HKT: actual OOM repair and cleanup milestone
+
+02 current GLM exp-1106-144604-954702 / UID731dd5f3-f5db-485b-a8e3-ba8879043933 was created14:46:05HKT after59222710 push/remote match and exact oldFailed reread14:45:27. Launcher10138; same2×8H800/48CPU600GBperreplica. Actual ranks14:48:19/26 started onH8000401/0182. At15:00:28 bothteachers loaded12/12shards and student/4agentworkers started. Recipe matches. No actual update/MAE acceptance yet.
+
+03 actual exp-1106-143409-709386 / UIDa0ed2fa1-9007-4456-8196-f24c148be472 failed native old-logprob logits.clone OOM37.04GiBrequest/33.80GiBfree at14:47:43; worker exit1at14:47:57/jobFailed14:47:59. Generation/native teacher await returned by actual control flow; teacher finite values and independent prefill remainunverified. Exact0calls/0updates/noHF2. RCA evidence/qwen-qualification-old-logprob-oom.json. Reuse existing fused LM-head configuration forQwen,GLMexplicitfalse; pinnedQwen35VLBridge/GPTModel native outputhook avoids full logits beforeGDN-independent head. Four2/20native composedconfig checksPASS, Qwenonlyoneoverridechange. Existing fused pytestcollectionblockedbyknownhostGLIBCXX_3.4.32; initialmodel-dataclassfixturecannotreadunmountedcloudtokenizer. Stophostenvironment/fixtureexpansion; actualGPUisthenextcheck. No changedpopulation/length/packing/loss/standards.
+
+10 dailycleanupPASS:0GPUexp-1106-145012-595571 / UIDef494491-785b-46ff-b40c-e5248eb9129a,launcher52396,4CPU8GB1replica. Normalworkerownership deletedexact28hashedoldlogs/1,360,048logicalbytes; all52preflightfiles/38availablehashesverified,all28pathsabsent,24retained/161,309bytesunchangedsize/mtime. API Succeeded14:54:27beforelaunchersuccess14:54:28/exitcleanup14:54:29. Nochmod/sudo/directoriesremoved/physicalspaceclaim. Fullreceipt+platformevidencecommitted; activeinputs/models/jobsandnewerRCAremainretained.
+
+06/07 at14:59:49:GLM16/80valid(10resolved/6unresolved),Qwen49/80(37/12),each4generationrunning. Threeoldcontextmissingremaininvaliduntilnormalmissing-onlyrecoveryaftercurrentterminal. No baseline restart.
+
+### check-progress at the configuration/cleanup milestone
+
+1. Planning:PASS1/FAILED1/TODO8;02newGLMrunning,03actualOOMbeforeupdate,nextqualificationpending;06/07partialhealthy;04/05/08/09andfinal10gatesopen.
+2. Drift: D1CLEAR no new harness; D2HIT host verification attempted beyond known available library/cloud boundaries, costing preparation time; D3/D4/D5/D6/D7CLEAR existing output option directly addresses actualOOM,paralleljobscontinue,noengine/refactor/scopechange. S5currentstatesupdatedabove;S1–S4/S6no new defect. Attribution:execution,not requested by tickets.
+3. Correction applied:keep exact host errors as limits,stop host dependency/fixture work,accept only native configuration4/4PASS for this reversible setting,commit/push then exact old-terminal recheck and immediately submitQwen. ActualGPUwillverifyfusedruntime/memory/three-wayMAE/two updates/values;no CPUacceptanceupgrade. Cleanupiscompleteandmustnotdelay03.
+4. Focus: real trainer old-logprob is the current Qwen frontier; GLM continues unchanged; neitherqual norfresh20/final320grader gates are closed.
+
+
+GLM fourth qualification produced actual step1 numerical FAIL before this commit: four inputs / 1,265 loss-eligible tokens at version0. Global token MAE decode/prefill=0.0390841902, decode/trainer=0.0310881366, prefill/trainer=0.0382872158; every pair exceeds0.03. Per-input maxima0.0418422823/0.0357459613/0.0419510390 also prevent whole-input bounds from proving native-pack acceptance. Token/version checks match; two turns pass and two fail. Native training continues normally for the remaining update/version/HF2 evidence. GLM fresh20 remains gated on full numerical qualification; do not relax thresholds. Selected source-backed diagnosis is pending.

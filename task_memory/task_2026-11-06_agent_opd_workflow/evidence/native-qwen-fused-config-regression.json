@@ -1,0 +1,75 @@
+{
+  "collected_at_utc": "2026-11-06T06:55:16.539047+00:00",
+  "python": "3.12.13",
+  "results": [
+    {
+      "pair": "glm",
+      "steps": 2,
+      "status": "PASS",
+      "use_fused_kernels": false,
+      "changed_overrides": [],
+      "all_other_overrides_equal": true,
+      "native_distillation_dataclass_verified": true,
+      "complete_input_packing_cp1_preserved": true,
+      "gpu_or_weights_read": false
+    },
+    {
+      "pair": "glm",
+      "steps": 20,
+      "status": "PASS",
+      "use_fused_kernels": false,
+      "changed_overrides": [],
+      "all_other_overrides_equal": true,
+      "native_distillation_dataclass_verified": true,
+      "complete_input_packing_cp1_preserved": true,
+      "gpu_or_weights_read": false
+    },
+    {
+      "pair": "qwen",
+      "steps": 2,
+      "status": "PASS",
+      "use_fused_kernels": true,
+      "changed_overrides": [
+        [
+          "actor_rollout_ref.model.use_fused_kernels=false",
+          "actor_rollout_ref.model.use_fused_kernels=true"
+        ]
+      ],
+      "all_other_overrides_equal": true,
+      "native_distillation_dataclass_verified": true,
+      "complete_input_packing_cp1_preserved": true,
+      "gpu_or_weights_read": false
+    },
+    {
+      "pair": "qwen",
+      "steps": 20,
+      "status": "PASS",
+      "use_fused_kernels": true,
+      "changed_overrides": [
+        [
+          "actor_rollout_ref.model.use_fused_kernels=false",
+          "actor_rollout_ref.model.use_fused_kernels=true"
+        ]
+      ],
+      "all_other_overrides_equal": true,
+      "native_distillation_dataclass_verified": true,
+      "complete_input_packing_cp1_preserved": true,
+      "gpu_or_weights_read": false
+    }
+  ],
+  "earlier_checks": [
+    {
+      "check": "existing fused output tests",
+      "result": "BLOCKED before collection",
+      "error": "CPU host libstdc++ lacks GLIBCXX_3.4.32; no environment patch"
+    },
+    {
+      "check": "first config driver model instantiation",
+      "result": "FAIL",
+      "error": "HFModelConfig.__post_init__ attempts tokenizer/model config access; canonical cloud assets are not mounted on this CPU host. Corrected the driver to inspect composed model config and instantiate only actual DistillationConfig."
+    }
+  ],
+  "limits": [
+    "CPU configuration only; no actual fused CUDA kernel, memory, trainer logprob, update, or numerical acceptance proved."
+  ]
+}

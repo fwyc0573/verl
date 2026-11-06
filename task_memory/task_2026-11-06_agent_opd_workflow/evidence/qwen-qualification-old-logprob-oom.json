@@ -1,0 +1,280 @@
+{
+  "status": "failed",
+  "job": "exp-1106-143409-709386",
+  "job_uid": "a0ed2fa1-9007-4456-8196-f24c148be472",
+  "replica": "exp-1106-143409-709386-cfcd2084",
+  "replica_uid": "cefa42cf-ce6a-4c1b-bd35-f2dfab316917",
+  "platform": {
+    "owner": "platform_observer",
+    "node": "gpu-h800-0128",
+    "container_started_at_hkt": "2026-11-06T14:35:39+08:00",
+    "container_finished_at_hkt": "2026-11-06T14:47:57+08:00",
+    "exit_code": 1,
+    "termination_reason": "Error",
+    "restart_count": 0,
+    "job_failed_observed_at_hkt": "2026-11-06T14:48:57+08:00"
+  },
+  "submitted_source": {
+    "commit": "7965a38503b6bea67bce40c5799eceea969d40b2",
+    "reference_sha256": {
+      "tests/manual/agent_opd/agent_loop.py": "5238e21c94c061d8919ec00a047bd923df2e31c16108da7980ccb9d30284e311",
+      "tests/manual/agent_opd/train.py": "2dac6eebb6ce6f49f2ea055e0867856a1e0cbd5c829a2c007aac1717397df5b9",
+      "tests/manual/agent_opd/configure.py": "790745648fbf6a71fe7fdae5f7e5aea207523bb5b68c44f6121d86ac373ea5c6",
+      "verl/trainer/ppo/ray_trainer.py": "eb41f99ccc66976eab14ebe35aa1aa5b7318e02469240ef1569ac4c884c94312",
+      "verl/experimental/agent_loop/agent_loop.py": "99a131b86cb16d5d8aa9a773a644dcd628948941cbebcd007cd70d78e47f1e33",
+      "verl/experimental/teacher_loop/teacher_manager.py": "485883f75919fb5b9eec54b509b87765d19482bd56975ab2454601d9af16bfc4",
+      "verl/workers/engine/megatron/transformer_impl.py": "405dcf1962348a774efa006a08fe13176199fd5fcae1cf4e98b3cfb507b62cff"
+    },
+    "scope": "Committed source reference; not a separate per-process import attestation."
+  },
+  "actual_recipe": {
+    "path": "/data/ycfeng/tmp/verl-agent-opd-20261106/rendezvous/exp-1106-143409-709386/recipe.yaml",
+    "sha256": "12f1b69db26b65fcf631127ed6c3c31adab8a7968ef96af56ae2c3c27602104f",
+    "bytes": 38147,
+    "prompt_cap": 126975,
+    "response_cap": 4096,
+    "context": 131072,
+    "batch_size": 4,
+    "shuffle": false,
+    "balance_batch": true,
+    "agent_workers": 4,
+    "requested_updates": 2,
+    "rollout_n": 1,
+    "log_prob_use_dynamic_bsz": true,
+    "log_prob_max_token_len_per_gpu": 131072,
+    "log_prob_micro_batch_size_per_gpu": null,
+    "actor_use_dynamic_bsz": true,
+    "actor_ppo_max_token_len_per_gpu": 131072,
+    "actor_ppo_micro_batch_size_per_gpu": 1,
+    "tensor_parallel_size": 2,
+    "context_parallel_size": 1,
+    "distillation_enabled": true,
+    "use_task_rewards": false
+  },
+  "initiating_exception": {
+    "type": "torch.OutOfMemoryError",
+    "at_hkt": "2026-11-06T14:47:43+08:00",
+    "stage": "native trainer old_log_prob forward-only inference",
+    "location": "verl/workers/engine/megatron/transformer_impl.py:1205",
+    "operation": "logits_bak = logits.clone()",
+    "allocation_gib": 37.04,
+    "free_gib": 33.8,
+    "capacity_gib": 79.19,
+    "process_memory_including_non_pytorch_gib": 43.57,
+    "other_process_memory_gib": 1.77,
+    "pytorch_allocated_gib": 41.72,
+    "pytorch_reserved_unallocated_mib": 74.14,
+    "is_observer_exception": false
+  },
+  "native_terminal_chain": [
+    "train.main -> run_ppo -> TaskRunner.run -> run_training -> trainer.fit",
+    "RayPPOTrainer.fit -> _compute_old_log_prob -> actor_rollout_wg.compute_log_prob",
+    "EngineWorker.compute_log_prob -> actor.infer_batch -> MegatronEngine.infer_batch -> forward_backward_batch(forward_only=True)",
+    "Megatron forward_step -> gptmodel_forward_model_engine -> _lm_head_logits_processor -> logits.clone -> torch.OutOfMemoryError"
+  ],
+  "previous_stages": {
+    "student_generation_batch_returned": {
+      "status": "proven_by_control_flow",
+      "evidence": "Actual failure entered old_log_prob after synchronous async_rollout_manager.generate_sequences returned; worker and manager asyncio.gather do not suppress child exceptions."
+    },
+    "native_teacher_scoring_returned": {
+      "status": "proven_by_control_flow",
+      "evidence": "Actual distillation.enabled=true and training validate=false; native postprocess awaits teacher scoring without catch, and teacher manager asserts score/token row count equals sequence length before returning. Native batch generation returned.",
+      "direct_score_values_retained": false,
+      "numerical_acceptance_verified": false
+    },
+    "auxiliary_independent_prefill": {
+      "status": "unverified",
+      "evidence": "The agent awaited rescoring, but it catches errors and returns observations. Turn observations are only persisted after old_log_prob succeeds; this forward failed before writer. No turns.jsonl or aggregate.json exists. Absence of a warning is not used as success evidence.",
+      "numerical_acceptance_verified": false
+    }
+  },
+  "first_batch": {
+    "parquet": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-032827-028041/qwen-qualification.parquet",
+    "sha256": "8dcf066a3c3fa4a2913a1bb587df468e47db8e2e7df0ae49c75982ced610e471",
+    "prompt_tokens": [
+      48129,
+      33327,
+      38553,
+      11430
+    ],
+    "full_sequence_upper_bound_tokens": [
+      52225,
+      37423,
+      42649,
+      15526
+    ],
+    "generated_lengths_retained": false,
+    "actual_microbatch_row_membership_retained": false,
+    "student_vocab_size": 248320,
+    "student_config_sha256": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+    "memory_relation_inference": {
+      "description": "The upper-bound pair 33327+38553+2*4096 has 80072 token rows; TP2 FP32 vocabulary-shard logits at 248320/2*4 bytes per row would occupy about 37.04 GiB. This matches the rounded allocation but is not a retained tensor shape or generated-length measurement.",
+      "conditional_token_rows": 80072,
+      "conditional_clone_gib": 37.035865783691406
+    }
+  },
+  "training_receipt": {
+    "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-143409-709386/observations/training.json",
+    "local_raw_path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/exp-1106-143409-709386-training-zero-updates.json",
+    "sha256": "94319a64c7c02d8dede0b017e79d9a2ec5df14047360cdc7889a0e3ae82489bf",
+    "bytes": 588,
+    "contents": {
+      "requested_updates": 2,
+      "actor_update_call_count": 0,
+      "completed_updates": 0,
+      "update_outcomes": [],
+      "native_megatron_optimizer_success_contract": {
+        "source": "verl/workers/engine/megatron/transformer_impl.py:MegatronEngine.optimizer_step",
+        "success_condition": "Megatron optimizer.step update_successful=False raises before returning",
+        "iteration_source": "verl/workers/engine_workers.py:TrainingWorker.train_mini_batch",
+        "one_optimizer_step_per_call": true
+      },
+      "native_fit_returned": false,
+      "last_native_checkpoint_step": null,
+      "final_export": null
+    }
+  },
+  "acceptance": {
+    "completed_updates": 0,
+    "three_way_numerical_alignment_verified": false,
+    "version_0_to_1_verified": false,
+    "final_hf2_exists": false,
+    "actual_changed_tensor_value_verified": false
+  },
+  "native_log_receipt": {
+    "job": "exp-1106-143409-709386",
+    "job_uid": "a0ed2fa1-9007-4456-8196-f24c148be472",
+    "replica": "exp-1106-143409-709386-cfcd2084",
+    "replica_uid": "cefa42cf-ce6a-4c1b-bd35-f2dfab316917",
+    "query": {
+      "replicas": "exp-1106-143409-709386-cfcd2084",
+      "start": "1793946900000000000",
+      "end": "1793947771986000896",
+      "direction": "forward",
+      "limit": 2000
+    },
+    "queried_at_utc": "2026-11-06T06:49:31.986001+00:00",
+    "raw_path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/exp-1106-143409-709386-failure-native-window.json",
+    "sha256": "d23b439d8ae8545d05b0d91025b1f59c443cf3e38b75356d2991542ed89a83a0",
+    "bytes": 266616,
+    "rows": 536,
+    "first_timestamp": "1793946939539248000",
+    "last_timestamp": "1793947677369260000",
+    "truncated_by_limit": false,
+    "secret_scan": "loaded_sensitive_environment_values_not_found"
+  },
+  "selected_traceback": [
+    {
+      "index": 219,
+      "timestamp_ns": "1793947663088408000",
+      "message": "Traceback (most recent call last):"
+    },
+    {
+      "index": 239,
+      "timestamp_ns": "1793947663092188000",
+      "message": "ray.exceptions.RayTaskError(OutOfMemoryError): \u001b[36mray::TaskRunner.run()\u001b[39m (pid=3898, ip=10.191.8.5, actor_id=1cc48f01bc93a23ec4ab9e5702000000, repr=<train.TaskRunner object at 0x7fb834ae3770>)"
+    },
+    {
+      "index": 249,
+      "timestamp_ns": "1793947663092235000",
+      "message": "  File \"/data/ycfeng/sota-engine/verl/verl/trainer/ppo/ray_trainer.py\", line 1586, in fit"
+    },
+    {
+      "index": 250,
+      "timestamp_ns": "1793947663092242000",
+      "message": "    old_log_prob, old_log_prob_mfu = self._compute_old_log_prob(batch)"
+    },
+    {
+      "index": 252,
+      "timestamp_ns": "1793947663092275000",
+      "message": "  File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/train.py\", line 387, in _compute_old_log_prob"
+    },
+    {
+      "index": 255,
+      "timestamp_ns": "1793947663092294000",
+      "message": "  File \"/data/ycfeng/sota-engine/verl/verl/trainer/ppo/ray_trainer.py\", line 1304, in _compute_old_log_prob"
+    },
+    {
+      "index": 256,
+      "timestamp_ns": "1793947663092300000",
+      "message": "    output = self.actor_rollout_wg.compute_log_prob(batch_td)"
+    },
+    {
+      "index": 264,
+      "timestamp_ns": "1793947663092329000",
+      "message": "ray.exceptions.RayTaskError(OutOfMemoryError): \u001b[36mray::WorkerDict.actor_rollout_compute_log_prob()\u001b[39m (pid=4219, ip=10.191.8.5, actor_id=e72a5be32f4b1fdab48a53ea02000000, repr=<verl.single_controller.ray.base.WorkerDict object at 0x7f85533461e0>)"
+    },
+    {
+      "index": 288,
+      "timestamp_ns": "1793947663092570000",
+      "message": "  File \"/data/ycfeng/sota-engine/verl/verl/workers/engine_workers.py\", line 761, in compute_log_prob"
+    },
+    {
+      "index": 289,
+      "timestamp_ns": "1793947663092581000",
+      "message": "    output = self.actor.infer_batch(data)"
+    },
+    {
+      "index": 297,
+      "timestamp_ns": "1793947663092593000",
+      "message": "  File \"/data/ycfeng/sota-engine/verl/verl/workers/engine_workers.py\", line 462, in infer_batch"
+    },
+    {
+      "index": 298,
+      "timestamp_ns": "1793947663092595000",
+      "message": "    output = self.engine.infer_batch(data, loss_function=loss_function)"
+    },
+    {
+      "index": 300,
+      "timestamp_ns": "1793947663092597000",
+      "message": "  File \"/data/ycfeng/sota-engine/verl/verl/workers/engine/base.py\", line 148, in infer_batch"
+    },
+    {
+      "index": 301,
+      "timestamp_ns": "1793947663092599000",
+      "message": "    outputs = self.forward_backward_batch(data, loss_function, forward_only=True)"
+    },
+    {
+      "index": 303,
+      "timestamp_ns": "1793947663092603000",
+      "message": "  File \"/data/ycfeng/sota-engine/verl/verl/workers/engine/megatron/transformer_impl.py\", line 956, in forward_backward_batch"
+    },
+    {
+      "index": 312,
+      "timestamp_ns": "1793947663092619000",
+      "message": "  File \"/data/ycfeng/sota-engine/verl/verl/workers/engine/megatron/transformer_impl.py\", line 1403, in forward_step"
+    },
+    {
+      "index": 315,
+      "timestamp_ns": "1793947663092624000",
+      "message": "  File \"/data/ycfeng/sota-engine/verl/verl/models/mcore/model_forward.py\", line 235, in gptmodel_forward_model_engine"
+    },
+    {
+      "index": 318,
+      "timestamp_ns": "1793947663092631000",
+      "message": "  File \"/data/ycfeng/sota-engine/verl/verl/workers/engine/megatron/transformer_impl.py\", line 1205, in _lm_head_logits_processor"
+    },
+    {
+      "index": 319,
+      "timestamp_ns": "1793947663092635000",
+      "message": "    logits_bak = logits.clone()"
+    },
+    {
+      "index": 321,
+      "timestamp_ns": "1793947663092642000",
+      "message": "torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 37.04 GiB. GPU 0 has a total capacity of 79.19 GiB of which 33.80 GiB is free. Including non-PyTorch memory, this process has 43.57 GiB memory in use. Process 7641 has 1.77 GiB memory in use. Of the allocated memory 41.72 GiB is allocated by PyTorch, and 74.14 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)"
+    },
+    {
+      "index": 323,
+      "timestamp_ns": "1793947663138164000",
+      "message": "Training Progress:   0%|          | 0/2 [05:16<?, ?it/s]"
+    },
+    {
+      "index": 535,
+      "timestamp_ns": "1793947677369260000",
+      "message": "ExitCode= 1"
+    }
+  ],
+  "scope": "Read-only business diagnosis. No source/config edits, tests, submission, stop, retry, or control performed."
+}

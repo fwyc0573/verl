@@ -3,6 +3,7 @@
   "response_length": 4096,
   "train_batch_size": 4,
   "ppo_max_token_len_per_gpu": 131072,
+  "use_fused_kernels": true,
   "learning_rate": 2e-06,
   "seed": 42,
   "optimizer_betas": [

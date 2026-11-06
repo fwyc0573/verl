@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Record actual old-logprob OOM and the verified native fused configuration. |
 | 2026-11-06 | Record actual qualification failure or running original benchmark evidence on resume. |
 | 2026-11-06 | Submit the real qualification after complete Qwen input/configuration PASS. |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
@@ -13,7 +14,7 @@
 
 **Blocked by:** 01 Qwen runtime/input/config prerequisites; independent of GLM training inputs and original benchmarks.
 
-**Status:** in-progress — new exp-1106-143409-709386 / UID a0ed2fa1-9007-4456-8196-f24c148be472, launcher72859, actual8H800 worker started14:35:39HKT. Recipe workers4/batch4/prompt126975/response4096/input/models match. The prior attempt failed at default task scoring with zero updates; reward0 repair7965a385 was pushed before this submission. The shared SGLang detokenize translation was edited on live NFS during initialization after a GLM teacher failure, so verify actual loaded behavior rather than inferring it from launch SHA. Native CPU translation/dispatch regressions pass; actual teacher scoring, MAE, two updates, versions and HF2 weight changes remain unverified.
+**Status:** in-progress — exp-1106-143409-709386 / UIDa0ed2fa1-9007-4456-8196-f24c148be472 failed14:47:59HKT, worker exit1 at14:47:57. Actual native old-logprob entropy logits.clone requested37.04GiB with33.80GiB free; zero updates/HF2. Generation and native teacher dispatch returned by control-flow evidence; teacher values and independent-prefill success remain unverified. Reuse the existing fused output option only for Qwen; four native2/20configuration cases pass and pinned Bridge/MCore hook inspection supports this path. Host fused tests are blocked before collection by GLIBCXX_3.4.32, not markedPASS. Fresh qualification pending push and exact previous-terminal recheck. No actual MAE/update/value gate has passed.
 
 - [ ] 实际加载两个固定模型，验证同对 tokenizer/template 兼容性和 Qwen 渲染后的真实历史/长度，不直接套用 GLM token IDs。
 - [ ] 按合同覆盖 reasoning、正文和工具表达；teacher 评分 tokens、student tokens 及 loss mask 对齐。

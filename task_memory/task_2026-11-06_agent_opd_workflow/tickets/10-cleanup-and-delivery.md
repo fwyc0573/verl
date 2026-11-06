@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Verify normal zero-GPU cleanup of the exact consumed old logs without permission changes. |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
 | 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
 
@@ -19,3 +20,6 @@
 - [ ] 核对本任务临时目录、checkpoint、派生数据、日志及缓存已消费，记录目标、文件数/字节数与独立缺失复核；保留共享模型和原始数据。
 - [ ] 已验证代码步骤和精简文档普通提交、及时 push；最终本地 SHA 与个人 agent-opd 远端一致，原有 .serena/ 不进入提交。
 - [ ] 完成 check-progress 自检，未通过项如实保留为未完成，不以清理或发布替代科学验收。
+
+
+Daily cleanup completed independently of final ticket acceptance:0GPU exp-1106-145012-595571 / UIDef494491-785b-46ff-b40c-e5248eb9129a succeeded14:54:27HKT before launcher exit cleanup. Normal worker mount ownership deleted exactly28 consumed raw logs/1,360,048logicalbytes in four old Failed qualification roots; all52preflight entries and38available hashes passed. All28paths absent,24retained files/161,309bytes preserve size/mtime. No directories or permissions changed. Receipt evidence/consumed-qualification-logs-cleanup.json and platform identity evidence/consumed-qualification-logs-cleanup-platform.json. Physical reclaimed capacity is not verified; current model/data/run dependencies remain retained.
