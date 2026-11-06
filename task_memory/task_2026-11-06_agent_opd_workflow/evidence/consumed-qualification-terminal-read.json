@@ -1,0 +1,36 @@
+{
+  "collected_at": "2026-11-06T06:24:06.820726+00:00",
+  "purpose": "Exact terminal identity verification for cleanup of already-consumed old raw logs",
+  "jobs": [
+    {
+      "name": "exp-1106-030133-940211",
+      "uid": "b6976435-4e8a-4099-8777-800a18db25a1",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T00:24:12Z"
+    },
+    {
+      "name": "exp-1106-033627-955641",
+      "uid": "9ad17773-2d4e-4b21-8dc2-2150ab8a6f85",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T00:04:37Z"
+    },
+    {
+      "name": "exp-1106-134352-384471",
+      "uid": "66f0521c-831e-4336-abba-6a1dfeae74bd",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T05:58:28Z"
+    },
+    {
+      "name": "exp-1106-134403-815066",
+      "uid": "41b7cae1-d62e-4624-bfb1-cd5839d4617e",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T06:02:46Z"
+    }
+  ],
+  "controls": "NONE",
+  "business_reads": "NONE"
+}

@@ -7,7 +7,7 @@
 
 # Agent OPD workflow: incomplete execution checkpoint
 
-**Overall status: INCOMPLETE.** This is a continuation record, not a completion archive or numerical acceptance. Both initial qualifications actually failed before training at the native teacher context guard. The next attempts passed that guard and initialized native models, then failed before sampling because batch4 was split among8agent workers. Both scoped fixes have now passed native CPU regressions and are pushed asffb83e83; new same-resource qualifications are submitted. Original GLM/Qwen benchmarks are running and have partial valid native outcomes. Tickets04/05/08/09/10 remain unfinished. The earlier all-Pending checkpoint is historical.
+**Overall status: INCOMPLETE.** This is a continuation record, not a completion archive or numerical acceptance. Both initial qualifications failed at the native teacher context guard; the next attempts initialized models but failed on four-prompt/eight-worker dispatch. Those fixes passed native regressions and were pushed asffb83e83. The third Qwen attempt crossed dispatch but failed in the unrelated default task scorer before any update; its earlier unsupported detokenize prefill parameter was isolated as an auxiliary error. The scoped loop repair has passing native CPU dispatch/API checks, but another GPU qualification is required. The third GLM attempt and both original benchmarks remain active. Tickets04/05/08/09/10 remain unfinished.
 
 ## Requested deliverables and observed results
 
@@ -28,12 +28,12 @@ The scoped repair reserves one native teacher scoring token in the existing prep
 
 | Ticket | Job | RJob UID | GPUs | Observed state |
 | --- | --- | --- | --- | --- |
-| 02 | exp-1106-140852-369748 | b20d2692-2e74-4b68-a2b2-6b3cd0e29cb4 | 2×8 | Starting at 14:11:01 HKT |
-| 03 | exp-1106-140853-397005 | f400952c-ee74-4b55-8f2b-26828705a417 | 1×8 | Starting at 14:11:01 HKT |
+| 02 | exp-1106-140852-369748 | b20d2692-2e74-4b68-a2b2-6b3cd0e29cb4 | 2×8 | Both workers Running by14:23:03HKT |
+| 03 | exp-1106-140853-397005 | f400952c-ee74-4b55-8f2b-26828705a417 | 1×8 | Failed14:22:07HKT, zero updates; task reward dispatch |
 | 06 | exp-1106-030308-839669 | f74fa974-ea86-4149-a823-3276ce493f8b | 1×4 | Running |
 | 07 | exp-1106-033246-436787 | f5c97c61-7868-44f6-8a74-34ab529bd6b2 | 1×2 | Running |
 
-The jobs retain personal creator `i-fengyicheng`, H800/codesign, the pinned company image and current-machine NFS. Keep the healthy original launchers41495/30922 alive and preserve their slots. Fresh qualification launchers96491/24467 must also remain alive; their new identities/resources/currentNFS/RDMA were actually verified. Old failed identities were re-read before the retries. The04:44status receipt and04:33capacity check remain historical evidence, not current scheduling or benchmark status. No other task's jobs were controlled.
+The jobs retain personal creator `i-fengyicheng`, H800/codesign, the pinned company image and current-machine NFS. Keep the healthy original launchers41495/30922 and GLM96491 alive. Qwen24467 has reached its native failure. Since agent_loop.py was edited on the live NFS while GLM was initializing, launch SHA alone does not establish which module version each process loaded; preserve that identity limit and verify actual behavior. Old failed identities were re-read before retries. No other task's jobs were controlled.
 
 ## Continuation route
 

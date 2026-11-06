@@ -1,0 +1,17 @@
+{
+  "status": "PASS_NATIVE_CPU_DISPATCH_REGRESSION",
+  "command": "timeout 60s env PYTHONPATH=/data/ycfeng/sota-engine/verl PYTHONNOUSERSITE=1 PYTHONDONTWRITEBYTECODE=1 TMPDIR=/data/ycfeng/tmp /data/ycfeng/envs/verl-agent-opd-megatron-sglang/bin/python -B -m unittest tests.manual.agent_opd.test_agent_loop tests.manual.agent_opd.test_alignment -v",
+  "tests_run": 12,
+  "test_status": "OK",
+  "new_regression_pairs": [
+    "glm",
+    "qwen"
+  ],
+  "negative_case": "Actual default_compute_score rejects np.str_ pair label",
+  "positive_case": "Actual PreparedTurnAgentLoop.run preserves fixture tokens/masks/logprobs/routes and returns zero task reward; native _compute_score skips task scoring; native teacher dispatcher receives same full sequence and routing key",
+  "fixture_only": true,
+  "gpu_generation_or_numerical_or_optimizer_evidence": false,
+  "source_sha256": "5238e21c94c061d8919ec00a047bd923df2e31c16108da7980ccb9d30284e311",
+  "test_source_sha256": "95e365104e3cdd268125ddb740f0bded08c3fef77ccab4fa0119a8662c4f5ad9",
+  "systemd_scope_limit": "System scope interactive authentication required; user scope bus unavailable; no Python ran in either failed wrapper. Bounded CPU fixture ran under timeout60 without systemd scope; no model tensors read."
+}

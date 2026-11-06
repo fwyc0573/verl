@@ -670,3 +670,69 @@ The worker-count repair was committed and pushed as ffb83e83d65f9c93251f5f27ea25
 At14:14:01HKT the sole platform stream observed Qwen's new qualification Running on H8000390, container started14:13:12/restart0. The business owner read the actual archived recipe: agent workers4/train batch4, prompt126975/response4096, pinned models, original job9 eight-row qualification input and two requested updates; recipe SHA256 f4711b120fc70bf451b5a7baca7b20c28bf4b8df9addee78345edacd8321d870. Actual eight H800 cards and native Python3.12.13/torch2.13cu130 were observed; generation/numerical/update gates remained open. At14:17:02 GLM remained Starting and both originals remained Running. At14:14:12 the benchmark owner counted GLM13/80valid(7resolved/6unresolved), Qwen44/80valid(34resolved/10unresolved), four active slots each and unchanged three Qwen context-missing slots. Root verified exactly four workload launchers alive from /proc using only selected command-file/PID/state/start-time fields. Documentation commit46666b8a8c144634349a9868f65535de437c7c4d was independently matched to origin/agent-opd; unrelated .serena/ remains untouched.
 
 Milestone check-progress correction applied: the two worker-count failures are separate from the already repaired teacher-context failure. Each repair has an observed causal trace, a recorded hypothesis and a passing native regression before the next GPU submission. No parameter trial, scope change, baseline restart or auxiliary harness expansion occurred. The current frontier remains02/03/06/07 in parallel; the latest planning classification isPASS1/TODO9 while both new qualification jobs areStarting. Final numerical/update/export/grading criteria remain unchanged and open. Source ffb83e83 is the current code step; later documentation commits do not alter runtime code.
+
+## Qwen first-generation reward dispatch and independent-prefill API failures
+
+The third Qwen attempt exp-1106-140853-397005 actually crossed four-worker dispatch and returned from student generation. At14:21:51 its auxiliary independent-prefill observation caught SGLang TypeError `Unexpected keyword argument detokenize` and remained unverified without stopping training. At14:21:52 the native task reward path failed separately: RewardLoopWorker.compute_score -> NaiveRewardManager.run_single -> default_compute_score raised NotImplementedError for data_source=np.str_('qwen'). Actual training.json still records zero update calls/completed updates, no outcomes, native_fit_returned=false and final_export=null. Platform container exited1/Error14:22:05, job finished14:22:07; the subsequent critical-task cleanup is not the initiating error. GLM's existing third attempt and both originals continue; do not stop/restart them based on Qwen's failure.
+
+Repair hypothesis before the next check/retry: this task's explicit use_task_rewards=false single-turn loop must supply the existing AgentLoopOutput.reward_score=0.0 field so native _compute_score skips an unrelated rule-based task scorer. Native teacher scoring remains the separate following call, and k1 OPD policy-gradient loss continues to derive its advantage from teacher/student logprobs. This is the declared absence of task rewards, not an error fallback or a replacement teacher score. Falsifiers: zero task reward still calls the task scorer, prevents teacher token dispatch, changes sampled token IDs/masks, or changes the configured teacher-based OPD loss. Independently remove only unsupported detokenize from the prefill request; keep one scoring token, temperature1, prompt_logprobs0, complete prompt+response input and radix-cache exclusion. Falsifiers: pinned native SamplingParams/GenerateReqInput still rejects the request or scoring/token/probability fields change.
+
+The old four failed qualification directories have no HF/checkpoint outputs. Their consumed raw-log cleanup inventory is28files/1,360,048B, preserving24config/result/recipe/receipt files. A fresh14:24:06 exactUID/creator/Failed reread and all52file size/mtime checks (28candidate hashes) passed. SSH user unlink failed at the first file with PermissionError; actual deletion0files/0B, all retained files unchanged. Preserve this receipt and perform the already authorized cleanup through a normally mounted CPU worker when practical; do not change permissions or clear shared trash. This small cleanup does not block02/03/06/07.
+
+Native repair validation completed:12unittests/OK under the installed native interpreter (one new two-pair dispatch regression and11existing alignment cases). Actual PreparedTurnAgentLoop.run with fixture generation preserves prompt/response/mask/logprobs/routes and returns zero task reward. Native _compute_score then skips task scoring and native _compute_teacher_logprobs still receives the exact full sequence/routing key. Pinned SGLang API negative/positive constructors independently passed. These are CPU fixtures/API evidence only. Selected actual RCA and both regressions are archived in evidence; exact command/results are in native_workflow report. GLM remains healthy; live-NFS agent_loop edits during its initialization mean launch SHA alone does not identify loaded module versions, so keep that limit and judge actual behavior.
+
+## 1. 规划完成情况
+
+**汇总：** PASS1｜BLOCKED/FAILED/SKIPPED1｜TODO8
+
+| 子任务 | 状态 | 简要依据 |
+| --- | --- | --- |
+| 01 | PASS | 原生环境、输入及配置前提已验证 |
+| 02 | TODO | GLM两worker实际运行，尚未取得资格结果 |
+| 03 | FAILED | Qwen实际任务评分分派失败，CPU修复已通过，待新GPU资格 |
+| 04 | TODO | 等GLM真实资格通过后从原始权重fresh20 |
+| 05 | TODO | 等Qwen真实资格通过后从原始权重fresh20 |
+| 06 | TODO | GLM13/80有效，健康运行继续 |
+| 07 | TODO | Qwen46/80有效，三context缺失等待当前终态后恢复 |
+| 08 | TODO | 等04真实verified20export，不等待06完成才启动 |
+| 09 | TODO | 等05真实verified20export，不等待07完成才启动 |
+| 10 | TODO | 已消费缓存清理完成；旧日志1.36MB受权限限制，最终产物仍有依赖 |
+
+## 2. 偏离检测
+
+**结论：** 未偏移，正常推进。
+**检测窗口：** 上次worker-count修复检查至本轮真实Qwen首错与CPU修复｜**当前前沿：** 02/03/06/07并行
+
+| 模式 | 判定 | 依据 |
+| --- | --- | --- |
+| D1 工具打磨 | CLEAR | 仅新增可重现当前native故障的dispatch回归，12项通过即停止扩展 |
+| D2 细节反复重试 | CLEAR | teacher预算、worker分片、task评分是不同实测原因；每次先记录假设/证伪条件，未盲调参数 |
+| D3 支线问题修补 | CLEAR | reward和prefill均阻挡03验收；及时清理由用户明确要求 |
+| D4 可并行任务停滞 | CLEAR | GLM与两原始评测继续，Qwen修复后独立重提 |
+| D5 超范围镀金 | CLEAR | 只改现有loop字段/请求键，无框架、handler、context或标准变化 |
+| D6 分析空转 | CLEAR | 两因果链已查清并形成三行运行代码修复；不继续重复RCA |
+| D7 路线违背 | CLEAR | 原始权重fresh20/320有效评分/双MAE≤0.03合同保持，CPU结果未作GPU验收 |
+
+**文档检查：** S5：02/03与summary的14:11状态已过时；更新为实际GLM运行、Qwen失败及live-NFS身份限制。S1–S4/S6未发现新缺陷。
+**归因：** 无执行HIT；有新事实后的状态同步。
+
+## 3. 纠正建议
+
+**分支：** B：spec/tickets存在缺陷，先更新文档再继续。
+
+**文档更新（先执行）：**
+1. 02/03、summary、native报告：记录本轮真实因果、CPU验证及GLM代码身份限制（可直接执行，已应用）。
+2. progress与10：保留旧日志清理PermissionError/0删除记录，通过正常CPUworker处理精确清单（可直接执行，不阻挡主线）。
+
+**需停止的偏离行为：** 无。
+
+**接下去的路线：**
+1. 03：提交/push已验证的loop修复，复核旧精确终态后同配置重提，取得真实两更新/teacher/版本/三路数值/HF2值变化才完成。
+2. 并行02‖06‖07：保留现有健康作业，按真实输出验收；07当前终态后现成路径恢复missing。
+3. 同模型资格通过即fresh20；verified20export即更新后评测，共享新进程reload；完整评分后比较与最终清理。
+
+## 4. 最值得关注的 3 点
+
+1. Qwen真正终止原因是默认任务评分；prefill错误已隔离但也必须修复才可取得数值资格。
+2. 当前12项CPU通过不代表teacher、GPU数值、更新或权重变化通过。
+3. GLM及两原始benchmark继续；旧日志权限问题仅1.36MB，不应拖住主线。

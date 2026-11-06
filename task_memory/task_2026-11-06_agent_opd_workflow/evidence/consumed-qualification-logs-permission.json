@@ -1,0 +1,254 @@
+{
+  "started_at_utc": "2026-11-06T06:25:38.125302+00:00",
+  "status": "STOPPED_PERMISSION_ERROR",
+  "preflight_all_files_verified": true,
+  "deleted": [],
+  "errors": [
+    {
+      "type": "PermissionError",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/logs/rank-0/gcs_server.err",
+      "message": "[Errno 13] Permission denied: '/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/logs/rank-0/gcs_server.err'"
+    }
+  ],
+  "preserved_files": [
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/agent.yaml",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/agent.yaml",
+      "bytes": 217,
+      "mtime_ns": 1793924542843052473,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/cluster.json",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/cluster.json",
+      "bytes": 290,
+      "mtime_ns": 1793924542693545472,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/rank-0-result.json",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/rank-0-result.json",
+      "bytes": 528,
+      "mtime_ns": 1793924649067796296,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/rank-1-result.json",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/rank-1-result.json",
+      "bytes": 174,
+      "mtime_ns": 1793924656641229405,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/recipe.yaml",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/recipe.yaml",
+      "bytes": 38146,
+      "mtime_ns": 1793924543799052755,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-030133-940211",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/settings.json",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/settings.json",
+      "bytes": 730,
+      "mtime_ns": 1793924542839052471,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-033627-955641",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/agent.yaml",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/agent.yaml",
+      "bytes": 225,
+      "mtime_ns": 1793923370642581436,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-033627-955641",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/cluster.json",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/cluster.json",
+      "bytes": 155,
+      "mtime_ns": 1793923370491565921,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-033627-955641",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/rank-0-result.json",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/rank-0-result.json",
+      "bytes": 529,
+      "mtime_ns": 1793923474646233646,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-033627-955641",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/recipe.yaml",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/recipe.yaml",
+      "bytes": 38148,
+      "mtime_ns": 1793923371654581765,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-033627-955641",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/settings.json",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-033627-955641/settings.json",
+      "bytes": 733,
+      "mtime_ns": 1793923370638581435,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/agent.yaml",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/agent.yaml",
+      "bytes": 217,
+      "mtime_ns": 1793944100271446691,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/cluster.json",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/cluster.json",
+      "bytes": 288,
+      "mtime_ns": 1793944100110999992,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/observations/training.json",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/observations/training.json",
+      "bytes": 588,
+      "mtime_ns": 1793944654935969586,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/rank-0-result.json",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/rank-0-result.json",
+      "bytes": 528,
+      "mtime_ns": 1793944690629372126,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/rank-1-result.json",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/rank-1-result.json",
+      "bytes": 560,
+      "mtime_ns": 1793944705824079590,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/recipe.yaml",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/recipe.yaml",
+      "bytes": 38145,
+      "mtime_ns": 1793944101327446839,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134352-384471",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/settings.json",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134352-384471/settings.json",
+      "bytes": 730,
+      "mtime_ns": 1793944100267446689,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134403-815066",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/agent.yaml",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/agent.yaml",
+      "bytes": 225,
+      "mtime_ns": 1793944570931542693,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134403-815066",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/cluster.json",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/cluster.json",
+      "bytes": 155,
+      "mtime_ns": 1793944570776626952,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134403-815066",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/observations/training.json",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/observations/training.json",
+      "bytes": 588,
+      "mtime_ns": 1793944950952274454,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134403-815066",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/rank-0-result.json",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/rank-0-result.json",
+      "bytes": 529,
+      "mtime_ns": 1793944961663429369,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134403-815066",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/recipe.yaml",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/recipe.yaml",
+      "bytes": 38148,
+      "mtime_ns": 1793944571983542956,
+      "size_mtime_preserved": true
+    },
+    {
+      "job": "exp-1106-134403-815066",
+      "path": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/settings.json",
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/settings.json",
+      "bytes": 733,
+      "mtime_ns": 1793944570931542693,
+      "size_mtime_preserved": true
+    }
+  ],
+  "controls_performed": false,
+  "permissions_changed": false,
+  "parent_directories_removed": false,
+  "deleted_count": 0,
+  "deleted_bytes": 0,
+  "candidate_remaining_count": 28,
+  "deleted_paths_independently_absent": true,
+  "preserved_count": 24,
+  "preserved_bytes": 161309,
+  "all_24_preserved_stats_match": true,
+  "finished_at_utc": "2026-11-06T06:25:38.670602+00:00",
+  "manifest_path": "/data/ycfeng/tmp/verl-agent-opd-consumed-artifacts-20261106/failed-qualification-log-cleanup-proposal.json",
+  "manifest_sha256": "c295266f4349afb8ea270a1f5b5faf4ea73dacbd01196b9bc06fff4417f7825e",
+  "terminal_receipt_path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/old-qualification-cleanup-terminal-read-20261106-1424.json",
+  "terminal_receipt_sha256": "69e7bb4b915df9c4f51ed8db0ffd4dc5115dba2903312cdb2ad8025c501814ef",
+  "terminal_collected_at": "2026-11-06T06:24:06.820726+00:00",
+  "exact_failed_identities": [
+    {
+      "name": "exp-1106-030133-940211",
+      "uid": "b6976435-4e8a-4099-8777-800a18db25a1",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T00:24:12Z"
+    },
+    {
+      "name": "exp-1106-033627-955641",
+      "uid": "9ad17773-2d4e-4b21-8dc2-2150ab8a6f85",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T00:04:37Z"
+    },
+    {
+      "name": "exp-1106-134352-384471",
+      "uid": "66f0521c-831e-4336-abba-6a1dfeae74bd",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T05:58:28Z"
+    },
+    {
+      "name": "exp-1106-134403-815066",
+      "uid": "41b7cae1-d62e-4624-bfb1-cd5839d4617e",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T06:02:46Z"
+    }
+  ],
+  "authorization": "Root explicitly accepted deletion of only the manifest 28 consumed raw log files under the user-requested timely task cleanup; no source/task document edits."
+}

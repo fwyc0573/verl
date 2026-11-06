@@ -122,7 +122,7 @@ class PreparedTurnAgentLoop(SingleTurnAgentLoop):
             scored = await self.server_manager.generate(
                 request_id=uuid4().hex,
                 prompt_ids=prompt_ids + response_ids,
-                sampling_params={"max_tokens": 1, "temperature": 1.0, "prompt_logprobs": 0, "detokenize": False},
+                sampling_params={"max_tokens": 1, "temperature": 1.0, "prompt_logprobs": 0},
             )
             observation["independent_prefill"] = True
             fields = scored.extra_fields
@@ -226,6 +226,8 @@ class PreparedTurnAgentLoop(SingleTurnAgentLoop):
             response_logprobs=response_logprobs,
             routed_experts=output.routed_experts,
             multi_modal_data={},
+            # Task rewards are disabled; native teacher logprobs supply the OPD signal.
+            reward_score=0.0,
             num_turns=2,
             metrics=metrics,
             extra_fields=extra_fields,

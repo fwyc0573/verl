@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Separate the actual Qwen task-reward failure from the non-blocking prefill API error; verify the native no-task-reward dispatch repair. |
 | 2026-11-06 | Record actual initialization failures, real partial native scores and corrected fresh qualification submissions. |
 | 2026-11-06 | Record one bounded capacity-alternative check and preserve the existing H800 queue. |
 | 2026-11-06 | Record current four GPU job identities, resources and queued state. |
@@ -154,3 +155,22 @@ Both retries passed the former teacher-context guard, initialized native models/
 The single override `actor_rollout_ref.rollout.agent.num_workers=train_batch_size` derives4workers for the fixed4prompt/n1 batch. Actual native DataProto chunk/concat checks across both2/20recipes reproduced old4/8failure, passed new4/4dispatch and preserved exact token/UID order. Every other recipe field and the previously validated teacher context remain unchanged. Detailed command and native results are in execution_preflight and evidence/native-agent-worker-batch-regression.json. Fixffb83e83d65f9c93251f5f27ea259e18305f22ff was pushed and independently matched before submission.
 
 The platform owner re-read both previous exact Failed UIDs at14:08:40HKT. New GLM exp-1106-140852-369748 / UIDb20d2692-2e74-4b68-a2b2-6b3cd0e29cb4 was created14:08:52, launcher96491. New Qwen exp-1106-140853-397005 / UIDf400952c-ee74-4b55-8f2b-26828705a417 was created14:08:53, launcher24467. Commands, original inputs, pinned image and resources are unchanged. At14:11:01 both wereStarting; original jobs remainedRunning/restart0. Creator/currentNFS/codesign/nonpreemptible/H800/image/RDMA/resource fields actually matched in evidence/qualification-agent-worker-retry-identities.json; old terminal evidence is qualification-batch-retry-terminal-read.json. Local read-only watcher59518 exited143 after exact process binding, then sole4job watcher96841 started; no GPU workload was stopped or duplicated.
+
+## Actual Qwen task-reward failure and auxiliary prefill API repair
+
+Qwen exp-1106-140853-397005 crossed the repaired native four-worker dispatch. Primary generate returned, but its response IDs/count were not retained before the later failure, so no nonempty token population or teacher scoring is inferred. At14:21:51HKT independent-prefill observation raised TypeError `Unexpected keyword argument detokenize`; the existing observer caught it and continued native processing. At14:21:52 the distinct terminal chain was AgentLoopWorker._compute_score -> RewardLoopWorker.compute_score -> NaiveRewardManager.run_single -> default_compute_score, which rejected data_source=np.str_('qwen'). Native teacher scoring follows _compute_score and was not verified. Actual training.json remains completed_updates0/actor_update_call_count0/update_outcomes[]/native_fit_returnedfalse/final_exportnull. Container exit1/Error14:22:05, job Failed/finish14:22:07. Selected complete causal chains/source hashes/zero-update receipt: evidence/qwen-qualification-reward-failure.json.
+
+This task has explicit distillation use_task_rewards=false. Its task-specific PreparedTurnAgentLoop now supplies the existing AgentLoopOutput.reward_score=0.0 field, so native _compute_score skips the unrelated default task scorer. The following native teacher-logprob call and teacher-derived k1 OPD policy-gradient objective remain in place; no fallback exception handler or custom scorer is added. The independent-prefill request only removes detokenize, preserving max_tokens1/temperature1/prompt_logprobs0/full prompt+response/radix-cache exclusion. Pinned SGLang0.5.20 SamplingParams reproduces the old TypeError and accepts the supported request; GenerateReqInput accepts unchanged input/logprob fields. See evidence/native-prefill-api-regression.json. These are CPU/API results, not actual GPU prefill or MAE acceptance.
+
+Exact native CPU command:
+
+```sh
+timeout 60s env PYTHONPATH=/data/ycfeng/sota-engine/verl \
+  PYTHONNOUSERSITE=1 PYTHONDONTWRITEBYTECODE=1 TMPDIR=/data/ycfeng/tmp \
+  /data/ycfeng/envs/verl-agent-opd-megatron-sglang/bin/python -B -m unittest \
+  tests.manual.agent_opd.test_agent_loop tests.manual.agent_opd.test_alignment -v
+```
+
+Actual result:12tests/OK. The new repeatable native dispatch regression covers both np.str_ pair labels: old default scorer rejects them; actual task loop preserves fixture prompt/response IDs, logprobs, masks and routed experts, returns zero task reward, native task-score method skips its reward worker, and native teacher dispatcher still receives the exact complete sequence/routing key. The11existing alignment tests also pass. Generation/teacher outputs are fixtures; GPU generation, actual teacher scores, optimizer updates, versions and numerical agreement are not proved. Receipt: evidence/native-no-task-reward-regression.json. Requested systemd system scope failed with interactive-authentication-required, and user scope had no bus, both before Python execution; the bounded small CPU fixture then ran with timeout60 and no model tensor reads.
+
+GLM's two current workers started14:21:11/14:22:09HKT and remain active. Since agent_loop.py is mounted live and was edited during initialization, its launch SHA ffb83e83 does not prove which module version each process loaded. Preserve the healthy job; record its actual native behavior and this code-identity limit rather than guessing or restarting it.

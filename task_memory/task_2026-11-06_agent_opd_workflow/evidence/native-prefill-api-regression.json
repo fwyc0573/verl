@@ -1,0 +1,26 @@
+{
+  "status": "PASS_PINNED_PREFILL_CALLSHAPE",
+  "sglang_version": "0.5.20",
+  "negative_constructor_error": "Unexpected keyword argument 'detokenize'",
+  "supported_task_call": {
+    "max_tokens": 1,
+    "temperature": 1.0,
+    "prompt_logprobs": 0
+  },
+  "existing_server_translation": {
+    "max_new_tokens": 1,
+    "temperature": 1.0,
+    "request_return_logprob": true,
+    "request_logprob_start_len": 0
+  },
+  "positive_native_sampling_params": {
+    "max_new_tokens": 1,
+    "temperature": 1.0
+  },
+  "generate_request_constructor_accepted": true,
+  "fixture_only_no_generation": true,
+  "sources": {
+    "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/sglang/srt/sampling/sampling_params.py": "7295f275a1a286ae5a4414bcedd1d48a3a9824a0c2a5c915e091ed06b6f74730",
+    "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/sglang/srt/managers/io_struct.py": "cc4e6a88ddfeaa78fc4518990013859168d5bc141905cd66252f9d020aa86cd5"
+  }
+}

@@ -12,7 +12,7 @@
 
 **Blocked by:** 01 GLM runtime/input/config prerequisites; independent of Qwen training inputs and benchmark preparation.
 
-**Status:** in-progress — fresh exp-1106-140852-369748 / UID b20d2692-2e74-4b68-a2b2-6b3cd0e29cb4, launcher 96491, Starting at 14:11:01 HKT. Source ffb83e83 includes the verified teacher scoring-token budget and agent workers derived from batch size 4. The prior attempt initialized native models and entered fit, then failed before sampling at DataProto 4/chunk 8. Actual updates, MAE, versions and HF2 weight changes remain unverified.
+**Status:** in-progress — exp-1106-140852-369748 / UID b20d2692-2e74-4b68-a2b2-6b3cd0e29cb4, launcher96491, both workers actually Running by14:23:03HKT. Actual reused8-row input and recipe workers4/batch4/prompt61439/response4096/R3 were checked. Launch sourceffb83e83; agent_loop.py was edited on the live NFS during initialization to correct the separately observed Qwen reward/prefill errors, so launch SHA alone does not establish which module version each process loaded. Keep the healthy job and judge its actual behavior; do not infer numerical/update/R3/HF2 PASS from initialization.
 
 - [ ] 使用冻结的真实数据与交互边界，teacher 实际评分的 token IDs 与当前 student 采样一致。
 - [ ] thinking、正文和工具信号的源字段、tokens、mask、实际生成覆盖分别可核验；MoE routes 按约定真实录制并 replay。

@@ -1,0 +1,217 @@
+{
+  "status": "FAILED_NATIVE_TASK_REWARD_WITH_SEPARATE_PREFILL_OBSERVER_ERROR",
+  "job": "exp-1106-140853-397005",
+  "job_uid": "f400952c-ee74-4b55-8f2b-26828705a417",
+  "replica": "exp-1106-140853-397005-cfcd2084",
+  "replica_uid": "ee7829ba-8e84-40bf-9877-0d1b229a388e",
+  "node": "gpu-h800-0390.host.platform.shaipower.com",
+  "platform_identity_source": "platform_observer exact terminal metadata",
+  "container_interval_hkt": [
+    "2026-11-06T14:13:12+08:00",
+    "2026-11-06T14:22:05+08:00"
+  ],
+  "container_exit_code": 1,
+  "observed_at_utc": "2026-11-06T06:26:49.361192+00:00",
+  "archived_recipe": {
+    "sha256": "f4711b120fc70bf451b5a7baca7b20c28bf4b8df9addee78345edacd8321d870",
+    "agent_num_workers": 4,
+    "train_batch_size": 4,
+    "max_prompt_length": 126975,
+    "max_response_length": 4096,
+    "student_and_teacher_context_length": 131072,
+    "steps": 2,
+    "dataset": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-032827-028041/qwen-qualification.parquet"
+  },
+  "terminal_cause": {
+    "native_error_time_hkt": "2026-11-06T14:21:52+08:00",
+    "type": "NotImplementedError",
+    "message": "Reward function is not implemented for data_source=np.str_('qwen')",
+    "structural_chain": [
+      "tests.manual.agent_opd.train.main -> TaskRunner.run -> run_training -> ObservedTrainer.fit -> RayPPOTrainer.fit",
+      "AgentLoopManager.generate_sequences -> AgentLoopWorker.generate_sequences -> _run_agent_loop",
+      "AgentLoopWorker._agent_loop_postprocess -> _compute_score",
+      "RewardLoopWorker.compute_score -> NaiveRewardManager.run_single",
+      "verl.utils.reward_score.default_compute_score raises for qwen"
+    ],
+    "native_rows": [
+      {
+        "timestamp": "1793946112867586000",
+        "line": "[2026-11-06T14:21:52+08:00] exp-1106-140853-397005-cfcd2084 >>   File \"/data/ycfeng/sota-engine/verl/verl/experimental/agent_loop/agent_loop.py\", line 1114, in _compute_score",
+        "pod": "exp-1106-140853-397005-cfcd2084",
+        "node": "gpu-h800-0390.host.platform.shaipower.com",
+        "message": "  File \"/data/ycfeng/sota-engine/verl/verl/experimental/agent_loop/agent_loop.py\", line 1114, in _compute_score"
+      },
+      {
+        "timestamp": "1793946112867610000",
+        "line": "[2026-11-06T14:21:52+08:00] exp-1106-140853-397005-cfcd2084 >>   File \"/data/ycfeng/sota-engine/verl/verl/experimental/reward_loop/reward_loop.py\", line 155, in compute_score",
+        "pod": "exp-1106-140853-397005-cfcd2084",
+        "node": "gpu-h800-0390.host.platform.shaipower.com",
+        "message": "  File \"/data/ycfeng/sota-engine/verl/verl/experimental/reward_loop/reward_loop.py\", line 155, in compute_score"
+      },
+      {
+        "timestamp": "1793946112867616000",
+        "line": "[2026-11-06T14:21:52+08:00] exp-1106-140853-397005-cfcd2084 >>   File \"/data/ycfeng/sota-engine/verl/verl/experimental/reward_loop/reward_manager/naive.py\", line 75, in run_single",
+        "pod": "exp-1106-140853-397005-cfcd2084",
+        "node": "gpu-h800-0390.host.platform.shaipower.com",
+        "message": "  File \"/data/ycfeng/sota-engine/verl/verl/experimental/reward_loop/reward_manager/naive.py\", line 75, in run_single"
+      },
+      {
+        "timestamp": "1793946112867635000",
+        "line": "[2026-11-06T14:21:52+08:00] exp-1106-140853-397005-cfcd2084 >>   File \"/data/ycfeng/sota-engine/verl/verl/utils/reward_score/__init__.py\", line 107, in default_compute_score",
+        "pod": "exp-1106-140853-397005-cfcd2084",
+        "node": "gpu-h800-0390.host.platform.shaipower.com",
+        "message": "  File \"/data/ycfeng/sota-engine/verl/verl/utils/reward_score/__init__.py\", line 107, in default_compute_score"
+      },
+      {
+        "timestamp": "1793946112867646000",
+        "line": "[2026-11-06T14:21:52+08:00] exp-1106-140853-397005-cfcd2084 >> NotImplementedError: Reward function is not implemented for data_source=np.str_('qwen')",
+        "pod": "exp-1106-140853-397005-cfcd2084",
+        "node": "gpu-h800-0390.host.platform.shaipower.com",
+        "message": "NotImplementedError: Reward function is not implemented for data_source=np.str_('qwen')"
+      }
+    ]
+  },
+  "independent_observer_cause": {
+    "native_warning_time_hkt": "2026-11-06T14:21:51+08:00",
+    "type": "TypeError",
+    "message": "Unexpected keyword argument 'detokenize'",
+    "structural_chain": [
+      "PreparedTurnAgentLoop.run awaits the primary server_manager.generate, then calls _rescore_student",
+      "_rescore_student passes detokenize=False inside sampling_params",
+      "SGLangHttpServer.generate translates prompt_logprobs but leaves detokenize in sampling_params",
+      "pinned TokenizerManager._create_tokenized_object invokes SamplingParams(**sampling_kwargs) and raises TypeError",
+      "_rescore_student catches the error and logs AGENT_OPD_ALIGNMENT_UNVERIFIED; native agent postprocessing proceeds"
+    ],
+    "did_not_initiate_native_training_termination": true,
+    "native_rows": [
+      {
+        "timestamp": "1793946111744228000",
+        "line": "[2026-11-06T14:21:51+08:00] exp-1106-140853-397005-cfcd2084 >> \u001b[36m(AgentLoopWorker pid=8242)\u001b[0m WARNING:2026-11-06 06:21:51,646:AGENT_OPD_ALIGNMENT_UNVERIFIED RayTaskError(TypeError): \u001b[36mray::SGLangHttpServer.generate()\u001b[39m (pid=7384, ip=10.191.4.11, actor_id=64193195e0d2a9f4133150ef02000000, repr=<verl.workers.rollout.sglang_rollout.async_sglang_server.SGLangHttpServer object at 0x7f8498507ce0>)",
+        "pod": "exp-1106-140853-397005-cfcd2084",
+        "node": "gpu-h800-0390.host.platform.shaipower.com",
+        "message": "\u001b[36m(AgentLoopWorker pid=8242)\u001b[0m WARNING:2026-11-06 06:21:51,646:AGENT_OPD_ALIGNMENT_UNVERIFIED RayTaskError(TypeError): \u001b[36mray::SGLangHttpServer.generate()\u001b[39m (pid=7384, ip=10.191.4.11, actor_id=64193195e0d2a9f4133150ef02000000, repr=<verl.workers.rollout.sglang_rollout.async_sglang_server.SGLangHttpServer object at 0x7f8498507ce0>)"
+      },
+      {
+        "timestamp": "1793946111744346000",
+        "line": "[2026-11-06T14:21:51+08:00] exp-1106-140853-397005-cfcd2084 >> \u001b[36m(AgentLoopWorker pid=8242)\u001b[0m TypeError: Unexpected keyword argument 'detokenize'",
+        "pod": "exp-1106-140853-397005-cfcd2084",
+        "node": "gpu-h800-0390.host.platform.shaipower.com",
+        "message": "\u001b[36m(AgentLoopWorker pid=8242)\u001b[0m TypeError: Unexpected keyword argument 'detokenize'"
+      }
+    ]
+  },
+  "primary_generation_scope": {
+    "primary_generate_await_returned_before_observer": true,
+    "basis": "Inspected committed run() call order plus actual _rescore_student warning and subsequent native _agent_loop_postprocess traceback.",
+    "response_token_ids_and_positive_count_not_retained": true,
+    "teacher_scoring_verified": false,
+    "source_teacher_scoring_order": "Native _agent_loop_postprocess awaits _compute_score before _compute_teacher_logprobs."
+  },
+  "training_receipt": {
+    "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-140853-397005/observations/training.json",
+    "bytes": 588,
+    "sha256": "94319a64c7c02d8dede0b017e79d9a2ec5df14047360cdc7889a0e3ae82489bf",
+    "requested_updates": 2,
+    "actor_update_call_count": 0,
+    "completed_updates": 0,
+    "update_outcomes": [],
+    "native_fit_returned": false,
+    "last_native_checkpoint_step": null,
+    "final_export": null
+  },
+  "native_prefill_api_check": {
+    "receipt": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/qwen-prefill-detokenize-api-validation.json",
+    "sha256": "d27010d560591a0130683e71a4bbc390a5413265ed127993a44abecdc7ead0d1",
+    "result": {
+      "status": "PASS_PINNED_PREFILL_CALLSHAPE",
+      "sglang_version": "0.5.20",
+      "negative_constructor_error": "Unexpected keyword argument 'detokenize'",
+      "supported_task_call": {
+        "max_tokens": 1,
+        "temperature": 1.0,
+        "prompt_logprobs": 0
+      },
+      "existing_server_translation": {
+        "max_new_tokens": 1,
+        "temperature": 1.0,
+        "request_return_logprob": true,
+        "request_logprob_start_len": 0
+      },
+      "positive_native_sampling_params": {
+        "max_new_tokens": 1,
+        "temperature": 1.0
+      },
+      "generate_request_constructor_accepted": true,
+      "fixture_only_no_generation": true,
+      "sources": {
+        "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/sglang/srt/sampling/sampling_params.py": "7295f275a1a286ae5a4414bcedd1d48a3a9824a0c2a5c915e091ed06b6f74730",
+        "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/sglang/srt/managers/io_struct.py": "cc4e6a88ddfeaa78fc4518990013859168d5bc141905cd66252f9d020aa86cd5"
+      }
+    },
+    "minimal_change_not_applied": "Omit only detokenize from the existing _rescore_student sampling_params.",
+    "semantics": "Keep exact input_ids=prompt_ids+response_ids, max_tokens1, temperature1.0, prompt_logprobs0. Existing server converts to max_new_tokens1, return_logprob=True and logprob_start_len0. GenerateReqInput.return_text_in_logprobs defaults False, so numeric prompt token IDs/logprobs require no detokenize sampling key.",
+    "scope": "Native CPU constructors and inspected source call shape only; GPU independent-prefill values and numerical agreement still require actual execution."
+  },
+  "source_hashes": {
+    "tests/manual/agent_opd/agent_loop.py": {
+      "submitted_commit": "ffb83e83d65f9c93251f5f27ea259e18305f22ff",
+      "sha256": "fe16004ed1fbd3b82bdb2344141af4af17b986edb487f4f7531a5f0dbb451a7e"
+    },
+    "tests/manual/agent_opd/configure.py": {
+      "submitted_commit": "ffb83e83d65f9c93251f5f27ea259e18305f22ff",
+      "sha256": "790745648fbf6a71fe7fdae5f7e5aea207523bb5b68c44f6121d86ac373ea5c6"
+    },
+    "verl/workers/rollout/sglang_rollout/async_sglang_server.py": {
+      "submitted_commit": "ffb83e83d65f9c93251f5f27ea259e18305f22ff",
+      "sha256": "c941559a8ae9528085858ef361ea1cfed950d91d7e27e366409099d7b551d072"
+    },
+    "verl/experimental/agent_loop/agent_loop.py": {
+      "submitted_commit": "ffb83e83d65f9c93251f5f27ea259e18305f22ff",
+      "sha256": "99a131b86cb16d5d8aa9a773a644dcd628948941cbebcd007cd70d78e47f1e33"
+    },
+    "verl/experimental/reward_loop/reward_loop.py": {
+      "submitted_commit": "ffb83e83d65f9c93251f5f27ea259e18305f22ff",
+      "sha256": "f30932e2445ab01ca7fa4fbcec13910c85bfaf2cd8a4f49d040f15d7fe2ed973"
+    },
+    "verl/experimental/reward_loop/reward_manager/naive.py": {
+      "submitted_commit": "ffb83e83d65f9c93251f5f27ea259e18305f22ff",
+      "sha256": "85a7a6872e2c9684c1252393755c8fe39d8fdf9393608c98cacd025821ba1d51"
+    },
+    "verl/utils/reward_score/__init__.py": {
+      "submitted_commit": "ffb83e83d65f9c93251f5f27ea259e18305f22ff",
+      "sha256": "1b7281fa32b0de6bff68b6f358e0493562baeab5de771c1cd3fa6a16653ad7ce"
+    },
+    "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/sglang/srt/managers/tokenizer_manager.py": {
+      "pinned_version": "0.5.20",
+      "sha256": "952fdfcf54b13af6851993d4b7599d4b1efeb6aa630a7554584a1a047eda94f2"
+    },
+    "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/sglang/srt/sampling/sampling_params.py": {
+      "pinned_version": "0.5.20",
+      "sha256": "7295f275a1a286ae5a4414bcedd1d48a3a9824a0c2a5c915e091ed06b6f74730"
+    },
+    "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/sglang/srt/managers/io_struct.py": {
+      "pinned_version": "0.5.20",
+      "sha256": "cc4e6a88ddfeaa78fc4518990013859168d5bc141905cd66252f9d020aa86cd5"
+    }
+  },
+  "raw_response": {
+    "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/qwen-worker4-qualification-failure-native-window.json",
+    "bytes": 170900,
+    "sha256": "6fa9e741e2d6255d2c62c44ae68a917c1d7bd71cf0f42ce4825c52377ace74d7",
+    "rows": 342,
+    "limit": 2000,
+    "reached_limit": false,
+    "first_timestamp_ns": "1793945592261267000",
+    "last_timestamp_ns": "1793946124370750000",
+    "query_receipt": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/qwen-worker4-qualification-failure-native-window-receipt.json"
+  },
+  "gates": {
+    "prior_teacher_budget_guard_passed": true,
+    "prior_equal_chunk_guard_passed": true,
+    "two_successful_updates": false,
+    "three_way_mae_pass": false,
+    "effective_version_alignment_verified": false,
+    "hf2_actual_changed_value_verified": false
+  },
+  "authority": "Read-only diagnosis and selected temporary evidence only. No source/docs changes, new GPU/zeroGPU jobs, or job controls were performed."
+}
