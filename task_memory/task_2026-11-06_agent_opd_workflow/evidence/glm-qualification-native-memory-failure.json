@@ -1,0 +1,811 @@
+{
+  "job": "exp-1106-144604-954702",
+  "business_status": "Native training subprocess exited 1 during the first actor-update call; the RJob is Failed.",
+  "observation_window_utc": "2026-11-06 07:02\u201307:15 UTC",
+  "launching_source_commit": "59222710",
+  "runtime_source_identity_limit": "The source is mounted through live NFS. The launching commit is recorded; no claim is made that every process loaded an independently hashed copy.",
+  "actual_recipe": {
+    "path": "/data/ycfeng/tmp/verl-agent-opd-20261106/rendezvous/exp-1106-144604-954702/recipe.yaml",
+    "sha256": "aaad5470525b9b428678f6d60ecfb4ffa98d4b37d228e0c8887e2dceb22426a2",
+    "bytes": 38146,
+    "prompt_length": 61439,
+    "response_length": 4096,
+    "agent_workers": 4,
+    "train_batch_size": 4,
+    "steps": 2,
+    "param_offload": true,
+    "optimizer_offload": true,
+    "main_grads_dtype": "fp32",
+    "exp_avg_dtype": "fp32",
+    "exp_avg_sq_dtype": "fp32",
+    "tensor_parallel": 4,
+    "expert_parallel": 8,
+    "expert_tensor_parallel": 1,
+    "context_parallel": 1,
+    "router_replay": "R3"
+  },
+  "numerical_evidence": {
+    "path": "/data/ycfeng/tmp/verl-agent-opd-glm-business-20261106/glm-qualification-step1-numerical-failure.json",
+    "sha256": "198ea259f38d9105160267768ee2acd343f27997359e4f74e6b81dfb904807ae",
+    "status": "FAIL",
+    "training_step": 1,
+    "weight_version": 0,
+    "global_mean_abs_diff": {
+      "decode_vs_prefill": 0.03908419017212631,
+      "decode_vs_trainer": 0.031088136587229167,
+      "prefill_vs_trainer": 0.038287215832163546
+    },
+    "limit": 0.03
+  },
+  "node_binding": {
+    "cloud_cluster": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-144604-954702/cluster.json",
+    "sha256": "cd6490a07f4ea5213b4e380b6f12334e0fc3235ddfc88606feec2e1c73c7fff2",
+    "rank0_replica": "exp-1106-144604-954702-cfcd2084",
+    "node": "gpu-h800-0401",
+    "ip": "10.191.4.17",
+    "ray_node_id": "5b1a37548a8a673de76b0dfeaa82d6f9be95306717fc2abc9a29cc46",
+    "requested_memory_gb_per_replica": 600,
+    "ray_runtime_memory_total": 629145600000,
+    "ray_runtime_memory_used": null,
+    "ray_memory_kill_threshold": 597688320000,
+    "killed_worker_pid": 10294,
+    "killed_worker_actor_id": "a4ee63ab9266b5859d00511d02000000",
+    "failed_update_actor_id": "69eab879b3c1b6e36ce2391102000000",
+    "top_processes": {
+      "at_hkt": "2026-11-06 15:05:06.899",
+      "source": "raylet.out:3836",
+      "reported_unit": "GB in native log, values rendered in binary GiB",
+      "update_workers": [
+        {
+          "pid": 5575,
+          "memory": 53.0
+        },
+        {
+          "pid": 5576,
+          "memory": 52.98
+        },
+        {
+          "pid": 5574,
+          "memory": 52.87
+        },
+        {
+          "pid": 5573,
+          "memory": 52.59
+        },
+        {
+          "pid": 5572,
+          "memory": 52.27
+        },
+        {
+          "pid": 5577,
+          "memory": 52.27
+        },
+        {
+          "pid": 5571,
+          "memory": 51.18
+        },
+        {
+          "pid": 5570,
+          "memory": 50.22
+        }
+      ],
+      "sglang_scheduler_top_entries": [
+        {
+          "pid": 9495,
+          "memory": 17.11
+        },
+        {
+          "pid": 9524,
+          "memory": 17.11
+        }
+      ],
+      "warning": "Process RSS can include overlapping shared mappings; these values are not summed as actual cgroup usage."
+    },
+    "ray_runtime_memory_first_above_threshold_used": 599545114624,
+    "ray_runtime_memory_peak_observed_used": 629140910080,
+    "ray_memory_threshold_fraction": 0.95,
+    "killed_worker_role": "AgentLoopWorker",
+    "killed_worker_memory_gib_reported": 1.07,
+    "subsequent_ray_policy_kill": {
+      "at_hkt": "2026-11-06 15:11:59.060",
+      "pid": 10295,
+      "actor_id": "5c5fce8f617751024b028ca302000000",
+      "role": "AgentLoopWorker",
+      "reported_memory_gib": 1.07
+    },
+    "object_store_bytes_in_use_at_first_ray_kill": 53538647,
+    "failed_update_actor_id_direct_kill_mapping": "Not present in the archived raylet record; the two explicit Ray policy kills identify different AgentLoopWorker actors."
+  },
+  "causal_evidence": {
+    "source_path": "/data/ycfeng/tmp/verl-agent-opd-glm-business-20261106/exp-1106-144604-954702-cfcd2084-20261106T070758Z.log",
+    "sha256": "a2b3006112cc90977e7e59cb959163b9348b932e92be7298ca760ff5133e04f1",
+    "bytes": 48039,
+    "line_count": 312,
+    "selected_lines": [
+      {
+        "line": 42,
+        "text": "VERL_AGENT_OPD_GLM_QUALIFICATION_INPUT_VERIFIED {\"source\": \"/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-024352-115509/glm-learning.parquet\", \"output\": \"/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-024352-115509/glm-qualification.parquet\", \"rows\": 8, \"source_categories\": {\"control_and_thinking\": 2, \"control_only\": 2, \"thinking_only\": 2, \"neither\": 2}, \"reused_existing\": true, \"exact_source_first8_all_columns\": true}"
+      },
+      {
+        "line": 43,
+        "text": "VERL_STAGE_GPU_RECEIPT {\"job\": \"exp-1106-144604-954702\", \"rank\": 0, \"total\": 2, \"hostname\": \"gpu-h800-0401.host.platform.shaipower.com\", \"ip\": \"10.191.4.17\", \"python\": \"/data/ycfeng/envs/verl-agent-opd-megatron-sglang/bin/python\", \"python_version\": \"3.12.13 (main, May 10 2026, 19:30:01) [Clang 22.1.3 ]\", \"torch\": {\"version\": \"2.13.0+cu130\", \"cuda\": \"13.0\", \"source\": \"/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/torch/__init__.py\"}, \"verl_source\": \"/data/ycfeng/sota-engine/verl/verl/__init__.py\", \"gpus\": [{\"index\": \"0\", \"name\": \"NVIDIA H800\", \"uuid\": \"GPU-0be5e019-c725-bdda-37c5-5235fded42ec\", \"memory_mib\": \"81559\", \"driver\": \"570.124.06\"}, {\"index\": \"1\", \"name\": \"NVIDIA H800\", \"uuid\": \"GPU-460264c4-121e-08ec-6790-871d9f0430f9\", \"memory_mib\": \"81559\", \"driver\": \"570.124.06\"}, {\"index\": \"2\", \"name\": \"NVIDIA H800\", \"uuid\": \"GPU-16e2be88-f4de-e8d3-ccbc-52dc882c62d8\", \"memory_mib\": \"81559\", \"driver\": \"570.124.06\"}, {\"index\": \"3\", \"name\": \"NVIDIA H800\", \"uuid\": \"GPU-9ba646ce-1b90-8e57-8830-145252659554\", \"memory_mib\": \"81559\", \"driver\": \"570.124.06\"}, {\"index\": \"4\", \"name\": \"NVIDIA H800\", \"uuid\": \"GPU-10343fae-de1b-9e20-7e3e-ff61860d6d17\", \"memory_mib\": \"81559\", \"driver\": \"570.124.06\"}, {\"index\": \"5\", \"name\": \"NVIDIA H800\", \"uuid\": \"GPU-06a3c232-4f8c-0b1c-4721-51a9e554f516\", \"memory_mib\": \"81559\", \"driver\": \"570.124.06\"}, {\"index\": \"6\", \"name\": \"NVIDIA H800\", \"uuid\": \"GPU-439b078c-69c7-cf64-c375-9378f3894b3e\", \"memory_mib\": \"81559\", \"driver\": \"570.124.06\"}, {\"index\": \"7\", \"name\": \"NVIDIA H800\", \"uuid\": \"GPU-541d026a-2d47-f95a-f54c-8f99f43369a5\", \"memory_mib\": \"81559\", \"driver\": \"570.124.06\"}], \"preserved_nccl_keys\": [\"NCCL_IB_DISABLE\", \"NCCL_IB_FIFO_TC\", \"NCCL_IB_GID_INDEX\", \"NCCL_IB_HCA\", \"NCCL_IB_PCI_RELAXED_ORDERING\", \"NCCL_IB_QPS_PER_CONNECTION\", \"NCCL_IB_RETRY_CNT\", \"NCCL_IB_TC\", \"NCCL_IB_TIMEOUT\", \"NCCL_NVLS_ENABLE\", \"NCCL_PXN_DISABLE\", \"NCCL_RAS_ADDR\", \"NCCL_RAS_ENABLE\", \"NCCL_SET_THREAD_NAME\", \"NCCL_SOCKET_IFNAME\", \"NCCL_VERSION\"]}"
+      },
+      {
+        "line": 255,
+        "text": "(WorkerDict pid=5577)   return func(*args, **kwargs) [repeated 33x across cluster]"
+      },
+      {
+        "line": 256,
+        "text": "(WorkerDict pid=5577) /data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead. [repeated 17x across cluster]"
+      },
+      {
+        "line": 257,
+        "text": "(WorkerDict pid=5575) /data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/torch/autograd/graph.py:979: UserWarning: The AccumulateGrad node's stream does not match the stream of the node that produced the incoming gradient. This may incur unnecessary synchronization and break CUDA graph capture if the AccumulateGrad node's stream is the default stream. This mismatch is caused by an AccumulateGrad node created prior to the current iteration being kept alive. This can happen if the autograd graph is still being kept alive by tensors such as the loss, or if you are using DDP, which will stash a reference to the node. To resolve the mismatch, delete all references to the autograd graph or ensure that DDP initialization is performed under the same stream as subsequent forwards. If the mismatch is intentional, you can use torch.autograd.graph.set_warn_on_accumulate_grad_stream_mismatch(False) to suppress this warning. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/input_buffer.cpp:310.)"
+      },
+      {
+        "line": 258,
+        "text": "(WorkerDict pid=5575)   return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass"
+      },
+      {
+        "line": 259,
+        "text": "(raylet) [2026-11-06 07:05:06,950 E 1595 1595] (raylet) node_manager.cc:3303: 1 Workers (tasks / actors) killed due to memory pressure (OOM), 0 Workers crashed due to other reasons at node (ID: 5b1a37548a8a673de76b0dfeaa82d6f9be95306717fc2abc9a29cc46, IP: 10.191.4.17) over the last time period. To see more information about the Workers killed on this node, use `ray logs raylet.out -ip 10.191.4.17`"
+      },
+      {
+        "line": 260,
+        "text": "(raylet) "
+      },
+      {
+        "line": 261,
+        "text": "(raylet) Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero."
+      },
+      {
+        "line": 262,
+        "text": "(WorkerDict pid=5571) /data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.reduce_scatter_tensor` is deprecated. Please use `torch.distributed.reduce_scatter_single` instead. [repeated 7x across cluster]"
+      },
+      {
+        "line": 263,
+        "text": "(WorkerDict pid=5571)   return func(*args, **kwargs) [repeated 14x across cluster]"
+      },
+      {
+        "line": 264,
+        "text": "(WorkerDict pid=5571) /data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead. [repeated 7x across cluster]"
+      },
+      {
+        "line": 265,
+        "text": "(WorkerDict pid=5573) /data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/torch/autograd/graph.py:979: UserWarning: The AccumulateGrad node's stream does not match the stream of the node that produced the incoming gradient. This may incur unnecessary synchronization and break CUDA graph capture if the AccumulateGrad node's stream is the default stream. This mismatch is caused by an AccumulateGrad node created prior to the current iteration being kept alive. This can happen if the autograd graph is still being kept alive by tensors such as the loss, or if you are using DDP, which will stash a reference to the node. To resolve the mismatch, delete all references to the autograd graph or ensure that DDP initialization is performed under the same stream as subsequent forwards. If the mismatch is intentional, you can use torch.autograd.graph.set_warn_on_accumulate_grad_stream_mismatch(False) to suppress this warning. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/input_buffer.cpp:310.) [repeated 7x across cluster]"
+      },
+      {
+        "line": 266,
+        "text": "(WorkerDict pid=5573)   return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass [repeated 7x across cluster]"
+      },
+      {
+        "line": 267,
+        "text": "Traceback (most recent call last):"
+      },
+      {
+        "line": 268,
+        "text": "  File \"<frozen runpy>\", line 198, in _run_module_as_main"
+      },
+      {
+        "line": 269,
+        "text": "  File \"<frozen runpy>\", line 88, in _run_code"
+      },
+      {
+        "line": 270,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/train.py\", line 467, in <module>"
+      },
+      {
+        "line": 271,
+        "text": "    main()"
+      },
+      {
+        "line": 272,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/train.py\", line 463, in main"
+      },
+      {
+        "line": 273,
+        "text": "    run_ppo(config, task_runner_class=TaskRunner)"
+      },
+      {
+        "line": 274,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/verl/trainer/main_ppo.py\", line 97, in run_ppo"
+      },
+      {
+        "line": 275,
+        "text": "    ray.get(runner.run.remote(config))"
+      },
+      {
+        "line": 276,
+        "text": "  File \"/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/ray/_private/auto_init_hook.py\", line 22, in auto_init_wrapper"
+      },
+      {
+        "line": 277,
+        "text": "    return fn(*args, **kwargs)"
+      },
+      {
+        "line": 278,
+        "text": "           ^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 279,
+        "text": "  File \"/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/ray/_private/client_mode_hook.py\", line 107, in wrapper"
+      },
+      {
+        "line": 280,
+        "text": "    return func(*args, **kwargs)"
+      },
+      {
+        "line": 281,
+        "text": "           ^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 282,
+        "text": "  File \"/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/ray/_private/worker.py\", line 2980, in get"
+      },
+      {
+        "line": 283,
+        "text": "    values, debugger_breakpoint = worker.get_objects("
+      },
+      {
+        "line": 284,
+        "text": "                                  ^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 285,
+        "text": "  File \"/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/ray/_private/worker.py\", line 1023, in get_objects"
+      },
+      {
+        "line": 286,
+        "text": "    raise value.as_instanceof_cause()"
+      },
+      {
+        "line": 287,
+        "text": "ray.exceptions.RayTaskError(ActorUnavailableError): ray::TaskRunner.run() (pid=1064, ip=10.191.8.61, actor_id=51a177b8354e75ecbb3d9c7902000000, repr=<train.TaskRunner object at 0x7ff906902660>)"
+      },
+      {
+        "line": 288,
+        "text": "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 289,
+        "text": "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 290,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/train.py\", line 461, in run"
+      },
+      {
+        "line": 291,
+        "text": "    run_training(self, native_config, observations, settings)"
+      },
+      {
+        "line": 292,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/train.py\", line 437, in run_training"
+      },
+      {
+        "line": 293,
+        "text": "    trainer.fit()"
+      },
+      {
+        "line": 294,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/train.py\", line 246, in fit"
+      },
+      {
+        "line": 295,
+        "text": "    result = super().fit()"
+      },
+      {
+        "line": 296,
+        "text": "             ^^^^^^^^^^^^^"
+      },
+      {
+        "line": 297,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/verl/trainer/ppo/ray_trainer.py\", line 1690, in fit"
+      },
+      {
+        "line": 298,
+        "text": "    actor_output = self._update_actor(batch)"
+      },
+      {
+        "line": 299,
+        "text": "                   ^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 300,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/train.py\", line 165, in _update_actor"
+      },
+      {
+        "line": 301,
+        "text": "    result = super()._update_actor(batch)"
+      },
+      {
+        "line": 302,
+        "text": "             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 303,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/verl/trainer/ppo/ray_trainer.py\", line 1369, in _update_actor"
+      },
+      {
+        "line": 304,
+        "text": "    actor_output = self.actor_rollout_wg.update_actor(batch_td)"
+      },
+      {
+        "line": 305,
+        "text": "                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 306,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/verl/single_controller/ray/base.py\", line 56, in __call__"
+      },
+      {
+        "line": 307,
+        "text": "    output = ray.get(output)"
+      },
+      {
+        "line": 308,
+        "text": "             ^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 309,
+        "text": "           ^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 310,
+        "text": "           ^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 311,
+        "text": "                                  ^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 312,
+        "text": "ray.exceptions.ActorUnavailableError: The actor 69eab879b3c1b6e36ce2391102000000 is unavailable: The actor is temporarily unavailable: RpcError: RPC error: Socket closed rpc_code: 14. The task may or may not have been executed on the actor."
+      }
+    ]
+  },
+  "training_receipt": {
+    "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-144604-954702/observations/training.json",
+    "sha256": "9131ffa39d26bc011f86cb84903ea20e90420fc69e9d227333539fdb762d3dd4",
+    "bytes": 964,
+    "requested_updates": 2,
+    "actor_update_call_count": 1,
+    "completed_updates": 0,
+    "update_outcomes": [
+      {
+        "training_step": 1,
+        "native_update_returned": false,
+        "status": "unverified",
+        "error_type": "ActorUnavailableError",
+        "reason": "The actor 69eab879b3c1b6e36ce2391102000000 is unavailable: The actor is temporarily unavailable: RpcError: RPC error: Socket closed rpc_code: 14. The task may or may not have been executed on the actor."
+      }
+    ],
+    "native_fit_returned": false,
+    "last_native_checkpoint_step": null,
+    "final_export": null,
+    "interpretation": "Zero verified successful updates; whether an interrupted optimizer changed any weights is unknown.",
+    "content": {
+      "requested_updates": 2,
+      "actor_update_call_count": 1,
+      "completed_updates": 0,
+      "update_outcomes": [
+        {
+          "training_step": 1,
+          "native_update_returned": false,
+          "status": "unverified",
+          "error_type": "ActorUnavailableError",
+          "reason": "The actor 69eab879b3c1b6e36ce2391102000000 is unavailable: The actor is temporarily unavailable: RpcError: RPC error: Socket closed rpc_code: 14. The task may or may not have been executed on the actor."
+        }
+      ],
+      "native_megatron_optimizer_success_contract": {
+        "source": "verl/workers/engine/megatron/transformer_impl.py:MegatronEngine.optimizer_step",
+        "success_condition": "Megatron optimizer.step update_successful=False raises before returning",
+        "iteration_source": "verl/workers/engine_workers.py:TrainingWorker.train_mini_batch",
+        "one_optimizer_step_per_call": true
+      },
+      "native_fit_returned": false,
+      "last_native_checkpoint_step": null,
+      "final_export": null
+    }
+  },
+  "phase_analysis": {
+    "observed": "Actor forward and backward warnings appear before the raylet memory-pressure event; the first _update_actor call does not return successfully.",
+    "source_contract": [
+      {
+        "source": "verl/workers/engine/base.py:326",
+        "meaning": "Training context entry moves configured model, gradients and optimizer to GPU; context exit offloads them to CPU."
+      },
+      {
+        "source": "verl/utils/megatron_utils.py:678",
+        "meaning": "Optimizer offload moves Adam moments and supported master parameters to CPU."
+      },
+      {
+        "source": "verl/workers/engine/megatron/transformer_impl.py:670",
+        "meaning": "Native optimizer_step calls Megatron optimizer.step and raises on update_successful=False."
+      },
+      {
+        "source": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/transformer_engine/pytorch/optimizers/fused_adam.py:633",
+        "meaning": "FusedAdam initializes empty per-parameter optimizer state during step."
+      },
+      {
+        "source": "verl/utils/megatron_utils.py:460",
+        "meaning": "DDP offload retains one pinned CPU model-parameter buffer but frees gradient GPU storage with resize_(0); FP32 gradients must not be counted as a CPU offload component."
+      }
+    ],
+    "not_observed": "The explicit Ray policy kill victims are AgentLoopWorkers. The exact mechanism/PID for disappearance of update actor69eab879 is not recorded. The source and current footprint are compatible with first optimizer-state materialization and CPU offload, but do not prove that subphase or whether parameter values changed."
+  },
+  "classification": {
+    "native_node_memory_pressure_kill": "Observed in complete archived raylet.out:31,3808,3809,3836,4103,4153; measured node memory reaches its configured hard limit.",
+    "exact_killed_actor_mapping": "The first explicit Ray kill is PID10294/AgentLoopWorker actor a4ee63ab9266b5859d00511d02000000; a second is PID10295/AgentLoopWorker actor5c5fce8f617751024b028ca302000000. Neither is the unavailable update actor.",
+    "cuda_oom": "No CUDA out-of-memory exception observed in this selected window.",
+    "container_oomkilled": "Not inferred from the Ray memory-pressure event.",
+    "background_loguru_error": "The earlier p2p_ping optional background-check failure precedes successful native initialization and is not the native update's initiating trace.",
+    "version1": "Not observed.",
+    "completed_two_updates": "Not verified.",
+    "final_hf2_changed_value": "Not verified; no final export is recorded."
+  },
+  "read_only_collection_limits": [
+    "Existing native finally archives were published after the failed subprocess exited and were read by exact job paths.",
+    "One earlier exact actor-state read and one rank-0 raylet tail read through the existing Ray dashboard timed out; the original archived raylet records were later obtained.",
+    "No job control, retry, source edit, threshold change, or extra GPU diagnostic was performed."
+  ],
+  "final_native_archives": {
+    "rank-0-result.json": {
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-144604-954702/rank-0-result.json",
+      "sha256": "957e7d454ffa2577091a4a8a82e32f018b826b64610dd4e0c60c0ca97164dac3",
+      "bytes": 528,
+      "content": {
+        "status": "failed",
+        "job": "exp-1106-144604-954702",
+        "rank": 0,
+        "pair": "glm",
+        "requested_updates": 2,
+        "error": "CalledProcessError: Command '['/data/ycfeng/envs/verl-agent-opd-megatron-sglang/bin/python', '-B', '-m', 'tests.manual.agent_opd.train', '--config', '/data/ycfeng/tmp/verl-agent-opd-20261106/rendezvous/exp-1106-144604-954702/recipe.yaml', '--observations', '/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-144604-954702/observations']' returned non-zero exit status 1."
+      }
+    },
+    "rank-1-result.json": {
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-144604-954702/rank-1-result.json",
+      "sha256": "b1ea1d79dd42b3ceed44dd9da86f58217fa5b646cd267a0061d9f745e4b51377",
+      "bytes": 560,
+      "content": {
+        "status": "failed",
+        "job": "exp-1106-144604-954702",
+        "rank": 1,
+        "pair": "glm",
+        "requested_updates": 2,
+        "error": "RuntimeError: Replica 0 failed: CalledProcessError: Command '['/data/ycfeng/envs/verl-agent-opd-megatron-sglang/bin/python', '-B', '-m', 'tests.manual.agent_opd.train', '--config', '/data/ycfeng/tmp/verl-agent-opd-20261106/rendezvous/exp-1106-144604-954702/recipe.yaml', '--observations', '/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-144604-954702/observations']' returned non-zero exit status 1."
+      }
+    },
+    "observations/training.json": {
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-144604-954702/observations/training.json",
+      "sha256": "9131ffa39d26bc011f86cb84903ea20e90420fc69e9d227333539fdb762d3dd4",
+      "bytes": 964,
+      "content": {
+        "requested_updates": 2,
+        "actor_update_call_count": 1,
+        "completed_updates": 0,
+        "update_outcomes": [
+          {
+            "training_step": 1,
+            "native_update_returned": false,
+            "status": "unverified",
+            "error_type": "ActorUnavailableError",
+            "reason": "The actor 69eab879b3c1b6e36ce2391102000000 is unavailable: The actor is temporarily unavailable: RpcError: RPC error: Socket closed rpc_code: 14. The task may or may not have been executed on the actor."
+          }
+        ],
+        "native_megatron_optimizer_success_contract": {
+          "source": "verl/workers/engine/megatron/transformer_impl.py:MegatronEngine.optimizer_step",
+          "success_condition": "Megatron optimizer.step update_successful=False raises before returning",
+          "iteration_source": "verl/workers/engine_workers.py:TrainingWorker.train_mini_batch",
+          "one_optimizer_step_per_call": true
+        },
+        "native_fit_returned": false,
+        "last_native_checkpoint_step": null,
+        "final_export": null
+      }
+    },
+    "logs/rank-0/raylet.out": {
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-144604-954702/logs/rank-0/raylet.out",
+      "sha256": "6bf5bfd7154b13f324042d21aad61b4e4acf73c6ac83b845bba85f691dd8fe4d",
+      "bytes": 707798,
+      "line_count": 4487,
+      "selected_lines": [
+        {
+          "line": 31,
+          "text": "[2026-11-06 06:48:49,751 I 1595 1595] (raylet) threshold_memory_monitor.cc:52: MemoryMonitor initialized with usage threshold at 597688320000 bytes (95.000000% of system memory), total system memory bytes: 629145600000, monitor interval: 250ms"
+        },
+        {
+          "line": 3808,
+          "text": "[2026-11-06 07:02:34,208 I 1595 1662] (raylet) threshold_memory_monitor.cc:104: Node memory usage above threshold, used: 599545114624, threshold_bytes: 597688320000, total bytes: 629145600000, threshold fraction: 0.950000"
+        },
+        {
+          "line": 3809,
+          "text": "[2026-11-06 07:05:06,783 I 1595 1662] (raylet) threshold_memory_monitor.cc:104: Node memory usage above threshold, used: 628612833280, threshold_bytes: 597688320000, total bytes: 629145600000, threshold fraction: 0.950000"
+        },
+        {
+          "line": 3835,
+          "text": "[2026-11-06 07:05:06,899 I 1595 1595] (raylet) memory_monitor_utils.cc:359: Empty file. Returning empty command. Path: /proc/5572/cmdline"
+        },
+        {
+          "line": 3836,
+          "text": "[2026-11-06 07:05:06,899 I 1595 1595] (raylet) node_manager.cc:3081: Killing 1 worker(s), kill details: Memory on the node (IP: 10.191.4.17, ID: 5b1a37548a8a673de76b0dfeaa82d6f9be95306717fc2abc9a29cc46) was 558.37GB / 585.94GB (0.952951), which exceeds the memory usage threshold of 0.950000; Object store memory usage: [- objects spillable: 1; - bytes spillable: 106460; - objects unsealed: 0; - bytes unsealed: 0; - objects in use: 3; - bytes in use: 53538647; - objects evictable: 0; - bytes evictable: 0; ; - objects created by worker: 1; - bytes created by worker: 106460; - objects restored: 0; - bytes restored: 0; - objects received: 2; - bytes received: 53432187; - objects errored: 0; - bytes errored: 0; ; Eviction Stats:; (global lru) capacity: 188547342336; (global lru) used: 0%; (global lru) num objects: 0; (global lru) num evictions: 0; (global lru) bytes evicted: 0]; Ray killed 1 worker(s) based on the killing policy: [(Actor(a4ee63ab9266b5859d00511d02000000): job ID=02000000, lease ID=2d00000078fa99954c6fe62cc90e75cff3ed5f105380f78378177de9b83c2e05, task name=agent_loop_worker_2_38a3eec9:AgentLoopWorker.__init__, required resources={}, pid=10294, actual memory used=1.07GB, worker ID=8adb2e3f4c7aa706c4299fec33a207fa1e0d8853d5112f12b6c2f59e)]; To see more information about memory usage on this node, use `ray logs raylet.out -ip 10.191.4.17`; Top 10 memory users: PID\tMEM(GB)\tCOMMAND, 5575\t53.00\tray::WorkerDict.actor_rollout_update_actor, 5576\t52.98\tray::WorkerDict.actor_rollout_update_actor, 5574\t52.87\tray::WorkerDict.actor_rollout_update_actor, 5573\t52.59\tray::WorkerDict.actor_rollout_update_actor, 5572\t52.27\t, 5577\t52.27\tray::WorkerDict.actor_rollout_update_actor, 5571\t51.18\tray::WorkerDict.actor_rollout_update_actor, 5570\t50.22\tray::WorkerDict.actor_rollout_update_actor, 9495\t17.11\tsglang::scheduler_TP2, 9524\t17.11\tsglang::scheduler_TP2, suggestions: Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero."
+        },
+        {
+          "line": 4103,
+          "text": "[2026-11-06 07:08:49,242 I 1595 1662] (raylet) threshold_memory_monitor.cc:104: Node memory usage above threshold, used: 629140910080, threshold_bytes: 597688320000, total bytes: 629145600000, threshold fraction: 0.950000"
+        },
+        {
+          "line": 4126,
+          "text": "[2026-11-06 07:11:57,899 I 1595 1662] (raylet) threshold_memory_monitor.cc:104: Node memory usage above threshold, used: 629140819968, threshold_bytes: 597688320000, total bytes: 629145600000, threshold fraction: 0.950000"
+        },
+        {
+          "line": 4150,
+          "text": "[2026-11-06 07:11:59,059 I 1595 1595] (raylet) memory_monitor_utils.cc:318: Can't find memory usage in process memory snapshot for PID, reporting zero. PID: 5572"
+        },
+        {
+          "line": 4153,
+          "text": "[2026-11-06 07:11:59,060 I 1595 1595] (raylet) node_manager.cc:3081: Killing 1 worker(s), kill details: Memory on the node (IP: 10.191.4.17, ID: 5b1a37548a8a673de76b0dfeaa82d6f9be95306717fc2abc9a29cc46) was 578.74GB / 585.94GB (0.987720), which exceeds the memory usage threshold of 0.950000; Object store memory usage: [- objects spillable: 1; - bytes spillable: 106460; - objects unsealed: 0; - bytes unsealed: 0; - objects in use: 3; - bytes in use: 53538647; - objects evictable: 0; - bytes evictable: 0; ; - objects created by worker: 1; - bytes created by worker: 106460; - objects restored: 0; - bytes restored: 0; - objects received: 2; - bytes received: 53432187; - objects errored: 0; - bytes errored: 0; ; Eviction Stats:; (global lru) capacity: 188547342336; (global lru) used: 0%; (global lru) num objects: 0; (global lru) num evictions: 0; (global lru) bytes evicted: 0]; Ray killed 1 worker(s) based on the killing policy: [(Actor(5c5fce8f617751024b028ca302000000): job ID=02000000, lease ID=2b00000043e628754f64f0797a705409ddda8ceaafc1b70cc405cd21f1b07905, task name=agent_loop_worker_0_f3245116:AgentLoopWorker.__init__, required resources={}, pid=10295, actual memory used=1.07GB, worker ID=7bc7d2a25212060d835fa1b67702305f2038055392dba50f398f3e6e)]; To see more information about memory usage on this node, use `ray logs raylet.out -ip 10.191.4.17`; Top 10 memory users: PID\tMEM(GB)\tCOMMAND, 5575\t54.53\tray::WorkerDict.actor_rollout_update_actor, 5576\t54.45\tray::WorkerDict.actor_rollout_update_actor, 5574\t54.17\tray::WorkerDict.actor_rollout_update_actor, 5573\t53.70\tray::WorkerDict.actor_rollout_update_actor, 5571\t53.65\tray::WorkerDict.actor_rollout_update_actor, 5570\t53.65\t, 5577\t53.50\tray::WorkerDict.actor_rollout_update_actor, 9495\t17.11\tsglang::scheduler_TP2, 9524\t17.11\tsglang::scheduler_TP2, 9536\t17.11\tsglang::scheduler_TP3, suggestions: Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero."
+        },
+        {
+          "line": 4156,
+          "text": "[2026-11-06 07:11:59,073 I 1595 1595] (raylet) node_manager.cc:1413: Disconnecting worker, graceful=false, disconnect_type=0, has_creation_task_exception=false worker_id=f52caa809203b6de2885cdf73fc74e37c77bec0acfab31325afdcf48 job_id=02000000"
+        }
+      ]
+    },
+    "logs/rank-0/raylet.err": {
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-144604-954702/logs/rank-0/raylet.err",
+      "sha256": "3980dacedf32b8fd2a70739bf866605f78f77d9c274fa9adb641c34f7c932af5",
+      "bytes": 1704,
+      "line_count": 6,
+      "selected_lines": [
+        {
+          "line": 1,
+          "text": "[2026-11-06 07:05:06,950 E 1595 1595] (raylet) node_manager.cc:3303: 1 Workers (tasks / actors) killed due to memory pressure (OOM), 0 Workers crashed due to other reasons at node (ID: 5b1a37548a8a673de76b0dfeaa82d6f9be95306717fc2abc9a29cc46, IP: 10.191.4.17) over the last time period. To see more information about the Workers killed on this node, use `ray logs raylet.out -ip 10.191.4.17`"
+        },
+        {
+          "line": 4,
+          "text": "[2026-11-06 07:11:59,078 E 1595 1595] (raylet) node_manager.cc:3303: 1 Workers (tasks / actors) killed due to memory pressure (OOM), 0 Workers crashed due to other reasons at node (ID: 5b1a37548a8a673de76b0dfeaa82d6f9be95306717fc2abc9a29cc46, IP: 10.191.4.17) over the last time period. To see more information about the Workers killed on this node, use `ray logs raylet.out -ip 10.191.4.17`"
+        }
+      ]
+    },
+    "logs/rank-0/training.log": {
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-144604-954702/logs/rank-0/training.log",
+      "sha256": "1cf5ac1949274a1a8c870a8e95e1dc2abdd2e8a28855d2a25557d29618653293",
+      "bytes": 47234,
+      "line_count": 297,
+      "selected_lines": [
+        {
+          "line": 220,
+          "text": "Traceback (most recent call last):"
+        },
+        {
+          "line": 221,
+          "text": "  File \"<frozen runpy>\", line 198, in _run_module_as_main"
+        },
+        {
+          "line": 222,
+          "text": "  File \"<frozen runpy>\", line 88, in _run_code"
+        },
+        {
+          "line": 223,
+          "text": "  File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/train.py\", line 467, in <module>"
+        },
+        {
+          "line": 224,
+          "text": "    main()"
+        },
+        {
+          "line": 225,
+          "text": "  File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/train.py\", line 463, in main"
+        },
+        {
+          "line": 226,
+          "text": "    run_ppo(config, task_runner_class=TaskRunner)"
+        },
+        {
+          "line": 227,
+          "text": "  File \"/data/ycfeng/sota-engine/verl/verl/trainer/main_ppo.py\", line 97, in run_ppo"
+        },
+        {
+          "line": 228,
+          "text": "    ray.get(runner.run.remote(config))"
+        },
+        {
+          "line": 229,
+          "text": "  File \"/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/ray/_private/auto_init_hook.py\", line 22, in auto_init_wrapper"
+        },
+        {
+          "line": 230,
+          "text": "    return fn(*args, **kwargs)"
+        },
+        {
+          "line": 231,
+          "text": "           ^^^^^^^^^^^^^^^^^^^"
+        },
+        {
+          "line": 232,
+          "text": "  File \"/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/ray/_private/client_mode_hook.py\", line 107, in wrapper"
+        },
+        {
+          "line": 233,
+          "text": "    return func(*args, **kwargs)"
+        },
+        {
+          "line": 234,
+          "text": "           ^^^^^^^^^^^^^^^^^^^^^"
+        },
+        {
+          "line": 235,
+          "text": "  File \"/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/ray/_private/worker.py\", line 2980, in get"
+        },
+        {
+          "line": 236,
+          "text": "    values, debugger_breakpoint = worker.get_objects("
+        },
+        {
+          "line": 237,
+          "text": "                                  ^^^^^^^^^^^^^^^^^^^"
+        },
+        {
+          "line": 238,
+          "text": "  File \"/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/ray/_private/worker.py\", line 1023, in get_objects"
+        },
+        {
+          "line": 239,
+          "text": "    raise value.as_instanceof_cause()"
+        },
+        {
+          "line": 240,
+          "text": "ray.exceptions.RayTaskError(ActorUnavailableError): ray::TaskRunner.run() (pid=1064, ip=10.191.8.61, actor_id=51a177b8354e75ecbb3d9c7902000000, repr=<train.TaskRunner object at 0x7ff906902660>)"
+        },
+        {
+          "line": 241,
+          "text": "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+        },
+        {
+          "line": 242,
+          "text": "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+        },
+        {
+          "line": 243,
+          "text": "  File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/train.py\", line 461, in run"
+        },
+        {
+          "line": 244,
+          "text": "    run_training(self, native_config, observations, settings)"
+        },
+        {
+          "line": 245,
+          "text": "  File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/train.py\", line 437, in run_training"
+        },
+        {
+          "line": 246,
+          "text": "    trainer.fit()"
+        },
+        {
+          "line": 247,
+          "text": "  File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/train.py\", line 246, in fit"
+        },
+        {
+          "line": 248,
+          "text": "    result = super().fit()"
+        },
+        {
+          "line": 249,
+          "text": "             ^^^^^^^^^^^^^"
+        },
+        {
+          "line": 250,
+          "text": "  File \"/data/ycfeng/sota-engine/verl/verl/trainer/ppo/ray_trainer.py\", line 1690, in fit"
+        },
+        {
+          "line": 251,
+          "text": "    actor_output = self._update_actor(batch)"
+        },
+        {
+          "line": 252,
+          "text": "                   ^^^^^^^^^^^^^^^^^^^^^^^^^"
+        },
+        {
+          "line": 253,
+          "text": "  File \"/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/train.py\", line 165, in _update_actor"
+        },
+        {
+          "line": 254,
+          "text": "    result = super()._update_actor(batch)"
+        },
+        {
+          "line": 255,
+          "text": "             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+        },
+        {
+          "line": 256,
+          "text": "  File \"/data/ycfeng/sota-engine/verl/verl/trainer/ppo/ray_trainer.py\", line 1369, in _update_actor"
+        },
+        {
+          "line": 257,
+          "text": "    actor_output = self.actor_rollout_wg.update_actor(batch_td)"
+        },
+        {
+          "line": 258,
+          "text": "                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+        },
+        {
+          "line": 259,
+          "text": "  File \"/data/ycfeng/sota-engine/verl/verl/single_controller/ray/base.py\", line 56, in __call__"
+        },
+        {
+          "line": 260,
+          "text": "    output = ray.get(output)"
+        },
+        {
+          "line": 261,
+          "text": "             ^^^^^^^^^^^^^^^"
+        },
+        {
+          "line": 262,
+          "text": "           ^^^^^^^^^^^^^^^^^^^"
+        },
+        {
+          "line": 263,
+          "text": "           ^^^^^^^^^^^^^^^^^^^^^"
+        },
+        {
+          "line": 264,
+          "text": "                                  ^^^^^^^^^^^^^^^^^^^"
+        },
+        {
+          "line": 265,
+          "text": "ray.exceptions.ActorUnavailableError: The actor 69eab879b3c1b6e36ce2391102000000 is unavailable: The actor is temporarily unavailable: RpcError: RPC error: Socket closed rpc_code: 14. The task may or may not have been executed on the actor."
+        }
+      ]
+    }
+  },
+  "final_platform_observation": {
+    "source": "Sole platform observer /root/platform_observer message, snapshot 2026-11-06 15:13:37 HKT",
+    "job_status": "Failed",
+    "rank1_exit_code": 1,
+    "rank1_reason": "Error",
+    "rank1_finished_at_hkt": "2026-11-06 15:12:35",
+    "rank0_replica_phase": "Stopped",
+    "rank0_exit_code": null,
+    "rank0_limit": "Container status still retained an old running snapshot; no rank-0 container exit code is inferred."
+  },
+  "launcher_terminal": {
+    "source": "Parent /root launcher observation",
+    "session_id": 10138,
+    "local_exit_code": 1,
+    "reported_worker_status": "failed",
+    "exit_handler_job_stop_at_hkt": "2026-11-06 15:12:40.754"
+  },
+  "resource_planning": {
+    "inventory_receipt": "/data/ycfeng/tmp/verl-agent-opd-glm-business-20261106/glm-student-header-memory-inventory.json",
+    "inventory_sha256": "2c2194af40fa1f530401fc6242830f1ea5fbee30d752586945125e09b83459d7",
+    "routed_expert_parameters": 27783069696,
+    "dense_shared_embedding_head_parameters": 2160324224,
+    "disabled_mtp_parameters": 1278094656,
+    "decoder_parameters": 29943393920,
+    "scope": "Capacity model from actual safetensors shapes/dtypes and native TP/DP/EP optimizer placement; not a measured allocation inventory.",
+    "assumptions": [
+      "Dense weights partition over TP4 and replicate over DP2.",
+      "Routed expert weights partition over EP8 with ETP1 and expert-DP1.",
+      "Distributed optimizer FP32 master parameters and two Adam moments are unique across data-parallel ranks.",
+      "Persistent BF16 pinned model buffers remain on CPU. DDP main-gradient buffers are not copied to CPU.",
+      "Small F32 router parameters and allocator/bucket padding are omitted from the capacity approximation."
+    ],
+    "BF16_model_cpu_bytes_approx": 64207436288,
+    "FP32_master_cpu_bytes_approx": 119773575680,
+    "FP32_two_Adam_moments_cpu_bytes_approx": 239547151360,
+    "CPU_model_master_moments_bytes_approx": 423528163328,
+    "memory_request_candidate_gb_per_replica": 800,
+    "memory_request_conservative_candidate_range_gb_per_replica": [
+      800,
+      1000
+    ],
+    "candidate_800000_MiB_total_bytes": 838860800000,
+    "candidate_95_percent_threshold_bytes": 796917760000,
+    "candidate_threshold_minus_observed_clipped_peak_bytes": 167776849920,
+    "candidate_scope": "Only increase normal memory; preserve GPU count, model, inputs, optimizer, offload, and Ray memory protection. No job was submitted.",
+    "uncertainty": "The observed peak is censored at the current hard limit and no HF2 export was reached. 800 GB is a next qualification candidate with about one decoder FP32 plane of planning headroom; neither 800 nor 1000 GB is proven sufficient."
+  }
+}

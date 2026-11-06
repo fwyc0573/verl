@@ -1,0 +1,70 @@
+{
+  "collected_at_utc": "2026-11-06T07:22:50.031642+00:00",
+  "python": "3.12.13",
+  "results": [
+    {
+      "pair": "glm",
+      "steps": 2,
+      "status": "PASS",
+      "changed_overrides": [
+        [
+          "actor_rollout_ref.model.use_fused_kernels=false",
+          "actor_rollout_ref.model.use_fused_kernels=true"
+        ],
+        [
+          "++actor_rollout_ref.rollout.engine_kwargs={sglang:{disable_cuda_graph:true,enable_deterministic_inference:true,attention_backend:\"fa3\",moe_runner_backend:\"triton\",disable_radix_cache:true,max_running_requests:4,chunked_prefill_size:8192}}",
+          "++actor_rollout_ref.rollout.engine_kwargs={sglang:{disable_cuda_graph:true,enable_deterministic_inference:true,attention_backend:\"fa3\",moe_runner_backend:\"triton\",disable_radix_cache:true,max_running_requests:4,chunked_prefill_size:8192,enable_fp32_lm_head:true}}"
+        ],
+        [
+          "++distillation.teacher_models.teacher_model.inference.engine_kwargs={sglang:{disable_cuda_graph:true,enable_deterministic_inference:true,attention_backend:\"fa3\",moe_runner_backend:\"triton\",disable_radix_cache:true,max_running_requests:4,chunked_prefill_size:8192}}",
+          "++distillation.teacher_models.teacher_model.inference.engine_kwargs={sglang:{disable_cuda_graph:true,enable_deterministic_inference:true,attention_backend:\"fa3\",moe_runner_backend:\"triton\",disable_radix_cache:true,max_running_requests:4,chunked_prefill_size:8192,enable_fp32_lm_head:true}}"
+        ]
+      ],
+      "all_other_overrides_equal": true,
+      "native_distillation_dataclass_verified": true
+    },
+    {
+      "pair": "glm",
+      "steps": 20,
+      "status": "PASS",
+      "changed_overrides": [
+        [
+          "actor_rollout_ref.model.use_fused_kernels=false",
+          "actor_rollout_ref.model.use_fused_kernels=true"
+        ],
+        [
+          "++actor_rollout_ref.rollout.engine_kwargs={sglang:{disable_cuda_graph:true,enable_deterministic_inference:true,attention_backend:\"fa3\",moe_runner_backend:\"triton\",disable_radix_cache:true,max_running_requests:4,chunked_prefill_size:8192}}",
+          "++actor_rollout_ref.rollout.engine_kwargs={sglang:{disable_cuda_graph:true,enable_deterministic_inference:true,attention_backend:\"fa3\",moe_runner_backend:\"triton\",disable_radix_cache:true,max_running_requests:4,chunked_prefill_size:8192,enable_fp32_lm_head:true}}"
+        ],
+        [
+          "++distillation.teacher_models.teacher_model.inference.engine_kwargs={sglang:{disable_cuda_graph:true,enable_deterministic_inference:true,attention_backend:\"fa3\",moe_runner_backend:\"triton\",disable_radix_cache:true,max_running_requests:4,chunked_prefill_size:8192}}",
+          "++distillation.teacher_models.teacher_model.inference.engine_kwargs={sglang:{disable_cuda_graph:true,enable_deterministic_inference:true,attention_backend:\"fa3\",moe_runner_backend:\"triton\",disable_radix_cache:true,max_running_requests:4,chunked_prefill_size:8192,enable_fp32_lm_head:true}}"
+        ]
+      ],
+      "all_other_overrides_equal": true,
+      "native_distillation_dataclass_verified": true
+    },
+    {
+      "pair": "qwen",
+      "steps": 2,
+      "status": "PASS",
+      "changed_overrides": [],
+      "all_other_overrides_equal": true,
+      "native_distillation_dataclass_verified": true
+    },
+    {
+      "pair": "qwen",
+      "steps": 20,
+      "status": "PASS",
+      "changed_overrides": [],
+      "all_other_overrides_equal": true,
+      "native_distillation_dataclass_verified": true
+    }
+  ],
+  "precision_semantics": "BF16 model operands with FP32 head output/accumulation; SG materializes full logits, Megatron Triton returns fused per-token scores. Different reduction orders remain.",
+  "hypothesis": "Avoiding BF16 output logits may reduce shape-dependent head rounding enough for the fixed three-way MAE contract. Existing measurements do not prove the head is the cause.",
+  "falsifier": "If the next actual original-weight qualification still fails numerical acceptance, this head-output precision change is insufficient; do not claim causal resolution or loosen thresholds.",
+  "limits": [
+    "CPU configuration only; no GPU kernel, memory, routes, MAE, optimizer update, or changed weight proved."
+  ]
+}

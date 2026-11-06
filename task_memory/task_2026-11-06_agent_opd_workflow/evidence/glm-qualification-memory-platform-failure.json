@@ -1,0 +1,301 @@
+{
+  "recorded_at": "2026-11-06T07:19:37.852984+00:00",
+  "job_name": "exp-1106-144604-954702",
+  "job_uid": "731dd5f3-f5db-485b-a8e3-ba8879043933",
+  "timezone": "UTC; HKT is UTC+8",
+  "initial_identity": {
+    "collected_at": "2026-11-06T06:50:29.504549+00:00",
+    "name": "exp-1106-144604-954702",
+    "uid": "731dd5f3-f5db-485b-a8e3-ba8879043933",
+    "created_at": "2026-11-06T06:46:05Z",
+    "creator": "i-fengyicheng",
+    "status": {
+      "phase": "Running",
+      "reason": "RJobRunning",
+      "message": "Tasks is running: [default]",
+      "taskStatuses": {
+        "default": {
+          "active": 2,
+          "taskStage": "stepmind-task-stage-1"
+        }
+      },
+      "taskStage": "stepmind-task-stage-1"
+    },
+    "configuration_labels": {
+      "quotagroup.brainpp.cn/preemptible": "no",
+      "quotagroup.brainpp.cn/quotagroup": "codesign"
+    },
+    "source_mount": "100.96.128.195:/data/ycfeng:/data/ycfeng",
+    "tasks": {
+      "default": {
+        "replicas": 2,
+        "positive_tags": [
+          "H800"
+        ],
+        "source_mount": "100.96.128.195:/data/ycfeng:/data/ycfeng",
+        "containers": [
+          {
+            "name": "default",
+            "image": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+            "resources": {
+              "limits": {
+                "cpu": "48",
+                "mellanox.com/mlnx_rdma": "1",
+                "memory": "600000Mi",
+                "nvidia.com/gpu": "8",
+                "rdma/mlnx_shared": "8"
+              },
+              "requests": {
+                "cpu": "48",
+                "memory": "600000Mi",
+                "nvidia.com/gpu": "8"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "controls": "NONE"
+  },
+  "terminal_snapshot": {
+    "collected_at": "2026-11-06T07:13:37.688168+00:00",
+    "job": {
+      "name": "exp-1106-144604-954702",
+      "uid": "731dd5f3-f5db-485b-a8e3-ba8879043933",
+      "creator": "i-fengyicheng",
+      "status": {
+        "phase": "Failed",
+        "reason": "RJobFailed",
+        "message": "Tasks with failed status: [default]",
+        "taskStatuses": {
+          "default": {
+            "failed": 1,
+            "stopped": 1,
+            "taskStage": "stepmind-task-stage-1"
+          }
+        },
+        "finishTime": "2026-11-06T07:12:38Z",
+        "taskStage": "stepmind-task-stage-1"
+      },
+      "stop_annotations": {
+        "rjob.brainpp.cn/system-stop-reason": "Task fail policy [any] caused undesired running replicas."
+      }
+    },
+    "replicas": [
+      {
+        "name": "exp-1106-144604-954702-cfcd2084",
+        "uid": "1ef87400-38c0-4ce8-bcea-4279551b53e6",
+        "creator": "i-fengyicheng",
+        "owners": [
+          {
+            "apiVersion": "rjob.brainpp.cn/v1alpha1",
+            "kind": "RJob",
+            "name": "exp-1106-144604-954702",
+            "uid": "731dd5f3-f5db-485b-a8e3-ba8879043933",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ],
+        "status": {
+          "conditions": [
+            {
+              "type": "Initialized",
+              "status": "True",
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-06T06:46:07Z"
+            },
+            {
+              "type": "Ready",
+              "status": "True",
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-06T06:48:20Z"
+            },
+            {
+              "type": "ContainersReady",
+              "status": "True",
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-06T06:48:20Z"
+            },
+            {
+              "type": "PodScheduled",
+              "status": "True",
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-06T06:46:07Z"
+            }
+          ],
+          "hostIP": "10.191.4.17",
+          "podIP": "10.191.4.17",
+          "podIPs": [
+            {
+              "ip": "10.191.4.17"
+            }
+          ],
+          "startTime": "2026-11-06T06:46:07Z",
+          "containerStatuses": [
+            {
+              "name": "default",
+              "state": {
+                "running": {
+                  "startedAt": "2026-11-06T06:48:19Z"
+                }
+              },
+              "lastState": {},
+              "ready": true,
+              "restartCount": 0,
+              "image": "sha256:3eae996c8f0d4383bda9cc9448dd445eb960f253ac7d3e4cb4f0c6465cb706ae",
+              "imageID": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+              "containerID": "containerd://346b90e8572775ba933951b8a90e91fcd20928f7c6d5729935457f274fab726d",
+              "started": true
+            }
+          ],
+          "qosClass": "Guaranteed",
+          "phase": "Stopped",
+          "nodeName": "gpu-h800-0401.host.platform.shaipower.com",
+          "finishTimestamp": "2026-11-06T07:13:02Z"
+        }
+      },
+      {
+        "name": "exp-1106-144604-954702-c4ca4238",
+        "uid": "5d726c41-9efd-4ed6-b5ef-2e390e3f345b",
+        "creator": "i-fengyicheng",
+        "owners": [
+          {
+            "apiVersion": "rjob.brainpp.cn/v1alpha1",
+            "kind": "RJob",
+            "name": "exp-1106-144604-954702",
+            "uid": "731dd5f3-f5db-485b-a8e3-ba8879043933",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ],
+        "status": {
+          "conditions": [
+            {
+              "type": "Initialized",
+              "status": "True",
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-06T06:46:07Z"
+            },
+            {
+              "type": "Ready",
+              "status": "False",
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-06T07:12:35Z",
+              "reason": "PodFailed"
+            },
+            {
+              "type": "ContainersReady",
+              "status": "False",
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-06T07:12:35Z",
+              "reason": "PodFailed"
+            },
+            {
+              "type": "PodScheduled",
+              "status": "True",
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-06T06:46:07Z"
+            }
+          ],
+          "hostIP": "10.191.8.61",
+          "podIP": "10.191.8.61",
+          "podIPs": [
+            {
+              "ip": "10.191.8.61"
+            }
+          ],
+          "startTime": "2026-11-06T06:46:07Z",
+          "containerStatuses": [
+            {
+              "name": "default",
+              "state": {
+                "terminated": {
+                  "exitCode": 1,
+                  "reason": "Error",
+                  "message": "user command: exit status 1",
+                  "startedAt": "2026-11-06T06:48:26Z",
+                  "finishedAt": "2026-11-06T07:12:35Z",
+                  "containerID": "containerd://d506b31e4a91175bb48e64aaaf398af7b84d601904561edf469b363277ca0a68"
+                }
+              },
+              "lastState": {},
+              "ready": false,
+              "restartCount": 0,
+              "image": "sha256:3eae996c8f0d4383bda9cc9448dd445eb960f253ac7d3e4cb4f0c6465cb706ae",
+              "imageID": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+              "containerID": "containerd://d506b31e4a91175bb48e64aaaf398af7b84d601904561edf469b363277ca0a68",
+              "started": false
+            }
+          ],
+          "qosClass": "Guaranteed",
+          "phase": "Failed",
+          "nodeName": "gpu-h800-0182.host.platform.shaipower.com",
+          "finishTimestamp": "2026-11-06T07:12:37Z"
+        }
+      }
+    ],
+    "replica_error": null,
+    "replica_list_pagination_more": false
+  },
+  "business_observations_from_unique_owner": {
+    "native_failure": "ActorUnavailableError / RPC Socket closed; actor_update_call_count=1, completed_updates=0, no final HF export. Actual optimizer effect is UNKNOWN despite zero verified completed updates.",
+    "ray_memory_report": "Native Ray memory monitoring used 95% threshold over total629145600000 bytes and observed peak629140910080 bytes. Ray explicitly killed PIDs10294 and10295, each AgentLoopWorker reported at1.07GiB RSS. Neither is the RPC-failed actor69ea...; direct victim-to-failed-actor causation is not established. This is not a CUDA allocation traceback or container OOMKilled fact.",
+    "platform_node_mapping": "Existing exact snapshot maps10.191.4.17 to rank0 replica UID1ef87400-38c0-4ce8-bcea-4279551b53e6, nodegpu-h800-0401.",
+    "numerical_gate": "Root reports all three observed global MAE values exceed0.03; numerical acceptance failed, fresh20 remains blocked. Exact metrics and selected business RCA belong to alignment_contract.",
+    "owner": "alignment_contract",
+    "selected_business_rca": "/data/ycfeng/tmp/verl-agent-opd-glm-business-20261106/glm-qualification-detokenize-fixed-business-rca.json",
+    "selected_business_rca_bytes": 44359,
+    "selected_business_rca_sha256": "604fbad207753b36f2d2aeaddca546aac75ee5166fb455a23ad1bdefd7970b6c",
+    "native_ray_evidence": {
+      "artifact_name": "raylet.out",
+      "bytes": 707798,
+      "sha256": "6bf5bfd7154b13f324042d21aad61b4e4acf73c6ac83b845bba85f691dd8fe4d",
+      "memory_total_bytes": 629145600000,
+      "memory_peak_bytes": 629140910080,
+      "monitor_threshold": 0.95,
+      "explicit_killed_workers": [
+        {
+          "pid": 10294,
+          "class": "AgentLoopWorker",
+          "reported_rss_gib": 1.07
+        },
+        {
+          "pid": 10295,
+          "class": "AgentLoopWorker",
+          "reported_rss_gib": 1.07
+        }
+      ],
+      "failed_rpc_actor_mapping": "NOT_ESTABLISHED for the two explicit killed worker PIDs",
+      "worker_dict_update_rss": "Reported each50-54GiB; shared mmap means RSS values must not be summed as cgroup used memory.",
+      "object_store_reported_mb": 53.5
+    },
+    "native_training_log": {
+      "artifact_name": "training.log",
+      "bytes": 47234,
+      "sha256": "1cf5ac1949274a1a8c870a8e95e1dc2abdd2e8a28855d2a25557d29618653293"
+    },
+    "provenance": "Exact final selected RCA and artifact hashes supplied by unique business owner; only local selected-report file size stat was read, no duplicate native/cloud log query."
+  },
+  "observed_termination": "Rank1 actual exitCode1/reasonError finished07:12:35Z. Rank0 replica phaseStopped retains older running container status; no rank0 exit code inferred. System failure-policy cleanup is subsequent handling.",
+  "launcher_cleanup_from_root": {
+    "time_hkt": "2026-11-06 15:12:40.754",
+    "observation": "Root launcher wait observed Failed, then exit handler emitted JobStop. This is supplied local-launcher evidence, not an audited initiating stop.",
+    "historical_observer_errors": "Root observed SDK500 status-query errors at15:02:40 and15:03:01; these are separate observer failures, not the native initiating fault."
+  },
+  "initiating_stop_actor": "UNKNOWN; creator is not a stop actor. No initiating manual-stop evidence collected.",
+  "source_evidence": {
+    "identity_receipt": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/glm-sglang-repair-qualification-identity-20261106-1450.json",
+    "identity_receipt_sha256": "bcb9170cee6b98132770c3f4e1fd4d1fec44ee86c533670bdf49a6ebd7629df2",
+    "terminal_stream": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/platform-four-gpu-status-20261106-0338.jsonl",
+    "queries": "Existing sole exact UID-validated job/replica watcher; no new API reads for this report."
+  },
+  "coverage": {
+    "creator_and_replica_owner_verified": true,
+    "mount_image_resources_verified": true,
+    "replica_list_pagination_more": false,
+    "current_query_errors": false,
+    "events_audits_kernel": "NOT_QUERIED. Native Ray memory-pressure worker-kill report is observed; no CUDA OOM or container OOMKilled conclusion. Explicit killed AgentLoopWorker PIDs do not map to the failed RPC actor.",
+    "business_logs": "Unique owner alignment_contract; not duplicated.",
+    "workload_control": "NONE"
+  }
+}

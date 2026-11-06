@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Prepare bounded GLM head precision and normal-memory qualification from actual failure evidence. |
 | 2026-11-06 | Verify native Qwen fused configuration and exact consumed-log cleanup; preserve GPU acceptance gates. |
 | 2026-11-06 | Resume from actual native initialization failures and partial original-benchmark scores. |
 | 2026-11-06 | Record incomplete checkpoint, exact queued jobs and preserved launcher continuation state. |
@@ -833,3 +834,70 @@ GLM fourth qualification produced actual step1 numerical FAIL before this commit
 Verified change8e776dcfcaf2a9b7736d2781195c0f291833027a was pushed and independently remote matched. Exact old Qwen709386 UID/creator/Failed/finish was re-read15:04:12. Current Qwen exp-1106-150433-589683 / UIDd44e6e31-fe09-47f6-8be6-5dbf0d233a6d created15:04:33.742HKT, launcher38117; same1×8H800/32CPU300GB/image/currentNFS/input/command. Actual15:05:49 Pending/queuing, no business output. Sole platform observer sequentially replaced its local watcher, with no workload control. Code source remains8e776dcf.
 
 GLM actual step1 numerical receipt is now retained as evidence/glm-qualification-step1-numerical-failure.json (SHA198ea259f38d9105160267768ee2acd343f27997359e4f74e6b81dfb904807ae). All three global MAEs FAIL0.03; physical native packs unobserved. Later training.json records actor_update_call_count1, completed_updates0, native_update_returnedfalse and ActorUnavailableError/socketclosed/rpc14. Ray15:05:06.950 reports one worker killed due to node memory pressure on10.191.4.17, mapped by actual platform metadata to rank0/H8000401. KilledPID-to-actor linkage and true initiating phase are still under investigation. This is not a CUDA or platformOOMKilled finding, and completed0 means no verified successful update, not proof of the live tensor values. No job was stopped by the observer. Numerical and native update failures remain independent gates.
+
+
+## 15:24HKT GLM next qualification decision
+
+02 previous GLM954702 is actual Failed15:12:38 before launcher exit cleanup15:12:40.754. Finally archives now establish host/container memory exhaustion with95%Ray protection; two killed PIDs map to smallAgentLoopWorkers, not directly to failed updateRPCactor69ea. Actualfirst_update returnedActorUnavailable;0verifiedsuccessfulupdates,optimizer effectUNKNOWN. Step1 numericalFAIL,step2/version1/HF2unreached. Full selected RCA/native header capacity evidence retained; no source logs were repeatedly re-read after closure.
+
+Use only existing configuration for the next original-weight qualification: GLM SGLang enable_fp32_lm_headtrue and Megatron model.use_fused_kernelstrue. This is the explicit head-output precision hypothesis, not a proven root cause; BF16 operands remain, SG FP32full-logits and Triton fusedFP32reduction differ. If actual MAE still fails, this change is insufficient. All full histories/populations/weights/attention/MoE/R3/CP1/loss/optimizer/standards retained; Qwen unchanged. Actual four2/20native config comparisonsPASS. No new harness, unsupported backend or threshold change.
+
+Normal memory nextcandidate1000000Mi perreplica (--memory-gb1000), same2×8H800/48CPU. This is the upper end of the source-based800–1000range: actual clipped629.14GBpeak and header-derived CPUmodel/master/moments423.53GB plusSG/cache/export. Newactualtotal1048576000000B/95%996147200000B; peak adequacy andschedulability remainunverified. Do not disable offload/Rayprotection or resume interruptedweights.
+
+03 currentQwen589683 actualworkerstart15:12:43H8000182; recipefusedtrue/use_ligerfalse/MTPfalse/remove-paddingtrue/lengths/batch/dynamicbudgetsverified;fit0/2at15:19:07. NativefusedCUDA/MAE/updates/HF2 not yetaccepted. 06/07at15:21:34GLM17/80(11resolved/6unresolved),Qwen52/80(39/13),each4generationrunning;onlyold3contextmissing.
+
+## 1. 规划完成情况
+
+**汇总：** PASS1｜BLOCKED/FAILED/SKIPPED5｜TODO4
+
+| 子任务 | 状态 | 简要依据 |
+| --- | --- | --- |
+| 01 | PASS | 原生环境、完整80/8输入和配置已验证 |
+| 02 | FAILED | 最新GLM资格数值超标，更新调用失败，完整验收尚未通过 |
+| 03 | TODO | 新Qwen正在执行首批，完整验收待实际结果 |
+| 04 | BLOCKED | 等02全部资格通过后从原始权重fresh20 |
+| 05 | BLOCKED | 等03全部资格通过后从原始权重fresh20 |
+| 06 | TODO | GLM17/80有效，健康继续 |
+| 07 | TODO | Qwen52/80有效，三旧context缺失待终态后恢复 |
+| 08 | BLOCKED | 等04真实verified20export；不等06才开始scoring |
+| 09 | BLOCKED | 等05真实verified20export；不等07才开始scoring |
+| 10 | TODO | 每日旧日志清理通过；最终产物仍有消费者 |
+
+## 2. 偏离检测
+
+**结论：** 未偏移，正常推进。
+**检测窗口：** 上次Qwen fused配置/清理自检至本轮GLM终态RCA和FP32head配置验证｜**当前前沿：** 02/03/06/07并行
+
+| 模式 | 判定 | 依据 |
+| --- | --- | --- |
+| D1 工具打磨 | CLEAR | 只消费本轮native归档和四配置检查；没有新harness或继续host依赖修复 |
+| D2 细节反复重试 | CLEAR | 新的内存和数值失败分别有实测、源依据、事先假设和证伪条件；没有无据参数试探 |
+| D3 支线问题修补 | CLEAR | hostmemory和数值直接阻挡02；每日清理由用户明确要求 |
+| D4 可并行任务停滞 | CLEAR | Qwen新资格和两个原始评测持续运行；GLM终态后准备独立重提 |
+| D5 超范围镀金 | CLEAR | 只用既有head配置与普通memory请求；没有新后端、schema或engine修改 |
+| D6 分析空转 | CLEAR | 实际归档和header容量模型形成明确memory决策；数值源查止于可证伪的head精度假设 |
+| D7 路线违背 | CLEAR | 原始权重、0.03阈值、20更新、320有效评分和依赖不变 |
+
+**文档检查：** S5：前一版ticket02仍为Running、03仍为Pending，与本轮实际Failed15:12:38/Running15:12:43矛盾；其余S1/S2/S3/S4/S6没有发现新缺陷。
+**归因：** 无执行HIT；S5为新事实的状态同步。前次D2纠正仍保持。
+
+## 3. 纠正建议
+
+**分支：** B：spec/tickets存在缺陷，先更新文档再继续。
+
+**文档更新（先执行）：**
+1. plan、02/03、summary与报告：更新GLM终态、Qwen实际启动，分开hostmemory/MAE、victimPID/RPCactor、0verifiedupdates/未知optimizer效果（可直接执行，已应用）。
+2. requirements与报告：记录FP32head假设/失败条件、正常memory1000000Mi候选和容量不确定性（可直接执行，已应用；不改变目标或验收标准）。
+
+**需停止的偏离行为：** 无新HIT；保持停止hostfixture/依赖扩展和已结束作业的无目标轮询。
+
+**接下去的路线：**
+1. 02：提交/push现有配置检查和实际RCA，精确复核旧Failed后独立原始权重资格；真实两更新、finite正梯度、版本0/1数值≤0.03、HF2值变化齐全才通过。
+2. 03‖06‖07：现有健康作业继续；只按实际业务结果验收，原始Qwen当前终态后复用现成missing恢复。
+3. 同模型资格通过才fresh20；verified20export即可启动更新后scoring并共享新进程reload，不等baseline全评分才启动；完整评分后比较和最终清理。
+
+## 4. 最值得关注的 3 点
+
+1. 普通memory修复不能替代数值验收；FP32head目前是假设，不能预宣首因已修复。
+2. 两端都是BF16模型操作数和FP32head输出/累计，但计算tile与归约顺序仍不同，GPU实测不可省略。
+3. 保留所有原始权重/输入/标准与并行健康作业；本轮没有任何成功更新、HF2或完整workflow通过结论。

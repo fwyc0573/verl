@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Add actual GLM memory evidence and validate the existing FP32-head configuration. |
 | 2026-11-06 | Record Qwen native old-logprob OOM, the scoped fused option check and consumed-log cleanup. |
 | 2026-11-06 | Separate the actual Qwen task-reward failure from the non-blocking prefill API error; verify the native no-task-reward dispatch repair. |
 | 2026-11-06 | Record actual initialization failures, real partial native scores and corrected fresh qualification submissions. |
@@ -205,3 +206,20 @@ Expected/actualPASS: all52manifest files preflight verified,38available hashes v
 
 
 GLM fourth qualification produced actual step1 numerical FAIL before this commit: four inputs / 1,265 loss-eligible tokens at version0. Global token MAE decode/prefill=0.0390841902, decode/trainer=0.0310881366, prefill/trainer=0.0382872158; every pair exceeds0.03. Per-input maxima0.0418422823/0.0357459613/0.0419510390 also prevent whole-input bounds from proving native-pack acceptance. Token/version checks match; two turns pass and two fail. Native training continues normally for the remaining update/version/HF2 evidence. GLM fresh20 remains gated on full numerical qualification; do not relax thresholds. Selected source-backed diagnosis is pending.
+
+
+## GLM native memory failure after the first numerical FAIL
+
+Actual GLM954702 job Failed15:12:38HKT before launcher exit cleanup15:12:40.754; rank1 exit1/Error15:12:35. The finally training receipt has1actor_update_call,0verified completed updates, native_update_returnedfalse/ActorUnavailableError/rpc14. Whether the interrupted optimizer changed weights is UNKNOWN; no step2/version1/HF2 artifact exists. Actual numerical step1 FAIL remains independent.
+
+Ray used memory reached629140910080B against total629145600000B and95%threshold597688320000B on rank0/H8000401. Its actual killed processes PID10294/10295 are AgentLoopWorker actors of about1.07GiB, not the failed update actor69ea. The update actor exit mechanism remains incompletely mapped; do not claim CUDA OOM or containerOOMKilled. Objectstore53.5MB does not explain the exhaustion. Selected full business and platform evidence: evidence/glm-qualification-native-memory-failure.json and evidence/glm-qualification-memory-platform-failure.json. Actual finally logs/selected lines/hashes and unknown fields are retained.
+
+The header-only native inventory reads shapes/dtypes from48safetensors headers without tensor payloads: decoder29,943,393,920params=expert27,783,069,696+dense/shared/head2,160,324,224; disabledMTP1,278,094,656 excluded. Evidence/glm-student-header-memory-inventory.json. Native TP/DP/EP placement gives approximate CPU BF16 model64,207,436,288B + FP32 masters119,773,575,680B + twoAdam moments239,547,151,360B =423,528,163,328B before SG/cache/export. DDP offload releases GPUgrad storage; it does not add a CPUgrad plane. Sharedmmap RSS cannot be summed as actual cgroupused. Select the upper end1000 of the sourced800–1000normal-memory candidate range; actual requested1000000Mi/replica, not a proven sufficient allocation. Preserve offload/Ray monitor/GPU/layout/algorithm.
+
+## Existing FP32-output head hypothesis: configuration check only
+
+Hypothesis before the next actual GPU run: BF16 head-output rounding may contribute enough cross-shape drift that existing FP32-output heads satisfy the unchanged three-way MAE≤0.03 contract on the same8source prompts. Falsifier: actual numerical qualification still fails; then the change is insufficient and no causal fix is claimed. Existing observations do not prove the head is the root cause; attention/MoE/dense shape sensitivity remains a candidate. Same-weight protocol tags are not a live tensor checksum.
+
+SGLang0.5.20 ServerArgs enable_fp32_lm_head flows through GLM ParallelLMHead/LogitsProcessor and BF16 CUDA torch.mm(out_dtype=torch.float32). Megatron GLM47Bridge targets GPTModel; disabledMTP/remove-padding/CP1 satisfy existing fused constraints, R3 route setup precedes the fused branch, and use_ligerfalse selects existing Triton linear_cross_entropy FP32 accumulators. Model weights remainBF16; backend/reduction order differs, so no bit-identity promise. The current shared GLM kwargs also set the frozen teacher's head output toFP32. Benchmark settings are unchanged and are not claimed numerically qualified for every possible serving configuration.
+
+Exact check: timeout60s env PYTHONPATH=/data/ycfeng/sota-engine/verl PYTHONNOUSERSITE=1 PYTHONDONTWRITEBYTECODE=1 TMPDIR=/data/ycfeng/tmp /data/ycfeng/envs/verl-agent-opd-megatron-sglang/bin/python -B - with inline driver. Python3.12.13. Actual recipe_overrides/Hydra compose/native DistillationConfig for GLM/Qwen×2/20:4/4PASS; GLMonly changes model.use_fused_kernels and its existing rollout/teacher engine_kwargs; Qwen unchanged. Full lengths/batch/loss/optimizer/CP1/nonDCP/R3/input/model identities preserved. Receipt evidence/native-glm-fp32-head-config-regression.json. No new host library or fixture expansion, GPU calls or model payload reads. Actual runtime/MAE/update/capacity/HF2 gates still open.

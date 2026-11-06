@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Record the original-weight GLM head-precision hypothesis and normal-memory capacity qualification. |
 | 2026-11-06 | Record the actual Qwen old-logprob allocation failure and reuse its existing fused output configuration. |
 | 2026-11-06 | Resume execution and reserve the native teacher's extra scoring token after actual initialization failures. |
 | 2026-11-06 | Select separate native Qwen context settings after actual source-bank underfill at 61440 tokens. |
@@ -101,3 +102,10 @@ The first complete Qwen candidate scan at61440tokens actually selected14/15/17/2
 ## Existing native fused output head after actual Qwen OOM
 
 Qwen qualification exp-1106-143409-709386 reached native trainer old-logprob inference after generation and the native teacher-scoring path returned. It failed at the entropy branch logits.clone allocation:37.04GiB requested,33.80GiB free. No optimizer update completed. Select the existing actor_rollout_ref.model.use_fused_kernels option through the current explicit model run settings:Qwen true,GLM false. Reuse the existing Triton fused LM-head path and preserve the GDN decoder, full input population, context/prompt/response caps, batch4, dynamic token budgets, CP1/nonDCP, optimizer and all numerical/benchmark acceptance. Source inspection supports the pinned Qwen35VLBridge hook path; actual CUDA runtime/memory/numerical/update acceptance still requires a fresh qualification. Do not add an entropy override, smaller histories, static slicing, exception fallback or new backend. The four native composed2/20recipes verify only the intended Qwen option changes; no GPU PASS is inferred.
+
+
+## GLM output precision and ordinary memory qualification
+
+Actual GLM qualification exp-1106-144604-954702 has two independent failed gates: first-step three-way numerical MAEs exceed0.03, and native execution later fails under host/container memory pressure with no verified successful update. Do not treat the capacity repair as numerical acceptance. Use the existing SGLang enable_fp32_lm_head option for the GLM runtime and the existing Megatron model.use_fused_kernels option to test the specific hypothesis that avoiding BF16 output logits reduces head-rounding differences enough for the fixed numerical contract. Model operands remain BF16; the SGLang head emits FP32 full logits and the existing Megatron Triton head accumulates FP32 per-token logprobs/entropy. Their reduction order still differs. The shared current GLM inference kwargs apply to its student and frozen teacher. This changes output precision, not model weights, attention/MoE backend, data population, loss, optimizer, R3 or thresholds. The unchanged benchmark configuration remains a separate fixed comparison workload. If actual numerical acceptance still fails, this head-output precision change is insufficient; retain the failure and investigate actual remaining evidence rather than declaring a cause or lowering thresholds.
+
+For the next GLM qualification, keep2×8H800 and48CPU per replica but request --memory-gb1000 (platform1000000Mi/replica). Actual previous limit629145600000B was reached; the actual header-derived decoder29,943,393,920 parameters imply an approximate CPU model/master/Adam state capacity423,528,163,328B before SGLang/cache/export overhead. The evidence-backed normal-memory candidate range is800–1000; select its upper end without disabling Ray protection or offload. The new limit1048576000000B/95%threshold996147200000B is a capacity qualification candidate, not proof of sufficient peak memory or schedulability. Do not resume interrupted weights; reload the pinned original student.

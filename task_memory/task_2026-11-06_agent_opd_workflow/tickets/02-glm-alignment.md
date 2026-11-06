@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Keep numerical failure separate from native memory failure and prepare the next qualification. |
 | 2026-11-06 | Record fourth actual GLM qualification after the pushed shared SGLang fix. |
 | 2026-11-06 | Record actual qualification failure or running original benchmark evidence on resume. |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
@@ -13,7 +14,7 @@
 
 **Blocked by:** 01 GLM runtime/input/config prerequisites; independent of Qwen training inputs and benchmark preparation.
 
-**Status:** in-progress — current exp-1106-144604-954702 / UID731dd5f3-f5db-485b-a8e3-ba8879043933, launcher10138, source59222710 pushed/remote matched before14:46:05HKT creation. Same2×8H800/currentNFS/image. Actual rank0 H8000401 started14:48:19 and rank1 H8000182 started14:48:26; recipe workers4/batch4/prompt61439/response4096/R3/CP1/nonDCP match. Teacher scoring and trainer old-logprob reached; actual step1 global token MAEs0.0390841902/0.0310881366/0.0382872158 all FAIL the fixed0.03 threshold (4inputs/1265tokens/version0). Native training continues; step2, two successful updates and HF2 changed values remain unverified. Historical140852 failed at native teacher detokenize; selected RCA retained.
+**Status:** in-progress — last exp-1106-144604-954702 / UID731dd5f3-f5db-485b-a8e3-ba8879043933 Failed15:12:38HKT. Step1 has actual global MAE FAIL in all three comparisons; one native update call failed with no verified successful update and optimizer effect unknown. Ray memory used reached629140910080B of629145600000B and killed two AgentLoopWorkers; this is not CUDA OOM, and their PID/actor IDs differ from the failed update RPC actor. Next original-weight qualification pending push: existing SGLang FP32 head + Megatron fused head precision hypothesis, and normal1000000Mi memory per replica; same2×8H800/48CPU/input/R3/CP1/standard. Four native composed2/20config casesPASS. Actual CUDA, capacity, all MAE, two updates, versions and HF2 values remain to be verified.
 
 - [ ] 使用冻结的真实数据与交互边界，teacher 实际评分的 token IDs 与当前 student 采样一致。
 - [ ] thinking、正文和工具信号的源字段、tokens、mask、实际生成覆盖分别可核验；MoE routes 按约定真实录制并 replay。
