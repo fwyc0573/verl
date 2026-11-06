@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Resume from actual native initialization failures and partial original-benchmark scores. |
 | 2026-11-06 | Record incomplete checkpoint, exact queued jobs and preserved launcher continuation state. |
 | 2026-11-06 | Consume completed uv proof and correct future updated-benchmark component dependencies during the GPU queue wait. |
 | 2026-11-06 | Close Ticket01 using actual complete inputs and record both submitted qualifications. |
@@ -579,3 +580,16 @@ Numbered nextactions:
 Requirements reread before this checkpoint. Latest check-progress result remainsPASS1/BLOCKED4/TODO5; its S1 correction has landed, no additional route or scope change. This checkpoint is a handoff of unavailable-resource blockers, not task completion.
 
 Checkpoint verification: Python3.10.6 checked the explicit INCOMPLETE label, ten ticket files, all referenced task records and the exact four-job JSON receipt; PASS. `git diff --check` PASS. These document checks do not add GPU or numerical evidence.
+
+## Resumed execution: real qualification failures and running benchmarks
+
+User instructed `continue`; requirements/plan/progress and actual queued observer messages were read before further work. At13:37:04HKT, runtime owner freshly observed original Qwen38/80valid (29resolved/9unresolved), original GLM10/80valid (5resolved/5unresolved), both exact original jobs stillRunning. Qwen's three current context-overflow attempts and four historical auth failures remainmissing; no partial avg@4 acceptance. Both models passed their real first-question four-seed gate and continue healthy slots. Sandbox authentication, tools, generation and real grading now have actual evidence; this supersedes the old04:44checkpoint's unverified-auth/0valid state.
+
+Actual first qualification jobs failed before forward/backward: Qwen08:04:26HKT required126976+4096+1=131073>131072, containerexit1at08:04:36; GLM nativeinit required61440+4096+1=65537>65536, rank0exit1at08:24:10. GLMrank1 cleanup followed platform `Task fail policy [any] caused undesired running replicas.` at08:24:12; its stale running container snapshot does not establish an exitcode. Both actual hardware/runtime/input entrypoints were reached; successfulupdates0, numerical/R3/weightchangeunverified. These failures are measured declaration errors, not OOM evidence. Existing selected RCA is sufficient; do not repeat environment or scheduling investigation.
+
+Repair hypothesis before retry: native teacher scoring needs one additional generated token beyond the student's complete prompt/response. Consistently reserve1 in prepare.sh/configure.py, retaining context/response and all actual80/8 inputs. Falsifier: actual native DistillationConfig still rejects either2/20recipe, or real selected input identity/content no longer meets the corrected declaration. Only after these checks and commit/push, submit fresh exact qualifications. GLM's already created8-row parquet must be verified/reused; its first-run creation-only prefix cannot be repeated.
+
+Parallel ownership: data_benchmark owns only configure.py/prepare.sh and narrow native regression; alignment_contract owns tempGLMretrycommand/inputreuse and selectedGLMbusinessRCA; runtime_compat continues both existing original benchmarks plus read-only context-overflow recovery investigation; platform_observer owns exact terminal re-read and sole metadata watcher. Root owns task records, commit/push and new submissions. No healthy baseline is stopped or modified.
+
+
+Teacher-budget repair completed: configure.py/prepare.sh now consistently reserve1teacher scoringtoken; configure itself instantiates the actual native distillation dataclass before writing a recipe. NativePython3.12.13 actualfour old2/20recipes reproduceFAIL, actualfour correctedrecipesPASS; onlypromptcap differs, serializedconfig unchanged. Existing80/8actualUID/order/category/tokens/content unchanged; GLM job7 existing8 separately verified/reused. SelectedRCA/regression/inputevidence archived and exactcommands/results appended to executionpreflight report. No context/response/model/optimizer/numerical/benchmark population change. Next immediate action is commit/push then fresh same-resource qualifications, while originalscontinue.

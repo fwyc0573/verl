@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Verify the actual native teacher dataclass and unchanged selected inputs after reserving its scoring token. |
 | 2026-11-06 | Consume unused standalone uv proof after confirming durable toolchain and runtime independence. |
 | 2026-11-06 | Record actual both-model input/configuration PASS and preserve qualification length limits. |
 | 2026-11-06 | Record complete Qwen underfill and verify independent 64k/128k native recipe composition. |
@@ -173,3 +174,14 @@ Ticket01 closes only the native runtime/input/configuration contract. GPU traini
 Scoped du after earlier cache consumption found only60MB under the task downloads root, including58MiB in its standalone uv0.11.16 proof. Read-only checks: current command-v/readlink-f uv resolves /data/ycfeng/toolchain/bin/uv, and rg found no removed-path reference in tests/manual/agent_opd or task commandfiles. Normal GPU workers select the installed native Python and do not install dependencies. environment.sh uses image uv; historical CPU proof0.11.16 is not relabelled as the global version.
 
 At04:23:14HKT consumed only /data/ycfeng/tmp/verl-agent-opd-downloads-20261106/uv-0.11.16 (15regularfiles/60733618bytes/0symlinks) and offline-registry-check (2files/2123bytes). Total60735741regularfilebytes, bothroots absent afterwards. /data/ycfeng/toolchain/bin/uv --version returned0.11.14 identically before/after. The active native environment, task observations, shared inputs/models and all job launchers remain. Selected exact receipt: evidence/consumed-uv-proof-cleanup.json. This verifies cleanup, not GPU acceptance.
+
+
+## Native teacher scoring-token regression after real qualification failures
+
+Expected: the real `DistillationConfig` must reject the observed old boundary and accept the corrected complete student sequence plus one teacher scoring token. Context65536/131072, response4096, datasets, identities and optimizer settings must remain unchanged. ActualGLM/Qwen native failures are separately retained in evidence/glm-qualification-context-failure.json and evidence/qwen-qualification-context-failure.json; both occurred before fit/updates, not a numerical test.
+
+Command entry: `PYTHONPATH=/data/ycfeng/sota-engine/verl timeout 60s /data/ycfeng/envs/verl-agent-opd-megatron-sglang/bin/python -B -`, Python3.12.13, inline driver invoking the actual `configure.main(...)` for both models at2/20steps, then `omega_conf_to_dataclass(config.distillation)`. Inputs are the original actual job9 settings, agent YAML and recipes under `/data/ycfeng/tmp/verl-agent-opd-20261106/input-preflight/exp-1106-032827-028041/`; generated recipes and exact native results are under `/data/ycfeng/tmp/verl-agent-opd-teacher-context-regression-20261106/`. Old four recipes each reproduced the actual guard: GLM65537>65536, Qwen131073>131072. New four native dataclasses eachPASS with prompts61439/126975, teacher prompt65535/131071 and teacher response1. Full recipe comparisons found only data.max_prompt_length decreasedby1; dataclass validation did not mutate serialized configuration. prepare.sh's actual inline budget calculation matched both settings. configure.py now performs that native dataclass check before writing any recipe and records native_distillation_config_verified=true.
+
+Read-only SSH of the four existing job9 Parquet files verified every80-row UID/order/category/tokenlength/hash and preserved metadata/history/tools. Both8-row tables strictly equal their learning first8, fourcategories2each. No selected row exceeds the corrected cap; GLMactual10366–57113, Qwen11430–67951. ActualGLM qualification retry additionally validates/reuses job7's existing8file (all7columns/schema/metadata/content, sourcefirst8 exactlyequal,8distinctUIDs,4categories2each,prompt10366–41047). Its revised temporary command performs no creation/overwrite and retains the same worker entry/resources. This removes the known creation-only prefix error without changing input identity.
+
+Selected evidence: evidence/native-teacher-context-regression.json, evidence/teacher-context-existing-inputs.json and evidence/glm-qualification-existing8-reuse.json. `bash -n tests/manual/agent_opd/prepare.sh`, retry-command bash syntax/Python AST, and scoped `git diff --check` allPASS. This is actual native configuration/input validation; GPU model loading, updates, R3, MAE and weight changes remain pending the fresh qualifications.

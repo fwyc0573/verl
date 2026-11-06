@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Resume execution and reserve the native teacher's extra scoring token after actual initialization failures. |
 | 2026-11-06 | Select separate native Qwen context settings after actual source-bank underfill at 61440 tokens. |
 | 2026-11-06 | Adopt the user-selected Steptron numerical standard; record cache repair and native launch adapters. |
 | 2026-11-06 | Record execution steering and carry the recommended symmetric test matrix into execution. |
@@ -63,6 +64,14 @@
 Adopt the engineering standard explicitly accepted under Q59 in `/data/ycfeng/steptron/.worktrees/behavior-turn-replay-step3p6/task_memory/task_2026-10-25_swe_behavior_turn_replay/requirements.md` and `glm-numerical-acceptance-proposal.md`: require both native pack MAE and global token MAE ≤0.03, separately for each input/completion population, on every loss-eligible token before TIS. Compare the same actual student weight version, token IDs, positions, masks and probability definition. p95/p99/max, signed error, importance-ratio outliers and K3 are diagnostics without additional invented thresholds. Known structural mismatches block qualification even when a mean passes.
 
 Apply that common numerical contract to both pairs. Keep this task's model-specific Megatron/SGLang topology and generated-current-student population. The source task's fixed rule2 historical-completion population and TP4/PP2 implementation are not part of this replication's training objective. A native pack mean must use the actual aggregation and denominators; a mean over arbitrary turns must not be relabelled as a native pack observation. Cross-engine and same-engine decode/prefill results remain separately reported. The prior missing-budget question is resolved; an independent FP32/calibration expansion is not required to select a tolerance.
+
+## Resumed execution and native teacher budget
+
+[Original Request] continue
+
+Both actual qualification jobs reached native initialization and failed before any optimizer update because `DistillationConfig` requires `student_prompt_length + student_response_length + 1 <= teacher max_model_len`. Correct the existing preparation and recipe calculation to `context_length - response_length - 1`. The resulting declared prompt caps are GLM61439 and Qwen126975, with the same context65536/131072 and response4096. Preserve all actual selected80/8 rows, full histories, model identities, optimizer settings and numerical/benchmark acceptance. Validate the actual native dataclass before retry; recipe composition alone did not exercise the failed guard. This is an in-scope correction of the measured configuration error, not an increased context or changed population.
+
+The two healthy original benchmarks continue with their frozen identities while qualifications are repaired. Their observed valid scores do not replace training/numerical gates. Native benchmark context-overflow episodes without valid grader outputs remain missing; recovery must preserve or explicitly resolve the benchmark contract before affected attempts are rerun.
 
 ## Acceptance common to both pairs
 

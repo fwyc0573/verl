@@ -35,7 +35,7 @@ import json
 import sys
 from pathlib import Path
 settings = json.loads(Path(sys.argv[1]).read_text())
-print(settings['context_length'] - settings['response_length'])
+print(settings['context_length'] - settings['response_length'] - 1)
 PY
     ) || return
     failed_stage=turns

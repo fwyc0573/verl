@@ -1,0 +1,65 @@
+{
+  "collected_at": "2026-11-06T05:38:22.747920+00:00",
+  "method": "Python RJobClient exact get rjobs, no logs/events/RCA retry",
+  "jobs": [
+    {
+      "name": "exp-1106-030133-940211",
+      "uid": "b6976435-4e8a-4099-8777-800a18db25a1",
+      "creator": "i-fengyicheng",
+      "status": {
+        "phase": "Failed",
+        "reason": "RJobFailed",
+        "message": "Tasks with failed status: [default]",
+        "taskStatuses": {
+          "default": {
+            "failed": 1,
+            "stopped": 1,
+            "taskStage": "stepmind-task-stage-1"
+          }
+        },
+        "finishTime": "2026-11-06T00:24:12Z",
+        "taskStage": "stepmind-task-stage-1"
+      },
+      "stop_annotations": {
+        "rjob.brainpp.cn/system-stop-reason": "Task fail policy [any] caused undesired running replicas."
+      },
+      "stop_spec_fields": {
+        "stopTimestamp": "2026-11-06T00:24:12Z"
+      },
+      "configuration_labels": {
+        "quotagroup.brainpp.cn/preemptible": "no",
+        "quotagroup.brainpp.cn/quotagroup": "codesign"
+      }
+    },
+    {
+      "name": "exp-1106-033627-955641",
+      "uid": "9ad17773-2d4e-4b21-8dc2-2150ab8a6f85",
+      "creator": "i-fengyicheng",
+      "status": {
+        "phase": "Failed",
+        "reason": "RJobFailed",
+        "message": "Tasks with failed status: [default]",
+        "taskStatuses": {
+          "default": {
+            "failed": 1,
+            "taskStage": "stepmind-task-stage-1"
+          }
+        },
+        "finishTime": "2026-11-06T00:04:37Z",
+        "taskStage": "stepmind-task-stage-1"
+      },
+      "stop_annotations": {
+        "rjob.brainpp.cn/system-stop-reason": "Some critical tasks failed."
+      },
+      "stop_spec_fields": {
+        "stopTimestamp": "2026-11-06T00:04:37Z"
+      },
+      "configuration_labels": {
+        "quotagroup.brainpp.cn/preemptible": "no",
+        "quotagroup.brainpp.cn/quotagroup": "codesign"
+      }
+    }
+  ],
+  "controls": "NONE",
+  "quota_or_capacity_queries": "NONE"
+}

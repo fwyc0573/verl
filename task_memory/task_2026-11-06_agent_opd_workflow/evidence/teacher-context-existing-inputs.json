@@ -1,0 +1,81 @@
+{
+  "status": "PASS_EXISTING_PARQUET_UNCHANGED_POPULATION",
+  "dataset_job": "exp-1106-032827-028041",
+  "results": [
+    {
+      "pair": "glm",
+      "rows": 80,
+      "qualification_rows": 8,
+      "qualification_exact_first_8_rows": true,
+      "all_80_uid_order_category_token_lengths_and_hashes_match_existing_report": true,
+      "all_metadata_and_tools_history_retained_in_reused_parquet": true,
+      "no_rows_removed_at_corrected_budget": true,
+      "prompt_budget": 61439,
+      "actual_prompt_range": [
+        10366,
+        57113
+      ],
+      "source_categories": {
+        "control_and_thinking": 20,
+        "control_only": 20,
+        "thinking_only": 20,
+        "neither": 20
+      },
+      "qualification_source_categories": {
+        "control_and_thinking": 2,
+        "control_only": 2,
+        "thinking_only": 2,
+        "neither": 2
+      },
+      "source_uid_sequence_sha256": "3e6856e1afcb8212470d3b8c1ca37fcf7b1550eef8d91cd362d912d1ac0a04af",
+      "files": {
+        "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-032827-028041/glm-learning.parquet": {
+          "bytes": 18742467,
+          "sha256": "15336e870afd7c2f1a79d6042827b3e9f668ff554ad63f2f535aecd029405bf6"
+        },
+        "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-032827-028041/glm-qualification.parquet": {
+          "bytes": 1256453,
+          "sha256": "4fac96c13af17c718c28005bb8b07ce8d97806f98ba444ea2e0fb11175e7d3c7"
+        }
+      }
+    },
+    {
+      "pair": "qwen",
+      "rows": 80,
+      "qualification_rows": 8,
+      "qualification_exact_first_8_rows": true,
+      "all_80_uid_order_category_token_lengths_and_hashes_match_existing_report": true,
+      "all_metadata_and_tools_history_retained_in_reused_parquet": true,
+      "no_rows_removed_at_corrected_budget": true,
+      "prompt_budget": 126975,
+      "actual_prompt_range": [
+        11430,
+        67951
+      ],
+      "source_categories": {
+        "control_and_thinking": 20,
+        "control_only": 20,
+        "thinking_only": 20,
+        "neither": 20
+      },
+      "qualification_source_categories": {
+        "control_and_thinking": 2,
+        "control_only": 2,
+        "thinking_only": 2,
+        "neither": 2
+      },
+      "source_uid_sequence_sha256": "3e6856e1afcb8212470d3b8c1ca37fcf7b1550eef8d91cd362d912d1ac0a04af",
+      "files": {
+        "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-032827-028041/qwen-learning.parquet": {
+          "bytes": 18812440,
+          "sha256": "a5a1db9e6c1920846295eaf70cf7160484fd2677d73a7eaf744675b39e430c34"
+        },
+        "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-032827-028041/qwen-qualification.parquet": {
+          "bytes": 1323086,
+          "sha256": "8dcf066a3c3fa4a2913a1bb587df468e47db8e2e7df0ae49c75982ced610e471"
+        }
+      }
+    }
+  ],
+  "method": "Read-only verification of existing Parquet tables against exact prior producer reports; no dataset writes or regeneration."
+}

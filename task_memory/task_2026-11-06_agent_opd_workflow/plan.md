@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Resume after two actual teacher-context initialization failures; preserve running original benchmarks. |
 | 2026-11-06 | Release updated-model scoring after verified export; share reload evidence with that server and wait for baseline scores only for comparison. |
 | 2026-11-06 | Close verified input/configuration prerequisites and record four independent GPU jobs. |
 | 2026-11-06 | Use model-specific run settings to resolve measured Qwen input underfill without changing populations. |
@@ -13,6 +14,8 @@
 # Plan
 
 ## Execution status
+
+Resumed execution: both initial qualification jobs actually failed before training at the native teacher `prompt + response + 1` guard. Correct preparation/recipe prompt declarations by reserving that scoring token, validate the real native dataclass and unchanged80/8 inputs, then submit fresh same-resource qualification jobs. Original GLM/Qwen benchmarks are now actually running with valid native grader results; their existing identities and healthy slots continue. The earlier Pending/zero-score checkpoint remains historical evidence, not current status.
 
 用户已指示“开始执行”。按上一轮推荐的两组对称 20 步及前后评测推进，使用已创建的 agent-opd 分支。01 的 native runtime、两组80/8输入、2/20配置和 benchmark 题单均已实际通过并关闭。两组资格与原始评测均已独立提交；原始 Qwen 首次因 sandbox token 环境变量未解析失败，最小修复通过原生配置解析回归后已重提，实际鉴权及有效评分仍待验证。代码、配置和每阶段结论及时提交/push，临时产物随消费随清理。
 

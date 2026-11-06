@@ -26,6 +26,7 @@ from hydra import compose, initialize_config_dir
 from omegaconf import OmegaConf
 
 from tests.manual.agent_opd.alignment import validate_numerical_limits
+from verl.utils.config import omega_conf_to_dataclass
 
 RUNTIME_FIELDS = (
     "actor_gpus", "teacher_gpus", "actor_tp", "actor_pp", "actor_cp", "actor_ep", "actor_etp",
@@ -69,8 +70,8 @@ def recipe_overrides(pair, settings, *, dataset, agent_config, steps, repository
     validate_numerical_limits(settings["numerical_limits"])
     if steps <= 0 or settings["train_batch_size"] <= 0:
         raise ValueError("steps and train_batch_size must be positive")
-    if settings["context_length"] <= settings["response_length"] or settings["response_length"] <= 0:
-        raise ValueError("context_length must exceed the positive response_length")
+    if settings["context_length"] <= settings["response_length"] + 1 or settings["response_length"] <= 0:
+        raise ValueError("context_length must fit a positive prompt, response, and one teacher scoring token")
     for key in RUNTIME_FIELDS:
         if key not in ("router_replay_mode", "inference_engine_kwargs") and (
             not isinstance(runtime[key], int) or runtime[key] <= 0
@@ -126,7 +127,8 @@ def recipe_overrides(pair, settings, *, dataset, agent_config, steps, repository
         "data.train_batch_size": settings["train_batch_size"],
         "data.train_max_samples": steps * settings["train_batch_size"],
         "data.shuffle": False,
-        "data.max_prompt_length": settings["context_length"] - settings["response_length"],
+        # Native teacher scoring needs one generated token after the student's response.
+        "data.max_prompt_length": settings["context_length"] - settings["response_length"] - 1,
         "data.max_response_length": settings["response_length"],
         "data.truncation": "error",
         "data.filter_overlong_prompts": False,
@@ -271,6 +273,7 @@ def main():
         config = compose(config_name="ppo_trainer", overrides=overrides)
     if len(config.distillation.teacher_models) != 1:
         raise ValueError("The source task requires exactly one frozen teacher for each student run")
+    omega_conf_to_dataclass(config.distillation)
     # Preserve lazy optional-role fields (some legitimately contain ???). They
     # are resolved by native validation for the roles actually used at launch.
     if args.output.is_relative_to(Path("/mnt/codesign-exp")):
@@ -280,6 +283,7 @@ def main():
         output.write(OmegaConf.to_yaml(config, resolve=False))
     print(json.dumps({
         "status": "PASS_HYDRA_COMPOSE", "pair": args.pair, "steps": args.steps,
+        "native_distillation_config_verified": True,
         "output": str(args.output), "asset_existence_checked": not args.dry_run,
         "trainer_launched": False, "numerical_agreement_verified": False,
     }))

@@ -1,0 +1,281 @@
+{
+  "collected_at_utc": "2026-11-06T05:38:17Z",
+  "current": {
+    "glm": {
+      "active": [
+        {
+          "attempt": "attempt-1777550715674292b82e2df3db29b4be",
+          "slot": "question-02-seed-1730",
+          "status": [
+            "generation/running"
+          ]
+        },
+        {
+          "attempt": "attempt-ba4360a5451840a08406737a3c59e4e7",
+          "slot": "question-02-seed-1732",
+          "status": [
+            "generation/running"
+          ]
+        },
+        {
+          "attempt": "attempt-23620deec411490a852082c62d60efcd",
+          "slot": "question-03-seed-1729",
+          "status": [
+            "generation/running"
+          ]
+        },
+        {
+          "attempt": "attempt-434a3ebf8a354344bda0b251d43b3b9b",
+          "slot": "question-03-seed-1731",
+          "status": [
+            "generation/running"
+          ]
+        }
+      ],
+      "identity": {
+        "completed_updates": 0,
+        "membership_sha256": "0f4ab340bedb7a64f3089af679be829aefcf8ecbbeb11c3a164578ba6b702877",
+        "pair": "glm",
+        "reasoning_parser": "glm45",
+        "sandbox_backend": "basemind",
+        "tool_parser": "glm47"
+      },
+      "invalid_grading": 0,
+      "model": {
+        "model_path": "/mnt/codesign-exp/ycfeng/steptron/behavior-turn-replay-step3p6/glm-native-20261103/models/zai-org/GLM-4.7-Flash/7dd20894a642a0aa287e9827cb1a1f7f91386b67",
+        "model_type": "glm4_moe_lite",
+        "tensor_count": 9703
+      },
+      "report_is_current": false,
+      "report_note": "Top-level report is written after the native run; per-attempt outcomes and return codes provide this snapshot.",
+      "resolved": 5,
+      "unresolved": 5,
+      "valid": 10
+    },
+    "qwen": {
+      "active": [
+        {
+          "attempt": "attempt-6f25f6707d1943ac97916c26b4f3bf8c",
+          "slot": "question-09-seed-1729",
+          "status": [
+            "generation/running"
+          ]
+        },
+        {
+          "attempt": "attempt-d87770a2a88f41dfa48a4c4c9634d749",
+          "slot": "question-10-seed-1731",
+          "status": [
+            "generation/running"
+          ]
+        },
+        {
+          "attempt": "attempt-a7806bf193d645c2947d29cee8cb000e",
+          "slot": "question-10-seed-1732",
+          "status": [
+            "generation/running"
+          ]
+        },
+        {
+          "attempt": "attempt-a78b2c1fdb014a29a5ff686deec9f874",
+          "slot": "question-12-seed-1730",
+          "status": [
+            "generation/running"
+          ]
+        }
+      ],
+      "identity": {
+        "completed_updates": 0,
+        "membership_sha256": "0f4ab340bedb7a64f3089af679be829aefcf8ecbbeb11c3a164578ba6b702877",
+        "pair": "qwen",
+        "reasoning_parser": "qwen3",
+        "sandbox_backend": "basemind",
+        "tool_parser": "qwen3_coder"
+      },
+      "invalid_grading": 3,
+      "model": {
+        "model_path": "/mnt/codesign-exp/ycfeng/opd-assets/models/Qwen/Qwen3.5-4B/851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+        "model_type": "qwen3_5",
+        "tensor_count": 738
+      },
+      "report_is_current": false,
+      "report_note": "Top-level report is written after the native run; per-attempt outcomes and return codes provide this snapshot.",
+      "resolved": 29,
+      "unresolved": 9,
+      "valid": 38
+    }
+  },
+  "first_actual_success": {
+    "glm": {
+      "attempt": "attempt-553368cdee1c42c286c2bd2bda70c677",
+      "engine_request_count": 75,
+      "files": [
+        {
+          "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/benchmarks/glm/step0/attempts/question-00-seed-1729/attempt-553368cdee1c42c286c2bd2bda70c677/step0/seed-1729/outcomes/astropy__astropy-12907.generation.json",
+          "sha256": "66689ef4f7995318b3a8c220b0c813451437cbad4213a0519bfcd9facd5934bd"
+        },
+        {
+          "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/benchmarks/glm/step0/attempts/question-00-seed-1729/attempt-553368cdee1c42c286c2bd2bda70c677/step0/seed-1729/outcomes/astropy__astropy-12907.grading.json",
+          "sha256": "0a01daae92027921cc4f03ccd764ce29efd507be499e6b3647cb03eef669cb08"
+        },
+        {
+          "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/benchmarks/glm/step0/attempts/question-00-seed-1729/attempt-553368cdee1c42c286c2bd2bda70c677/native.log",
+          "sha256": "41c5ffed625b9d09522c74f4b762f7db4ef990903f43368e4a361737e679215e"
+        }
+      ],
+      "generation": "returned",
+      "grading": "resolved",
+      "native_returncode": 0,
+      "resolved": true,
+      "sampling": {
+        "n": 1,
+        "temperature": 1,
+        "top_p": 0.95
+      },
+      "seed": 1729,
+      "seed_verified": true,
+      "task_id": "astropy__astropy-12907"
+    },
+    "qwen": {
+      "attempt": "attempt-7d913b685e044471ac47350d3faff790",
+      "engine_request_count": 58,
+      "files": [
+        {
+          "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/benchmarks/qwen/step0/attempts/question-00-seed-1731/attempt-7d913b685e044471ac47350d3faff790/step0/seed-1731/outcomes/astropy__astropy-12907.generation.json",
+          "sha256": "928585ccefdd933b10871f26060be40c884727fe66ca20f2bb702f41b148690a"
+        },
+        {
+          "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/benchmarks/qwen/step0/attempts/question-00-seed-1731/attempt-7d913b685e044471ac47350d3faff790/step0/seed-1731/outcomes/astropy__astropy-12907.grading.json",
+          "sha256": "5679bf7960babf7894565fb76d06c0bc3e4de1fce67a9f04195ebb7e3a897ff6"
+        },
+        {
+          "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/benchmarks/qwen/step0/attempts/question-00-seed-1731/attempt-7d913b685e044471ac47350d3faff790/native.log",
+          "sha256": "d5c475dfcb682d50bcd4854c33d7eacf757b85a1d6d7d4afbacc743781673953"
+        }
+      ],
+      "generation": "returned",
+      "generation_seconds": 1456.5004475526512,
+      "grading": "resolved",
+      "grading_seconds": 111.16848613042384,
+      "native_returncode": 0,
+      "resolved": true,
+      "sampling": {
+        "n": 1,
+        "temperature": 1,
+        "top_p": 0.95
+      },
+      "seed": 1731,
+      "seed_verified": true,
+      "signals": {
+        "assistant_turns": 58,
+        "body_turns": 6,
+        "thinking_turns": 58,
+        "tool_calls": {
+          "bash": 55,
+          "str_replace_editor": 1,
+          "submit": 2
+        },
+        "tool_response_turns": 58
+      },
+      "task_id": "astropy__astropy-12907"
+    }
+  },
+  "first_auth_failure": {
+    "error_type": "HTTPStatusError",
+    "http_status": 401,
+    "infra_attempts": 4,
+    "job": "exp-1106-030308-817360",
+    "native_log_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/benchmarks/qwen/step0/attempts/question-00-seed-1729/attempt-41052743b13243de9cd8637976caa1fb/native.log",
+    "native_log_sha256": "74e2fad5bd0e9f04fa5667365f133aea83c60d28204cc6997005563793098da1",
+    "reason": "Missing canonical environment name left the native placeholder unresolved.",
+    "subsequent_success_note": "The first_actual_success.qwen record demonstrates real tools and native grading after canonical environment forwarding; this is distinct from CPU fixtures.",
+    "valid_attempts": 0
+  },
+  "jobs": {
+    "glm": {
+      "actual_gpu_count": 4,
+      "actual_gpu_name": "NVIDIA H800",
+      "name": "exp-1106-030308-839669",
+      "replica": "exp-1106-030308-839669-cfcd2084",
+      "replica_uid": "a5e4115b-f952-4ced-8546-1fd18db7f3ed",
+      "uid": "f74fa974-ea86-4149-a823-3276ce493f8b"
+    },
+    "qwen": {
+      "actual_gpu_count": 2,
+      "actual_gpu_name": "NVIDIA H800",
+      "name": "exp-1106-033246-436787",
+      "replica": "exp-1106-033246-436787-cfcd2084",
+      "replica_uid": "d739fa38-80e0-4d62-9173-86c91f6367e0",
+      "uid": "f5c97c61-7868-44f6-8a74-34ab529bd6b2"
+    }
+  },
+  "limitations": [
+    "No complete 80-result baseline or avg@4 is claimed.",
+    "No numerical qualification, optimizer update, export or updated-model evidence is inferred.",
+    "Healthy original slots and identity were preserved; no retry, context change or job control was performed."
+  ],
+  "membership_sha256": "0f4ab340bedb7a64f3089af679be829aefcf8ecbbeb11c3a164578ba6b702877",
+  "overflow_rca": [
+    {
+      "attempt": "attempt-06cb789a538a46c881bbfa15c6c8523b",
+      "context_length": 131072,
+      "disposition": "missing; not a valid unresolved score",
+      "grading_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/benchmarks/qwen/step0/attempts/question-01-seed-1730/attempt-06cb789a538a46c881bbfa15c6c8523b/step0/seed-1730/outcomes/astropy__astropy-13398.grading.json",
+      "grading_sha256": "311c7267f7c933e264c3e7eafc6f57042b28bf07213e5c5cd3f8a2431c2a2184",
+      "http_status": 400,
+      "input_tokens": 131334,
+      "native_log_lines": [
+        86,
+        250,
+        369
+      ],
+      "native_log_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/benchmarks/qwen/step0/attempts/question-01-seed-1730/attempt-06cb789a538a46c881bbfa15c6c8523b/native.log",
+      "native_log_sha256": "1f5a3c57e8ad4ee616f9689fa7f26b8bd9c98815bdf11ee795bf601bc8138467",
+      "observed_chain": "HTTP400 context overflow -> native ModelError -> error trajectory only, no normal trajectory -> grading FileNotFoundError -> invalid/missing; process return 0 is insufficient.",
+      "question_index": 1,
+      "seed": 1730,
+      "task_id": "astropy__astropy-13398"
+    },
+    {
+      "attempt": "attempt-de1ce69368214053a0e8b0b8db195c31",
+      "context_length": 131072,
+      "disposition": "missing; not a valid unresolved score",
+      "grading_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/benchmarks/qwen/step0/attempts/question-02-seed-1732/attempt-de1ce69368214053a0e8b0b8db195c31/step0/seed-1732/outcomes/django__django-10097.grading.json",
+      "grading_sha256": "c3f65ce82a6c120660ee1de6336fa4dea6b4105b8a4330a4622784440a9c615e",
+      "http_status": 400,
+      "input_tokens": 131150,
+      "native_log_lines": [
+        86,
+        250,
+        366
+      ],
+      "native_log_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/benchmarks/qwen/step0/attempts/question-02-seed-1732/attempt-de1ce69368214053a0e8b0b8db195c31/native.log",
+      "native_log_sha256": "84d9053aa61f71dba3934fb5ff2ffa28cb357865a1a47256256b9da8d673ba20",
+      "observed_chain": "HTTP400 context overflow -> native ModelError -> error trajectory only, no normal trajectory -> grading FileNotFoundError -> invalid/missing; process return 0 is insufficient.",
+      "question_index": 2,
+      "seed": 1732,
+      "task_id": "django__django-10097"
+    },
+    {
+      "attempt": "attempt-9aedb96493204b5aa1356e3780f83a3b",
+      "context_length": 131072,
+      "disposition": "missing; not a valid unresolved score",
+      "grading_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/benchmarks/qwen/step0/attempts/question-02-seed-1729/attempt-9aedb96493204b5aa1356e3780f83a3b/step0/seed-1729/outcomes/django__django-10097.grading.json",
+      "grading_sha256": "7f07b30c24e1c8e95060dfaea6406968a6d87d30d259335dba777ef4dd62ce72",
+      "http_status": 400,
+      "input_tokens": 131177,
+      "native_log_lines": [
+        106,
+        270,
+        389
+      ],
+      "native_log_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/benchmarks/qwen/step0/attempts/question-02-seed-1729/attempt-9aedb96493204b5aa1356e3780f83a3b/native.log",
+      "native_log_sha256": "49af5f3b0e21e30552481f40e88899695bc1735bf89e662a5cd02204e32a25a5",
+      "observed_chain": "HTTP400 context overflow -> native ModelError -> error trajectory only, no normal trajectory -> grading FileNotFoundError -> invalid/missing; process return 0 is insufficient.",
+      "question_index": 2,
+      "seed": 1729,
+      "task_id": "django__django-10097"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Selected original benchmark business evidence only; no trajectories, tokens, credentials or private request content."
+}

@@ -1,0 +1,355 @@
+{
+  "job": "exp-1106-030133-940211",
+  "result": "FAILED_BEFORE_TRAINER_FIT",
+  "initiating_failure": {
+    "stage": "trainer.init_workers -> actor_rollout_init_model -> DistillationConfig.__post_init__",
+    "exception_type": "ValueError",
+    "message": "Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=61440, student_response_length=4096, required_context_len=65537, max_model_len=65536.",
+    "configured_prompt_tokens": 61440,
+    "configured_response_tokens": 4096,
+    "required_extra_generated_token": 1,
+    "required_context_tokens": 65537,
+    "teacher_context_tokens": 65536,
+    "cause": "The prompt and response budgets omitted the required extra teacher inference token."
+  },
+  "training_log": {
+    "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/logs/rank-0/training.log",
+    "remote_read_alias": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/logs/rank-0/training.log",
+    "sha256": "75bb4d6b1c1ce9f9782e572aacb6681931168b2d0a0e0c07bcfb46bee8d26776",
+    "bytes": 22525,
+    "physical_lines": 217,
+    "previously_observed_tail_window": {
+      "first_line": 38,
+      "last_line": 217
+    },
+    "selected_observed_lines": [
+      {
+        "line": 74,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/verl/workers/config/distillation.py\", line 289, in __post_init__"
+      },
+      {
+        "line": 76,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/verl/workers/config/distillation.py\", line 192, in validate_and_prepare_for_distillation"
+      },
+      {
+        "line": 78,
+        "text": "ValueError: Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=61440, student_response_length=4096, required_context_len=65537, max_model_len=65536."
+      },
+      {
+        "line": 212,
+        "message_without_ray_prefix": "dataset len: 8"
+      },
+      {
+        "line": 214,
+        "message_without_ray_prefix": "dataset len: 8"
+      },
+      {
+        "line": 215,
+        "message_without_ray_prefix": "Size of train dataloader: 2, Size of val dataloader: 1"
+      },
+      {
+        "line": 216,
+        "message_without_ray_prefix": "Total training steps: 2"
+      }
+    ],
+    "raw_tail_not_recopied": true
+  },
+  "optimizer_update_boundary": {
+    "updates_possible_before_failure": 0,
+    "basis": "The native worker raised during trainer.init_workers, before trainer.fit was called.",
+    "evidence_type": "control_flow_bound_not_optimizer_counter",
+    "direct_training_counter_receipt_available": false,
+    "observations_directory_exists": true,
+    "observed_missing_files": [
+      "observations/training.json",
+      "observations/aggregate.json",
+      "observations/turns.jsonl"
+    ]
+  },
+  "initial_slice_receipt": {
+    "snapshot": "/data/ycfeng/tmp/verl-agent-opd-glm-business-20261106/exp-1106-030133-940211-cfcd2084-20261106T002454Z.log",
+    "line": 42,
+    "marker": "VERL_AGENT_OPD_GLM_QUALIFICATION_INPUT_VERIFIED",
+    "value": {
+      "source": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-024352-115509/glm-learning.parquet",
+      "output": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-024352-115509/glm-qualification.parquet",
+      "rows": 8,
+      "source_categories": {
+        "control_and_thinking": 2,
+        "control_only": 2,
+        "thinking_only": 2,
+        "neither": 2
+      },
+      "parquet_round_trip": true
+    }
+  },
+  "gpu_receipts": [
+    {
+      "snapshot": "/data/ycfeng/tmp/verl-agent-opd-glm-business-20261106/exp-1106-030133-940211-cfcd2084-20261106T002454Z.log",
+      "line": 43,
+      "marker": "VERL_STAGE_GPU_RECEIPT",
+      "value": {
+        "job": "exp-1106-030133-940211",
+        "rank": 0,
+        "total": 2,
+        "hostname": "gpu-h800-0345.host.platform.shaipower.com",
+        "python": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/bin/python",
+        "python_version": "3.12.13 (main, May 10 2026, 19:30:01) [Clang 22.1.3 ]",
+        "torch": {
+          "version": "2.13.0+cu130",
+          "cuda": "13.0",
+          "source": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/torch/__init__.py"
+        },
+        "verl_source": "/data/ycfeng/sota-engine/verl/verl/__init__.py",
+        "gpus": [
+          {
+            "index": "0",
+            "name": "NVIDIA H800",
+            "uuid": "GPU-c75ffcca-7dca-7d35-d17b-c5e4087eaecf",
+            "memory_mib": "81559",
+            "driver": "570.124.06"
+          },
+          {
+            "index": "1",
+            "name": "NVIDIA H800",
+            "uuid": "GPU-2641bad3-9571-1cc0-515c-a33933d9c0e8",
+            "memory_mib": "81559",
+            "driver": "570.124.06"
+          },
+          {
+            "index": "2",
+            "name": "NVIDIA H800",
+            "uuid": "GPU-763acabf-56a1-7ffe-1d17-031b3db80806",
+            "memory_mib": "81559",
+            "driver": "570.124.06"
+          },
+          {
+            "index": "3",
+            "name": "NVIDIA H800",
+            "uuid": "GPU-0a58f463-67f3-4b94-f41d-86d28753d2a9",
+            "memory_mib": "81559",
+            "driver": "570.124.06"
+          },
+          {
+            "index": "4",
+            "name": "NVIDIA H800",
+            "uuid": "GPU-bd7e5f38-a38b-1fc1-3321-ff71d98b955a",
+            "memory_mib": "81559",
+            "driver": "570.124.06"
+          },
+          {
+            "index": "5",
+            "name": "NVIDIA H800",
+            "uuid": "GPU-f7d2107e-9731-2eb7-9af1-e822612a82f9",
+            "memory_mib": "81559",
+            "driver": "570.124.06"
+          },
+          {
+            "index": "6",
+            "name": "NVIDIA H800",
+            "uuid": "GPU-9062cda4-8da0-2bc4-5ea0-3492c4652800",
+            "memory_mib": "81559",
+            "driver": "570.124.06"
+          },
+          {
+            "index": "7",
+            "name": "NVIDIA H800",
+            "uuid": "GPU-ba1e1ef9-7043-9cb8-74ff-412fa636f8c4",
+            "memory_mib": "81559",
+            "driver": "570.124.06"
+          }
+        ],
+        "preserved_nccl_keys": [
+          "NCCL_IB_DISABLE",
+          "NCCL_IB_FIFO_TC",
+          "NCCL_IB_GID_INDEX",
+          "NCCL_IB_HCA",
+          "NCCL_IB_PCI_RELAXED_ORDERING",
+          "NCCL_IB_QPS_PER_CONNECTION",
+          "NCCL_IB_RETRY_CNT",
+          "NCCL_IB_TC",
+          "NCCL_IB_TIMEOUT",
+          "NCCL_NVLS_ENABLE",
+          "NCCL_PXN_DISABLE",
+          "NCCL_RAS_ADDR",
+          "NCCL_RAS_ENABLE",
+          "NCCL_SET_THREAD_NAME",
+          "NCCL_SOCKET_IFNAME",
+          "NCCL_VERSION"
+        ]
+      }
+    },
+    {
+      "snapshot": "/data/ycfeng/tmp/verl-agent-opd-glm-business-20261106/exp-1106-030133-940211-c4ca4238-20261106T002454Z.log",
+      "line": 42,
+      "marker": "VERL_STAGE_GPU_RECEIPT",
+      "value": {
+        "job": "exp-1106-030133-940211",
+        "rank": 1,
+        "total": 2,
+        "hostname": "gpu-h800-0256.host.platform.shaipower.com",
+        "python": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/bin/python",
+        "python_version": "3.12.13 (main, May 10 2026, 19:30:01) [Clang 22.1.3 ]",
+        "torch": {
+          "version": "2.13.0+cu130",
+          "cuda": "13.0",
+          "source": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/torch/__init__.py"
+        },
+        "verl_source": "/data/ycfeng/sota-engine/verl/verl/__init__.py",
+        "gpus": [
+          {
+            "index": "0",
+            "name": "NVIDIA H800",
+            "uuid": "GPU-e553877d-165f-0758-d0af-fdc44e3f7bb0",
+            "memory_mib": "81559",
+            "driver": "570.124.06"
+          },
+          {
+            "index": "1",
+            "name": "NVIDIA H800",
+            "uuid": "GPU-e4606787-048b-9066-2d9b-73910b55699b",
+            "memory_mib": "81559",
+            "driver": "570.124.06"
+          },
+          {
+            "index": "2",
+            "name": "NVIDIA H800",
+            "uuid": "GPU-857ba1a7-971c-43d9-d57d-9f5802f1a04d",
+            "memory_mib": "81559",
+            "driver": "570.124.06"
+          },
+          {
+            "index": "3",
+            "name": "NVIDIA H800",
+            "uuid": "GPU-b15971d1-b330-c125-7591-ee3831c474c0",
+            "memory_mib": "81559",
+            "driver": "570.124.06"
+          },
+          {
+            "index": "4",
+            "name": "NVIDIA H800",
+            "uuid": "GPU-a6939fd6-b380-1a84-7fbf-deba9f34b46b",
+            "memory_mib": "81559",
+            "driver": "570.124.06"
+          },
+          {
+            "index": "5",
+            "name": "NVIDIA H800",
+            "uuid": "GPU-2d256577-5d92-2d31-2e90-4b1b281f9c69",
+            "memory_mib": "81559",
+            "driver": "570.124.06"
+          },
+          {
+            "index": "6",
+            "name": "NVIDIA H800",
+            "uuid": "GPU-4a661eac-a17c-039d-df2f-5c54275a4e25",
+            "memory_mib": "81559",
+            "driver": "570.124.06"
+          },
+          {
+            "index": "7",
+            "name": "NVIDIA H800",
+            "uuid": "GPU-c69de5a0-1861-0681-3d28-9dea342286c2",
+            "memory_mib": "81559",
+            "driver": "570.124.06"
+          }
+        ],
+        "preserved_nccl_keys": [
+          "NCCL_IB_DISABLE",
+          "NCCL_IB_FIFO_TC",
+          "NCCL_IB_GID_INDEX",
+          "NCCL_IB_HCA",
+          "NCCL_IB_PCI_RELAXED_ORDERING",
+          "NCCL_IB_QPS_PER_CONNECTION",
+          "NCCL_IB_RETRY_CNT",
+          "NCCL_IB_TC",
+          "NCCL_IB_TIMEOUT",
+          "NCCL_NVLS_ENABLE",
+          "NCCL_PXN_DISABLE",
+          "NCCL_RAS_ADDR",
+          "NCCL_RAS_ENABLE",
+          "NCCL_SET_THREAD_NAME",
+          "NCCL_SOCKET_IFNAME",
+          "NCCL_VERSION"
+        ]
+      }
+    }
+  ],
+  "wrapper_failure_receipt": {
+    "snapshot": "/data/ycfeng/tmp/verl-agent-opd-glm-business-20261106/exp-1106-030133-940211-cfcd2084-20261106T002454Z.log",
+    "line": 88,
+    "marker": "VERL_STAGE_RESULT",
+    "value": {
+      "status": "failed",
+      "job": "exp-1106-030133-940211",
+      "rank": 0,
+      "pair": "glm",
+      "requested_updates": 2,
+      "error": "CalledProcessError: Command '['/data/ycfeng/envs/verl-agent-opd-megatron-sglang/bin/python', '-B', '-m', 'tests.manual.agent_opd.train', '--config', '/data/ycfeng/tmp/verl-agent-opd-20261106/rendezvous/exp-1106-030133-940211/recipe.yaml', '--observations', '/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-030133-940211/observations']' returned non-zero exit status 1."
+    }
+  },
+  "retained_api_snapshots": [
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-glm-business-20261106/exp-1106-030133-940211-cfcd2084-20261106T002454Z.log",
+      "sha256": "e7f7def8a964da354aa0cb80ec0e9067d13be079ac3ca4c242b19c86532e63f3",
+      "bytes": 12520
+    },
+    {
+      "path": "/data/ycfeng/tmp/verl-agent-opd-glm-business-20261106/exp-1106-030133-940211-c4ca4238-20261106T002454Z.log",
+      "sha256": "393406a630eb2b96e73ded6bdb51341956c7d47ef573e6ce35efbe02b78cf50e",
+      "bytes": 4479
+    }
+  ],
+  "retry_existing_parquet_validation": {
+    "status": "PASS_EXISTING_GLM_QUALIFICATION_EXACT_FIRST8",
+    "python": "3.12.3",
+    "pyarrow": "25.0.0",
+    "source": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-024352-115509/glm-learning.parquet",
+    "qualification": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-024352-115509/glm-qualification.parquet",
+    "checks": {
+      "source_rows_80": true,
+      "qualification_rows_8": true,
+      "all_columns_schema_and_metadata_equal": true,
+      "exact_first8_all_values_equal": true,
+      "source_uid_order_equal": true,
+      "prepared_prompt_ids_equal": true,
+      "prepared_prompt_content_equal": true,
+      "history_tools_source_metadata_equal": true,
+      "four_categories_two_each": true,
+      "eight_distinct_source_uids": true
+    },
+    "verified_columns": [
+      "data_source",
+      "source_uid",
+      "source_category",
+      "prepared_prompt",
+      "prepared_prompt_ids",
+      "metadata_json",
+      "thinking_enabled"
+    ],
+    "source_categories": {
+      "control_and_thinking": 2,
+      "control_only": 2,
+      "thinking_only": 2,
+      "neither": 2
+    },
+    "prompt_token_range": [
+      10366,
+      41047
+    ],
+    "files_modified": false
+  },
+  "acceptance_boundaries": {
+    "native_dataset_initialization_observed": true,
+    "native_optimizer_update_pass": false,
+    "three_pairwise_logprob_mae_observed": false,
+    "r3_kernel_replay_observed": false,
+    "updated_student_weight_version_observed": false,
+    "hf2_export_or_actual_changed_weight_value_observed": false
+  },
+  "scope": {
+    "additional_remote_raw_log_reads_for_this_archive": false,
+    "repo_source_or_task_document_edits": false,
+    "job_submission_or_control": false
+  }
+}

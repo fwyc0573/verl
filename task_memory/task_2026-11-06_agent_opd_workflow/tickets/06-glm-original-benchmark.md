@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Record actual qualification failure or running original benchmark evidence on resume. |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
 | 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
 
@@ -11,7 +12,7 @@
 
 **Blocked by:** 01 runtime and verified fixed benchmark inputs; independent of either training dataset. Existing native benchmark preparation must pass before server/scoring starts.
 
-**Status:** in-progress — submitted exp-1106-030308-839669; platform Pending/queuing at03:04:17HKT, no serving or score yet. Existing benchmark preparation must validate the frozen membership before server/scoring.
+**Status:** in-progress — original exp-1106-030308-839669 is actually Running on4H800; at13:38:17HKT10/80valid native outcomes (5resolved/5unresolved), both generation and grader/process evidence checked. First-question four-seed gate passed; healthy slots continue. Full80/avg@4 still unfinished.
 
 - [ ] 确认 benchmark 范围后，对冻结的 20 题和四 seeds 获取 80 个有效原生评分，模型权重/环境/采样/超时身份完整。
 - [ ] 基础设施错误保留为 missing，合法 unresolved 作为模型失败；先取得可用的原生结果再扩大提交。

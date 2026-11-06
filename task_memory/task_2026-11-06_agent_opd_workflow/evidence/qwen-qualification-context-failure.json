@@ -1,0 +1,128 @@
+{
+  "status": "FAILED_NATIVE_INITIALIZATION",
+  "job": "exp-1106-033627-955641",
+  "job_uid": "9ad17773-2d4e-4b21-8dc2-2150ab8a6f85",
+  "replica": "exp-1106-033627-955641-cfcd2084",
+  "replica_uid": "7f26ce6e-6adb-40b8-8d58-8c71aed26d76",
+  "node": "gpu-h800-0323.host.platform.shaipower.com",
+  "platform_identity_source": "platform_observer exact job and replica metadata",
+  "container_interval_hkt": [
+    "2026-11-06T08:02:16+08:00",
+    "2026-11-06T08:04:36+08:00"
+  ],
+  "container_exit_code": 1,
+  "observed_at_utc": "2026-11-06T00:08:04.926565+00:00",
+  "initiating_exception": {
+    "type": "ValueError",
+    "stage": "ray WorkerDict.actor_rollout_init_model -> Hydra DistillationConfig instantiation",
+    "message": "Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=126976, student_response_length=4096, required_context_len=131073, max_model_len=131072.",
+    "native_rows": [
+      {
+        "timestamp": "1793923466852804000",
+        "line": "[2026-11-06T08:04:26+08:00] exp-1106-033627-955641-cfcd2084 >> ValueError: Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=126976, student_response_length=4096, required_context_len=131073, max_model_len=131072.",
+        "pod": "exp-1106-033627-955641-cfcd2084",
+        "node": "gpu-h800-0323.host.platform.shaipower.com",
+        "message": "ValueError: Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=126976, student_response_length=4096, required_context_len=131073, max_model_len=131072."
+      },
+      {
+        "timestamp": "1793923466852882000",
+        "line": "[2026-11-06T08:04:26+08:00] exp-1106-033627-955641-cfcd2084 >> ValueError('Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=126976, student_response_length=4096, required_context_len=131073, max_model_len=131072.')",
+        "pod": "exp-1106-033627-955641-cfcd2084",
+        "node": "gpu-h800-0323.host.platform.shaipower.com",
+        "message": "ValueError('Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=126976, student_response_length=4096, required_context_len=131073, max_model_len=131072.')"
+      },
+      {
+        "timestamp": "1793923466906619000",
+        "line": "[2026-11-06T08:04:26+08:00] exp-1106-033627-955641-cfcd2084 >> \u001b[36m(TaskRunner pid=3884)\u001b[0m ValueError: Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=126976, student_response_length=4096, required_context_len=131073, max_model_len=131072.",
+        "pod": "exp-1106-033627-955641-cfcd2084",
+        "node": "gpu-h800-0323.host.platform.shaipower.com",
+        "message": "\u001b[36m(TaskRunner pid=3884)\u001b[0m ValueError: Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=126976, student_response_length=4096, required_context_len=131073, max_model_len=131072."
+      },
+      {
+        "timestamp": "1793923466907303000",
+        "line": "[2026-11-06T08:04:26+08:00] exp-1106-033627-955641-cfcd2084 >> \u001b[36m(TaskRunner pid=3884)\u001b[0m ValueError('Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=126976, student_response_length=4096, required_context_len=131073, max_model_len=131072.')",
+        "pod": "exp-1106-033627-955641-cfcd2084",
+        "node": "gpu-h800-0323.host.platform.shaipower.com",
+        "message": "\u001b[36m(TaskRunner pid=3884)\u001b[0m ValueError('Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=126976, student_response_length=4096, required_context_len=131073, max_model_len=131072.')"
+      },
+      {
+        "timestamp": "1793923466907484000",
+        "line": "[2026-11-06T08:04:26+08:00] exp-1106-033627-955641-cfcd2084 >> \u001b[36m(TaskRunner pid=3884)\u001b[0m ValueError: Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=126976, student_response_length=4096, required_context_len=131073, max_model_len=131072.",
+        "pod": "exp-1106-033627-955641-cfcd2084",
+        "node": "gpu-h800-0323.host.platform.shaipower.com",
+        "message": "\u001b[36m(TaskRunner pid=3884)\u001b[0m ValueError: Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=126976, student_response_length=4096, required_context_len=131073, max_model_len=131072."
+      },
+      {
+        "timestamp": "1793923466908485000",
+        "line": "[2026-11-06T08:04:26+08:00] exp-1106-033627-955641-cfcd2084 >> \u001b[36m(TaskRunner pid=3884)\u001b[0m ValueError('Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=126976, student_response_length=4096, required_context_len=131073, max_model_len=131072.')",
+        "pod": "exp-1106-033627-955641-cfcd2084",
+        "node": "gpu-h800-0323.host.platform.shaipower.com",
+        "message": "\u001b[36m(TaskRunner pid=3884)\u001b[0m ValueError('Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=126976, student_response_length=4096, required_context_len=131073, max_model_len=131072.')"
+      },
+      {
+        "timestamp": "1793923467005572000",
+        "line": "[2026-11-06T08:04:27+08:00] exp-1106-033627-955641-cfcd2084 >> \u001b[36m(TaskRunner pid=3884)\u001b[0m ValueError: Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=126976, student_response_length=4096, required_context_len=131073, max_model_len=131072.",
+        "pod": "exp-1106-033627-955641-cfcd2084",
+        "node": "gpu-h800-0323.host.platform.shaipower.com",
+        "message": "\u001b[36m(TaskRunner pid=3884)\u001b[0m ValueError: Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=126976, student_response_length=4096, required_context_len=131073, max_model_len=131072."
+      },
+      {
+        "timestamp": "1793923467006206000",
+        "line": "[2026-11-06T08:04:27+08:00] exp-1106-033627-955641-cfcd2084 >> \u001b[36m(TaskRunner pid=3884)\u001b[0m ValueError('Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=126976, student_response_length=4096, required_context_len=131073, max_model_len=131072.')",
+        "pod": "exp-1106-033627-955641-cfcd2084",
+        "node": "gpu-h800-0323.host.platform.shaipower.com",
+        "message": "\u001b[36m(TaskRunner pid=3884)\u001b[0m ValueError('Distillation teacher inference requires room for the student prompt, the full student response, and one generated token, but got student_prompt_length=126976, student_response_length=4096, required_context_len=131073, max_model_len=131072.')"
+      }
+    ]
+  },
+  "business_outputs": {
+    "native_process_started": true,
+    "observations_directory_exists": true,
+    "observations_files": [],
+    "successful_update_records": 0,
+    "two_updates_verified": false,
+    "numerical_agreement_verified": false,
+    "final_hf2_and_weight_change_verified": false,
+    "local_result_status": "failed",
+    "local_result_error_type": "CalledProcessError"
+  },
+  "cause": {
+    "source_contract": "verl/workers/config/distillation.py:190-198 requires prompt + response + 1 and then scores the student prompt/response with one teacher-generated token.",
+    "configuration_source": "tests/manual/agent_opd/configure.py:129 sets prompt=context-response, :205 sets teacher max=context; prepare.sh uses the same prompt budget.",
+    "declared_student_prompt_length": 126976,
+    "student_response_length": 4096,
+    "required_teacher_context": 131073,
+    "declared_teacher_max_model_len": 131072,
+    "failure_precedes_native_forward_backward": true
+  },
+  "raw_response": {
+    "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/qwen-qualification-failure-native-window.json",
+    "bytes": 142278,
+    "sha256": "f1698cb4a860b4fdbcf713e96f3889712845fb861ab7776cf23bcacca49d403b",
+    "rows": 314,
+    "limit": 2000,
+    "reached_limit": false,
+    "window_utc": [
+      "2026-11-06T00:02:00Z",
+      "2026-11-06T00:05:00Z"
+    ],
+    "direction": "forward",
+    "first_timestamp_ns": "1793923336423043000",
+    "last_timestamp_ns": "1793923476057856000"
+  },
+  "minimal_repair_recommendation_not_applied": {
+    "change": "Reserve the teacher scoring token in both preparation and recipe prompt budgets: context_length - response_length - 1.",
+    "same_context_and_response_caps": true,
+    "glm_new_prompt_cap": 61439,
+    "glm_actual_selected_max": 57113,
+    "qwen_new_prompt_cap": 126975,
+    "qwen_actual_selected_max": 67951,
+    "expected_source_population_change": "None: all eighty selected actual prompts are far below the corrected cap in both pairs. Must confirm via the affected existing preparation/config validation before a new launch.",
+    "authority": "Root owns repo changes and job control; this record does not authorize changes."
+  },
+  "boundaries": [
+    "The optional torchtitan/veomni/automodel and FA4 probe warnings are separate earlier observations; the initiating exception explicitly identifies the teacher context declaration.",
+    "This run establishes neither GPU memory capacity for the training workload nor a numerical alignment result.",
+    "The separate original benchmark context overflow belongs to its own attempt and source identity."
+  ]
+}

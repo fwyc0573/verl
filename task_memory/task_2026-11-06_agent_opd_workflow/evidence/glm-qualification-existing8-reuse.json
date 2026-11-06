@@ -1,0 +1,39 @@
+{
+  "status": "PASS_EXISTING_GLM_QUALIFICATION_EXACT_FIRST8",
+  "python": "3.12.3",
+  "pyarrow": "25.0.0",
+  "source": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-024352-115509/glm-learning.parquet",
+  "qualification": "/mnt/ws-jfs/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-024352-115509/glm-qualification.parquet",
+  "checks": {
+    "source_rows_80": true,
+    "qualification_rows_8": true,
+    "all_columns_schema_and_metadata_equal": true,
+    "exact_first8_all_values_equal": true,
+    "source_uid_order_equal": true,
+    "prepared_prompt_ids_equal": true,
+    "prepared_prompt_content_equal": true,
+    "history_tools_source_metadata_equal": true,
+    "four_categories_two_each": true,
+    "eight_distinct_source_uids": true
+  },
+  "verified_columns": [
+    "data_source",
+    "source_uid",
+    "source_category",
+    "prepared_prompt",
+    "prepared_prompt_ids",
+    "metadata_json",
+    "thinking_enabled"
+  ],
+  "source_categories": {
+    "control_and_thinking": 2,
+    "control_only": 2,
+    "thinking_only": 2,
+    "neither": 2
+  },
+  "prompt_token_range": [
+    10366,
+    41047
+  ],
+  "files_modified": false
+}
