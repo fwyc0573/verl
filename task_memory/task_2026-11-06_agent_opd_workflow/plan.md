@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Record both observed initialization/dispatch repairs and the current qualification attempts; original benchmarks continue with real valid grades. |
 | 2026-11-06 | Resume after two actual teacher-context initialization failures; preserve running original benchmarks. |
 | 2026-11-06 | Release updated-model scoring after verified export; share reload evidence with that server and wait for baseline scores only for comparison. |
 | 2026-11-06 | Close verified input/configuration prerequisites and record four independent GPU jobs. |
@@ -15,11 +16,11 @@
 
 ## Execution status
 
-Resumed execution: both initial qualification jobs actually failed before training at the native teacher `prompt + response + 1` guard. Correct preparation/recipe prompt declarations by reserving that scoring token, validate the real native dataclass and unchanged80/8 inputs, then submit fresh same-resource qualification jobs. Original GLM/Qwen benchmarks are now actually running with valid native grader results; their existing identities and healthy slots continue. The earlier Pending/zero-score checkpoint remains historical evidence, not current status.
+Resumed execution: the initial qualification attempts failed before training at the native teacher `prompt + response + 1` guard. The next attempts passed model/server initialization but failed when native rollout dispatch tried to divide four prompts among eight agent workers. Both observed causes have scoped fixes and passing native regressions: reserve the teacher scoring token, and derive agent workers from the fixed train batch of four. Current attempts are GLM `exp-1106-140852-369748` and Qwen `exp-1106-140853-397005`; their exact UIDs, launchers and selected evidence are in tickets02/03 and progress.md. Numerical acceptance, optimizer updates and weight change still require actual GPU evidence. Original GLM/Qwen benchmarks continue under their existing identities with valid native grader results. Earlier Pending/zero-score snapshots remain historical evidence.
 
-用户已指示“开始执行”。按上一轮推荐的两组对称 20 步及前后评测推进，使用已创建的 agent-opd 分支。01 的 native runtime、两组80/8输入、2/20配置和 benchmark 题单均已实际通过并关闭。两组资格与原始评测均已独立提交；原始 Qwen 首次因 sandbox token 环境变量未解析失败，最小修复通过原生配置解析回归后已重提，实际鉴权及有效评分仍待验证。代码、配置和每阶段结论及时提交/push，临时产物随消费随清理。
+用户已指示“开始执行”。按上一轮推荐的两组对称 20 步及前后评测推进，使用已创建的 agent-opd 分支。01 的 native runtime、两组80/8输入、2/20配置和 benchmark 题单均已实际通过并关闭。两组资格与原始评测均已独立提交；原始 Qwen 的 sandbox token 环境变量解析已修复，实际鉴权、工具交互与有效 grader 评分已有证据。两原始评测仍未完成全部80个有效结果。代码、配置和每阶段结论及时提交/push，临时产物随消费随清理。
 
-Qwen 在原61440预算下真实候选不足14/15/17/20；采用模型原生支持内的独立 qwen-settings.json：context131072、response4096、训练/logprob预算131072。prepare.sh 从 pairs.json 的既有模型条目选择明确 settings 文件并推导 prompt 预算，复用同一 preparation/configuration 路径。GLM settings.json 的65536合同保持。新的Qwen输入已实际80/8行和2/20步配置PASS，其8GPU资格已提交；不截断、不减类别、不降低数值门槛。
+Qwen 在原61440预算下真实候选不足14/15/17/20；采用模型原生支持内的独立 qwen-settings.json：context131072、response4096、训练/logprob预算131072。prepare.sh 从 pairs.json 的既有模型条目选择明确 settings 文件并推导 prompt 预算，复用同一 preparation/configuration 路径。GLM settings.json 的65536合同保持。预留原生 teacher 评分所需的一个 token 后，实际 prompt 上限为 GLM61439、Qwen126975；已有80/8行完整输入仍通过身份、内容及长度核验。两组2/20配置的真实 native dataclass 和 DataProto 分片回归均通过；不截断、不减类别、不降低数值门槛。
 
 首选 native megatron+sglang，固定 company image amd64 digest，创建挂载本地目录中的持久环境。先在 CPU host 补齐原锁定 GitHub wheels 并验证完整 cache 合并后的 frozen/offline 安装，再用零 GPU CPU worker 从镜像及补充 cache materialize 环境并执行真实 imports/config/tokenizer/index preflight；该环境此后由训练直接使用，正常训练不安装依赖。该阶段不读大 tensor，不把配置检查当作模型加载或数值通过。
 
