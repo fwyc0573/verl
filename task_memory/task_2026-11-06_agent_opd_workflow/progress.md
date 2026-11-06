@@ -654,3 +654,12 @@ Contextoverflowrecoveryinvestigation closed: existingMiles72fe633d adapter alrea
 1. 当前原生dataclassPASS只修复初始化预算，不代表GPU更新/数值通过。
 2. 两个healthybaseline已取得真实有效分数，继续执行；Qwen3missing有现成恢复路径。
 3. 两freshqualification精确身份和launcher已记录，未重启任何健康作业。
+
+
+## Actual first-rollout batch failure and scoped worker-count correction
+
+Both secondqualificationattempts crossedthe correctedteachercontextguard and completed native model/server initialization, but failedbeforeanysampling at thefirstfitrollout: DataProto4/chunk8 equal-split assertion (agent_loop.py1335→protocol.py871). GLMexp-1106-134352-384471 two containers exit1at13:58:27; Qwenexp-1106-134403-815066 exit1at14:02:44 afteractual14:02:32assert. Each actualtraining.json recordsactor_update_call_count0/completed_updates0/update_outcomes[]/native_fit_returnedfalse/final_exportnull. GLM46R3layers initialized, noactualreplay/updateevidence. SelectedcausalRCAarchived; source/env/loginvestigation stopsatknowncause.
+
+Repairhypothesis before nextGPUretry: this fixedn1/batch4workload requires an equal native dispatch; derive existingagent.num_workers from train_batch_size, producing4singletonchunks without changing inputs or GPUtopology. Falsifier: nativeDataProto.chunk/concat drops/reorders tokens orUIDs, any otherrecipefieldchanges, or previousnativeDistillationConfig check fails. ActualnativePython3.12.13/torch2.13cu130 inlineexecution reproducedold4/8FAIL andnew4/4PASS for both2/20recipes; concatenation preserved tokens/UIDorder, allotherrecipefields exactlyequal, previousteacherbudgetdataclassPASS. Onlyoneconfigoverrideadded. No native/core behavior or defaults changed.
+
+Originalbenchmarks remainhealthy:14:03:23HKT Qwen41/80valid(32resolved/9unresolved),GLM12/80(6/6),threeQwencontextmissingunchanged. Preservecurrentjobs while committing/pushing worker-countfix and freshsame-resourcequalification submissions. No qualificationoptimizer/numerical/HF2PASS yet.

@@ -71,6 +71,8 @@ Apply that common numerical contract to both pairs. Keep this task's model-speci
 
 Both actual qualification jobs reached native initialization and failed before any optimizer update because `DistillationConfig` requires `student_prompt_length + student_response_length + 1 <= teacher max_model_len`. Correct the existing preparation and recipe calculation to `context_length - response_length - 1`. The resulting declared prompt caps are GLM61439 and Qwen126975, with the same context65536/131072 and response4096. Preserve all actual selected80/8 rows, full histories, model identities, optimizer settings and numerical/benchmark acceptance. Validate the actual native dataclass before retry; recipe composition alone did not exercise the failed guard. This is an in-scope correction of the measured configuration error, not an increased context or changed population.
 
+The next actual qualification attempts passed initialization but failed at their first rollout because the native agent manager attempted to divide4prompts among8workers. Derive the existing agent.num_workers from the fixed positive train_batch_size (4), one worker per prompt with rollout.n=1. Keep the batch, sampling, model/GPU layout and update count unchanged; verify the real native DataProto chunk/concat operation before retry.
+
 The two healthy original benchmarks continue with their frozen identities while qualifications are repaired. Their observed valid scores do not replace training/numerical gates. Native benchmark context-overflow episodes without valid grader outputs remain missing; recovery must preserve or explicitly resolve the benchmark contract before affected attempts are rerun.
 
 ## Acceptance common to both pairs

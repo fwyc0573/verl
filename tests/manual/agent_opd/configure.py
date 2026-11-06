@@ -193,6 +193,7 @@ def recipe_overrides(pair, settings, *, dataset, agent_config, steps, repository
         "actor_rollout_ref.rollout.log_prob_use_dynamic_bsz": True,
         "actor_rollout_ref.rollout.log_prob_max_token_len_per_gpu": settings["ppo_max_token_len_per_gpu"],
         "actor_rollout_ref.rollout.agent.default_agent_loop": "prepared_turn_agent",
+        "actor_rollout_ref.rollout.agent.num_workers": settings["train_batch_size"],
         "actor_rollout_ref.rollout.agent.agent_loop_config_path": str(agent_config),
         "actor_rollout_ref.rollout.engine_kwargs": {"sglang": engine_kwargs},
         "distillation.enabled": True,

@@ -1,0 +1,81 @@
+{
+  "status": "PASS_NATIVE_AGENT_WORKER_BATCH_REGRESSION",
+  "python": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/bin/python",
+  "python_version": "3.12.13",
+  "torch": "2.13.0+cu130",
+  "results": [
+    {
+      "pair": "glm",
+      "steps": 2,
+      "batch": 4,
+      "old_workers": 8,
+      "new_workers": 4,
+      "old_native_chunk": "FAIL_REPRODUCED",
+      "new_native_chunk": "PASS",
+      "new_chunks": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "identities_and_tokens_preserved": true,
+      "other_recipe_fields_unchanged": true,
+      "native_distillation_config": "PASS"
+    },
+    {
+      "pair": "glm",
+      "steps": 20,
+      "batch": 4,
+      "old_workers": 8,
+      "new_workers": 4,
+      "old_native_chunk": "FAIL_REPRODUCED",
+      "new_native_chunk": "PASS",
+      "new_chunks": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "identities_and_tokens_preserved": true,
+      "other_recipe_fields_unchanged": true,
+      "native_distillation_config": "PASS"
+    },
+    {
+      "pair": "qwen",
+      "steps": 2,
+      "batch": 4,
+      "old_workers": 8,
+      "new_workers": 4,
+      "old_native_chunk": "FAIL_REPRODUCED",
+      "new_native_chunk": "PASS",
+      "new_chunks": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "identities_and_tokens_preserved": true,
+      "other_recipe_fields_unchanged": true,
+      "native_distillation_config": "PASS"
+    },
+    {
+      "pair": "qwen",
+      "steps": 20,
+      "batch": 4,
+      "old_workers": 8,
+      "new_workers": 4,
+      "old_native_chunk": "FAIL_REPRODUCED",
+      "new_native_chunk": "PASS",
+      "new_chunks": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "identities_and_tokens_preserved": true,
+      "other_recipe_fields_unchanged": true,
+      "native_distillation_config": "PASS"
+    }
+  ],
+  "gpu_or_training_run": false
+}

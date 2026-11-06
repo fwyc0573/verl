@@ -1,0 +1,106 @@
+{
+  "status": "FAILED_FIRST_NATIVE_ROLLOUT_BEFORE_SAMPLING",
+  "job": "exp-1106-134403-815066",
+  "job_uid": "41b7cae1-d62e-4624-bfb1-cd5839d4617e",
+  "replica": "exp-1106-134403-815066-cfcd2084",
+  "replica_uid": "dccde7e8-05a2-47ed-86d6-1b250096f941",
+  "node": "gpu-h800-0316.host.platform.shaipower.com",
+  "platform_identity_source": "platform_observer exact job/replica terminal metadata",
+  "container_interval_hkt": [
+    "2026-11-06T13:55:34+08:00",
+    "2026-11-06T14:02:44+08:00"
+  ],
+  "container_exit_code": 1,
+  "observed_at_utc": "2026-11-06T06:05:21.450708+00:00",
+  "archived_recipe": {
+    "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/recipe.yaml",
+    "sha256": "b4fcd0954cd7fe786ae54cbece51e700f361e8be2e94a5589ba547c6955bfc99",
+    "max_prompt_length": 126975,
+    "max_response_length": 4096,
+    "student_and_teacher_context_length": 131072,
+    "train_batch_size": 4,
+    "agent_num_workers": 8,
+    "dataset": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-032827-028041/qwen-qualification.parquet"
+  },
+  "initiating_exception": {
+    "type": "AssertionError",
+    "message": "only support equal chunk. Got size of DataProto 4 and chunk 8.",
+    "stage": "RayPPOTrainer.fit first rollout -> AgentLoopManager.generate_sequences -> DataProto.chunk",
+    "native_rows": [
+      {
+        "timestamp": "1793944952079303000",
+        "line": "[2026-11-06T14:02:32+08:00] exp-1106-134403-815066-cfcd2084 >> Training Progress:   0%|          | 0/2 [00:00<?, ?it/s]",
+        "pod": "exp-1106-134403-815066-cfcd2084",
+        "node": "gpu-h800-0316.host.platform.shaipower.com",
+        "message": "Training Progress:   0%|          | 0/2 [00:00<?, ?it/s]"
+      },
+      {
+        "timestamp": "1793944952427569000",
+        "line": "[2026-11-06T14:02:32+08:00] exp-1106-134403-815066-cfcd2084 >>   File \"/data/ycfeng/sota-engine/verl/verl/experimental/agent_loop/agent_loop.py\", line 1335, in generate_sequences",
+        "pod": "exp-1106-134403-815066-cfcd2084",
+        "node": "gpu-h800-0316.host.platform.shaipower.com",
+        "message": "  File \"/data/ycfeng/sota-engine/verl/verl/experimental/agent_loop/agent_loop.py\", line 1335, in generate_sequences"
+      },
+      {
+        "timestamp": "1793944952427577000",
+        "line": "[2026-11-06T14:02:32+08:00] exp-1106-134403-815066-cfcd2084 >>   File \"/data/ycfeng/sota-engine/verl/verl/protocol.py\", line 871, in chunk",
+        "pod": "exp-1106-134403-815066-cfcd2084",
+        "node": "gpu-h800-0316.host.platform.shaipower.com",
+        "message": "  File \"/data/ycfeng/sota-engine/verl/verl/protocol.py\", line 871, in chunk"
+      },
+      {
+        "timestamp": "1793944952427582000",
+        "line": "[2026-11-06T14:02:32+08:00] exp-1106-134403-815066-cfcd2084 >> AssertionError: only support equal chunk. Got size of DataProto 4 and chunk 8.",
+        "pod": "exp-1106-134403-815066-cfcd2084",
+        "node": "gpu-h800-0316.host.platform.shaipower.com",
+        "message": "AssertionError: only support equal chunk. Got size of DataProto 4 and chunk 8."
+      }
+    ]
+  },
+  "training_receipt": {
+    "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-134403-815066/observations/training.json",
+    "bytes": 588,
+    "sha256": "94319a64c7c02d8dede0b017e79d9a2ec5df14047360cdc7889a0e3ae82489bf",
+    "requested_updates": 2,
+    "actor_update_call_count": 0,
+    "completed_updates": 0,
+    "update_outcomes": [],
+    "native_fit_returned": false,
+    "last_native_checkpoint_step": null,
+    "final_export": null
+  },
+  "observations_files": [
+    "training.json"
+  ],
+  "native_progress": {
+    "prior_teacher_context_guard_passed": true,
+    "megatron_actor_weight_loading_observed": true,
+    "sglang_server_process_initialization_observed": true,
+    "native_fit_entered": true,
+    "native_sampling_or_teacher_token_scoring_verified": false,
+    "weight_versions_verified": false,
+    "three_way_numerical_agreement_verified": false,
+    "hf2_export_or_actual_weight_change_verified": false
+  },
+  "raw_response": {
+    "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/qwen-fresh-qualification-failure-native-window.json",
+    "bytes": 121788,
+    "sha256": "7b267bba0bbd94aa19b45cd47b1db4d626bc67fcb812fb5cd27d0ad44ef76182",
+    "rows": 242,
+    "limit": 2000,
+    "reached_limit": false,
+    "window_utc": [
+      "2026-11-06T05:55:00Z",
+      "2026-11-06T06:04:00Z"
+    ],
+    "direction": "forward",
+    "first_timestamp_ns": "1793944534152127000",
+    "last_timestamp_ns": "1793944964384725000",
+    "query_receipt": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/qwen-fresh-qualification-failure-native-window-receipt.json"
+  },
+  "causal_repair_status": "Root owns the existing agent.num_workers=train_batch_size override and affected native DataProto.chunk regression; no source changes or job controls were performed by this business observer.",
+  "boundaries": [
+    "The actual archived8 workers and DataProto4 exception independently establish this Qwen failure; it is not inferred from GLM.",
+    "No training update, loss/gradient, version acceptance, long-context GPU qualification, or final HF2 value change is established by initialization progress."
+  ]
+}
