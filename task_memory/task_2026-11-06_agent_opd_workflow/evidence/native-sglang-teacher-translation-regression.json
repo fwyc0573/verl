@@ -1,0 +1,36 @@
+{
+  "status": "PASS_NATIVE_SGLANG_TEACHER_TRANSLATION",
+  "command": "timeout 60s env PYTHONPATH=/data/ycfeng/sota-engine/verl PYTHONNOUSERSITE=1 PYTHONDONTWRITEBYTECODE=1 TMPDIR=/data/ycfeng/tmp /data/ycfeng/envs/verl-agent-opd-megatron-sglang/bin/python -B -m unittest tests.workers.rollout.test_sglang_teacher_sampling_on_cpu -v",
+  "tests_run": 1,
+  "subcases_prompt_logprobs": [
+    0,
+    2
+  ],
+  "result": "OK",
+  "actual_native_components": [
+    "teacher_manager._get_teacher_sampling_params",
+    "SGLangHttpServer.generate",
+    "GenerateReqInput",
+    "SamplingParams",
+    "_extract_prompt_logprobs_sglang"
+  ],
+  "fixture_components": [
+    "tokenizer manager responses",
+    "Ray actor-name context"
+  ],
+  "old_unsupported_sampling_key_reproduced": true,
+  "teacher_input_ids_max_tokens_temperature_logprob_fields_preserved": true,
+  "vllm_teacher_contract_unchanged": true,
+  "shared_translation_covers_task_prefill_identical_request": true,
+  "actual_gpu_teacher_or_prefill_or_optimizer_evidence": false,
+  "initial_fixture_failures": [
+    "Read-only lora_as_adapter property was assigned",
+    "Disabled mtp attribute was missing",
+    "Sampled-token request top_logprobs_num is native None, not zero"
+  ],
+  "source_sha256": {
+    "verl/workers/rollout/sglang_rollout/async_sglang_server.py": "848f4fe36919131ef5fa575bb739df6b713154ce1a4f6068f771fc4ebd2f0583",
+    "tests/manual/agent_opd/agent_loop.py": "cfbbdfea3ca2b299301d7ca797efdd062a944c060d5d7ccbea83a46c15b673df",
+    "tests/workers/rollout/test_sglang_teacher_sampling_on_cpu.py": "2534557cceb6f302312fc3539f4f91f15ed1985f6cbcadec0148c8b71afd0e92"
+  }
+}

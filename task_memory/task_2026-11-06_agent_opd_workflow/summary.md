@@ -7,7 +7,7 @@
 
 # Agent OPD workflow: incomplete execution checkpoint
 
-**Overall status: INCOMPLETE.** This is a continuation record, not a completion archive or numerical acceptance. Both initial qualifications failed at the native teacher context guard; the next attempts initialized models but failed on four-prompt/eight-worker dispatch. Those fixes passed native regressions and were pushed asffb83e83. The third Qwen attempt crossed dispatch but failed in the unrelated default task scorer before any update; its earlier unsupported detokenize prefill parameter was isolated as an auxiliary error. The scoped loop repair has passing native CPU dispatch/API checks, but another GPU qualification is required. The third GLM attempt and both original benchmarks remain active. Tickets04/05/08/09/10 remain unfinished.
+**Overall status: INCOMPLETE.** This is a continuation record, not a completion archive or numerical acceptance. Actual teacher-context and four-prompt/eight-worker failures have scoped native-verified repairs. Qwen's next attempt failed in the unrelated default task scorer before any update; the reward0 repair7965a385 passed native CPU dispatch checks and a new Qwen qualification is active. GLM subsequently reached native teacher scoring and failed because detokenize was forwarded into SGLang SamplingParams. Its shared adapter now consumes the vLLM output-only option for both teacher and independent-prefill requests; sampled/top-k native CPU conversion checks pass. GLM needs another qualification. Both original benchmarks continue with partial valid grades; all training/numerical/HF/final benchmark gates remain open.
 
 ## Requested deliverables and observed results
 
@@ -28,12 +28,12 @@ The scoped repair reserves one native teacher scoring token in the existing prep
 
 | Ticket | Job | RJob UID | GPUs | Observed state |
 | --- | --- | --- | --- | --- |
-| 02 | exp-1106-140852-369748 | b20d2692-2e74-4b68-a2b2-6b3cd0e29cb4 | 2×8 | Both workers Running by14:23:03HKT |
-| 03 | exp-1106-140853-397005 | f400952c-ee74-4b55-8f2b-26828705a417 | 1×8 | Failed14:22:07HKT, zero updates; task reward dispatch |
+| 02 | exp-1106-140852-369748 | b20d2692-2e74-4b68-a2b2-6b3cd0e29cb4 | 2×8 | Failed14:35:11HKT, native teacher detokenize; zero updates |
+| 03 | exp-1106-143409-709386 | a0ed2fa1-9007-4456-8196-f24c148be472 | 1×8 | Running, actual worker start14:35:39HKT |
 | 06 | exp-1106-030308-839669 | f74fa974-ea86-4149-a823-3276ce493f8b | 1×4 | Running |
 | 07 | exp-1106-033246-436787 | f5c97c61-7868-44f6-8a74-34ab529bd6b2 | 1×2 | Running |
 
-The jobs retain personal creator `i-fengyicheng`, H800/codesign, the pinned company image and current-machine NFS. Keep the healthy original launchers41495/30922 and GLM96491 alive. Qwen24467 has reached its native failure. Since agent_loop.py was edited on the live NFS while GLM was initializing, launch SHA alone does not establish which module version each process loaded; preserve that identity limit and verify actual behavior. Old failed identities were re-read before retries. No other task's jobs were controlled.
+The jobs retain personal creator `i-fengyicheng`, H800/codesign, the pinned company image and current-machine NFS. Keep the healthy original launchers41495/30922 and Qwen72859 alive. GLM96491 and prior Qwen24467 reached native failures. Since agent_loop.py and the shared SGLang adapter were edited on live NFS during initialization, launch SHA alone does not establish which module version each process loaded; preserve that limit and verify actual behavior. Old failed identities are re-read before retries. No other task's jobs were controlled.
 
 ## Continuation route
 

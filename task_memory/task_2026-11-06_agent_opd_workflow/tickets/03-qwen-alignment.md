@@ -13,7 +13,7 @@
 
 **Blocked by:** 01 Qwen runtime/input/config prerequisites; independent of GLM training inputs and original benchmarks.
 
-**Status:** in-progress — exp-1106-140853-397005 / UID f400952c-ee74-4b55-8f2b-26828705a417 failed at14:22:07HKT after primary student generation returned, before any update. Native task reward dispatch rejected data_source=qwen; an earlier unsupported detokenize prefill parameter was correctly isolated as an auxiliary unverified observation. The scoped task-loop repair supplies zero task reward under the existing use_task_rewards=false contract and removes that unsupported prefill key. Native CPU dispatch regression and pinned API checks pass; another GPU qualification is required. Teacher scoring, valid generated token population, MAE, two updates, versions and HF2 weight changes remain unverified.
+**Status:** in-progress — new exp-1106-143409-709386 / UID a0ed2fa1-9007-4456-8196-f24c148be472, launcher72859, actual8H800 worker started14:35:39HKT. Recipe workers4/batch4/prompt126975/response4096/input/models match. The prior attempt failed at default task scoring with zero updates; reward0 repair7965a385 was pushed before this submission. The shared SGLang detokenize translation was edited on live NFS during initialization after a GLM teacher failure, so verify actual loaded behavior rather than inferring it from launch SHA. Native CPU translation/dispatch regressions pass; actual teacher scoring, MAE, two updates, versions and HF2 weight changes remain unverified.
 
 - [ ] 实际加载两个固定模型，验证同对 tokenizer/template 兼容性和 Qwen 渲染后的真实历史/长度，不直接套用 GLM token IDs。
 - [ ] 按合同覆盖 reasoning、正文和工具表达；teacher 评分 tokens、student tokens 及 loss mask 对齐。

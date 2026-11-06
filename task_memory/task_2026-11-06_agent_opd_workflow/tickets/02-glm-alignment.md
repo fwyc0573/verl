@@ -12,7 +12,7 @@
 
 **Blocked by:** 01 GLM runtime/input/config prerequisites; independent of Qwen training inputs and benchmark preparation.
 
-**Status:** in-progress — exp-1106-140852-369748 / UID b20d2692-2e74-4b68-a2b2-6b3cd0e29cb4, launcher96491, both workers actually Running by14:23:03HKT. Actual reused8-row input and recipe workers4/batch4/prompt61439/response4096/R3 were checked. Launch sourceffb83e83; agent_loop.py was edited on the live NFS during initialization to correct the separately observed Qwen reward/prefill errors, so launch SHA alone does not establish which module version each process loaded. Keep the healthy job and judge its actual behavior; do not infer numerical/update/R3/HF2 PASS from initialization.
+**Status:** in-progress — exp-1106-140852-369748 / UID b20d2692-2e74-4b68-a2b2-6b3cd0e29cb4 failed14:35:11HKT at native teacher scoring: its detokenize output option was forwarded into SGLang SamplingParams. Primary generation and task-score phases returned; actual update count remains zero, no turns/aggregate/HF2. The shared SGLang translation now consumes that vLLM output-only option; actual teacher-produced sampled/top-k requests pass the native CPU conversion regression. Another same-configuration GPU qualification is required. Earlier live-NFS module identity limits remain recorded; native behavior does not prove every process's loaded commit.
 
 - [ ] 使用冻结的真实数据与交互边界，teacher 实际评分的 token IDs 与当前 student 采样一致。
 - [ ] thinking、正文和工具信号的源字段、tokens、mask、实际生成覆盖分别可核验；MoE routes 按约定真实录制并 replay。

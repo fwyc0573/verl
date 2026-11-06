@@ -618,6 +618,9 @@ class SGLangHttpServer:
         )
         sampling_params["max_new_tokens"] = max_new_tokens
         return_logprob = sampling_params.pop("logprobs", False)
+        # vLLM's text-output option is not an SGLang sampling parameter.
+        # This token API consumes output_ids and numerical logprobs, not text.
+        sampling_params.pop("detokenize", None)
 
         # vLLM-style "prompt_logprobs=K" from the distillation teacher: request
         # input-token logprobs for every position (top-K when K>0, sampled-token

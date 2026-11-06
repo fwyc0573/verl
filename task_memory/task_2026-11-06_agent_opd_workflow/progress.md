@@ -736,3 +736,71 @@ Native repair validation completed:12unittests/OK under the installed native int
 1. Qwen真正终止原因是默认任务评分；prefill错误已隔离但也必须修复才可取得数值资格。
 2. 当前12项CPU通过不代表teacher、GPU数值、更新或权重变化通过。
 3. GLM及两原始benchmark继续；旧日志权限问题仅1.36MB，不应拖住主线。
+
+## Native teacher request uses the same unsupported output option
+
+GLM exp-1106-140852-369748 actually reached _compute_teacher_logprobs after primary generation and the task-score phase returned. Its terminal chain is teacher_manager.compute_teacher_logprobs_single -> SGLangHttpServer.generate -> TokenizerManager._create_tokenized_object -> SamplingParams(**sampling_kwargs), TypeError unexpected detokenize. Actual training.json remains zero calls/updates, native_fit_returned=false/exportnull; turns/aggregate absent. Job Failed14:35:11HKT, rank1exit1at14:35:09; rank0Stopped with stale running container state leaves its exitcode unknown. This demonstrates the previous task-local prefill key removal did not cover the native teacher producer. Source investigation now stops at the shared, observed boundary.
+
+Repair hypothesis: SGLangHttpServer.generate already translates vLLM max_tokens/prompt_logprobs but must also consume vLLM's text-output-only detokenize option before native SamplingParams construction. This token API consumes output_ids/numerical logprobs and ignores response text. The existing teacher_manager contract remains unchanged for vLLM. Restore the task prefill's original detokenize=false request so both observed producers use this one translation path; remove the narrower special case. Falsifiers for native CPU/GPU validation: actual teacher-produced sampled/top-k requests still reach SamplingParams with an unsupported key, input IDs/scoring start/max1/temperature/output IDs/logprobs change, or actual teacher scoring remains rejected. The core change earns its place by enabling real native SGLang teacher scoring; no other existing translation consumes the offending option. No config schema/backend classification/retry/default changes are needed.
+
+The reward repair7965a38503b6bea67bce40c5799eceea969d40b2 was pushed and remote matched before Qwen exp-1106-143409-709386 creation14:34:09.844HKT. UIDa0ed2fa1-9007-4456-8196-f24c148be472, launcher72859, same1×8H800/32CPU300GB/input/command/image/currentNFS. It actually started14:35:39 onH8000128 and is initializing. The shared SGLang source is mounted live and was subsequently edited while it initializes; do not infer loaded module identity merely from launchSHA. Preserve the healthy run and inspect its actual teacher/prefill behavior. Two original benchmarks continue; latest14:24:48HKT GLM13/80valid andQwen46/80valid.
+
+The new shared-adapter regression initially had fixture defects: assigning read-only lora_as_adapter, omitting disabled mtp, and expecting native top_logprobs_num0 instead of its actual unset None for sampled-token logprobs. Production translation reached and accepted both sampled/top-k native SamplingParams by the third run; its remaining assertion failure concerned only that fixture expectation. Correct the expectation to the observed native constructor contract, run only this affected test once more, then stop fixture expansion. No additional production guard/fallback is justified by these test defects.
+
+## 1. 规划完成情况
+
+**汇总：** PASS1｜BLOCKED/FAILED/SKIPPED1｜TODO8
+
+| 子任务 | 状态 | 简要依据 |
+| --- | --- | --- |
+| 01 | PASS | 原生环境、80/8输入与配置已验证 |
+| 02 | FAILED | GLM实际teacher请求的detokenize参数被SGLang拒绝 |
+| 03 | TODO | 新Qwen709386已运行，等待真实teacher/数值/更新 |
+| 04 | TODO | 等02真实完整资格 |
+| 05 | TODO | 等03真实完整资格 |
+| 06 | TODO | GLM13/80有效，健康运行 |
+| 07 | TODO | Qwen47/80有效，健康运行，旧三missing待终态恢复 |
+| 08 | TODO | 等04verified20export |
+| 09 | TODO | 等05verified20export |
+| 10 | TODO | 精确旧日志清理准备转正常CPUworker，最终清理待消费 |
+
+## 2. 偏离检测
+
+**结论：** 已偏离：命中D2。
+**检测窗口：** 上次Qwen任务评分修复检查至GLM teacher首错和三次CPUfixture校正｜**当前前沿：** 02/03/06/07
+
+| 模式 | 判定 | 依据 |
+| --- | --- | --- |
+| D1 工具打磨 | CLEAR | 共享adapter必须由原生请求路径验证；只保留一项实际故障回归，不扩展框架 |
+| D2 细节反复重试 | HIT | detokenize局部修复未检查原生teacher生产者即重提Qwen；共享修复的CPUfixture又连续三次因构造/预期缺陷失败，延迟02重提 |
+| D3 支线问题修补 | CLEAR | 共享teacher/prefill合同是02/03直接阻挡，清理由用户明确要求 |
+| D4 可并行任务停滞 | CLEAR | Qwen及两个原始评测持续运行；02待真实共享边界检查 |
+| D5 超范围镀金 | CLEAR | 共享修复三行，task局部特殊处理同步撤回；无新增schema/框架 |
+| D6 分析空转 | CLEAR | 原生teacher因果已查清，不继续重复日志/环境调查 |
+| D7 路线违背 | CLEAR | 数值/更新/评分标准和依赖保持，无未合格fresh20启动 |
+
+**文档检查：** S5：02/03和summary需要同步最新GLM失败、新Qwen运行与共享修复。S1–S4/S6无新缺陷。
+**归因：** D2执行偏离；文档并未要求局部修复或手工构造不完整的CPUfixture。
+
+## 3. 纠正建议
+
+**分支：** B：spec/tickets存在缺陷，先更新文档再继续。
+
+**文档更新（先执行）：**
+1. 02/03、summary、native报告：记录真实teacher首错、新Qwen身份及共享adapter替代局部修复（可直接执行）。
+
+**需停止的偏离行为：**
+- D2：停止只修task调用方后立即重试；在现有SGLang转换入口一次覆盖两个已知生产者。停止扩展CPUfixture，按已观察的native属性/默认值完成唯一受影响检查；通过后立即提交/push并重提GLM。
+
+**接下去的路线：**
+1. 02：共享adapter原生请求回归通过并推送，精确旧终态复核后同配置GLM重提，取得完整两步真实验收。
+2. 并行03‖06‖07：现有健康作业继续，按实际业务证据验收；Qwen若仍载入旧adapter，先记录实际失败，不能据推测提前重启。
+3. 同模型资格通过即独立fresh20，再由verifiedexport释放更新后评测；CPUworker顺带执行精确已消费日志清理。
+
+## 4. 最值得关注的 3 点
+
+1. 已定位的共同原因应在SGLang既有转换入口解决，不能只修一个请求生产者。
+2. CPUfixture构造错误不应引出生产fallback；受影响检查通过即停止扩展并恢复GPU主线。
+3. 新Qwen和两baseline持续运行，所有训练/数值/HF/320评分最终门槛仍未完成。
+
+Route correction applied: the affected native shared-adapter test now passes1test/two sampled-topK subcases after correcting the fixture's native None expectation. The production change remains only consumption of the vLLM output-format option at the existing SGLang translation boundary. No further fixture or harness expansion is needed. The task caller's narrower removal has been replaced by the shared path. Submit/push this verified step and release only the next GLM qualification; Qwen709386 has actually entered fit0/2 and continues. No numerical or update acceptance is inferred.

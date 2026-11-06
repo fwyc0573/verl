@@ -1,0 +1,279 @@
+{
+  "job": "exp-1106-140852-369748",
+  "training_log_exists": true,
+  "training_log": {
+    "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-140852-369748/logs/rank-0/training.log",
+    "sha256": "28426ed75a493fe226efc6e87a4e2d95f42a6878a36b3b1f3ec91833a6564761",
+    "bytes": 40464,
+    "physical_lines": 308,
+    "selected_observed_lines": [
+      {
+        "line": 228,
+        "text": "  File \"/data/ycfeng/envs/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/concurrent/futures/_base.py\", line 401, in __get_result"
+      },
+      {
+        "line": 229,
+        "text": "    raise self._exception"
+      },
+      {
+        "line": 230,
+        "text": "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 231,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/verl/experimental/agent_loop/agent_loop.py\", line 742, in generate_sequences"
+      },
+      {
+        "line": 232,
+        "text": "    outputs = await asyncio.gather(*tasks)"
+      },
+      {
+        "line": 233,
+        "text": "              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 234,
+        "text": "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 235,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/verl/experimental/agent_loop/agent_loop.py\", line 783, in _run_agent_loop"
+      },
+      {
+        "line": 236,
+        "text": "    return await self._agent_loop_postprocess(output, trajectory[\"validate\"], **kwargs)"
+      },
+      {
+        "line": 237,
+        "text": "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 238,
+        "text": "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 239,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/verl/experimental/agent_loop/agent_loop.py\", line 911, in _agent_loop_postprocess"
+      },
+      {
+        "line": 240,
+        "text": "    await self._compute_teacher_logprobs("
+      },
+      {
+        "line": 241,
+        "text": "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 242,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/verl/experimental/agent_loop/agent_loop.py\", line 1135, in _compute_teacher_logprobs"
+      },
+      {
+        "line": 243,
+        "text": "    teacher_ids, teacher_logprobs = await self.teacher_server_manager.compute_teacher_logprobs_single("
+      },
+      {
+        "line": 244,
+        "text": "                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 245,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/verl/experimental/teacher_loop/teacher_manager.py\", line 129, in compute_teacher_logprobs_single"
+      },
+      {
+        "line": 246,
+        "text": "    teacher_output = await client.generate("
+      },
+      {
+        "line": 247,
+        "text": "                     ^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 248,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/verl/utils/rollout_trace.py\", line 373, in async_wrapper"
+      },
+      {
+        "line": 249,
+        "text": "    return await func(self, *args, **kwargs)"
+      },
+      {
+        "line": 250,
+        "text": "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 251,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/verl/workers/rollout/llm_server.py\", line 150, in generate"
+      },
+      {
+        "line": 252,
+        "text": "    output: TokenOutput = await server.generate.remote("
+      },
+      {
+        "line": 253,
+        "text": "                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 254,
+        "text": "ray.exceptions.RayTaskError(TypeError): \u001b[36mray::SGLangHttpServer.generate()\u001b[39m (pid=2308, ip=10.191.6.35, actor_id=264b4f29f3fa5e597803376a02000000, repr=<verl.workers.rollout.sglang_rollout.async_sglang_server.SGLangHttpServer object at 0x7f5f436bbc20>)"
+      },
+      {
+        "line": 255,
+        "text": "  File \"/data/ycfeng/envs/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/concurrent/futures/_base.py\", line 449, in result"
+      },
+      {
+        "line": 256,
+        "text": "    return self.__get_result()"
+      },
+      {
+        "line": 257,
+        "text": "           ^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 258,
+        "text": "  File \"/data/ycfeng/envs/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/concurrent/futures/_base.py\", line 401, in __get_result"
+      },
+      {
+        "line": 259,
+        "text": "    raise self._exception"
+      },
+      {
+        "line": 260,
+        "text": "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 261,
+        "text": "  File \"/data/ycfeng/sota-engine/verl/verl/workers/rollout/sglang_rollout/async_sglang_server.py\", line 665, in generate"
+      },
+      {
+        "line": 262,
+        "text": "    output = await self.tokenizer_manager.generate_request(generate_request, None).__anext__()"
+      },
+      {
+        "line": 263,
+        "text": "             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 264,
+        "text": "  File \"/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/sglang/srt/managers/tokenizer_manager.py\", line 896, in generate_request"
+      },
+      {
+        "line": 265,
+        "text": "    tokenized_obj = await self._tokenize_one_request(obj)"
+      },
+      {
+        "line": 266,
+        "text": "                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 267,
+        "text": "  File \"/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/sglang/srt/managers/tokenizer_manager.py\", line 1220, in _tokenize_one_request"
+      },
+      {
+        "line": 268,
+        "text": "    return self._create_tokenized_object("
+      },
+      {
+        "line": 269,
+        "text": "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 270,
+        "text": "  File \"/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/sglang/srt/managers/tokenizer_manager.py\", line 1465, in _create_tokenized_object"
+      },
+      {
+        "line": 271,
+        "text": "    sampling_params = self.sampling_params_class(**sampling_kwargs)"
+      },
+      {
+        "line": 272,
+        "text": "                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+      },
+      {
+        "line": 273,
+        "text": "TypeError: Unexpected keyword argument 'detokenize'"
+      }
+    ]
+  },
+  "training_receipt_exists": true,
+  "training_receipt_cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-140852-369748/observations/training.json",
+  "training_receipt": {
+    "requested_updates": 2,
+    "actor_update_call_count": 0,
+    "completed_updates": 0,
+    "update_outcomes": [],
+    "native_megatron_optimizer_success_contract": {
+      "source": "verl/workers/engine/megatron/transformer_impl.py:MegatronEngine.optimizer_step",
+      "success_condition": "Megatron optimizer.step update_successful=False raises before returning",
+      "iteration_source": "verl/workers/engine_workers.py:TrainingWorker.train_mini_batch",
+      "one_optimizer_step_per_call": true
+    },
+    "native_fit_returned": false,
+    "last_native_checkpoint_step": null,
+    "final_export": null
+  },
+  "other_observation_files": {
+    "aggregate.json": false,
+    "turns.jsonl": false
+  },
+  "business_outcome": "FAILED_NATIVE_TEACHER_SCORING",
+  "initiating_failure": {
+    "exception_type": "TypeError",
+    "message": "Unexpected keyword argument 'detokenize'",
+    "phase": "Native teacher scoring after student generation and reward-stage return",
+    "causal_chain": [
+      "AgentLoopWorker._agent_loop_postprocess -> _compute_teacher_logprobs",
+      "AsyncTeacherLLMServerManager.compute_teacher_logprobs_single -> LLMServerClient.generate",
+      "SGLangHttpServer.generate -> TokenizerManager._create_tokenized_object",
+      "SamplingParams(**sampling_kwargs) rejects detokenize"
+    ],
+    "request_contract": {
+      "common_teacher_params": {
+        "max_tokens": 1,
+        "temperature": 1,
+        "prompt_logprobs": 0,
+        "detokenize": false
+      },
+      "teacher_params_source": "verl/experimental/teacher_loop/teacher_manager.py:35-58",
+      "backend_translation_source": "verl/workers/rollout/sglang_rollout/async_sglang_server.py:600-638",
+      "supported_backend_fields_source": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/sglang/srt/sampling/sampling_params.py:114-155",
+      "constructor_source": "/data/ycfeng/envs/verl-agent-opd-megatron-sglang/lib/python3.12/site-packages/sglang/srt/managers/tokenizer_manager.py:1455-1465",
+      "observation": "The SGLang adapter translated max_tokens and prompt_logprobs but passed detokenize through as an unsupported sampling parameter.",
+      "return_text_in_logprobs_note": "GenerateReqInput.return_text_in_logprobs controls text in returned logprob metadata; it is not a general detokenize sampling parameter."
+    }
+  },
+  "actual_recipe_observed": {
+    "path": "/data/ycfeng/tmp/verl-agent-opd-20261106/rendezvous/exp-1106-140852-369748/recipe.yaml",
+    "max_prompt_length": 61439,
+    "max_response_length": 4096,
+    "train_batch_size": 4,
+    "agent_num_workers": 4,
+    "router_replay_mode": "R3",
+    "disable_radix_cache": true,
+    "calculate_log_probs": true,
+    "dataset": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/exp-1106-024352-115509/glm-qualification.parquet"
+  },
+  "progress_boundaries": {
+    "source_first8_exactly_reused": true,
+    "native_teacher_context_guard_crossed": true,
+    "native_4_worker_generation_dispatch_crossed": true,
+    "student_generation_returned_to_postprocessing": true,
+    "reward_stage_returned_before_teacher_call": true,
+    "teacher_scoring_completed": false,
+    "native_r3_initialization_observed_layers": 46,
+    "actual_kernel_route_replay_observed": false,
+    "triple_numerical_acceptance": "NOT_RUN",
+    "completed_updates": 0,
+    "hf2_or_changed_weight_value_observed": false
+  },
+  "runtime_source_identity": {
+    "launch_commit": "ffb83e83d65f9c93251f5f27ea259e18305f22ff",
+    "live_nfs_module_edit_during_initialization": "Root changed tests/manual/agent_opd/agent_loop.py around 14:27 HKT to remove observer detokenize and provide the configured zero task reward.",
+    "observed_behavior": "The native reward stage returned, allowing the current student output to reach teacher scoring; the old unrelated reward scorer did not terminate this observed trajectory.",
+    "exact_loaded_commit_for_every_process_verified": false,
+    "limitation": "Launch commit alone does not identify the code bytes imported by each process after a live NFS edit."
+  },
+  "scope": {
+    "read_only_diagnosis": true,
+    "source_edits": false,
+    "job_submission_or_control": false
+  }
+}

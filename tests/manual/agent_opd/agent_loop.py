@@ -122,7 +122,7 @@ class PreparedTurnAgentLoop(SingleTurnAgentLoop):
             scored = await self.server_manager.generate(
                 request_id=uuid4().hex,
                 prompt_ids=prompt_ids + response_ids,
-                sampling_params={"max_tokens": 1, "temperature": 1.0, "prompt_logprobs": 0},
+                sampling_params={"max_tokens": 1, "temperature": 1.0, "prompt_logprobs": 0, "detokenize": False},
             )
             observation["independent_prefill"] = True
             fields = scored.extra_fields
