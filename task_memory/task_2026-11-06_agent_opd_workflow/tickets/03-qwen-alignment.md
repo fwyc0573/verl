@@ -14,7 +14,7 @@
 
 **Blocked by:** 01 Qwen runtime/input/config prerequisites; independent of GLM training inputs and original benchmarks.
 
-**Status:** in-progress — exp-1106-143409-709386 / UIDa0ed2fa1-9007-4456-8196-f24c148be472 failed14:47:59HKT, worker exit1 at14:47:57. Actual native old-logprob entropy logits.clone requested37.04GiB with33.80GiB free; zero updates/HF2. Generation and native teacher dispatch returned by control-flow evidence; teacher values and independent-prefill success remain unverified. Reuse the existing fused output option only for Qwen; four native2/20configuration cases pass and pinned Bridge/MCore hook inspection supports this path. Host fused tests are blocked before collection by GLIBCXX_3.4.32, not markedPASS. Fresh qualification pending push and exact previous-terminal recheck. No actual MAE/update/value gate has passed.
+**Status:** in-progress — current exp-1106-150433-589683 / UIDd44e6e31-fe09-47f6-8be6-5dbf0d233a6d, launcher38117. Created15:04:33HKT after8e776dcfcaf2a9b7736d2781195c0f291833027a push/remote match and exact previousFailed reread15:04:12. Actual15:05:49 Pending/queuing; no worker yet. Same1×8H800/32CPU300GB/currentNFS/pinnedimage/input; only Qwen fused output option changes. Previous709386 failed native old-logprob logits.clone OOM with no verified update or HF2. Native configuration4/4PASS and source-compatible output hook do not prove CUDA runtime, three-way MAE, two updates, version publication or changed values.
 
 - [ ] 实际加载两个固定模型，验证同对 tokenizer/template 兼容性和 Qwen 渲染后的真实历史/长度，不直接套用 GLM token IDs。
 - [ ] 按合同覆盖 reasoning、正文和工具表达；teacher 评分 tokens、student tokens 及 loss mask 对齐。

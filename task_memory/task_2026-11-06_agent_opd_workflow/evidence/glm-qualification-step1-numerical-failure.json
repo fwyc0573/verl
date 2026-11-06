@@ -1,0 +1,806 @@
+{
+  "job": "exp-1106-144604-954702",
+  "snapshot_scope": "First native training step; healthy training may continue",
+  "numerical_limits": {
+    "mean_abs_diff": 0.03
+  },
+  "files": {
+    "aggregate": {
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-144604-954702/observations/aggregate.json",
+      "sha256": "86e06eaab459ba06b9a4239d3b837b4847efedff67b729ae7e18cf0cdb5bee2e",
+      "bytes": 91427
+    },
+    "turns": {
+      "cloud_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-144604-954702/observations/turns.jsonl",
+      "sha256": "2ae51d9b0342a508aa1d2248c7a74efae329eaba92d68e4e817471789c103284",
+      "bytes": 189519,
+      "total_rows_at_read": 4
+    }
+  },
+  "step1": {
+    "turn_count": 4,
+    "comparison_aggregates": {
+      "decode_vs_prefill": {
+        "status": "fail",
+        "verified_turn_count": 4,
+        "unverified_turn_count": 0,
+        "expected_input_count": 4,
+        "observed_input_count": 4,
+        "token_count": 1265,
+        "abs_diff_sum": 49.44150056773978,
+        "global_token_mean_abs_diff": 0.03908419017212631,
+        "per_input_mean_abs_diff": 0.029090298983864307,
+        "native_pack_mean_abs_diff_upper_bound": 0.041842282270438944,
+        "native_pack_boundary_observed": false,
+        "native_pack_mean_abs_diff": null,
+        "native_pack_acceptance": "unverified",
+        "failed_input_count": 2,
+        "metrics": {
+          "status": "fail",
+          "token_count": 1265,
+          "token_ids_match": true,
+          "versions_match": true,
+          "weight_version": 0,
+          "abs_diff_sum": 49.44150056773978,
+          "mean_abs_diff": 0.03908419017212631,
+          "p95_abs_diff": 0.27975020408630347,
+          "p99_abs_diff": 0.46960149765014647,
+          "max_abs_diff": 1.0135011672973633,
+          "signed_mean_diff": 0.0022717567512644437,
+          "failed_metrics": [
+            "mean_abs_diff"
+          ]
+        }
+      },
+      "decode_vs_trainer": {
+        "status": "fail",
+        "verified_turn_count": 4,
+        "unverified_turn_count": 0,
+        "expected_input_count": 4,
+        "observed_input_count": 4,
+        "token_count": 1265,
+        "abs_diff_sum": 39.326492782844895,
+        "global_token_mean_abs_diff": 0.031088136587229167,
+        "per_input_mean_abs_diff": 0.023321236608924226,
+        "native_pack_mean_abs_diff_upper_bound": 0.03574596128975636,
+        "native_pack_boundary_observed": false,
+        "native_pack_mean_abs_diff": null,
+        "native_pack_acceptance": "unverified",
+        "failed_input_count": 1,
+        "metrics": {
+          "status": "fail",
+          "token_count": 1265,
+          "token_ids_match": true,
+          "versions_match": true,
+          "weight_version": 0,
+          "abs_diff_sum": 39.326492782844895,
+          "mean_abs_diff": 0.031088136587229167,
+          "p95_abs_diff": 0.23791573047637923,
+          "p99_abs_diff": 0.4075142860412596,
+          "max_abs_diff": 0.921623945236206,
+          "signed_mean_diff": 0.0012292447868838693,
+          "failed_metrics": [
+            "mean_abs_diff"
+          ]
+        }
+      },
+      "prefill_vs_trainer": {
+        "status": "fail",
+        "verified_turn_count": 4,
+        "unverified_turn_count": 0,
+        "expected_input_count": 4,
+        "observed_input_count": 4,
+        "token_count": 1265,
+        "abs_diff_sum": 48.43332802768688,
+        "global_token_mean_abs_diff": 0.038287215832163546,
+        "per_input_mean_abs_diff": 0.02361312627666687,
+        "native_pack_mean_abs_diff_upper_bound": 0.04195103896835112,
+        "native_pack_boundary_observed": false,
+        "native_pack_mean_abs_diff": null,
+        "native_pack_acceptance": "unverified",
+        "failed_input_count": 2,
+        "metrics": {
+          "status": "fail",
+          "token_count": 1265,
+          "token_ids_match": true,
+          "versions_match": true,
+          "weight_version": 0,
+          "abs_diff_sum": 48.43332802768688,
+          "mean_abs_diff": 0.038287215832163546,
+          "p95_abs_diff": 0.2779866218566894,
+          "p99_abs_diff": 0.44001131057739146,
+          "max_abs_diff": 1.173816204071045,
+          "signed_mean_diff": -0.0010425119643805742,
+          "failed_metrics": [
+            "mean_abs_diff"
+          ]
+        }
+      }
+    },
+    "turns": [
+      {
+        "training_step": 1,
+        "trainer_weight_version": 0,
+        "source_uid": "d52a450378d9fdf0cac3f0f3c281dad3b1437a444a7ff6fc746473e3252190d4:435:134",
+        "source_category": "control_only",
+        "generated_category": "neither",
+        "status": "pass",
+        "prompt_token_count": 28408,
+        "response_token_count": 34,
+        "token_ids_match": true,
+        "prompt_ids_match": true,
+        "positions_match": true,
+        "probability_definition": "raw_model_logprob",
+        "sampling_params": {
+          "temperature": 1,
+          "top_p": 1,
+          "top_k": -1,
+          "repetition_penalty": 1,
+          "logprobs": true
+        },
+        "independent_prefill": true,
+        "weight_versions": {
+          "trainer": 0,
+          "decode": 0,
+          "prefill": 0
+        },
+        "decode_weight_metadata": {
+          "global_steps": 0,
+          "min_global_steps": 0,
+          "max_global_steps": 0
+        },
+        "prefill_weight_metadata": {
+          "global_steps": 0,
+          "min_global_steps": 0,
+          "max_global_steps": 0
+        },
+        "student_rescoring_status": "pass",
+        "router_replay_mode": "R3",
+        "rollout_route_shape": [
+          65535,
+          47,
+          4
+        ],
+        "route_observation": "Input route inventory only; no separate observation of replayed kernel routes",
+        "whole_input_packs": true,
+        "response_mask_summary": {
+          "width": 4096,
+          "eligible_count": 34,
+          "leading_eligible": true,
+          "trailing_padding_zero": true
+        },
+        "comparisons": {
+          "decode_vs_prefill": {
+            "status": "pass",
+            "token_count": 34,
+            "token_ids_match": true,
+            "versions_match": true,
+            "weight_version": 0,
+            "abs_diff_sum": 0.35506057964980187,
+            "mean_abs_diff": 0.010442958224994173,
+            "p95_abs_diff": 0.014534368738531998,
+            "p99_abs_diff": 0.22359503872692632,
+            "max_abs_diff": 0.3163696527481079,
+            "signed_mean_diff": -0.010240421940682656,
+            "failed_metrics": [],
+            "first_differing_token": {
+              "response_index": 0,
+              "absolute_unpadded_token_position": 28408,
+              "token_id": 154843,
+              "reference": -0.04774586856365204,
+              "candidate": -0.08298032730817795,
+              "candidate_minus_reference": -0.03523445874452591
+            },
+            "largest_difference_token": {
+              "response_index": 29,
+              "absolute_unpadded_token_position": 28437,
+              "token_id": 122569,
+              "reference": -1.7845066785812378,
+              "candidate": -2.1008763313293457,
+              "candidate_minus_reference": -0.3163696527481079
+            },
+            "array_lengths": {
+              "decode": 34,
+              "prefill": 34,
+              "token_ids": 34
+            },
+            "all_logprobs_finite": true
+          },
+          "decode_vs_trainer": {
+            "status": "pass",
+            "token_count": 34,
+            "token_ids_match": true,
+            "versions_match": true,
+            "weight_version": 0,
+            "abs_diff_sum": 0.4403169228241808,
+            "mean_abs_diff": 0.012950497730122964,
+            "p95_abs_diff": 0.0030348088592290694,
+            "p99_abs_diff": 0.29205749519169405,
+            "max_abs_diff": 0.4316500425338745,
+            "signed_mean_diff": -0.012950105048380782,
+            "failed_metrics": [],
+            "first_differing_token": {
+              "response_index": 0,
+              "absolute_unpadded_token_position": 28408,
+              "token_id": 154843,
+              "reference": -0.04774586856365204,
+              "candidate": -0.056388191878795624,
+              "candidate_minus_reference": -0.008642323315143585
+            },
+            "largest_difference_token": {
+              "response_index": 29,
+              "absolute_unpadded_token_position": 28437,
+              "token_id": 122569,
+              "reference": -1.7845066785812378,
+              "candidate": -2.2161567211151123,
+              "candidate_minus_reference": -0.4316500425338745
+            },
+            "array_lengths": {
+              "decode": 34,
+              "trainer": 34,
+              "token_ids": 34
+            },
+            "all_logprobs_finite": true
+          },
+          "prefill_vs_trainer": {
+            "status": "pass",
+            "token_count": 34,
+            "token_ids_match": true,
+            "versions_match": true,
+            "weight_version": 0,
+            "abs_diff_sum": 0.14534162964292818,
+            "mean_abs_diff": 0.004274753813027299,
+            "p95_abs_diff": 0.011519551277160596,
+            "p99_abs_diff": 0.08601326584815994,
+            "max_abs_diff": 0.1152803897857666,
+            "signed_mean_diff": -0.002709683107698127,
+            "failed_metrics": [],
+            "first_differing_token": {
+              "response_index": 0,
+              "absolute_unpadded_token_position": 28408,
+              "token_id": 154843,
+              "reference": -0.08298032730817795,
+              "candidate": -0.056388191878795624,
+              "candidate_minus_reference": 0.026592135429382324
+            },
+            "largest_difference_token": {
+              "response_index": 29,
+              "absolute_unpadded_token_position": 28437,
+              "token_id": 122569,
+              "reference": -2.1008763313293457,
+              "candidate": -2.2161567211151123,
+              "candidate_minus_reference": -0.1152803897857666
+            },
+            "array_lengths": {
+              "prefill": 34,
+              "trainer": 34,
+              "token_ids": 34
+            },
+            "all_logprobs_finite": true
+          }
+        }
+      },
+      {
+        "training_step": 1,
+        "trainer_weight_version": 0,
+        "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:459:154",
+        "source_category": "thinking_only",
+        "generated_category": "thinking_only",
+        "status": "fail",
+        "prompt_token_count": 33616,
+        "response_token_count": 778,
+        "token_ids_match": true,
+        "prompt_ids_match": true,
+        "positions_match": true,
+        "probability_definition": "raw_model_logprob",
+        "sampling_params": {
+          "temperature": 1,
+          "top_p": 1,
+          "top_k": -1,
+          "repetition_penalty": 1,
+          "logprobs": true
+        },
+        "independent_prefill": true,
+        "weight_versions": {
+          "trainer": 0,
+          "decode": 0,
+          "prefill": 0
+        },
+        "decode_weight_metadata": {
+          "global_steps": 0,
+          "min_global_steps": 0,
+          "max_global_steps": 0
+        },
+        "prefill_weight_metadata": {
+          "global_steps": 0,
+          "min_global_steps": 0,
+          "max_global_steps": 0
+        },
+        "student_rescoring_status": "fail",
+        "router_replay_mode": "R3",
+        "rollout_route_shape": [
+          65535,
+          47,
+          4
+        ],
+        "route_observation": "Input route inventory only; no separate observation of replayed kernel routes",
+        "whole_input_packs": true,
+        "response_mask_summary": {
+          "width": 4096,
+          "eligible_count": 778,
+          "leading_eligible": true,
+          "trailing_padding_zero": true
+        },
+        "comparisons": {
+          "decode_vs_prefill": {
+            "status": "fail",
+            "token_count": 778,
+            "token_ids_match": true,
+            "versions_match": true,
+            "weight_version": 0,
+            "abs_diff_sum": 32.5532956064015,
+            "mean_abs_diff": 0.041842282270438944,
+            "p95_abs_diff": 0.276433742046356,
+            "p99_abs_diff": 0.4747721838951113,
+            "max_abs_diff": 0.6448366641998291,
+            "signed_mean_diff": -0.0031969844723345876,
+            "failed_metrics": [
+              "mean_abs_diff"
+            ],
+            "first_differing_token": {
+              "response_index": 0,
+              "absolute_unpadded_token_position": 33616,
+              "token_id": 785,
+              "reference": -1.7072913646697998,
+              "candidate": -1.9085397720336914,
+              "candidate_minus_reference": -0.2012484073638916
+            },
+            "largest_difference_token": {
+              "response_index": 558,
+              "absolute_unpadded_token_position": 34174,
+              "token_id": 400,
+              "reference": -3.3609116077423096,
+              "candidate": -4.005748271942139,
+              "candidate_minus_reference": -0.6448366641998291
+            },
+            "array_lengths": {
+              "decode": 778,
+              "prefill": 778,
+              "token_ids": 778
+            },
+            "all_logprobs_finite": true
+          },
+          "decode_vs_trainer": {
+            "status": "fail",
+            "token_count": 778,
+            "token_ids_match": true,
+            "versions_match": true,
+            "weight_version": 0,
+            "abs_diff_sum": 27.81035788343045,
+            "mean_abs_diff": 0.03574596128975636,
+            "p95_abs_diff": 0.25244084000587463,
+            "p99_abs_diff": 0.4108785009384158,
+            "max_abs_diff": 0.4937138557434082,
+            "signed_mean_diff": -0.00016538292434146754,
+            "failed_metrics": [
+              "mean_abs_diff"
+            ],
+            "first_differing_token": {
+              "response_index": 0,
+              "absolute_unpadded_token_position": 33616,
+              "token_id": 785,
+              "reference": -1.7072913646697998,
+              "candidate": -1.696028470993042,
+              "candidate_minus_reference": 0.011262893676757812
+            },
+            "largest_difference_token": {
+              "response_index": 561,
+              "absolute_unpadded_token_position": 34177,
+              "token_id": 56857,
+              "reference": -4.546648979187012,
+              "candidate": -5.04036283493042,
+              "candidate_minus_reference": -0.4937138557434082
+            },
+            "array_lengths": {
+              "decode": 778,
+              "trainer": 778,
+              "token_ids": 778
+            },
+            "all_logprobs_finite": true
+          },
+          "prefill_vs_trainer": {
+            "status": "fail",
+            "token_count": 778,
+            "token_ids_match": true,
+            "versions_match": true,
+            "weight_version": 0,
+            "abs_diff_sum": 32.63790831737717,
+            "mean_abs_diff": 0.04195103896835112,
+            "p95_abs_diff": 0.2834026575088501,
+            "p99_abs_diff": 0.4358936595916748,
+            "max_abs_diff": 0.6448745727539062,
+            "signed_mean_diff": 0.00303160154799312,
+            "failed_metrics": [
+              "mean_abs_diff"
+            ],
+            "first_differing_token": {
+              "response_index": 0,
+              "absolute_unpadded_token_position": 33616,
+              "token_id": 785,
+              "reference": -1.9085397720336914,
+              "candidate": -1.696028470993042,
+              "candidate_minus_reference": 0.21251130104064941
+            },
+            "largest_difference_token": {
+              "response_index": 558,
+              "absolute_unpadded_token_position": 34174,
+              "token_id": 400,
+              "reference": -4.005748271942139,
+              "candidate": -3.3608736991882324,
+              "candidate_minus_reference": 0.6448745727539062
+            },
+            "array_lengths": {
+              "prefill": 778,
+              "trainer": 778,
+              "token_ids": 778
+            },
+            "all_logprobs_finite": true
+          }
+        }
+      },
+      {
+        "training_step": 1,
+        "trainer_weight_version": 0,
+        "source_uid": "7b8a183eef2142de98554a8e275b1e07941ed070e39305bd551857e5a2f6846d:30:18",
+        "source_category": "neither",
+        "generated_category": "thinking_only",
+        "status": "pass",
+        "prompt_token_count": 10366,
+        "response_token_count": 45,
+        "token_ids_match": true,
+        "prompt_ids_match": true,
+        "positions_match": true,
+        "probability_definition": "raw_model_logprob",
+        "sampling_params": {
+          "temperature": 1,
+          "top_p": 1,
+          "top_k": -1,
+          "repetition_penalty": 1,
+          "logprobs": true
+        },
+        "independent_prefill": true,
+        "weight_versions": {
+          "trainer": 0,
+          "decode": 0,
+          "prefill": 0
+        },
+        "decode_weight_metadata": {
+          "global_steps": 0,
+          "min_global_steps": 0,
+          "max_global_steps": 0
+        },
+        "prefill_weight_metadata": {
+          "global_steps": 0,
+          "min_global_steps": 0,
+          "max_global_steps": 0
+        },
+        "student_rescoring_status": "pass",
+        "router_replay_mode": "R3",
+        "rollout_route_shape": [
+          65535,
+          47,
+          4
+        ],
+        "route_observation": "Input route inventory only; no separate observation of replayed kernel routes",
+        "whole_input_packs": true,
+        "response_mask_summary": {
+          "width": 4096,
+          "eligible_count": 45,
+          "leading_eligible": true,
+          "trailing_padding_zero": true
+        },
+        "comparisons": {
+          "decode_vs_prefill": {
+            "status": "pass",
+            "token_count": 45,
+            "token_ids_match": true,
+            "versions_match": true,
+            "weight_version": 0,
+            "abs_diff_sum": 1.1913031534514076,
+            "mean_abs_diff": 0.02647340341003128,
+            "p95_abs_diff": 0.2888712167739861,
+            "p99_abs_diff": 0.36774560928344735,
+            "max_abs_diff": 0.38819777965545654,
+            "signed_mean_diff": -0.007363547995039394,
+            "failed_metrics": [],
+            "first_differing_token": {
+              "response_index": 2,
+              "absolute_unpadded_token_position": 10368,
+              "token_id": 1401,
+              "reference": -0.35846778750419617,
+              "candidate": -0.3562716841697693,
+              "candidate_minus_reference": 0.00219610333442688
+            },
+            "largest_difference_token": {
+              "response_index": 15,
+              "absolute_unpadded_token_position": 10381,
+              "token_id": 154842,
+              "reference": -1.3137115240097046,
+              "candidate": -1.7019093036651611,
+              "candidate_minus_reference": -0.38819777965545654
+            },
+            "array_lengths": {
+              "decode": 45,
+              "prefill": 45,
+              "token_ids": 45
+            },
+            "all_logprobs_finite": true
+          },
+          "decode_vs_trainer": {
+            "status": "pass",
+            "token_count": 45,
+            "token_ids_match": true,
+            "versions_match": true,
+            "weight_version": 0,
+            "abs_diff_sum": 0.8821840771566087,
+            "mean_abs_diff": 0.019604090603480194,
+            "p95_abs_diff": 0.0920409798622131,
+            "p99_abs_diff": 0.33646363735198975,
+            "max_abs_diff": 0.3418898582458496,
+            "signed_mean_diff": 0.00025023402943734,
+            "failed_metrics": [],
+            "first_differing_token": {
+              "response_index": 0,
+              "absolute_unpadded_token_position": 10366,
+              "token_id": 10056,
+              "reference": -0.3310485780239105,
+              "candidate": -0.32819241285324097,
+              "candidate_minus_reference": 0.0028561651706695557
+            },
+            "largest_difference_token": {
+              "response_index": 9,
+              "absolute_unpadded_token_position": 10375,
+              "token_id": 311,
+              "reference": -1.6446597576141357,
+              "candidate": -1.3027698993682861,
+              "candidate_minus_reference": 0.3418898582458496
+            },
+            "array_lengths": {
+              "decode": 45,
+              "trainer": 45,
+              "token_ids": 45
+            },
+            "all_logprobs_finite": true
+          },
+          "prefill_vs_trainer": {
+            "status": "pass",
+            "token_count": 45,
+            "token_ids_match": true,
+            "versions_match": true,
+            "weight_version": 0,
+            "abs_diff_sum": 0.49914304314683733,
+            "mean_abs_diff": 0.011092067625485274,
+            "p95_abs_diff": 0.01357555389404296,
+            "p99_abs_diff": 0.2501587736606605,
+            "max_abs_diff": 0.3881864547729492,
+            "signed_mean_diff": 0.007613782024476734,
+            "failed_metrics": [],
+            "first_differing_token": {
+              "response_index": 0,
+              "absolute_unpadded_token_position": 10366,
+              "token_id": 10056,
+              "reference": -0.3310485780239105,
+              "candidate": -0.32819241285324097,
+              "candidate_minus_reference": 0.0028561651706695557
+            },
+            "largest_difference_token": {
+              "response_index": 15,
+              "absolute_unpadded_token_position": 10381,
+              "token_id": 154842,
+              "reference": -1.7019093036651611,
+              "candidate": -1.313722848892212,
+              "candidate_minus_reference": 0.3881864547729492
+            },
+            "array_lengths": {
+              "prefill": 45,
+              "trainer": 45,
+              "token_ids": 45
+            },
+            "all_logprobs_finite": true
+          }
+        }
+      },
+      {
+        "training_step": 1,
+        "trainer_weight_version": 0,
+        "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:262:175",
+        "source_category": "control_and_thinking",
+        "generated_category": "neither",
+        "status": "fail",
+        "prompt_token_count": 40380,
+        "response_token_count": 408,
+        "token_ids_match": true,
+        "prompt_ids_match": true,
+        "positions_match": true,
+        "probability_definition": "raw_model_logprob",
+        "sampling_params": {
+          "temperature": 1,
+          "top_p": 1,
+          "top_k": -1,
+          "repetition_penalty": 1,
+          "logprobs": true
+        },
+        "independent_prefill": true,
+        "weight_versions": {
+          "trainer": 0,
+          "decode": 0,
+          "prefill": 0
+        },
+        "decode_weight_metadata": {
+          "global_steps": 0,
+          "min_global_steps": 0,
+          "max_global_steps": 0
+        },
+        "prefill_weight_metadata": {
+          "global_steps": 0,
+          "min_global_steps": 0,
+          "max_global_steps": 0
+        },
+        "student_rescoring_status": "fail",
+        "router_replay_mode": "R3",
+        "rollout_route_shape": [
+          65535,
+          47,
+          4
+        ],
+        "route_observation": "Input route inventory only; no separate observation of replayed kernel routes",
+        "whole_input_packs": true,
+        "response_mask_summary": {
+          "width": 4096,
+          "eligible_count": 408,
+          "leading_eligible": true,
+          "trailing_padding_zero": true
+        },
+        "comparisons": {
+          "decode_vs_prefill": {
+            "status": "fail",
+            "token_count": 408,
+            "token_ids_match": true,
+            "versions_match": true,
+            "weight_version": 0,
+            "abs_diff_sum": 15.341841228237072,
+            "mean_abs_diff": 0.037602552029992825,
+            "p95_abs_diff": 0.27809785008430465,
+            "p99_abs_diff": 0.4689216876029969,
+            "max_abs_diff": 1.0135011672973633,
+            "signed_mean_diff": 0.01480529464604366,
+            "failed_metrics": [
+              "mean_abs_diff"
+            ],
+            "first_differing_token": {
+              "response_index": 0,
+              "absolute_unpadded_token_position": 40380,
+              "token_id": 50706,
+              "reference": -1.235390305519104,
+              "candidate": -1.6005921363830566,
+              "candidate_minus_reference": -0.36520183086395264
+            },
+            "largest_difference_token": {
+              "response_index": 377,
+              "absolute_unpadded_token_position": 40757,
+              "token_id": 13016,
+              "reference": -5.31621789932251,
+              "candidate": -4.3027167320251465,
+              "candidate_minus_reference": 1.0135011672973633
+            },
+            "array_lengths": {
+              "decode": 408,
+              "prefill": 408,
+              "token_ids": 408
+            },
+            "all_logprobs_finite": true
+          },
+          "decode_vs_trainer": {
+            "status": "pass",
+            "token_count": 408,
+            "token_ids_match": true,
+            "versions_match": true,
+            "weight_version": 0,
+            "abs_diff_sum": 10.193633899433657,
+            "mean_abs_diff": 0.024984396812337394,
+            "p95_abs_diff": 0.1600142329931259,
+            "p99_abs_diff": 0.34959060668945324,
+            "max_abs_diff": 0.921623945236206,
+            "signed_mean_diff": 0.005178200026632409,
+            "failed_metrics": [],
+            "first_differing_token": {
+              "response_index": 0,
+              "absolute_unpadded_token_position": 40380,
+              "token_id": 50706,
+              "reference": -1.235390305519104,
+              "candidate": -1.2328323125839233,
+              "candidate_minus_reference": 0.002557992935180664
+            },
+            "largest_difference_token": {
+              "response_index": 104,
+              "absolute_unpadded_token_position": 40484,
+              "token_id": 16890,
+              "reference": -3.049116849899292,
+              "candidate": -2.127492904663086,
+              "candidate_minus_reference": 0.921623945236206
+            },
+            "array_lengths": {
+              "decode": 408,
+              "trainer": 408,
+              "token_ids": 408
+            },
+            "all_logprobs_finite": true
+          },
+          "prefill_vs_trainer": {
+            "status": "fail",
+            "token_count": 408,
+            "token_ids_match": true,
+            "versions_match": true,
+            "weight_version": 0,
+            "abs_diff_sum": 15.15093503751995,
+            "mean_abs_diff": 0.0371346446998038,
+            "p95_abs_diff": 0.26002824604511227,
+            "p99_abs_diff": 0.4679932641983034,
+            "max_abs_diff": 1.173816204071045,
+            "signed_mean_diff": -0.009627094619411252,
+            "failed_metrics": [
+              "mean_abs_diff"
+            ],
+            "first_differing_token": {
+              "response_index": 0,
+              "absolute_unpadded_token_position": 40380,
+              "token_id": 50706,
+              "reference": -1.6005921363830566,
+              "candidate": -1.2328323125839233,
+              "candidate_minus_reference": 0.3677598237991333
+            },
+            "largest_difference_token": {
+              "response_index": 377,
+              "absolute_unpadded_token_position": 40757,
+              "token_id": 13016,
+              "reference": -4.3027167320251465,
+              "candidate": -5.476532936096191,
+              "candidate_minus_reference": -1.173816204071045
+            },
+            "array_lengths": {
+              "prefill": 408,
+              "trainer": 408,
+              "token_ids": 408
+            },
+            "all_logprobs_finite": true
+          }
+        }
+      }
+    ]
+  },
+  "training_receipt_at_read": {
+    "requested_updates": 2,
+    "actor_update_call_count": 0,
+    "completed_updates": 0,
+    "update_outcomes": [],
+    "native_megatron_optimizer_success_contract": {
+      "source": "verl/workers/engine/megatron/transformer_impl.py:MegatronEngine.optimizer_step",
+      "success_condition": "Megatron optimizer.step update_successful=False raises before returning",
+      "iteration_source": "verl/workers/engine_workers.py:TrainingWorker.train_mini_batch",
+      "one_optimizer_step_per_call": true
+    },
+    "native_fit_returned": false,
+    "last_native_checkpoint_step": null,
+    "final_export": null
+  },
+  "selected_observation_notes": [
+    "The global token mean absolute error exceeds the fixed 0.03 limit in all three comparisons at native step 1.",
+    "All selected rows report identical prompt IDs, response IDs, positions, eligible masks, finite arrays, raw model logprob definition, and protocol weight version 0 across trainer/decode/prefill.",
+    "Protocol version evidence is not an independent live tensor checksum.",
+    "The same-engine decode versus independent prefill comparison itself fails the fixed numerical limit.",
+    "R3 input payload shape is observed as [65535, 47, 4]; replayed kernel route values are not separately observed.",
+    "The physical native pack boundaries are not recorded. A failed whole-input upper bound is not evidence of an actual measured physical-pack failure.",
+    "Training receipt at this read is interim; it does not establish final zero updates or a terminal outcome.",
+    "Source categories and categories of the generated responses are recorded separately."
+  ]
+}

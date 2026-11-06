@@ -30,11 +30,11 @@ The scoped repair reserves one native teacher scoring token in the existing prep
 | Ticket | Job | RJob UID | GPUs | Observed state |
 | --- | --- | --- | --- | --- |
 | 02 | exp-1106-144604-954702 | 731dd5f3-f5db-485b-a8e3-ba8879043933 | 2×8 | Running, step1 actual numerical FAIL; further update/version evidence pending |
-| 03 | exp-1106-143409-709386 | a0ed2fa1-9007-4456-8196-f24c148be472 | 1×8 | Failed14:47:59HKT, old-logprob logits.clone CUDA OOM, zero updates; fused-config retry pending |
+| 03 | exp-1106-150433-589683 | d44e6e31-fe09-47f6-8be6-5dbf0d233a6d | 1×8 | Pending/queuing15:05:49HKT; fused-config qualification submitted after pushed8e776dcf |
 | 06 | exp-1106-030308-839669 | f74fa974-ea86-4149-a823-3276ce493f8b | 1×4 | Running |
 | 07 | exp-1106-033246-436787 | f5c97c61-7868-44f6-8a74-34ab529bd6b2 | 1×2 | Running |
 
-The jobs retain personal creator `i-fengyicheng`, H800/codesign, the pinned company image and current-machine NFS. Keep the healthy original launchers41495/30922 and current GLM10138 alive. Qwen72859 and historical qualifications reached native failures. Since agent_loop.py and the shared SGLang adapter were edited on live NFS during initialization, launch SHA alone does not establish which module version each process loaded; preserve that limit and verify actual behavior. Old failed identities are re-read before retries. No other task's jobs were controlled.
+The jobs retain personal creator `i-fengyicheng`, H800/codesign, the pinned company image and current-machine NFS. Keep the healthy original launchers41495/30922 and current GLM10138 and Qwen38117 alive. Qwen72859 and historical qualifications reached native failures. Since agent_loop.py and the shared SGLang adapter were edited on live NFS during initialization, launch SHA alone does not establish which module version each process loaded; preserve that limit and verify actual behavior. Old failed identities are re-read before retries. No other task's jobs were controlled.
 
 ## Continuation route
 

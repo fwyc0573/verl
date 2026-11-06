@@ -1,0 +1,11 @@
+{
+  "collected_at": "2026-11-06T07:04:12.521838+00:00",
+  "purpose": "One exact terminal identity read before authorized Qwen fused-path retry",
+  "name": "exp-1106-143409-709386",
+  "uid": "a0ed2fa1-9007-4456-8196-f24c148be472",
+  "creator": "i-fengyicheng",
+  "phase": "Failed",
+  "finish_time": "2026-11-06T06:47:59Z",
+  "controls": "NONE",
+  "business_reads": "NONE"
+}
