@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "method": "Independent post-terminal read-only SSH metadata check through authorized cloud alias",
+  "deleted_file_count": 45,
+  "all_deleted_paths_absent": true,
+  "all_target_directories_absent": true,
+  "retained_count": 892,
+  "all_retained_size_mtime_preserved": true,
+  "manifest_sha256": "762db69ec9db7173a4ba561fd4326dd366f4ef14b6cb4b41ae7f945e7c5e339a",
+  "physical_reclaimed_bytes_verified": false,
+  "observed_at_utc": "2026-11-06T07:53:56.518272+00:00",
+  "host_independent_check": {
+    "deleted_paths_absent": 307,
+    "source_ignored_pyc_count": 0,
+    "task_evidence_json_parsed": true,
+    "retained_command_count": 7,
+    "retained_command_bytes": 18106
+  }
+}

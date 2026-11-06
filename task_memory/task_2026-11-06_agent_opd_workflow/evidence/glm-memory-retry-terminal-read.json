@@ -1,0 +1,18 @@
+{
+  "collected_at": "2026-11-06T07:27:38.658970+00:00",
+  "name": "exp-1106-144604-954702",
+  "uid": "731dd5f3-f5db-485b-a8e3-ba8879043933",
+  "creator": null,
+  "phase": "Failed",
+  "finish_time": "2026-11-06T07:12:38Z",
+  "stop_annotations": {
+    "rjob.brainpp.cn/system-stop-reason": "Task fail policy [any] caused undesired running replicas."
+  },
+  "uid_matches": true,
+  "current_creator_extraction": "UNKNOWN: exact label name differed from attempted key; no repeated GET",
+  "prior_same_uid_creator_receipt": {
+    "collected_at": "2026-11-06T07:13:37.688168+00:00",
+    "creator": "i-fengyicheng",
+    "phase": "Failed"
+  }
+}

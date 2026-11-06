@@ -1,0 +1,51 @@
+{
+  "collected_at": "2026-11-06T07:48:36.609821+00:00",
+  "name": "exp-1106-154737-250834",
+  "uid": "dde47c66-2903-4bce-9329-7792fc2fb296",
+  "creator": "i-fengyicheng",
+  "creation_timestamp": "2026-11-06T07:47:37Z",
+  "status": {
+    "phase": "Succeeded",
+    "reason": "RJobSucceeded",
+    "message": "RJob succeeded",
+    "taskStatuses": {
+      "default": {
+        "succeeded": 1,
+        "taskStage": "stepmind-task-stage-1"
+      }
+    },
+    "finishTime": "2026-11-06T07:47:53Z",
+    "taskStage": "stepmind-task-stage-1"
+  },
+  "stop_annotations": {},
+  "source_mount_annotation": "100.96.128.195:/data/ycfeng:/data/ycfeng",
+  "tasks": [
+    {
+      "name": "default",
+      "replicas": 1,
+      "positive_tags": [
+        "H800"
+      ],
+      "source_mount": "100.96.128.195:/data/ycfeng:/data/ycfeng",
+      "containers": [
+        {
+          "name": "default",
+          "image": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+          "resources": {
+            "limits": {
+              "cpu": "4",
+              "memory": "8000Mi",
+              "nvidia.com/gpu": "0"
+            },
+            "requests": {
+              "cpu": "4",
+              "memory": "8000Mi",
+              "nvidia.com/gpu": "0"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "scope": "Only user-authorized pause cleanup job, not a training/evaluation resume; no other workload observations or controls."
+}

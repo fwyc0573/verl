@@ -2,6 +2,8 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Pause execution on user request and record actual stopped/retired artifact state. |
+| 2026-11-06 | Record both actual Qwen updates, numerical PASS and terminal success; retain the HF2 verification gate. |
 | 2026-11-06 | Record actual worker start and fused recipe for the current Qwen qualification. |
 | 2026-11-06 | Record actual old-logprob OOM and the verified native fused configuration. |
 | 2026-11-06 | Record actual qualification failure or running original benchmark evidence on resume. |
@@ -15,7 +17,7 @@
 
 **Blocked by:** 01 Qwen runtime/input/config prerequisites; independent of GLM training inputs and original benchmarks.
 
-**Status:** in-progress — current exp-1106-150433-589683 / UIDd44e6e31-fe09-47f6-8be6-5dbf0d233a6d, launcher38117. Created15:04:33HKT after8e776dcfcaf2a9b7736d2781195c0f291833027a push/remote match and exact previousFailed reread15:04:12. Actual worker started15:12:43HKT onH8000182; archived recipe confirms fusedtrue/use_ligerfalse/MTPfalse/remove_paddingtrue and unchanged input/length/batch/dynamic budgets. Training Progress0/2 at15:19:07; actual old-logprob CUDA, numerical, update and HF2 gates remain open. Same1×8H800/32CPU300GB/currentNFS/pinnedimage/input; only Qwen fused output option changes. Previous709386 failed native old-logprob logits.clone OOM with no verified update or HF2. Native configuration4/4PASS and source-compatible output hook do not prove CUDA runtime, three-way MAE, two updates, version publication or changed values.
+**Status:** in-progress / PAUSED by user request. Qualification exp-1106-150433-589683 / UIDd44e6e31-fe09-47f6-8be6-5dbf0d233a6d actually completed2verified updates, numerical PASS at versions0/1 and awaited final version2 publication; platformSucceeded15:31:19HKT. Step1 globalMAEs(D/P,D/T,P/T)=0.0045300183/0.0050332894/0.0052872581; step2=0.0096232827/0.0111447289/0.0107622501. Every per-input native-pack bound≤0.03; physical native means remain null/unobserved. IDs/positions/masks/independent-prefill/version fields match. This proves the native fused old-logprob path and actual two-update/numerical subgates. Full export scope/value acceptance remains UNVERIFIED: the0GPU check exp-1106-153941-344108 failed at git dubious ownership before actual inventory/value code ran. Observed738→723headers/48F32→BF16 have a pinned native MTP/BF16 explanation, but exact complete sets and actual direct-mapped same-dtype learning witness were not accepted. The user-authorized pause cleanup retired HF2 on15:47:50HKT. Native two-step receipts and selected header observation are retained; they cannot close this ticket or release05. No fresh20 was submitted. A new actual export/value check is required after resume; qualification prompts only reached48129, not>64K.
 
 - [ ] 实际加载两个固定模型，验证同对 tokenizer/template 兼容性和 Qwen 渲染后的真实历史/长度，不直接套用 GLM token IDs。
 - [ ] 按合同覆盖 reasoning、正文和工具表达；teacher 评分 tokens、student tokens 及 loss mask 对齐。

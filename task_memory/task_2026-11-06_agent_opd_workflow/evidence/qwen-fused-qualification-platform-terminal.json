@@ -1,0 +1,112 @@
+{
+  "collected_at": "2026-11-06T07:32:28.261957+00:00",
+  "job": {
+    "name": "exp-1106-150433-589683",
+    "uid": "d44e6e31-fe09-47f6-8be6-5dbf0d233a6d",
+    "creator": "i-fengyicheng",
+    "status": {
+      "phase": "Succeeded",
+      "reason": "RJobSucceeded",
+      "message": "RJob succeeded",
+      "taskStatuses": {
+        "default": {
+          "succeeded": 1,
+          "taskStage": "stepmind-task-stage-1"
+        }
+      },
+      "finishTime": "2026-11-06T07:31:19Z",
+      "taskStage": "stepmind-task-stage-1"
+    },
+    "stop_annotations": {}
+  },
+  "replicas": [
+    {
+      "name": "exp-1106-150433-589683-cfcd2084",
+      "uid": "e1d5aea3-a712-40b8-ab44-bbf346be6946",
+      "creator": "i-fengyicheng",
+      "owners": [
+        {
+          "apiVersion": "rjob.brainpp.cn/v1alpha1",
+          "kind": "RJob",
+          "name": "exp-1106-150433-589683",
+          "uid": "d44e6e31-fe09-47f6-8be6-5dbf0d233a6d",
+          "controller": true,
+          "blockOwnerDeletion": true
+        }
+      ],
+      "status": {
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-06T07:12:41Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-06T07:31:18Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-06T07:31:18Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-06T07:12:41Z"
+          }
+        ],
+        "hostIP": "10.191.8.61",
+        "podIP": "10.191.8.61",
+        "podIPs": [
+          {
+            "ip": "10.191.8.61"
+          }
+        ],
+        "startTime": "2026-11-06T07:12:41Z",
+        "containerStatuses": [
+          {
+            "name": "default",
+            "state": {
+              "terminated": {
+                "exitCode": 0,
+                "reason": "Completed",
+                "startedAt": "2026-11-06T07:12:43Z",
+                "finishedAt": "2026-11-06T07:31:17Z",
+                "containerID": "containerd://dcda6eece8cc1769e715abf80b91a0bcef7071fbffdd2febf77d5279740dbbf9"
+              }
+            },
+            "lastState": {},
+            "ready": false,
+            "restartCount": 0,
+            "image": "sha256:3eae996c8f0d4383bda9cc9448dd445eb960f253ac7d3e4cb4f0c6465cb706ae",
+            "imageID": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+            "containerID": "containerd://dcda6eece8cc1769e715abf80b91a0bcef7071fbffdd2febf77d5279740dbbf9",
+            "started": false
+          }
+        ],
+        "qosClass": "Guaranteed",
+        "phase": "Succeeded",
+        "nodeName": "gpu-h800-0182.host.platform.shaipower.com",
+        "finishTimestamp": "2026-11-06T07:31:19Z"
+      }
+    }
+  ],
+  "scope": "Existing sole exact-job watcher snapshot; no additional platform query. Platform completion alone does not establish numerical or training/export acceptance.",
+  "business_owner_selected_receipt": {
+    "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/exp-1106-150433-589683-qualification-business-selected.json",
+    "bytes": 21572,
+    "sha256": "4c089063c4edaf305cab4297bca75e1178dfd81a95683d11a9b3e13137839a7f",
+    "reported_by": "data_benchmark",
+    "owner_report": "8/8 outer comparisons PASS at versions0/1; two native updates returned true, finite positive gradients, native fit returned true; HF2 manifest global_step2 bound.",
+    "acceptance_limit": "Root still owns actual weight-value gate and full qualification acceptance. Association does not independently validate numerical packing, tensor values or export reload."
+  }
+}

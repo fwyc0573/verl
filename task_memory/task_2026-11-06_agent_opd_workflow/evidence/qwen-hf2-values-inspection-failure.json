@@ -1,0 +1,93 @@
+{
+  "collected_at": "2026-11-06T07:46:53.436995+00:00",
+  "job": "exp-1106-153941-344108",
+  "uid": "a4eec0c0-4129-47c7-93ab-91aea9aabae4",
+  "replica": "exp-1106-153941-344108-cfcd2084",
+  "replica_uid": "34da2755-a33e-4c87-b88a-393558e9acef",
+  "request_tail_lines": 80,
+  "http_status": 200,
+  "raw_path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/hf2-values-failure-native-tail-20261106-1547.raw.txt",
+  "raw_bytes": 5799,
+  "raw_sha256": "6556bc38051e3f6b526373da60ea81168a92c94cfb90a6773b13a2e5155fa74a",
+  "selected_lines": [
+    {
+      "row": 3,
+      "timestamp": "1793950999501395000",
+      "message": "fatal: detected dubious ownership in repository at '/data/ycfeng/sota-engine/verl'"
+    },
+    {
+      "row": 4,
+      "timestamp": "1793950999501406000",
+      "message": "To add an exception for this directory, call:"
+    },
+    {
+      "row": 5,
+      "timestamp": "1793950999501408000",
+      "message": ""
+    },
+    {
+      "row": 6,
+      "timestamp": "1793950999501410000",
+      "message": "\tgit config --global --add safe.directory /data/ycfeng/sota-engine/verl"
+    },
+    {
+      "row": 7,
+      "timestamp": "1793950999501610000",
+      "message": "Traceback (most recent call last):"
+    },
+    {
+      "row": 8,
+      "timestamp": "1793950999501612000",
+      "message": "  File \"<stdin>\", line 23, in <module>"
+    },
+    {
+      "row": 9,
+      "timestamp": "1793950999501615000",
+      "message": "  File \"/data/ycfeng/envs/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/subprocess.py\", line 466, in check_output"
+    },
+    {
+      "row": 10,
+      "timestamp": "1793950999502125000",
+      "message": "    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,"
+    },
+    {
+      "row": 11,
+      "timestamp": "1793950999502129000",
+      "message": "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+    },
+    {
+      "row": 12,
+      "timestamp": "1793950999502131000",
+      "message": "  File \"/data/ycfeng/envs/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/subprocess.py\", line 571, in run"
+    },
+    {
+      "row": 13,
+      "timestamp": "1793950999502503000",
+      "message": "    raise CalledProcessError(retcode, process.args,"
+    },
+    {
+      "row": 14,
+      "timestamp": "1793950999502519000",
+      "message": "subprocess.CalledProcessError: Command '['git', 'rev-parse', 'HEAD']' returned non-zero exit status 128."
+    },
+    {
+      "row": 15,
+      "timestamp": "1793950999528063000",
+      "message": "ExitCode= 1"
+    }
+  ],
+  "limits": "One tail request with limit80 returned15 native rows including Git fatal, propagated traceback and ExitCode1. Parsed locally from original raw HTTP200 response; no second request.",
+  "returned_native_rows": 15,
+  "initiating_exception": {
+    "observed_native_fatal": "fatal: detected dubious ownership in repository at '/data/ycfeng/sota-engine/verl'",
+    "failed_command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "command_exit_code": 128,
+    "propagated_exception": "subprocess.CalledProcessError",
+    "worker_exit_code": 1,
+    "business_acceptance": "Actual inventory/value gate remains unverified. No retry/fix performed after user pause."
+  }
+}

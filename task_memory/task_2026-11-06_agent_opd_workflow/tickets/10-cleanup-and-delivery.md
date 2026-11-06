@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Complete the explicit pause cleanup without closing the incomplete full-workflow ticket. |
 | 2026-11-06 | Verify normal zero-GPU cleanup of the exact consumed old logs without permission changes. |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
 | 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
@@ -12,7 +13,7 @@
 
 **Blocked by:** 08: 第 20 步 GLM 的评测与学习结果; 09: 第 20 步 Qwen 的评测与学习结果.
 
-**Status:** pending — predecessor acceptance required.
+**Status:** in-progress / PAUSED. The user-requested pause cleanup is verified PASS; the full final-delivery ticket remains incomplete because08/09 acceptance is absent.
 
 - [ ] 最终依赖按确认范围核对；如某项被明确取消，记录决定与 skipped 状态，不计为通过。
 - [ ] 重读 requirements，逐项链接真实结论、精确命令、环境版本及限制；summary 使用 English。
@@ -23,3 +24,5 @@
 
 
 Daily cleanup completed independently of final ticket acceptance:0GPU exp-1106-145012-595571 / UIDef494491-785b-46ff-b40c-e5248eb9129a succeeded14:54:27HKT before launcher exit cleanup. Normal worker mount ownership deleted exactly28 consumed raw logs/1,360,048logicalbytes in four old Failed qualification roots; all52preflight entries and38available hashes passed. All28paths absent,24retained files/161,309bytes preserve size/mtime. No directories or permissions changed. Receipt evidence/consumed-qualification-logs-cleanup.json and platform identity evidence/consumed-qualification-logs-cleanup-platform.json. Physical reclaimed capacity is not verified; current model/data/run dependencies remain retained.
+
+Pause cleanup completed independently of final workflow acceptance: prescribed rjob_stop.sh stopped three active task jobs after exact personal-creator checks. The sole observers and launchers exited; no fresh20 or updated benchmark was submitted. Normal0GPU cleanup exp-1106-154737-250834 / UIDdde47c66-2903-4bce-9329-7792fc2fb296 completed exit0/platformSucceeded15:47:53HKT. It deleted45files/9,102,170,079logicalbytes and32emptydirectories (consumed qualification logs plus HF2 checkpoints), verified every candidate absent, and preserved892files/362,228,155B by size/mtime. Host cleanup deleted307files/7,691,530logicalbytes, including consumed smoke/regression/rendezvous/raw logs and fourignoredpyc files; all candidate paths are absent. Seven small command files and detailed cleanup manifests remain for review/continuation. Shared models, raw data and installed environment are retained. Physical reclaimed storage is not verified. Qualification03HF2 was intentionally retired before its final value gate; the task remains PAUSED/INCOMPLETE. See test_report_2026-11-06_pause_cleanup.md and evidence/user-pause-*.json.

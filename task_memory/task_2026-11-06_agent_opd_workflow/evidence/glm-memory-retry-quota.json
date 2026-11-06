@@ -1,0 +1,69 @@
+{
+  "collected_start_utc": "2026-11-06T07:25:24.782656+00:00",
+  "request_path": "/kapis/quota.brainpp.cn/v1alpha1/tenants/shai/projects/shai-core/quotagroups/shai:shai-core:codesign",
+  "scope": "One exact codesign quota GET only. No retries, job lists, node lists, business logs or controls.",
+  "immediately_schedulable_free_h800": "UNKNOWN",
+  "per_node_schedulable_memory": "UNKNOWN",
+  "http_status": 200,
+  "raw_response_path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/codesign-quota-pre-glm-memory-retry-20261106-1526.raw.json",
+  "raw_bytes": 11721,
+  "raw_sha256": "e7cd842c1b1a61e8f9f0522ae3441aad355e5dfd28e8afe9801332194d580d49",
+  "raw_mode": "0600",
+  "quota_id": "shai:shai-core:codesign",
+  "quota_name": "codesign",
+  "selected_fields": {
+    "data.quotagroup.totalQuota": {
+      "H800": "128",
+      "cpu": "3584",
+      "gpu": "128",
+      "memory": "34634616274944"
+    },
+    "data.quotagroup.chargedQuota": {
+      "H800": "0",
+      "cpu": "1365",
+      "gpu": "128",
+      "memory": "11373970980864"
+    },
+    "data.quotagroup.usedQuota": {
+      "H800": "0",
+      "cpu": "1365",
+      "gpu": "128",
+      "memory": "11373970980864"
+    },
+    "data.quotagroup.nonPreemptibleQuota": {
+      "H800": "0",
+      "cpu": "1365",
+      "gpu": "128",
+      "memory": "11373970980864"
+    },
+    "data.quotagroup.nonPreemptibleUsedQuota": {
+      "H800": "128",
+      "admissionCPU": "1365",
+      "admissionMemory": "11373970980864",
+      "cpu": "1365",
+      "gpu": "128",
+      "memory": "11373970980864"
+    },
+    "data.quotagroup.preemptibleQuota": {
+      "H800": "0",
+      "cpu": "0",
+      "gpu": "0",
+      "memory": "0"
+    },
+    "data.quotagroup.preemptibleUsedQuota": {
+      "H800": "0",
+      "cpu": "0",
+      "gpu": "0",
+      "memory": "0"
+    }
+  },
+  "queue_info": {
+    "codesign-default": {
+      "queueEnabled": true,
+      "highPriorityQueuePolicy": "best-util",
+      "standardPriorityQueuePolicy": "best-util",
+      "lowPriorityQueuePolicy": "best-util"
+    }
+  },
+  "collected_finish_utc": "2026-11-06T07:25:25.646438+00:00"
+}

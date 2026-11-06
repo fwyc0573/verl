@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Pause execution on user request and authorize cleanup of task-owned artifacts and smoke files. |
 | 2026-11-06 | Record the original-weight GLM head-precision hypothesis and normal-memory capacity qualification. |
 | 2026-11-06 | Record the actual Qwen old-logprob allocation failure and reuse its existing fused output configuration. |
 | 2026-11-06 | Resume execution and reserve the native teacher's extra scoring token after actual initialization failures. |
@@ -109,3 +110,9 @@ Qwen qualification exp-1106-143409-709386 reached native trainer old-logprob inf
 Actual GLM qualification exp-1106-144604-954702 has two independent failed gates: first-step three-way numerical MAEs exceed0.03, and native execution later fails under host/container memory pressure with no verified successful update. Do not treat the capacity repair as numerical acceptance. Use the existing SGLang enable_fp32_lm_head option for the GLM runtime and the existing Megatron model.use_fused_kernels option to test the specific hypothesis that avoiding BF16 output logits reduces head-rounding differences enough for the fixed numerical contract. Model operands remain BF16; the SGLang head emits FP32 full logits and the existing Megatron Triton head accumulates FP32 per-token logprobs/entropy. Their reduction order still differs. The shared current GLM inference kwargs apply to its student and frozen teacher. This changes output precision, not model weights, attention/MoE backend, data population, loss, optimizer, R3 or thresholds. The unchanged benchmark configuration remains a separate fixed comparison workload. If actual numerical acceptance still fails, this head-output precision change is insufficient; retain the failure and investigate actual remaining evidence rather than declaring a cause or lowering thresholds.
 
 For the next GLM qualification, keep2×8H800 and48CPU per replica but request --memory-gb1000 (platform1000000Mi/replica). Actual previous limit629145600000B was reached; the actual header-derived decoder29,943,393,920 parameters imply an approximate CPU model/master/Adam state capacity423,528,163,328B before SGLang/cache/export overhead. The evidence-backed normal-memory candidate range is800–1000; select its upper end without disabling Ray protection or offload. The new limit1048576000000B/95%threshold996147200000B is a capacity qualification candidate, not proof of sufficient peak memory or schedulability. Do not resume interrupted weights; reload the pinned original student.
+
+## User-requested pause and cleanup
+
+[Original Request] 当前任务暂时暂停清理已有的产物和smoke等文件，避免占用磁盘空间。
+
+Pause the training/evaluation workflow, submit no further learning or qualification attempts, stop current task-owned jobs through the prescribed creator-checked script, and clean task-owned temporary artifacts, smoke outputs and caches. Preserve reusable tracked code, compact evidence and restart instructions, shared original models/data/environment, and existing valid benchmark grading records needed for missing-only continuation. Cleanup may remove the qualification HF2 weights before the pending value/scope gate completes; record that the gate remains unverified and requires a new actual export after resume. No full-workflow completion is implied. A normal zero-GPU job may perform this authorized cleanup through the canonical cloud mount; it is not a training resume.

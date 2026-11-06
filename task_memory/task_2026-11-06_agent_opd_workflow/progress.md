@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Pause the workflow, stop active task jobs, and clean task-owned artifacts on user request. |
 | 2026-11-06 | Prepare bounded GLM head precision and normal-memory qualification from actual failure evidence. |
 | 2026-11-06 | Verify native Qwen fused configuration and exact consumed-log cleanup; preserve GPU acceptance gates. |
 | 2026-11-06 | Resume from actual native initialization failures and partial original-benchmark scores. |
@@ -901,3 +902,79 @@ Normal memory nextcandidate1000000Mi perreplica (--memory-gb1000), same2×8H800/
 1. 普通memory修复不能替代数值验收；FP32head目前是假设，不能预宣首因已修复。
 2. 两端都是BF16模型操作数和FP32head输出/累计，但计算tile与归约顺序仍不同，GPU实测不可省略。
 3. 保留所有原始权重/输入/标准与并行健康作业；本轮没有任何成功更新、HF2或完整workflow通过结论。
+
+## User pause and cleanup — 2026-11-06 15:45 HKT
+
+- **in-progress, cleanup only:** user requested a temporary pause and cleanup to avoid disk use. All fresh20/qualification/benchmark submissions and fixes are suspended. Normal0GPU cleanup is allowed solely to remove task-owned files through the existing canonical cloud mount.
+- **completed, native Qwen observations:** exp-1106-150433-589683 completed2 actual updates and numerical PASS at versions0/1; selected business/platform evidence is retained under evidence/qwen-fused-qualification-*.json. Full export scope/changed-value gate remains unverified. Original738/export723 headers and48F32→BF16 differences have a pinned native MTP/dtype explanation, but the actual complete sets/value witness were not accepted.
+- **completed, stop request:** exact4-job personal identities were refreshed at15:44:19HKT (pause-active-job-identities-20261106-1544.json). The first prescribed stop invocation failed its first API read with SSL EOF and performed no action. Restoring the explicit runbook proxy environment and retrying the same prescribed rjob_stop.sh succeeded15:45:09HKT: GLM153147 Pending and two originals030308/033246 Running each received stopped; HF2 0GPU153941 was already-ended Failed. Actual final platform/container states are pending the sole observer. No deletion or new training followed the first failed API request.
+- **pending, cleanup:** cloud read-only size scan found qualification9,105,079,689B (dominated by HF2 two weights9,078,620,224B); original benchmark trees278,027,585B and prepared input trees81,290,960B. Delete only exact completed qualification checkpoints/consumed raw logs and host task temporary/smoke/cache files after manifest preflight. Preserve benchmark valid results, source inputs and compact task evidence for continuation. Logical removal and physical reclaimed space will be distinguished.
+- **pending, verification limitation:** HF2 validation exp-1106-153941-344108 actually Failed exit1 at15:43:19 before this pause stop action; retain the finite error record, do not retry or claim weight-change PASS. Cleanup intentionally retires HF2 so qualification03 cannot be closed from the remaining receipts alone.
+
+### Next actions after an explicit resume
+
+1. Read requirements/plan/progress and actual retained evidence; re-establish the pending Qwen export scope/value gate using the pinned native MTP and dtype contract. Never count a load/export cast or zero-centered norm roundtrip as learning.
+2. Re-query exact stopped benchmark identities and valid grader slots; use unchanged original commands/output roots for missing-only continuation, preserving valid outcomes and all historical failures.
+3. Re-submit the prepared original-weight GLM precision/capacity qualification only after user resumes execution; do not resume interrupted weights or relax MAE. Release each fresh20 only after its same-model qualification passes.
+
+### Verified pause cleanup — 2026-11-06 15:51 HKT
+
+- **completed:** all three active GPU jobs are platformStopped (GLMqualification15:45:09, Qwenoriginal15:45:43, GLMoriginal15:45:45); creator/UID match, no further training was submitted. Original replica phaseStopped but their containerStatus fields retain stale running snapshots; exact container exit times remain unobserved. Known launchers91966/41495/30922 returned terminal stopped and exit0. All sole observers exited.
+- **completed:** HF2 validation failure is git dubious ownership at the initial source-commit read (gitrev-parse returned128), before tensor inventory/value verification. No repair/retry was performed after the pause. The native two-update/numerical PASS receipts remain separate from this unverified export gate.
+- **completed:** normal0GPU cleanup exp-1106-154737-250834 completed actual container15:47:44–15:47:50exit0/platformSucceeded15:47:53. Exact9qualification terminal/creator preflight passed;45files/9,102,170,079B and32directories removed, all candidates absent;892retainedfiles/362,228,155B preserve size/mtime. The two9,078,620,224B HF2 shards were retired before value acceptance. evidence/user-pause-cloud-cleanup.json and -platform.json retain compact proof.
+- **completed:** host cleanup phase1 removed180files/2,315,871B, phase2 removed127files/5,375,659B; combined307files/7,691,530B. The first unprivileged deletion failed on its first root-owned file with zero deletions; the identical manifest/preflight used existing passwordless local sudo, with no chmod/chown. Selected durable evidence hashes were verified before removing duplicate/raw downloads and disposable smoke/repair scripts. All exact paths absent. Seven small command scripts and detailed audit manifests remain, not model weights/cache. Shared original models/data/environment and unrelated .serena are untouched. Physical reclaimed capacity is unverified.
+- **retained source findings, not actual scope acceptance:** pinnedBridge0.6.2 Qwen35 dense MTP maps15top-level mtp.* tensors (qwen35_bridge.py572–623); disabled provider has no actual MTP export tasks. GDN A_log/norm native params use actor BF16 and load/export do not restore original per-tensor dtype; norm also performs zero-centered load−1/export+1. Exact missing-set/dtype-set checks and a direct-mapped same-BF16 value witness remain required after resume. Do not change strict20 to accept2 or count casting/norm roundtrips as learning.
+
+## 1. 规划完成情况
+
+**汇总：** PASS 1｜BLOCKED/FAILED/SKIPPED 4｜TODO 5
+
+| 子任务 | 状态 | 简要依据 |
+| --- | --- | --- |
+| 01 | PASS | Native runtime、80/8inputs和冻结配置此前已验证，前提保留 |
+| 02 | TODO | 用户暂停；新GLM资格在Pending时Stopped，旧数值/内存FAIL仍保留 |
+| 03 | TODO | 两更新/数值已PASS；scope/value未验收且HF2按要求清理 |
+| 04、05 | BLOCKED | 同模型qualification未完成；fresh20均未提交 |
+| 06、07 | TODO | 用户暂停后Stopped，部分有效grader产物保留 |
+| 08、09 | BLOCKED | 尚无verified20export，不具备更新后scoring前提 |
+| 10 | TODO | 本轮暂停清理PASS，完整workflow交付仍需前序验收 |
+
+## 2. 偏离检测
+
+**结论：** 未偏移，正常推进。
+**检测窗口：** 上次GLMprecision/capacity配置自检至用户暂停与本轮清理完成｜**当前前沿：** 暂停、清理、记录和push；训练评测等待用户恢复
+
+| 模式 | 判定 | 依据 |
+| --- | --- | --- |
+| D1 工具打磨 | CLEAR | 仅为用户明确要求的清理写精确manifest和实际删除检查，结束后停止 |
+| D2 细节反复重试 | CLEAR | HF2首错归档后不重试；stop网络与删除权限各有明确原因，仅按同机制恢复一次 |
+| D3 支线问题修补 | CLEAR | 无新增模型/环境修复；只做暂停与磁盘清理 |
+| D4 可并行任务停滞 | CLEAR | 暂停由用户明确要求，独立云/本地清理并行完成 |
+| D5 超范围镀金 | CLEAR | 没有改训练算法/导出schema/阈值，也未新增训练 |
+| D6 分析空转 | CLEAR | 终态与精确manifest直接用于停止、删除、复核 |
+| D7 路线违背 | CLEAR | 当前执行范围按用户最新暂停指令收缩，未把局部PASS升级完整验收 |
+
+**文档检查：** S5：plan/tickets/summary原有Running与待提交状态已按actualStopped/retiredHF2更新；S1/S2/S3/S4/S6无新缺陷。
+**归因：** 无执行HIT；S5由用户暂停及新终态引起，已同步。
+
+## 3. 纠正建议
+
+**分支：** B：spec/tickets存在缺陷，先更新文档再继续。
+
+**文档更新（先执行）：**
+1. requirements/plan/02/03/06/07/10/progress/summary：记录用户暂停、实际终态、HF2retired及待恢复前沿（可直接执行，已应用）。
+2. pause_cleanup测试报告和selectedevidence：记录实际删除/保留、首错、缺失复核与物理回收限制（可直接执行，已应用）。
+
+**需停止的偏离行为：** 无；全部训练/评测/持续observer已按指令停止。
+
+**接下去的路线：**
+1. 完成精简暂停记录的diff/JSON检查、普通commit/push并核对个人远端SHA → 完成标志：记录和已验证代码在agent-opd可审阅。
+2. 保持PAUSED；恢复前不得重新提交qualification/fresh20/benchmark → 完成标志：等待用户明确恢复指令。
+
+## 4. 最值得关注的 3 点
+
+1. 云端已删除约9.10GB逻辑文件，本地约7.69MB；不宣称底层物理空间已回收。
+2. Qwen数值/两更新PASS保持，但HF2已清理，scope/value不能凭剩余receipt关单。
+3. 部分有效benchmark和冻结输入保留，恢复时只补missing；完整20更新/320有效评分仍未完成。
+
+Final independent verification: a new post-terminal read-only cloud-alias metadata check verified all45deleted paths and all10target directories absent, and all892retained files unchanged in size/mtime against manifestSHA762db69e…. An independent host metadata pass verified307deleted paths absent, zero remaining ignoredpyc in the task's source, alltaskevidenceJSON parsed, and7retainedcommand files totaling18,106B. See evidence/user-pause-independent-verification.json. No continuous processes or further workloads were started. gitdiff--check passed before publication; task remainsPAUSED/INCOMPLETE.

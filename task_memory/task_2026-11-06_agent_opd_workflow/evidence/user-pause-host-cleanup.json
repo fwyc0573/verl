@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "deleted_count": 307,
+  "deleted_logical_bytes": 7691530,
+  "all_candidate_paths_absent": true,
+  "permissions_changed": false,
+  "shared_models_or_environment_touched": false,
+  "physical_reclaimed_bytes_verified": false,
+  "phases": [
+    {
+      "status": "PASS",
+      "scope": "Exact nontracked task runtime/regression/rendezvous/cache manifest files; downloads/commands retained for the remaining cleanup consumers",
+      "manifest_sha256": "46d481c544e4f33e3e7222501b90250a0c368703a5ab781e236cd77da49e0582",
+      "deleted_count": 180,
+      "deleted_logical_bytes": 2315871,
+      "deleted_allocated_bytes_before": 2822144,
+      "all_candidate_paths_absent": true,
+      "removed_directory_count": 24,
+      "shared_models_or_environment_touched": false,
+      "permissions_changed": false,
+      "physical_reclaimed_bytes_verified": false,
+      "first_unprivileged_attempt": "PermissionError on the first root-owned file; zero deleted. The identical preflight/deletion uses passwordless local sudo without changing permissions.",
+      "completed_at_utc": "2026-11-06T07:49:21.506341+00:00"
+    },
+    {
+      "status": "PASS",
+      "deleted_count": 127,
+      "deleted_logical_bytes": 5375659,
+      "all_candidate_paths_absent": true,
+      "removed_directory_count": 2,
+      "manifest_sha256": "536e9cfdd5b4592f27a350879679338275721585aa99289a291222f572f1b4d3",
+      "durable_selected_evidence_hashes_verified": true,
+      "retained_commands": [
+        "benchmark-original-glm.sh",
+        "benchmark-original-qwen.sh",
+        "learning20-glm.sh",
+        "learning20-qwen.sh",
+        "pause-cleanup-cloud.sh",
+        "qualification-glm.sh",
+        "qualification-qwen.sh"
+      ],
+      "permissions_changed": false,
+      "shared_models_or_environment_touched": false,
+      "physical_reclaimed_bytes_verified": false,
+      "completed_at_utc": "2026-11-06T07:50:32.298761+00:00"
+    }
+  ],
+  "detailed_manifest_directory": "/data/ycfeng/tmp/verl-agent-opd-cleanup-audit-20261106",
+  "completed_at_utc": "2026-11-06T07:52:05.894240+00:00"
+}

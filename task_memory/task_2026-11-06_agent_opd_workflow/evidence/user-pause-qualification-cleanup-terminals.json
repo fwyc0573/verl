@@ -1,0 +1,107 @@
+{
+  "collected_start_utc": "2026-11-06T07:46:36.132562+00:00",
+  "scope": "User-requested pause cleanup preflight: exact nine previously known qualifications, selected identity and terminal fields only, no controls/replicas/logs/events/retries.",
+  "jobs": [
+    {
+      "name": "exp-1106-030133-940211",
+      "uid": "b6976435-4e8a-4099-8777-800a18db25a1",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T00:24:12Z",
+      "uid_matches": true,
+      "creator_matches": true,
+      "terminal": true,
+      "collected_at": "2026-11-06T07:46:36.147641+00:00"
+    },
+    {
+      "name": "exp-1106-033627-955641",
+      "uid": "9ad17773-2d4e-4b21-8dc2-2150ab8a6f85",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T00:04:37Z",
+      "uid_matches": true,
+      "creator_matches": true,
+      "terminal": true,
+      "collected_at": "2026-11-06T07:46:36.153747+00:00"
+    },
+    {
+      "name": "exp-1106-134352-384471",
+      "uid": "66f0521c-831e-4336-abba-6a1dfeae74bd",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T05:58:28Z",
+      "uid_matches": true,
+      "creator_matches": true,
+      "terminal": true,
+      "collected_at": "2026-11-06T07:46:36.210472+00:00"
+    },
+    {
+      "name": "exp-1106-134403-815066",
+      "uid": "41b7cae1-d62e-4624-bfb1-cd5839d4617e",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T06:02:46Z",
+      "uid_matches": true,
+      "creator_matches": true,
+      "terminal": true,
+      "collected_at": "2026-11-06T07:46:36.218032+00:00"
+    },
+    {
+      "name": "exp-1106-140852-369748",
+      "uid": "b20d2692-2e74-4b68-a2b2-6b3cd0e29cb4",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T06:35:11Z",
+      "uid_matches": true,
+      "creator_matches": true,
+      "terminal": true,
+      "collected_at": "2026-11-06T07:46:36.224538+00:00"
+    },
+    {
+      "name": "exp-1106-140853-397005",
+      "uid": "f400952c-ee74-4b55-8f2b-26828705a417",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T06:22:07Z",
+      "uid_matches": true,
+      "creator_matches": true,
+      "terminal": true,
+      "collected_at": "2026-11-06T07:46:36.231411+00:00"
+    },
+    {
+      "name": "exp-1106-143409-709386",
+      "uid": "a0ed2fa1-9007-4456-8196-f24c148be472",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T06:47:59Z",
+      "uid_matches": true,
+      "creator_matches": true,
+      "terminal": true,
+      "collected_at": "2026-11-06T07:46:36.238197+00:00"
+    },
+    {
+      "name": "exp-1106-144604-954702",
+      "uid": "731dd5f3-f5db-485b-a8e3-ba8879043933",
+      "creator": "i-fengyicheng",
+      "phase": "Failed",
+      "finish_time": "2026-11-06T07:12:38Z",
+      "uid_matches": true,
+      "creator_matches": true,
+      "terminal": true,
+      "collected_at": "2026-11-06T07:46:36.251029+00:00"
+    },
+    {
+      "name": "exp-1106-150433-589683",
+      "uid": "d44e6e31-fe09-47f6-8be6-5dbf0d233a6d",
+      "creator": "i-fengyicheng",
+      "phase": "Succeeded",
+      "finish_time": "2026-11-06T07:31:19Z",
+      "uid_matches": true,
+      "creator_matches": true,
+      "terminal": true,
+      "collected_at": "2026-11-06T07:46:36.284009+00:00"
+    }
+  ],
+  "collected_finish_utc": "2026-11-06T07:46:36.286520+00:00",
+  "all_matched_personal_terminal": true
+}

@@ -1,0 +1,173 @@
+{
+  "original": {
+    "path": "/mnt/codesign-exp/ycfeng/opd-assets/models/Qwen/Qwen3.5-4B/851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+    "shards": [
+      {
+        "name": "model.safetensors-00001-of-00002.safetensors",
+        "bytes": 5329398688,
+        "header_bytes": 11160,
+        "header_sha256": "f46b4aa8c303583fedfb3780fd2a3b981300ee9cad9bc624999bac343e799fd7",
+        "tensor_count": 87
+      },
+      {
+        "name": "model.safetensors-00002-of-00002.safetensors",
+        "bytes": 3990429408,
+        "header_bytes": 79064,
+        "header_sha256": "270d6faae3bc0e1642498e5ef12d222429a666c781022fb891302e42361b9d66",
+        "tensor_count": 651
+      }
+    ],
+    "tensor_count": 738,
+    "tensor_dtype_counts": {
+      "BF16": 690,
+      "F32": 48
+    },
+    "tensor_elements_by_dtype": {
+      "BF16": 4659861248,
+      "F32": 3840
+    }
+  },
+  "export": {
+    "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-150433-589683/checkpoints/global_step_2/actor/model/huggingface",
+    "shards": [
+      {
+        "name": "model.safetensors-00001-of-00002.safetensors",
+        "bytes": 5187840592,
+        "header_bytes": 10824,
+        "header_sha256": "979a1747d1a68880ceac4bf0eaccd89ef6c1d5db41ba58e923d80bba4898c534",
+        "tensor_count": 84
+      },
+      {
+        "name": "model.safetensors-00002-of-00002.safetensors",
+        "bytes": 3890779632,
+        "header_bytes": 78312,
+        "header_sha256": "e26a8bbc7e28d8b2c91b1502392311eaa852c83481d0fcfed16d3134c379d321",
+        "tensor_count": 639
+      }
+    ],
+    "tensor_count": 723,
+    "tensor_dtype_counts": {
+      "BF16": 723
+    },
+    "tensor_elements_by_dtype": {
+      "BF16": 4539265536
+    }
+  },
+  "comparison": {
+    "same_tensor_names": false,
+    "original_only_count": 15,
+    "export_only_count": 0,
+    "shape_mismatch_count": 0,
+    "dtype_mismatch_count": 48,
+    "dtype_mismatch_examples": [
+      {
+        "name": "model.language_model.layers.0.linear_attn.A_log",
+        "original": "F32",
+        "export": "BF16"
+      },
+      {
+        "name": "model.language_model.layers.0.linear_attn.norm.weight",
+        "original": "F32",
+        "export": "BF16"
+      },
+      {
+        "name": "model.language_model.layers.1.linear_attn.A_log",
+        "original": "F32",
+        "export": "BF16"
+      },
+      {
+        "name": "model.language_model.layers.1.linear_attn.norm.weight",
+        "original": "F32",
+        "export": "BF16"
+      },
+      {
+        "name": "model.language_model.layers.10.linear_attn.A_log",
+        "original": "F32",
+        "export": "BF16"
+      },
+      {
+        "name": "model.language_model.layers.10.linear_attn.norm.weight",
+        "original": "F32",
+        "export": "BF16"
+      },
+      {
+        "name": "model.language_model.layers.12.linear_attn.A_log",
+        "original": "F32",
+        "export": "BF16"
+      },
+      {
+        "name": "model.language_model.layers.12.linear_attn.norm.weight",
+        "original": "F32",
+        "export": "BF16"
+      },
+      {
+        "name": "model.language_model.layers.13.linear_attn.A_log",
+        "original": "F32",
+        "export": "BF16"
+      },
+      {
+        "name": "model.language_model.layers.13.linear_attn.norm.weight",
+        "original": "F32",
+        "export": "BF16"
+      },
+      {
+        "name": "model.language_model.layers.14.linear_attn.A_log",
+        "original": "F32",
+        "export": "BF16"
+      },
+      {
+        "name": "model.language_model.layers.14.linear_attn.norm.weight",
+        "original": "F32",
+        "export": "BF16"
+      }
+    ]
+  },
+  "native_manifest": {
+    "path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-150433-589683/checkpoints/global_step_2/actor/ckpt_contents.json",
+    "sha256": "6e6f68fb998edf1c5966728d8d218d9ed4db76a95b380094e1bd77a22d487dac",
+    "contents": {
+      "arch": "Qwen3_5ForConditionalGeneration",
+      "backend": {
+        "has_bridge": true,
+        "peft": false,
+        "use_dist_checkpointing": false
+      },
+      "contents": {
+        "hf_config": {
+          "format": "huggingface",
+          "note": "config.json, tokenizer, and optional generation_config.json",
+          "path": "model/huggingface"
+        },
+        "hf_model": {
+          "format": "huggingface",
+          "note": [
+            "deduplicated with 'model' on the HF path"
+          ],
+          "path": "model/huggingface"
+        },
+        "model": {
+          "backend": "megatron-bridge",
+          "format": "huggingface",
+          "path": "model/huggingface"
+        },
+        "tokenizer": {
+          "format": "huggingface",
+          "path": "model/huggingface"
+        }
+      },
+      "directories": {
+        "model/huggingface": "HuggingFace-format artifacts written via Megatron-Bridge: model weights, config.json, tokenizer files, and optional generation_config.json."
+      },
+      "framework": "megatron",
+      "global_step": 2,
+      "role": "actor",
+      "save_contents": [
+        "hf_model"
+      ],
+      "saved_any_dist_ckpt": false,
+      "schema_version": 2,
+      "world_size": 4
+    }
+  },
+  "verification_scope": "One completed read-only safetensors header inspection before root assigned exclusive canonical-worker tensor verification; no tensor values were read. Further tensor verification belongs to root."
+}

@@ -1,0 +1,317 @@
+{
+  "collected_at": "2026-11-06T07:45:49.869915+00:00",
+  "jobs": [
+    {
+      "name": "exp-1106-030308-839669",
+      "uid": "f74fa974-ea86-4149-a823-3276ce493f8b",
+      "creator": "i-fengyicheng",
+      "status": {
+        "phase": "Stopped",
+        "reason": "RJobStopped",
+        "message": "RJob stopped",
+        "taskStatuses": {
+          "default": {
+            "stopped": 1,
+            "taskStage": "stepmind-task-stage-1"
+          }
+        },
+        "finishTime": "2026-11-06T07:45:45Z",
+        "taskStage": "stepmind-task-stage-1"
+      },
+      "stop_annotations": {
+        "kubebrain.brainpp.cn/stopped-by": "i-fengyicheng"
+      }
+    },
+    {
+      "name": "exp-1106-033246-436787",
+      "uid": "f5c97c61-7868-44f6-8a74-34ab529bd6b2",
+      "creator": "i-fengyicheng",
+      "status": {
+        "phase": "Stopped",
+        "reason": "RJobStopped",
+        "message": "RJob stopped",
+        "taskStatuses": {
+          "default": {
+            "stopped": 1,
+            "taskStage": "stepmind-task-stage-1"
+          }
+        },
+        "finishTime": "2026-11-06T07:45:43Z",
+        "taskStage": "stepmind-task-stage-1"
+      },
+      "stop_annotations": {
+        "kubebrain.brainpp.cn/stopped-by": "i-fengyicheng"
+      }
+    },
+    {
+      "name": "exp-1106-153147-652892",
+      "uid": "332f73f8-2857-4fc9-9d3f-6bdce58ca743",
+      "creator": "i-fengyicheng",
+      "status": {
+        "phase": "Stopped",
+        "reason": "RJobStopped",
+        "message": "RJob stopped",
+        "taskStatuses": {
+          "default": {
+            "taskStage": "stepmind-task-stage-1"
+          }
+        },
+        "finishTime": "2026-11-06T07:45:09Z",
+        "taskStage": "stepmind-task-stage-1"
+      },
+      "stop_annotations": {
+        "kubebrain.brainpp.cn/stopped-by": "i-fengyicheng"
+      }
+    },
+    {
+      "name": "exp-1106-153941-344108",
+      "uid": "a4eec0c0-4129-47c7-93ab-91aea9aabae4",
+      "creator": "i-fengyicheng",
+      "status": {
+        "phase": "Failed",
+        "reason": "RJobFailed",
+        "message": "Tasks with failed status: [default]",
+        "taskStatuses": {
+          "default": {
+            "failed": 1,
+            "taskStage": "stepmind-task-stage-1"
+          }
+        },
+        "finishTime": "2026-11-06T07:43:24Z",
+        "taskStage": "stepmind-task-stage-1"
+      },
+      "stop_annotations": {
+        "rjob.brainpp.cn/system-stop-reason": "Some critical tasks failed."
+      }
+    }
+  ],
+  "replicas": [
+    {
+      "name": "exp-1106-153941-344108-cfcd2084",
+      "uid": "34da2755-a33e-4c87-b88a-393558e9acef",
+      "creator": "i-fengyicheng",
+      "owners": [
+        {
+          "apiVersion": "rjob.brainpp.cn/v1alpha1",
+          "kind": "RJob",
+          "name": "exp-1106-153941-344108",
+          "uid": "a4eec0c0-4129-47c7-93ab-91aea9aabae4",
+          "controller": true,
+          "blockOwnerDeletion": true
+        }
+      ],
+      "status": {
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-06T07:39:46Z"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-06T07:43:23Z",
+            "reason": "PodFailed"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-06T07:43:23Z",
+            "reason": "PodFailed"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-06T07:39:46Z"
+          }
+        ],
+        "hostIP": "10.191.24.20",
+        "podIP": "10.191.24.20",
+        "podIPs": [
+          {
+            "ip": "10.191.24.20"
+          }
+        ],
+        "startTime": "2026-11-06T07:39:46Z",
+        "containerStatuses": [
+          {
+            "name": "default",
+            "state": {
+              "terminated": {
+                "exitCode": 1,
+                "reason": "Error",
+                "message": "user command: exit status 1",
+                "startedAt": "2026-11-06T07:43:18Z",
+                "finishedAt": "2026-11-06T07:43:19Z",
+                "containerID": "containerd://a02ffc521bdb7b9d298727bda232e026627819a0d00d66a663bcf12f4677bf05"
+              }
+            },
+            "lastState": {},
+            "ready": false,
+            "restartCount": 0,
+            "image": "sha256:3eae996c8f0d4383bda9cc9448dd445eb960f253ac7d3e4cb4f0c6465cb706ae",
+            "imageID": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+            "containerID": "containerd://a02ffc521bdb7b9d298727bda232e026627819a0d00d66a663bcf12f4677bf05",
+            "started": false
+          }
+        ],
+        "qosClass": "Guaranteed",
+        "phase": "Failed",
+        "nodeName": "gpu-h800-0582.host.platform.shaipower.com",
+        "finishTimestamp": "2026-11-06T07:43:24Z"
+      }
+    },
+    {
+      "name": "exp-1106-033246-436787-cfcd2084",
+      "uid": "d739fa38-80e0-4d62-9173-86c91f6367e0",
+      "creator": "i-fengyicheng",
+      "owners": [
+        {
+          "apiVersion": "rjob.brainpp.cn/v1alpha1",
+          "kind": "RJob",
+          "name": "exp-1106-033246-436787",
+          "uid": "f5c97c61-7868-44f6-8a74-34ab529bd6b2",
+          "controller": true,
+          "blockOwnerDeletion": true
+        }
+      ],
+      "status": {
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-05T22:31:58Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-05T22:32:03Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-05T22:32:03Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-05T22:31:51Z"
+          }
+        ],
+        "hostIP": "10.191.5.7",
+        "podIP": "10.191.5.7",
+        "podIPs": [
+          {
+            "ip": "10.191.5.7"
+          }
+        ],
+        "startTime": "2026-11-05T22:31:58Z",
+        "containerStatuses": [
+          {
+            "name": "default",
+            "state": {
+              "running": {
+                "startedAt": "2026-11-05T22:32:03Z"
+              }
+            },
+            "lastState": {},
+            "ready": true,
+            "restartCount": 0,
+            "image": "sha256:3eae996c8f0d4383bda9cc9448dd445eb960f253ac7d3e4cb4f0c6465cb706ae",
+            "imageID": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+            "containerID": "containerd://8fa1893214cc531731874923429ff8f7c51683cb3d9ad216c018aa05ae9f2a97",
+            "started": true
+          }
+        ],
+        "qosClass": "Guaranteed",
+        "phase": "Stopped",
+        "nodeName": "gpu-h800-0057.host.platform.shaipower.com",
+        "finishTimestamp": "2026-11-06T07:45:42Z"
+      }
+    },
+    {
+      "name": "exp-1106-030308-839669-cfcd2084",
+      "uid": "a5e4115b-f952-4ced-8546-1fd18db7f3ed",
+      "creator": "i-fengyicheng",
+      "owners": [
+        {
+          "apiVersion": "rjob.brainpp.cn/v1alpha1",
+          "kind": "RJob",
+          "name": "exp-1106-030308-839669",
+          "uid": "f74fa974-ea86-4149-a823-3276ce493f8b",
+          "controller": true,
+          "blockOwnerDeletion": true
+        }
+      ],
+      "status": {
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-05T22:29:42Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-05T22:32:44Z"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-05T22:32:44Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-05T22:29:42Z"
+          }
+        ],
+        "hostIP": "10.191.7.40",
+        "podIP": "10.191.7.40",
+        "podIPs": [
+          {
+            "ip": "10.191.7.40"
+          }
+        ],
+        "startTime": "2026-11-05T22:29:42Z",
+        "containerStatuses": [
+          {
+            "name": "default",
+            "state": {
+              "running": {
+                "startedAt": "2026-11-05T22:32:43Z"
+              }
+            },
+            "lastState": {},
+            "ready": true,
+            "restartCount": 0,
+            "image": "sha256:3eae996c8f0d4383bda9cc9448dd445eb960f253ac7d3e4cb4f0c6465cb706ae",
+            "imageID": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+            "containerID": "containerd://b4df82232cd5b0dd349a5ddba17a0ccf6aa76539a61fb3d9e1adfc5535adf750",
+            "started": true
+          }
+        ],
+        "qosClass": "Guaranteed",
+        "phase": "Stopped",
+        "nodeName": "gpu-h800-0285.host.platform.shaipower.com",
+        "finishTimestamp": "2026-11-06T07:45:44Z"
+      }
+    }
+  ],
+  "replica_error": null,
+  "replica_list_pagination_more": false,
+  "scope": "User-requested pause terminal confirmation from sole watcher; observer exited0 naturally after all four exact jobs terminal. No GPU/job controls by observer.",
+  "container_state_limit": "Two original replicas are Stopped while their containerStatuses retain an earlier running snapshot. No actual container finish/exitcode inferred."
+}

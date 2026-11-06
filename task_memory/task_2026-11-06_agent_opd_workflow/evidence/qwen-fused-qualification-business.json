@@ -1,0 +1,612 @@
+{
+  "status": "PASS_NATIVE_NUMERICS_UPDATES_AND_EXPORT_METADATA",
+  "job": "exp-1106-150433-589683",
+  "observed_at_utc": "2026-11-06T07:36:13.037900+00:00",
+  "source_commit": "8e776dcfcaf2a9b7736d2781195c0f291833027a",
+  "recipe_sha256": "6e31d07a803d670a2e17feaae079e61023a44bd0e337dcc8dd187fa81315b41d",
+  "canonical_run_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-150433-589683",
+  "training_receipt": {
+    "sha256": "9c917e15140fcefd4c7dc0d145dc96e7969dfa7193ebb71212608e2ff22da291",
+    "bytes": 2133,
+    "contents": {
+      "requested_updates": 2,
+      "actor_update_call_count": 2,
+      "completed_updates": 2,
+      "update_outcomes": [
+        {
+          "training_step": 1,
+          "native_update_returned": true,
+          "optimizer_steps_verified": 1,
+          "finite_grad_loss": true,
+          "positive_grad_norm": true,
+          "loss_values": [
+            0.03607659041881561
+          ],
+          "grad_norm_values": [
+            21.638803482055664
+          ],
+          "status": "verified"
+        },
+        {
+          "training_step": 2,
+          "native_update_returned": true,
+          "optimizer_steps_verified": 1,
+          "finite_grad_loss": true,
+          "positive_grad_norm": true,
+          "loss_values": [
+            0.11154770851135254
+          ],
+          "grad_norm_values": [
+            41.86216354370117
+          ],
+          "status": "verified"
+        }
+      ],
+      "native_megatron_optimizer_success_contract": {
+        "source": "verl/workers/engine/megatron/transformer_impl.py:MegatronEngine.optimizer_step",
+        "success_condition": "Megatron optimizer.step update_successful=False raises before returning",
+        "iteration_source": "verl/workers/engine_workers.py:TrainingWorker.train_mini_batch",
+        "one_optimizer_step_per_call": true
+      },
+      "native_fit_returned": true,
+      "last_native_checkpoint_step": 2,
+      "final_export": {
+        "completed_updates": 2,
+        "training_step": 2,
+        "model_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-150433-589683/checkpoints/global_step_2/actor/model/huggingface",
+        "native_manifest_path": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/qualification/exp-1106-150433-589683/checkpoints/global_step_2/actor/ckpt_contents.json",
+        "native_manifest_global_step": 2,
+        "native_manifest_sha256": "6e6f68fb998edf1c5966728d8d218d9ed4db76a95b380094e1bd77a22d487dac",
+        "weight_files": [
+          {
+            "name": "model.safetensors-00001-of-00002.safetensors",
+            "bytes": 5187840592
+          },
+          {
+            "name": "model.safetensors-00002-of-00002.safetensors",
+            "bytes": 3890779632
+          }
+        ],
+        "weight_total_bytes": 9078620224,
+        "new_process_reload_verified": false,
+        "weight_change_verified": false
+      }
+    }
+  },
+  "native_manifest": {
+    "sha256": "6e6f68fb998edf1c5966728d8d218d9ed4db76a95b380094e1bd77a22d487dac",
+    "bytes": 1086,
+    "contents": {
+      "arch": "Qwen3_5ForConditionalGeneration",
+      "backend": {
+        "has_bridge": true,
+        "peft": false,
+        "use_dist_checkpointing": false
+      },
+      "contents": {
+        "hf_config": {
+          "format": "huggingface",
+          "note": "config.json, tokenizer, and optional generation_config.json",
+          "path": "model/huggingface"
+        },
+        "hf_model": {
+          "format": "huggingface",
+          "note": [
+            "deduplicated with 'model' on the HF path"
+          ],
+          "path": "model/huggingface"
+        },
+        "model": {
+          "backend": "megatron-bridge",
+          "format": "huggingface",
+          "path": "model/huggingface"
+        },
+        "tokenizer": {
+          "format": "huggingface",
+          "path": "model/huggingface"
+        }
+      },
+      "directories": {
+        "model/huggingface": "HuggingFace-format artifacts written via Megatron-Bridge: model weights, config.json, tokenizer files, and optional generation_config.json."
+      },
+      "framework": "megatron",
+      "global_step": 2,
+      "role": "actor",
+      "save_contents": [
+        "hf_model"
+      ],
+      "saved_any_dist_ckpt": false,
+      "schema_version": 2,
+      "world_size": 4
+    }
+  },
+  "aggregate_snapshot": {
+    "sha256": "8fe09ca87eca497ece2205e0dc5ce55662001d1a651948d5bbf97dfed5e93d42",
+    "bytes": 164348,
+    "turn_status_counts": {
+      "pass": 8
+    },
+    "numerical_limits": {
+      "mean_abs_diff": 0.03
+    },
+    "probability_definition": "raw_model_logprob",
+    "all_loss_eligible_tokens_before_tis": true,
+    "steps": {
+      "1": {
+        "turn_count": 4,
+        "comparisons": {
+          "decode_vs_prefill": {
+            "status": "pass",
+            "verified_turn_count": 4,
+            "unverified_turn_count": 0,
+            "expected_input_count": 4,
+            "observed_input_count": 4,
+            "token_count": 9554,
+            "global_token_mean_abs_diff": 0.004530018337807991,
+            "native_pack_boundary_observed": false,
+            "native_pack_mean_abs_diff": null,
+            "native_pack_mean_abs_diff_upper_bound": 0.009143066812914389,
+            "native_pack_acceptance": "proven_bounded",
+            "whole_input_packs": true,
+            "failed_input_count": 0,
+            "metrics_identity": {
+              "status": "pass",
+              "token_ids_match": true,
+              "versions_match": true,
+              "weight_version": 0
+            }
+          },
+          "decode_vs_trainer": {
+            "status": "pass",
+            "verified_turn_count": 4,
+            "unverified_turn_count": 0,
+            "expected_input_count": 4,
+            "observed_input_count": 4,
+            "token_count": 9554,
+            "global_token_mean_abs_diff": 0.00503328938175103,
+            "native_pack_boundary_observed": false,
+            "native_pack_mean_abs_diff": null,
+            "native_pack_mean_abs_diff_upper_bound": 0.011776534748182238,
+            "native_pack_acceptance": "proven_bounded",
+            "whole_input_packs": true,
+            "failed_input_count": 0,
+            "metrics_identity": {
+              "status": "pass",
+              "token_ids_match": true,
+              "versions_match": true,
+              "weight_version": 0
+            }
+          },
+          "prefill_vs_trainer": {
+            "status": "pass",
+            "verified_turn_count": 4,
+            "unverified_turn_count": 0,
+            "expected_input_count": 4,
+            "observed_input_count": 4,
+            "token_count": 9554,
+            "global_token_mean_abs_diff": 0.0052872581083446175,
+            "native_pack_boundary_observed": false,
+            "native_pack_mean_abs_diff": null,
+            "native_pack_mean_abs_diff_upper_bound": 0.012008682468820562,
+            "native_pack_acceptance": "proven_bounded",
+            "whole_input_packs": true,
+            "failed_input_count": 0,
+            "metrics_identity": {
+              "status": "pass",
+              "token_ids_match": true,
+              "versions_match": true,
+              "weight_version": 0
+            }
+          }
+        }
+      },
+      "2": {
+        "turn_count": 4,
+        "comparisons": {
+          "decode_vs_prefill": {
+            "status": "pass",
+            "verified_turn_count": 4,
+            "unverified_turn_count": 0,
+            "expected_input_count": 4,
+            "observed_input_count": 4,
+            "token_count": 11859,
+            "global_token_mean_abs_diff": 0.009623282732436416,
+            "native_pack_boundary_observed": false,
+            "native_pack_mean_abs_diff": null,
+            "native_pack_mean_abs_diff_upper_bound": 0.013445114542334755,
+            "native_pack_acceptance": "proven_bounded",
+            "whole_input_packs": true,
+            "failed_input_count": 0,
+            "metrics_identity": {
+              "status": "pass",
+              "token_ids_match": true,
+              "versions_match": true,
+              "weight_version": 1
+            }
+          },
+          "decode_vs_trainer": {
+            "status": "pass",
+            "verified_turn_count": 4,
+            "unverified_turn_count": 0,
+            "expected_input_count": 4,
+            "observed_input_count": 4,
+            "token_count": 11859,
+            "global_token_mean_abs_diff": 0.01114472893502434,
+            "native_pack_boundary_observed": false,
+            "native_pack_mean_abs_diff": null,
+            "native_pack_mean_abs_diff_upper_bound": 0.01515759903926026,
+            "native_pack_acceptance": "proven_bounded",
+            "whole_input_packs": true,
+            "failed_input_count": 0,
+            "metrics_identity": {
+              "status": "pass",
+              "token_ids_match": true,
+              "versions_match": true,
+              "weight_version": 1
+            }
+          },
+          "prefill_vs_trainer": {
+            "status": "pass",
+            "verified_turn_count": 4,
+            "unverified_turn_count": 0,
+            "expected_input_count": 4,
+            "observed_input_count": 4,
+            "token_count": 11859,
+            "global_token_mean_abs_diff": 0.010762250102366871,
+            "native_pack_boundary_observed": false,
+            "native_pack_mean_abs_diff": null,
+            "native_pack_mean_abs_diff_upper_bound": 0.013404572102102543,
+            "native_pack_acceptance": "proven_bounded",
+            "whole_input_packs": true,
+            "failed_input_count": 0,
+            "metrics_identity": {
+              "status": "pass",
+              "token_ids_match": true,
+              "versions_match": true,
+              "weight_version": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "turns": [
+    {
+      "training_step": 1,
+      "trainer_weight_version": 0,
+      "source_uid": "d52a450378d9fdf0cac3f0f3c281dad3b1437a444a7ff6fc746473e3252190d4:435:134",
+      "source_category": "control_only",
+      "generated_category": "control_and_thinking",
+      "prompt_token_count": 33327,
+      "prompt_token_sha256": "f55fe58cf822617083a41761d58efe100078bdb36bacca3edbf44a9ecceb6f4d",
+      "response_token_count": 4096,
+      "token_ids_match": true,
+      "prompt_ids_match": true,
+      "positions_match": true,
+      "independent_prefill": true,
+      "weight_versions": {
+        "trainer": 0,
+        "decode": 0,
+        "prefill": 0
+      },
+      "decode_weight_metadata": {
+        "global_steps": 0,
+        "min_global_steps": 0,
+        "max_global_steps": 0
+      },
+      "prefill_weight_metadata": {
+        "global_steps": 0,
+        "min_global_steps": 0,
+        "max_global_steps": 0
+      },
+      "student_rescoring_status": "pass",
+      "status": "pass",
+      "response_mask_ones": 4096,
+      "response_mask_length": 4096,
+      "response_mask_prefix_and_padding_verified": true
+    },
+    {
+      "training_step": 1,
+      "trainer_weight_version": 0,
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:459:154",
+      "source_category": "thinking_only",
+      "generated_category": "thinking_only",
+      "prompt_token_count": 38553,
+      "prompt_token_sha256": "5f9f3a2d06188c6f986c1c59e04b3f1665b6c95d93e1505b2b38e8c0e058e31e",
+      "response_token_count": 4096,
+      "token_ids_match": true,
+      "prompt_ids_match": true,
+      "positions_match": true,
+      "independent_prefill": true,
+      "weight_versions": {
+        "trainer": 0,
+        "decode": 0,
+        "prefill": 0
+      },
+      "decode_weight_metadata": {
+        "global_steps": 0,
+        "min_global_steps": 0,
+        "max_global_steps": 0
+      },
+      "prefill_weight_metadata": {
+        "global_steps": 0,
+        "min_global_steps": 0,
+        "max_global_steps": 0
+      },
+      "student_rescoring_status": "pass",
+      "status": "pass",
+      "response_mask_ones": 4096,
+      "response_mask_length": 4096,
+      "response_mask_prefix_and_padding_verified": true
+    },
+    {
+      "training_step": 1,
+      "trainer_weight_version": 0,
+      "source_uid": "7b8a183eef2142de98554a8e275b1e07941ed070e39305bd551857e5a2f6846d:30:18",
+      "source_category": "neither",
+      "generated_category": "thinking_only",
+      "prompt_token_count": 11430,
+      "prompt_token_sha256": "d38ab85457ce8dac748b542a04410d3b3cde84dfae6089a767aabd3934feb08a",
+      "response_token_count": 249,
+      "token_ids_match": true,
+      "prompt_ids_match": true,
+      "positions_match": true,
+      "independent_prefill": true,
+      "weight_versions": {
+        "trainer": 0,
+        "decode": 0,
+        "prefill": 0
+      },
+      "decode_weight_metadata": {
+        "global_steps": 0,
+        "min_global_steps": 0,
+        "max_global_steps": 0
+      },
+      "prefill_weight_metadata": {
+        "global_steps": 0,
+        "min_global_steps": 0,
+        "max_global_steps": 0
+      },
+      "student_rescoring_status": "pass",
+      "status": "pass",
+      "response_mask_ones": 249,
+      "response_mask_length": 4096,
+      "response_mask_prefix_and_padding_verified": true
+    },
+    {
+      "training_step": 1,
+      "trainer_weight_version": 0,
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:262:175",
+      "source_category": "control_and_thinking",
+      "generated_category": "control_and_thinking",
+      "prompt_token_count": 48129,
+      "prompt_token_sha256": "dcd14838405b966058e439db40c3b25e0ba7dd889c28eb6102f4f02ab3b500df",
+      "response_token_count": 1113,
+      "token_ids_match": true,
+      "prompt_ids_match": true,
+      "positions_match": true,
+      "independent_prefill": true,
+      "weight_versions": {
+        "trainer": 0,
+        "decode": 0,
+        "prefill": 0
+      },
+      "decode_weight_metadata": {
+        "global_steps": 0,
+        "min_global_steps": 0,
+        "max_global_steps": 0
+      },
+      "prefill_weight_metadata": {
+        "global_steps": 0,
+        "min_global_steps": 0,
+        "max_global_steps": 0
+      },
+      "student_rescoring_status": "pass",
+      "status": "pass",
+      "response_mask_ones": 1113,
+      "response_mask_length": 4096,
+      "response_mask_prefix_and_padding_verified": true
+    },
+    {
+      "training_step": 2,
+      "trainer_weight_version": 1,
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:459:160",
+      "source_category": "control_only",
+      "generated_category": "control_and_thinking",
+      "prompt_token_count": 40169,
+      "prompt_token_sha256": "f04268d8af837e9bbef51c7db792309580575712a0bf7f7172f970212f773563",
+      "response_token_count": 858,
+      "token_ids_match": true,
+      "prompt_ids_match": true,
+      "positions_match": true,
+      "independent_prefill": true,
+      "weight_versions": {
+        "trainer": 1,
+        "decode": 1,
+        "prefill": 1
+      },
+      "decode_weight_metadata": {
+        "global_steps": 1,
+        "min_global_steps": 1,
+        "max_global_steps": 1
+      },
+      "prefill_weight_metadata": {
+        "global_steps": 1,
+        "min_global_steps": 1,
+        "max_global_steps": 1
+      },
+      "student_rescoring_status": "pass",
+      "status": "pass",
+      "response_mask_ones": 858,
+      "response_mask_length": 4096,
+      "response_mask_prefix_and_padding_verified": true
+    },
+    {
+      "training_step": 2,
+      "trainer_weight_version": 1,
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:423:144",
+      "source_category": "thinking_only",
+      "generated_category": "thinking_only",
+      "prompt_token_count": 45556,
+      "prompt_token_sha256": "603800a738d774bb187b130e0ab953c3084dc126187f7846b343dcb82017bccf",
+      "response_token_count": 4096,
+      "token_ids_match": true,
+      "prompt_ids_match": true,
+      "positions_match": true,
+      "independent_prefill": true,
+      "weight_versions": {
+        "trainer": 1,
+        "decode": 1,
+        "prefill": 1
+      },
+      "decode_weight_metadata": {
+        "global_steps": 1,
+        "min_global_steps": 1,
+        "max_global_steps": 1
+      },
+      "prefill_weight_metadata": {
+        "global_steps": 1,
+        "min_global_steps": 1,
+        "max_global_steps": 1
+      },
+      "student_rescoring_status": "pass",
+      "status": "pass",
+      "response_mask_ones": 4096,
+      "response_mask_length": 4096,
+      "response_mask_prefix_and_padding_verified": true
+    },
+    {
+      "training_step": 2,
+      "trainer_weight_version": 1,
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:448:33",
+      "source_category": "neither",
+      "generated_category": "thinking_only",
+      "prompt_token_count": 19169,
+      "prompt_token_sha256": "40b9de003bc47af598740a487c10b0a46abba447ad10cabd7cc6492345897c9d",
+      "response_token_count": 4096,
+      "token_ids_match": true,
+      "prompt_ids_match": true,
+      "positions_match": true,
+      "independent_prefill": true,
+      "weight_versions": {
+        "trainer": 1,
+        "decode": 1,
+        "prefill": 1
+      },
+      "decode_weight_metadata": {
+        "global_steps": 1,
+        "min_global_steps": 1,
+        "max_global_steps": 1
+      },
+      "prefill_weight_metadata": {
+        "global_steps": 1,
+        "min_global_steps": 1,
+        "max_global_steps": 1
+      },
+      "student_rescoring_status": "pass",
+      "status": "pass",
+      "response_mask_ones": 4096,
+      "response_mask_length": 4096,
+      "response_mask_prefix_and_padding_verified": true
+    },
+    {
+      "training_step": 2,
+      "trainer_weight_version": 1,
+      "source_uid": "cd24a887eb3d3f1c0139415b3956d25a3c9fc1b95ec3af7fb56ffff34669cceb:55:192",
+      "source_category": "control_and_thinking",
+      "generated_category": "control_and_thinking",
+      "prompt_token_count": 47408,
+      "prompt_token_sha256": "bd97bc8182ca087cc72e5377ffc59479e911f15b15db72098eeb68ac928ef7ed",
+      "response_token_count": 2809,
+      "token_ids_match": true,
+      "prompt_ids_match": true,
+      "positions_match": true,
+      "independent_prefill": true,
+      "weight_versions": {
+        "trainer": 1,
+        "decode": 1,
+        "prefill": 1
+      },
+      "decode_weight_metadata": {
+        "global_steps": 1,
+        "min_global_steps": 1,
+        "max_global_steps": 1
+      },
+      "prefill_weight_metadata": {
+        "global_steps": 1,
+        "min_global_steps": 1,
+        "max_global_steps": 1
+      },
+      "student_rescoring_status": "pass",
+      "status": "pass",
+      "response_mask_ones": 2809,
+      "response_mask_length": 4096,
+      "response_mask_prefix_and_padding_verified": true
+    }
+  ],
+  "source_category_counts": {
+    "control_only": 2,
+    "thinking_only": 2,
+    "neither": 2,
+    "control_and_thinking": 2
+  },
+  "generated_category_counts": {
+    "control_and_thinking": 4,
+    "thinking_only": 4
+  },
+  "publication": {
+    "backend": "naive",
+    "final_published_version": 2,
+    "status": "native_awaited_protocol_return_proven_by_control_flow",
+    "evidence": "Native fit called checkpoint_manager.update_weights(global_steps=2) before progress100% and returned. Naive manager awaits all actor updates; SGLang updater awaits all tensor buckets, flush_cache and set_global_steps.remote before returning.",
+    "final_version_numerically_scored": false,
+    "independent_live_weight_checksum": false
+  },
+  "workflow_accepted": false,
+  "pending_gates": [
+    "Actual post-update tensor value witness from canonical 0GPU verification owned by root",
+    "Fresh20 updates and before/after fixed benchmark remain outside this qualification receipt"
+  ],
+  "limits": [
+    "Qualification prompts11430-48129; this does not GPU-validate >64k prompts.",
+    "Physical native pack mean remains null; acceptance uses proven complete-input upper bounds.",
+    "No strict20 verifier executed against this2-update artifact."
+  ],
+  "job_uid": "d44e6e31-fe09-47f6-8be6-5dbf0d233a6d",
+  "replica": "exp-1106-150433-589683-cfcd2084",
+  "replica_uid": "e1d5aea3-a712-40b8-ab44-bbf346be6946",
+  "platform": {
+    "source": "platform_observer exact metadata",
+    "node": "gpu-h800-0182",
+    "phase": "Succeeded",
+    "container_reason": "Completed",
+    "exit_code": 0,
+    "started_at_hkt": "2026-11-06T15:12:43+08:00",
+    "finished_at_hkt": "2026-11-06T15:31:17+08:00",
+    "restart_count": 0,
+    "observed_at_hkt": "2026-11-06T15:32:28+08:00"
+  },
+  "native_log_receipt": {
+    "job": "exp-1106-150433-589683",
+    "job_uid": "d44e6e31-fe09-47f6-8be6-5dbf0d233a6d",
+    "replica": "exp-1106-150433-589683-cfcd2084",
+    "replica_uid": "e1d5aea3-a712-40b8-ab44-bbf346be6946",
+    "query": {
+      "replicas": "exp-1106-150433-589683-cfcd2084",
+      "start": "1793949120000000000",
+      "end": "1793950486467714048",
+      "direction": "forward",
+      "limit": 2000
+    },
+    "queried_at_utc": "2026-11-06T07:34:46.467714+00:00",
+    "raw_path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/exp-1106-150433-589683-terminal-native-window.json",
+    "sha256": "d190681f0fb441f176611cf880ef09f9bae21d372fba1f7a63252dc42a41277c",
+    "bytes": 238700,
+    "rows": 360,
+    "first_timestamp": "1793949163371775000",
+    "last_timestamp": "1793950275748023000",
+    "truncated_by_limit": false,
+    "secret_scan": "loaded_sensitive_environment_values_not_found"
+  },
+  "hf2_header_metadata_receipt": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/exp-1106-150433-589683-hf2-header-metadata.json"
+}

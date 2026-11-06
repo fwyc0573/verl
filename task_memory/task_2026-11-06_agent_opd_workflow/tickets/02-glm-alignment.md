@@ -2,6 +2,8 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Pause execution on user request and record actual stopped/retired artifact state. |
+| 2026-11-06 | Record the submitted original-weight GLM precision/capacity qualification. |
 | 2026-11-06 | Keep numerical failure separate from native memory failure and prepare the next qualification. |
 | 2026-11-06 | Record fourth actual GLM qualification after the pushed shared SGLang fix. |
 | 2026-11-06 | Record actual qualification failure or running original benchmark evidence on resume. |
@@ -14,7 +16,7 @@
 
 **Blocked by:** 01 GLM runtime/input/config prerequisites; independent of Qwen training inputs and benchmark preparation.
 
-**Status:** in-progress — last exp-1106-144604-954702 / UID731dd5f3-f5db-485b-a8e3-ba8879043933 Failed15:12:38HKT. Step1 has actual global MAE FAIL in all three comparisons; one native update call failed with no verified successful update and optimizer effect unknown. Ray memory used reached629140910080B of629145600000B and killed two AgentLoopWorkers; this is not CUDA OOM, and their PID/actor IDs differ from the failed update RPC actor. Next original-weight qualification pending push: existing SGLang FP32 head + Megatron fused head precision hypothesis, and normal1000000Mi memory per replica; same2×8H800/48CPU/input/R3/CP1/standard. Four native composed2/20config casesPASS. Actual CUDA, capacity, all MAE, two updates, versions and HF2 values remain to be verified.
+**Status:** in-progress / PAUSED by user request. Current exp-1106-153147-652892 / UID332f73f8-2857-4fc9-9d3f-6bdce58ca743 was Stopped15:45:09HKT while Pending; no worker/CUDA/memory/numerical result exists for this FP32/fused-head and1000000Mi candidate. Previous exp-1106-144604-954702 retains actual step1 numerical FAIL and native host-memory failure with0verified successful updates. No fresh20 was submitted. Actual identities, prescribed stop actions and terminal states are in evidence/user-pause-job-terminals.json and evidence/user-pause-stop-actions.json. Resume requires a new original-weight qualification after explicit user steering; thresholds/data/model identities are unchanged.
 
 - [ ] 使用冻结的真实数据与交互边界，teacher 实际评分的 token IDs 与当前 student 采样一致。
 - [ ] thinking、正文和工具信号的源字段、tokens、mask、实际生成覆盖分别可核验；MoE routes 按约定真实录制并 replay。

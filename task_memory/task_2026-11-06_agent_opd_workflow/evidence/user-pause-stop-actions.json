@@ -1,0 +1,46 @@
+{
+  "actions": [
+    {
+      "time": "2026-11-06T15:45:09",
+      "job": "exp-1106-153147-652892",
+      "action": "stopped",
+      "reason": "User requested temporary pause and task-owned artifact/smoke cleanup on 2026-11-06",
+      "phase": "Pending",
+      "creator": "i-fengyicheng",
+      "quota_group": "codesign",
+      "created": "2026-11-06T07:31:47Z"
+    },
+    {
+      "time": "2026-11-06T15:45:09",
+      "job": "exp-1106-030308-839669",
+      "action": "stopped",
+      "reason": "User requested temporary pause and task-owned artifact/smoke cleanup on 2026-11-06",
+      "phase": "Running",
+      "creator": "i-fengyicheng",
+      "quota_group": "codesign",
+      "created": "2026-11-05T19:03:08Z"
+    },
+    {
+      "time": "2026-11-06T15:45:09",
+      "job": "exp-1106-033246-436787",
+      "action": "stopped",
+      "reason": "User requested temporary pause and task-owned artifact/smoke cleanup on 2026-11-06",
+      "phase": "Running",
+      "creator": "i-fengyicheng",
+      "quota_group": "codesign",
+      "created": "2026-11-05T19:32:46Z"
+    },
+    {
+      "time": "2026-11-06T15:45:09",
+      "job": "exp-1106-153941-344108",
+      "action": "already-ended",
+      "reason": "User requested temporary pause and task-owned artifact/smoke cleanup on 2026-11-06",
+      "phase": "Failed",
+      "creator": "i-fengyicheng",
+      "quota_group": "codesign",
+      "created": "2026-11-06T07:39:41Z"
+    }
+  ],
+  "prescribed_script": "/data/ycfeng/steptron/playground/users/ycfeng/tools/rjob_stop.sh",
+  "first_attempt": "SSL EOF at first API read; no action; explicit runbook proxy environment restored for the same-script retry"
+}

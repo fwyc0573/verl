@@ -1,0 +1,94 @@
+{
+  "collected_at": "2026-11-06T07:49:06.659152+00:00",
+  "name": "exp-1106-154737-250834",
+  "uid": "dde47c66-2903-4bce-9329-7792fc2fb296",
+  "identity_receipt": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/pause-cloud-cleanup-platform-identity-20261106-1549.json",
+  "replicas": [
+    {
+      "name": "exp-1106-154737-250834-cfcd2084",
+      "uid": "72fb123b-95b7-4f9c-b27c-57ca995c927c",
+      "creator": "i-fengyicheng",
+      "status": {
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-06T07:47:39Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-06T07:47:52Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-06T07:47:52Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-06T07:47:39Z"
+          }
+        ],
+        "hostIP": "10.191.4.32",
+        "podIP": "10.191.4.32",
+        "podIPs": [
+          {
+            "ip": "10.191.4.32"
+          }
+        ],
+        "startTime": "2026-11-06T07:47:39Z",
+        "containerStatuses": [
+          {
+            "name": "default",
+            "state": {
+              "terminated": {
+                "exitCode": 0,
+                "reason": "Completed",
+                "startedAt": "2026-11-06T07:47:44Z",
+                "finishedAt": "2026-11-06T07:47:50Z",
+                "containerID": "containerd://7ef6bc7c88f372f65729df0a5ad1dd170079d8dbaa6216a92e23a13a36e013bc"
+              }
+            },
+            "lastState": {},
+            "ready": false,
+            "restartCount": 0,
+            "image": "sha256:3eae996c8f0d4383bda9cc9448dd445eb960f253ac7d3e4cb4f0c6465cb706ae",
+            "imageID": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+            "containerID": "containerd://7ef6bc7c88f372f65729df0a5ad1dd170079d8dbaa6216a92e23a13a36e013bc",
+            "started": false
+          }
+        ],
+        "qosClass": "Guaranteed",
+        "phase": "Succeeded",
+        "nodeName": "gpu-h800-0415.host.platform.shaipower.com",
+        "finishTimestamp": "2026-11-06T07:47:53Z"
+      }
+    }
+  ],
+  "log_request_limit": 80,
+  "http_status": 200,
+  "returned_native_rows": 2,
+  "selected_worker_messages": [
+    {
+      "timestamp": "1793951270441590000",
+      "message": "VERL_PAUSE_CLEANUP {\"job\": \"exp-1106-154737-250834\", \"status\": \"PASS\", \"reason\": \"User-requested temporary pause and task-owned artifact/smoke cleanup\", \"started_at_utc\": \"2026-11-06T07:47:44.943045+00:00\", \"deleted_count\": 45, \"deleted_logical_bytes\": 9102170079, \"physical_reclaimed_bytes_verified\": false, \"permissions_changed\": false, \"shared_models_or_environment_touched\": false, \"qualification_hf2_retired_before_value_acceptance\": true, \"terminal_receipt_sha256\": \"af308c132277c9a2857df96b6fd7fd834b61962801c7a6e752b9e633dac5517f\", \"exact_terminal_jobs\": [{\"name\": \"exp-1106-030133-940211\", \"uid\": \"b6976435-4e8a-4099-8777-800a18db25a1\", \"creator\": \"i-fengyicheng\", \"phase\": \"Failed\"}, {\"name\": \"exp-1106-033627-955641\", \"uid\": \"9ad17773-2d4e-4b21-8dc2-2150ab8a6f85\", \"creator\": \"i-fengyicheng\", \"phase\": \"Failed\"}, {\"name\": \"exp-1106-134352-384471\", \"uid\": \"66f0521c-831e-4336-abba-6a1dfeae74bd\", \"creator\": \"i-fengyicheng\", \"phase\": \"Failed\"}, {\"name\": \"exp-1106-134403-815066\", \"uid\": \"41b7cae1-d62e-4624-bfb1-cd5839d4617e\", \"creator\": \"i-fengyicheng\", \"phase\": \"Failed\"}, {\"name\": \"exp-1106-140852-369748\", \"uid\": \"b20d2692-2e74-4b68-a2b2-6b3cd0e29cb4\", \"creator\": \"i-fengyicheng\", \"phase\": \"Failed\"}, {\"name\": \"exp-1106-140853-397005\", \"uid\": \"f400952c-ee74-4b55-8f2b-26828705a417\", \"creator\": \"i-fengyicheng\", \"phase\": \"Failed\"}, {\"name\": \"exp-1106-143409-709386\", \"uid\": \"a0ed2fa1-9007-4456-8196-f24c148be472\", \"creator\": \"i-fengyicheng\", \"phase\": \"Failed\"}, {\"name\": \"exp-1106-144604-954702\", \"uid\": \"731dd5f3-f5db-485b-a8e3-ba8879043933\", \"creator\": \"i-fengyicheng\", \"phase\": \"Failed\"}, {\"name\": \"exp-1106-150433-589683\", \"uid\": \"d44e6e31-fe09-47f6-8be6-5dbf0d233a6d\", \"creator\": \"i-fengyicheng\", \"phase\": \"Succeeded\"}], \"manifest_path\": \"/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/cleanup/exp-1106-154737-250834/manifest.json\", \"manifest_sha256\": \"762db69ec9db7173a4ba561fd4326dd366f4ef14b6cb4b41ae7f945e7c5e339a\", \"preflight_candidate_count\": 45, \"preflight_candidate_logical_bytes\": 9102170079, \"preflight_all_candidates_verified\": true, \"all_candidate_paths_absent\": true, \"removed_directory_count\": 32, \"retained_count\": 892, \"retained_logical_bytes\": 362228155, \"all_retained_size_mtime_preserved\": true, \"finished_at_utc\": \"2026-11-06T07:47:50.380274+00:00\"}"
+    },
+    {
+      "timestamp": "1793951270441606000",
+      "message": "VERL_PAUSE_CLEANUP_RECEIPT /mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/runs/cleanup/exp-1106-154737-250834/pause-cleanup.json"
+    }
+  ],
+  "raw_path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/pause-cloud-cleanup-native-tail-20261106-1549.raw.json",
+  "raw_bytes": 5744,
+  "raw_sha256": "5c48f4910a5117fbaac8c232f175b1d36757019005bc901c8ee1e9d7eb5b899b",
+  "limits": "Only exact authorized cleanup job observed. One replica list and one bounded worker-log request. No sustained observer started because job already Succeeded. No physical storage reclamation inferred from logical deletion."
+}

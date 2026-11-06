@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Pause execution on user request and record actual stopped/retired artifact state. |
 | 2026-11-06 | Record actual qualification failure or running original benchmark evidence on resume. |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
 | 2026-11-06 | Start execution on user instruction; record active scope and verified stage evidence. |
@@ -12,7 +13,7 @@
 
 **Blocked by:** 01 runtime and verified fixed benchmark inputs; independent of either training dataset. Existing native benchmark preparation must pass before server/scoring starts.
 
-**Status:** in-progress — original exp-1106-030308-839669 is actually Running on4H800; at13:38:17HKT10/80valid native outcomes (5resolved/5unresolved), both generation and grader/process evidence checked. First-question four-seed gate passed; healthy slots continue. Full80/avg@4 still unfinished.
+**Status:** in-progress / PAUSED by user request. GLM original exp-1106-030308-839669 / UIDf74fa974-ea86-4149-a823-3276ce493f8b is platformStopped15:45:45HKT after the prescribed personal-creator stop action. The last business snapshot before pause has17/80(11resolved,6unresolved)valid grades; this is a dated partial observation, not a final stop-time tally or80-result acceptance. Existing valid grading records, identity, trajectories and fixed membership are preserved in cloud storage. No recovery or new benchmark will run during this pause. Resume only through the unchanged command/output root and native missing-only behavior; infrastructure failures remain missing. Two stopped original replicas retain stale running containerStatus fields, so no exact worker exit time is inferred.
 
 - [ ] 确认 benchmark 范围后，对冻结的 20 题和四 seeds 获取 80 个有效原生评分，模型权重/环境/采样/超时身份完整。
 - [ ] 基础设施错误保留为 missing，合法 unresolved 作为模型失败；先取得可用的原生结果再扩大提交。

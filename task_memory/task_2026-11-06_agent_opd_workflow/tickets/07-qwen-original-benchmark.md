@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Pause execution on user request and record actual stopped/retired artifact state. |
 | 2026-11-06 | Record actual qualification failure or running original benchmark evidence on resume. |
 | 2026-11-06 | Record actual original serving, four infrastructure failures, and canonical token environment repair. |
 | 2026-11-06 | Create the source-grounded planning draft; execution decisions remain open. |
@@ -13,7 +14,7 @@
 
 **Blocked by:** 01 runtime and verified fixed benchmark inputs; independent of either training dataset. Existing native benchmark preparation must pass before server/scoring starts.
 
-**Status:** in-progress — auth-repaired original exp-1106-033246-436787 is actually Running on2H800; at13:38:17HKT38/80valid native outcomes (29resolved/9unresolved). Real sandbox/tools/generation/grader path is now verified. Three current context-overflow episodes have no valid grader and remainmissing; four historicalHTTP401attempts also remaininvalid. Healthy slots continue; full80/avg@4 and missing recovery unfinished.
+**Status:** in-progress / PAUSED by user request. Qwen original exp-1106-033246-436787 / UIDf5c97c61-7868-44f6-8a74-34ab529bd6b2 is platformStopped15:45:43HKT after the prescribed personal-creator stop action. The last business snapshot before pause has52/80(39resolved,13unresolved)valid grades; this is a dated partial observation, not a final stop-time tally or80-result acceptance. Existing valid grading records, identity, trajectories and fixed membership are preserved in cloud storage. No recovery or new benchmark will run during this pause. Resume only through the unchanged command/output root and native missing-only behavior; infrastructure failures remain missing. Two stopped original replicas retain stale running containerStatus fields, so no exact worker exit time is inferred.
 
 - [x] 验证 Qwen 原生工具和 reasoning 解析能完成真实 episode 与 grader。
 - [ ] 同一固定 20 题、四 seeds 得到 80 个有效结果；使用该模型适用且前后保持一致的 template 和采样合同。
