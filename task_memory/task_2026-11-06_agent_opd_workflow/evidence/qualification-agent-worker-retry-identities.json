@@ -1,0 +1,138 @@
+{
+  "collected_at": "2026-11-06T06:11:01.007236+00:00",
+  "method": "Selected identity/configuration from sole watcher first exact read",
+  "jobs": [
+    {
+      "name": "exp-1106-140852-369748",
+      "uid": "b20d2692-2e74-4b68-a2b2-6b3cd0e29cb4",
+      "created_at": "2026-11-06T06:08:52Z",
+      "creator": "i-fengyicheng",
+      "status": {
+        "phase": "Starting",
+        "reason": "RJobStarting",
+        "message": "Tasks is starting: [default]",
+        "taskStatuses": {
+          "default": {
+            "pending": 2,
+            "taskStage": "stepmind-task-stage-1"
+          }
+        },
+        "taskStage": "stepmind-task-stage-1"
+      },
+      "configuration_labels": {
+        "quotagroup.brainpp.cn/preemptible": "no",
+        "quotagroup.brainpp.cn/quotagroup": "codesign"
+      },
+      "selected_configuration": [
+        {
+          "path": "/metadata/annotations/kubebrain.brainpp.cn/filestore-volume",
+          "value": "100.96.128.195:/data/ycfeng:/data/ycfeng"
+        },
+        {
+          "path": "/spec/taskSpecs/default/replicas",
+          "value": 2
+        },
+        {
+          "path": "/spec/taskSpecs/default/template/metadata/annotations/kubebrain.brainpp.cn/filestore-volume",
+          "value": "100.96.128.195:/data/ycfeng:/data/ycfeng"
+        },
+        {
+          "path": "/spec/taskSpecs/default/template/spec/containers",
+          "value": [
+            {
+              "name": "default",
+              "image": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+              "resources": {
+                "limits": {
+                  "cpu": "48",
+                  "mellanox.com/mlnx_rdma": "1",
+                  "memory": "600000Mi",
+                  "nvidia.com/gpu": "8",
+                  "rdma/mlnx_shared": "8"
+                },
+                "requests": {
+                  "cpu": "48",
+                  "memory": "600000Mi",
+                  "nvidia.com/gpu": "8"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "path": "/spec/taskSpecs/default/positiveTags",
+          "value": [
+            "H800"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "exp-1106-140853-397005",
+      "uid": "f400952c-ee74-4b55-8f2b-26828705a417",
+      "created_at": "2026-11-06T06:08:53Z",
+      "creator": "i-fengyicheng",
+      "status": {
+        "phase": "Starting",
+        "reason": "RJobStarting",
+        "message": "Tasks is starting: [default]",
+        "taskStatuses": {
+          "default": {
+            "pending": 1,
+            "taskStage": "stepmind-task-stage-1"
+          }
+        },
+        "taskStage": "stepmind-task-stage-1"
+      },
+      "configuration_labels": {
+        "quotagroup.brainpp.cn/preemptible": "no",
+        "quotagroup.brainpp.cn/quotagroup": "codesign"
+      },
+      "selected_configuration": [
+        {
+          "path": "/metadata/annotations/kubebrain.brainpp.cn/filestore-volume",
+          "value": "100.96.128.195:/data/ycfeng:/data/ycfeng"
+        },
+        {
+          "path": "/spec/taskSpecs/default/replicas",
+          "value": 1
+        },
+        {
+          "path": "/spec/taskSpecs/default/template/metadata/annotations/kubebrain.brainpp.cn/filestore-volume",
+          "value": "100.96.128.195:/data/ycfeng:/data/ycfeng"
+        },
+        {
+          "path": "/spec/taskSpecs/default/template/spec/containers",
+          "value": [
+            {
+              "name": "default",
+              "image": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+              "resources": {
+                "limits": {
+                  "cpu": "32",
+                  "mellanox.com/mlnx_rdma": "1",
+                  "memory": "300000Mi",
+                  "nvidia.com/gpu": "8",
+                  "rdma/mlnx_shared": "8"
+                },
+                "requests": {
+                  "cpu": "32",
+                  "memory": "300000Mi",
+                  "nvidia.com/gpu": "8"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "path": "/spec/taskSpecs/default/positiveTags",
+          "value": [
+            "H800"
+          ]
+        }
+      ]
+    }
+  ],
+  "controls": "NONE",
+  "quota_queries": "NONE"
+}

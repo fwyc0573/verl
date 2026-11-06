@@ -13,7 +13,7 @@
 
 **Blocked by:** 01 Qwen runtime/input/config prerequisites; independent of GLM training inputs and original benchmarks.
 
-**Status:** in-progress — corrected native teacher budget verified and pushed as86618c51; fresh exp-1106-134403-815066 / UID41b7cae1-d62e-4624-bfb1-cd5839d4617e, launcher35793, platformPending at13:46:26HKT. Initial failure remains historical; updates/MAE/HF2 acceptance not yet observed.
+**Status:** in-progress — fresh exp-1106-140853-397005 / UID f400952c-ee74-4b55-8f2b-26828705a417, launcher 24467, Starting at 14:11:01 HKT. Source ffb83e83 includes the verified teacher scoring-token budget and agent workers derived from batch size 4. The prior attempt initialized native models and entered fit, then failed before sampling at DataProto 4/chunk 8. Actual updates, MAE, versions and HF2 weight changes remain unverified.
 
 - [ ] 实际加载两个固定模型，验证同对 tokenizer/template 兼容性和 Qwen 渲染后的真实历史/长度，不直接套用 GLM token IDs。
 - [ ] 按合同覆盖 reasoning、正文和工具表达；teacher 评分 tokens、student tokens 及 loss mask 对齐。

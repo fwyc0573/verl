@@ -7,7 +7,7 @@
 
 # Agent OPD workflow: incomplete execution checkpoint
 
-**Overall status: INCOMPLETE.** This is a continuation record, not a completion archive or numerical acceptance. Both initial qualifications actually failed before training at the native teacher context guard. Their configuration repair passed actual native validation and was pushed as86618c51; fresh retries are submitted. Original GLM/Qwen benchmarks are running and have partial valid native outcomes. Tickets04/05/08/09/10 remain unfinished. The earlier all-Pending checkpoint is historical.
+**Overall status: INCOMPLETE.** This is a continuation record, not a completion archive or numerical acceptance. Both initial qualifications actually failed before training at the native teacher context guard. The next attempts passed that guard and initialized native models, then failed before sampling because batch4 was split among8agent workers. Both scoped fixes have now passed native CPU regressions and are pushed asffb83e83; new same-resource qualifications are submitted. Original GLM/Qwen benchmarks are running and have partial valid native outcomes. Tickets04/05/08/09/10 remain unfinished. The earlier all-Pending checkpoint is historical.
 
 ## Requested deliverables and observed results
 
@@ -24,16 +24,16 @@ The task replicates the Miles agent OPD workflow in verl for GLM-4.7-Flash-Coder
 
 The initial GLM qualification reached both8H800 ranks, verified its real8-row input, initialized Ray/data loaders, then failed at `61440 + 4096 + 1 = 65537 > teacher65536`. Rank0 exited1 at08:24:10HKT; rank1 was subsequently stopped by the job failure policy. Qwen qualification reached8H800 and failed at `126976 + 4096 + 1 = 131073 > teacher131072`, exiting1 at08:04:36HKT. Neither reached a successful update, numerical observation or HF2 weight-change witness.
 
-The scoped repair reserves one native teacher scoring token in the existing preparation/recipe formula: prompt caps61439/126975 with context65536/131072 and response4096 retained. Actual native dataclass validation and unchanged80/8 input identity both passed before the new submissions. The original benchmarks do not wait for this repair. Selected partial outcomes and source hashes are retained in [evidence/original-benchmarks-partial-1338.json](evidence/original-benchmarks-partial-1338.json).
+The scoped repair reserves one native teacher scoring token in the existing preparation/recipe formula: prompt caps61439/126975 with context65536/131072 and response4096 retained. Actual native dataclass validation and unchanged80/8 input identity both passed before the new submissions. The existing agent.num_workers is also derived from train_batch_size:4 workers for the4-prompts/n1 batch. Actual DataProto chunk/concat reproduced the old failure and preserved every token/UID with the new split for all four recipes. The original benchmarks do not wait for these repairs. Selected partial outcomes and source hashes are retained in [evidence/original-benchmarks-partial-1338.json](evidence/original-benchmarks-partial-1338.json).
 
 | Ticket | Job | RJob UID | GPUs | Observed state |
 | --- | --- | --- | --- | --- |
-| 02 | exp-1106-134352-384471 | 66f0521c-831e-4336-abba-6a1dfeae74bd | 2×8 | Starting at13:46:26HKT |
-| 03 | exp-1106-134403-815066 | 41b7cae1-d62e-4624-bfb1-cd5839d4617e | 1×8 | Pending at13:46:26HKT |
+| 02 | exp-1106-140852-369748 | b20d2692-2e74-4b68-a2b2-6b3cd0e29cb4 | 2×8 | Starting at 14:11:01 HKT |
+| 03 | exp-1106-140853-397005 | f400952c-ee74-4b55-8f2b-26828705a417 | 1×8 | Starting at 14:11:01 HKT |
 | 06 | exp-1106-030308-839669 | f74fa974-ea86-4149-a823-3276ce493f8b | 1×4 | Running |
 | 07 | exp-1106-033246-436787 | f5c97c61-7868-44f6-8a74-34ab529bd6b2 | 1×2 | Running |
 
-The jobs retain personal creator `i-fengyicheng`, H800/codesign, the pinned company image and current-machine NFS. Keep the healthy original launchers41495/30922 alive and preserve their slots. Fresh qualification launchers56549/35793 must also remain alive; their new identities/resources/currentNFS/RDMA were actually verified. Old failed identities were re-read before the retries. The04:44status receipt and04:33capacity check remain historical evidence, not current scheduling or benchmark status. No other task's jobs were controlled.
+The jobs retain personal creator `i-fengyicheng`, H800/codesign, the pinned company image and current-machine NFS. Keep the healthy original launchers41495/30922 alive and preserve their slots. Fresh qualification launchers96491/24467 must also remain alive; their new identities/resources/currentNFS/RDMA were actually verified. Old failed identities were re-read before the retries. The04:44status receipt and04:33capacity check remain historical evidence, not current scheduling or benchmark status. No other task's jobs were controlled.
 
 ## Continuation route
 

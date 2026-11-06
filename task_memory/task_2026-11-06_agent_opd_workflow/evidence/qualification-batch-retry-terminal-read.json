@@ -1,0 +1,48 @@
+{
+  "collected_at": "2026-11-06T06:08:40.232737+00:00",
+  "read_scope": "One exact get per failed qualification; no logs, events, replicas, or quota queries.",
+  "jobs": [
+    {
+      "name": "exp-1106-134352-384471",
+      "uid": "66f0521c-831e-4336-abba-6a1dfeae74bd",
+      "creator": "i-fengyicheng",
+      "status": {
+        "phase": "Failed",
+        "reason": "RJobFailed",
+        "message": "Tasks with failed status: [default]",
+        "taskStatuses": {
+          "default": {
+            "failed": 2,
+            "taskStage": "stepmind-task-stage-1"
+          }
+        },
+        "finishTime": "2026-11-06T05:58:28Z",
+        "taskStage": "stepmind-task-stage-1"
+      },
+      "stop_annotations": {
+        "rjob.brainpp.cn/system-stop-reason": "Task fail policy [any] caused undesired running replicas."
+      }
+    },
+    {
+      "name": "exp-1106-134403-815066",
+      "uid": "41b7cae1-d62e-4624-bfb1-cd5839d4617e",
+      "creator": "i-fengyicheng",
+      "status": {
+        "phase": "Failed",
+        "reason": "RJobFailed",
+        "message": "Tasks with failed status: [default]",
+        "taskStatuses": {
+          "default": {
+            "failed": 1,
+            "taskStage": "stepmind-task-stage-1"
+          }
+        },
+        "finishTime": "2026-11-06T06:02:46Z",
+        "taskStage": "stepmind-task-stage-1"
+      },
+      "stop_annotations": {
+        "rjob.brainpp.cn/system-stop-reason": "Some critical tasks failed."
+      }
+    }
+  ]
+}
