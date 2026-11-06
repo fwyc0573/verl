@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "collected_at_utc": "2026-11-06 05:46:11 UTC",
+  "scope": "Source-backed context-overflow RCA and existing-command recovery proposal only. No model query, retry, job submission/control or source edit was performed.",
+  "snapshot": {
+    "path": "/data/ycfeng/tmp/verl-agent-opd-downloads-20261106/original-benchmarks-selected-20261106-1338.json",
+    "sha256": "3cd6f564bbb3d5e6a06d223d94894c53bb0164475b1dfe673be0de7577f60c1b"
+  },
+  "source_provenance": {
+    "miles_repo": "/data/ycfeng/sota-engine/miles",
+    "miles_head_at_inspection": "5c2e44635298675167c7c55e067dcb294f9e9fa9",
+    "native_adapter_last_commit": "72fe633d76b8ed3315081a81b36678257dd6de81",
+    "native_adapter_commit_time": "2026-11-06T09:32:31+08:00",
+    "native_adapter_status": "git status/diff empty for this file",
+    "sources": [
+      {
+        "path": "/data/ycfeng/sota-engine/miles/tests/manual/agent_opd/native_benchmark.py",
+        "sha256": "7196ce82e4d22767e46fa4a44f39cbd14f4a1f37209e950a82edf379cfde46c4",
+        "anchors": "25-38 exact SGLang HTTP400 input-token overflow mapping; 65 registry entry; 79 selects registered model"
+      },
+      {
+        "path": "/data/ycfeng/steptron/.worktrees/step3p6-native-eval-1015z/third_party/swe-agents/src/swe_agents/impl/sweagent/agents/default.py",
+        "sha256": "873ca0e23ceb0d36460a32ea972f075b70ed7504f8870a8c15a0e53afe00cf65",
+        "anchors": "112-118 default latest_half and one truncation; 686-718 native autosubmit; 905-909 exit_context; 976-999 truncation and direct requery; 1084-1153 whole-turn latest_half; 1338-1395 actual patch extraction; 1933-1975 normal trajectory return"
+      },
+      {
+        "path": "/data/ycfeng/steptron/.worktrees/step3p6-native-eval-1015z/third_party/swe-agents/src/swe_agents/models/step_align.py",
+        "sha256": "1516b830b80a709e34054c007bd47e4930497ea875865606b864ea3092df56d0",
+        "anchors": "79-87 max_context_tokens declaration; 200-217 request arguments; 234-247 generic provider string mapping does not recognize the observed SGLang wording"
+      },
+      {
+        "path": "/data/ycfeng/steptron/.worktrees/step3p6-native-eval-1015z/third_party/swe-agents/src/swe_agents/cli/run.py",
+        "sha256": "868adcb39223a059fa9de58e008f5c6458691a591b7bc87f4e2c4c122d109536",
+        "anchors": "320-326 normal trajectory save; 327-370 exception saves partial error trajectory; 371-375 sandbox/model sessions closed"
+      },
+      {
+        "path": "/data/ycfeng/steptron/.worktrees/step3p6-native-eval-1015z/playground/agenticeval/sweagents_configs.py",
+        "sha256": "5d910bc3625834963b95f473f415a1d2201e2fec8cc121e29cfe3f6c5b47405f",
+        "anchors": "66-69 SweAgent DefaultAgent; 642-649 benchmark config uses it"
+      },
+      {
+        "path": "/data/ycfeng/steptron/.worktrees/step3p6-native-eval-1015z/playground/agenticeval/sweagents_swe.py",
+        "sha256": "1cc428f664bf9add1ddaf093b204367588475159b620c0341954bd8aa72d4e4f",
+        "anchors": "943-974 grader requires normal trajectory and actual string patch"
+      },
+      {
+        "path": "/data/ycfeng/steptron/.worktrees/step3p6-native-eval-1015z/tests/e2e/mopd_step3p6_bounded_replay/swe_formal.py",
+        "sha256": "475f32ed857da0f80b935f54308255f43b0f7677ae5b3295cbdf66d0576c073e",
+        "anchors": "143-159 actual grader identity/resolved/test summaries, reject trajectory error_type"
+      },
+      {
+        "path": "/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/benchmark.py",
+        "sha256": "8286cb67b307d7bc3c38797c8e4f6457788c6007b3c9fcd4a54f70f5a7bd324a",
+        "anchors": "38-44 current external adapter import; 202-216 fixed server settings; 221-235 PID and model_info path/version; 304-318 frozen identities; 326-352 slot lock/valid skip/running preserve/new UUID; 353-392 native child and archival; 397-407 whole-bank scheduling"
+      },
+      {
+        "path": "/data/ycfeng/sota-engine/verl/tests/manual/agent_opd/benchmark.sh",
+        "sha256": "55adadfe801b1271154b7abef3a859181cf90b56da13ac6a3b4352347bd49bc6",
+        "anchors": "13-20 starts original native server; 21-43 own-server cleanup/archive and existing run"
+      }
+    ]
+  },
+  "causal_findings": [
+    "The three old failed native subprocesses started before the new adapter commit; their archived errors were generic ModelError with HTTP400 input lengths 131334, 131150 and 131177, each above fixed context 131072. All remain missing.",
+    "The current registered SGLangModel reclassifies only the observed HTTP400 input-length overflow into native ContextWindowExceedError. Other ModelError failures remain failures.",
+    "Native DefaultAgent first tries existing latest_half, with one truncation per task by default. If the post-truncation query still exceeds context or the allowance is exhausted, the native outer handler produces exit_context and autosubmits a real patch from the live sandbox, then returns and saves a normal trajectory for the actual grader.",
+    "Generic old ModelError instead escaped agent.run; the CLI saved only an error trajectory and closed its sandbox. Its error trajectory cannot be relabeled as a normal grader-backed unresolved episode.",
+    "Increasing the truncation allowance does not repeat truncation within the same immediate requery; it changes policy for later overflow turns. No configuration or context changes are proposed.",
+    "New native attempt subprocesses import the current external adapter at startup. This is source-supported expected behavior, not evidence that an old running subprocess reloaded it or that a future attempt has succeeded."
+  ],
+  "recovery": {
+    "decision": "Let the current healthy original run finish; then reuse the existing same-resource command and output root. Root owns terminal requery, submission and launcher lifecycle.",
+    "current_job": "exp-1106-033246-436787",
+    "current_uid": "f5c97c61-7868-44f6-8a74-34ab529bd6b2",
+    "command_file": "/data/ycfeng/tmp/verl-agent-opd-commands-20261106/benchmark-original-qwen.sh",
+    "command_file_sha256": "7512abda29db9bf8d717e3f720ed26caf6f18566b65dc1e1c7a4e850354c629c",
+    "worker_command": "bash /data/ycfeng/tmp/verl-agent-opd-commands-20261106/benchmark-original-qwen.sh",
+    "resources": {
+      "gpu_type": "H800",
+      "charged_group": "codesign",
+      "gpus_per_replica": 2,
+      "replicas": 1,
+      "cpus": 12,
+      "memory_gb": 150,
+      "preemptible": false
+    },
+    "image": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+    "output": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/benchmarks/qwen",
+    "membership": "/mnt/codesign-exp/ycfeng/verl/agent-opd-20261106/inputs/fixed-benchmark/benchmark/membership.json",
+    "membership_sha256": "0f4ab340bedb7a64f3089af679be829aefcf8ecbbeb11c3a164578ba6b702877",
+    "initial_missing_slots": [
+      {
+        "task_index": 1,
+        "seed": 1730
+      },
+      {
+        "task_index": 2,
+        "seed": 1732
+      },
+      {
+        "task_index": 2,
+        "seed": 1729
+      }
+    ],
+    "dependencies": [
+      "Re-read exact current RJob UID and terminal state, plus all slot outcomes before submission; do not replace or stop the healthy current run.",
+      "Current original run is finished and all 77 other slots have actual valid grader-backed results for exactly-three recovery; otherwise existing run recovers the genuinely missing set, not a forced three-slot selection.",
+      "Same pinned student model, membership bytes, context 131072, temperature1/top_p0.95/n1, four frozen seeds, parser/template, sandbox and timeout identity.",
+      "Native sandbox credentials are inherited through existing --sandbox-auth, presence-only handling and established canonical token mapping; no credential values are part of this receipt.",
+      "Native patched adapter is still the inspected file/source when new subprocesses start; freeze/re-read its provenance before actual recovery.",
+      "Use the existing personal local RJobBackend launcher with its current NFS source mount, personal cloud mount and keepalive. No remote submission or existing-worker exec is proposed."
+    ],
+    "preservation": "Existing run skips any valid slot, preserves reserved/running/interrupted_pending_audit, and atomically reserves a new UUID only for missing slots under the existing per-slot flock; old failed attempts remain immutable evidence.",
+    "current_server_reuse": "Not selected: server binds localhost and run requires the same worker PID/log; run has no slot-selection argument and would also start not-yet-attempted future slots while the current run is still progressing. Direct native --task-index/--seed does not own slot locking/state/archive/report, so it is not an equivalent recovery path.",
+    "no_new_features": "No selector flag, framework, changed context, policy override, custom grader or repeated server is added.",
+    "acceptance": "Actual recovered normal trajectories and native resolved/unresolved test outcomes bring the same frozen version to 80 valid slots. Failed retries remain missing; native process exit0 alone is insufficient."
+  },
+  "limitations": [
+    "No recovery was launched or validated.",
+    "No private trajectory or patch content was read.",
+    "The model_info path/version checks are existing source requirements; the stale top report's previous endpoint receipt does not prove a fresh current-server query.",
+    "Source hashes bind this read-only inspection; external source remains live and must be checked again at recovery."
+  ]
+}
+

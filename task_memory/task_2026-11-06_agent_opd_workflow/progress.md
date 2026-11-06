@@ -593,3 +593,64 @@ Parallel ownership: data_benchmark owns only configure.py/prepare.sh and narrow 
 
 
 Teacher-budget repair completed: configure.py/prepare.sh now consistently reserve1teacher scoringtoken; configure itself instantiates the actual native distillation dataclass before writing a recipe. NativePython3.12.13 actualfour old2/20recipes reproduceFAIL, actualfour correctedrecipesPASS; onlypromptcap differs, serializedconfig unchanged. Existing80/8actualUID/order/category/tokens/content unchanged; GLM job7 existing8 separately verified/reused. SelectedRCA/regression/inputevidence archived and exactcommands/results appended to executionpreflight report. No context/response/model/optimizer/numerical/benchmark population change. Next immediate action is commit/push then fresh same-resource qualifications, while originalscontinue.
+
+
+Freshqualifications submitted after86618c51 push/remoteSHA verification and exactoldterminalreread: GLMexp-1106-134352-384471/UID66f0521c-831e-4336-abba-6a1dfeae74bd,launcher56549,2×8H80048CPU600GB;Qwenexp-1106-134403-815066/UID41b7cae1-d62e-4624-bfb1-cd5839d4617e,launcher35793,1×8H80032CPU300GB. At13:46:26HKT GLMStarting/twoContainerCreating,QwenPending; twooriginalsRunning. Metadataowner matchedpersonalcreator/pinnedimage/currentNFS/RDMA and cleanly switchedoldlocalobserver3781(exit143onlylocalread-onlyPID)→sole89373. No healthyjob/workloadlauncher control. Bothbusinessowners awaitactualstart; qualificationnumerical/updategatesremainopen.
+
+Contextoverflowrecoveryinvestigation closed: existingMiles72fe633d adapter alreadyrestores nativeContextWindowExceedError→latest_half/exit_context/autosubmit→normaltrajectory→actualgrader. Do noteditMilesorcontext. AftercurrentQwenoriginalterminal, ordinarysame2GPU/command/outputroot recoversactualmissing slots via existingvalidskip/slotlocks/newUUID. A parallelwholebankcallwould also start futureunattemptedslots, so do notuseit to targetonlythree. Source/provenance/receiptevidencearchived; runtimeowner returnssolelytobusinessobservation.
+
+## 1. 规划完成情况
+
+**汇总：** PASS1｜BLOCKED/FAILED/SKIPPED1｜TODO8
+
+| 子任务 | 状态 | 简要依据 |
+| --- | --- | --- |
+| 01 | PASS | 原生dataclass修复回归通过，真实80/8输入保持 |
+| 02 | TODO | freshGLM已Starting，等待实际业务资格 |
+| 03 | BLOCKED | freshQwen已Pending，等待worker |
+| 04 | TODO | 等02实际完整资格 |
+| 05 | TODO | 等03实际完整资格 |
+| 06 | TODO | 原始GLM实际10/80有效，运行继续 |
+| 07 | TODO | 原始Qwen实际38/80有效，3contextmissing待终态恢复 |
+| 08 | TODO | 等04verifiedexport，不等原始评分启动 |
+| 09 | TODO | 等05verifiedexport，不等原始评分启动 |
+| 10 | TODO | 按消费及时清理，最终清理未完成 |
+
+## 2. 偏离检测
+
+**结论：** 未偏移，正常推进。
+**检测窗口：** continue恢复至1token修复/真实native回归/两fresh提交｜**当前前沿：** 02/03/06/07并行
+
+| 模式 | 判定 | 依据 |
+| --- | --- | --- |
+| D1 工具打磨 | CLEAR | 仅真实native失败所需修复和预检，4recipes通过即停 |
+| D2 细节反复重试 | CLEAR | 原异常/假设/证伪条件先记录，一次修复以真实dataclass和不变数据验证后提交 |
+| D3 支线问题修补 | CLEAR | 只处理阻挡02/03及07有效分母的已实证错误 |
+| D4 可并行任务停滞 | CLEAR | 两fresh已提交，两健康baseline继续 |
+| D5 超范围镀金 | CLEAR | 无新handler/selector/框架/context或标准变化 |
+| D6 分析空转 | CLEAR | 原生context缺口已修并重提；missing调查找到现成Miles修复后停止 |
+| D7 路线违背 | CLEAR | 20更新/320有效/0.03合同保持，partial/missing未算完成 |
+
+**文档检查：** S5旧checkpoint和ticket现态已更新为带时间的真实失败/运行/partial评分；S1–S4/S6无新缺陷。
+**归因：** 无执行HIT；已直接纠正过时状态记录。
+
+## 3. 纠正建议
+
+**分支：** B：spec/tickets存在缺陷，先更新文档再继续。
+
+**文档更新（先执行）：**
+1. 02/03和summary/progress/native报告：记录旧失败、native预检修复及fresh身份（可直接执行，已应用）。
+2. 06/07：记录真实partialgrader数、鉴权实际恢复及contextmissing（可直接执行，已应用）。
+
+**需停止的偏离行为：** 无。
+
+**接下去的路线：**
+1. 并行02/03：观察现有freshjob实际模型/teacher/R3/三路MAE/两update/HF2值变化，全部通过才释放各自fresh20。
+2. 并行06/07：现有healthy评分继续，各80有效才完成；Qwen终态后按actualmissing恢复，保护valid/active。
+3. verified20export释放更新后benchmark，共享新进程reload；两个版本评分齐全才比较并最终清理。
+
+## 4. 最值得关注的 3 点
+
+1. 当前原生dataclassPASS只修复初始化预算，不代表GPU更新/数值通过。
+2. 两个healthybaseline已取得真实有效分数，继续执行；Qwen3missing有现成恢复路径。
+3. 两freshqualification精确身份和launcher已记录，未重启任何健康作业。

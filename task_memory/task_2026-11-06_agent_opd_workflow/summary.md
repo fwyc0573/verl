@@ -7,7 +7,7 @@
 
 # Agent OPD workflow: incomplete execution checkpoint
 
-**Overall status: INCOMPLETE.** This is a continuation record, not a completion archive or numerical acceptance. Both initial qualifications actually failed before training at the native teacher context guard. Their configuration repair and fresh retries are the current training frontier. Original GLM/Qwen benchmarks are running and have partial valid native outcomes. Tickets04/05/08/09/10 remain unfinished. The earlier all-Pending checkpoint is historical.
+**Overall status: INCOMPLETE.** This is a continuation record, not a completion archive or numerical acceptance. Both initial qualifications actually failed before training at the native teacher context guard. Their configuration repair passed actual native validation and was pushed as86618c51; fresh retries are submitted. Original GLM/Qwen benchmarks are running and have partial valid native outcomes. Tickets04/05/08/09/10 remain unfinished. The earlier all-Pending checkpoint is historical.
 
 ## Requested deliverables and observed results
 
@@ -24,20 +24,20 @@ The task replicates the Miles agent OPD workflow in verl for GLM-4.7-Flash-Coder
 
 The initial GLM qualification reached both8H800 ranks, verified its real8-row input, initialized Ray/data loaders, then failed at `61440 + 4096 + 1 = 65537 > teacher65536`. Rank0 exited1 at08:24:10HKT; rank1 was subsequently stopped by the job failure policy. Qwen qualification reached8H800 and failed at `126976 + 4096 + 1 = 131073 > teacher131072`, exiting1 at08:04:36HKT. Neither reached a successful update, numerical observation or HF2 weight-change witness.
 
-The scoped repair reserves one native teacher scoring token in the existing preparation/recipe formula: prompt caps61439/126975 with context65536/131072 and response4096 retained. Actual native dataclass validation and unchanged80/8 input identity are required before new qualification submissions. The original benchmarks do not wait for this repair. Selected partial outcomes and source hashes are retained in [evidence/original-benchmarks-partial-1338.json](evidence/original-benchmarks-partial-1338.json).
+The scoped repair reserves one native teacher scoring token in the existing preparation/recipe formula: prompt caps61439/126975 with context65536/131072 and response4096 retained. Actual native dataclass validation and unchanged80/8 input identity both passed before the new submissions. The original benchmarks do not wait for this repair. Selected partial outcomes and source hashes are retained in [evidence/original-benchmarks-partial-1338.json](evidence/original-benchmarks-partial-1338.json).
 
 | Ticket | Job | RJob UID | GPUs | Observed state |
 | --- | --- | --- | --- | --- |
-| 02 | exp-1106-030133-940211 | b6976435-4e8a-4099-8777-800a18db25a1 | 2×8 | Failed,0updates |
-| 03 | exp-1106-033627-955641 | 9ad17773-2d4e-4b21-8dc2-2150ab8a6f85 | 1×8 | Failed,0updates |
+| 02 | exp-1106-134352-384471 | 66f0521c-831e-4336-abba-6a1dfeae74bd | 2×8 | Starting at13:46:26HKT |
+| 03 | exp-1106-134403-815066 | 41b7cae1-d62e-4624-bfb1-cd5839d4617e | 1×8 | Pending at13:46:26HKT |
 | 06 | exp-1106-030308-839669 | f74fa974-ea86-4149-a823-3276ce493f8b | 1×4 | Running |
 | 07 | exp-1106-033246-436787 | f5c97c61-7868-44f6-8a74-34ab529bd6b2 | 1×2 | Running |
 
-The jobs retain personal creator `i-fengyicheng`, H800/codesign, the pinned company image and current-machine NFS. Keep the healthy original launchers41495/30922 alive and preserve their slots. Re-read failed qualification identities before fresh retries. The04:44status receipt and04:33capacity check remain historical evidence, not current scheduling or benchmark status. No other task's jobs were controlled.
+The jobs retain personal creator `i-fengyicheng`, H800/codesign, the pinned company image and current-machine NFS. Keep the healthy original launchers41495/30922 alive and preserve their slots. Fresh qualification launchers56549/35793 must also remain alive; their new identities/resources/currentNFS/RDMA were actually verified. Old failed identities were re-read before the retries. The04:44status receipt and04:33capacity check remain historical evidence, not current scheduling or benchmark status. No other task's jobs were controlled.
 
 ## Continuation route
 
-1. Finish the native teacher budget repair and actual dataclass regression, verify/reuse existing80/8 inputs, commit/push, then submit fresh exact qualifications. Continue both healthy original benchmarks in parallel. Recover context-overflow missing episodes only after settling the existing native context/trajectory contract; do not change running identities or count missing as valid zero scores.
+1. Observe the already submitted fresh qualifications and both healthy originals in parallel. The existing Miles SGLang adapter commit72fe633d76b8ed3315081a81b36678257dd6de81 maps exact context overflow to native history handling/autosubmit and normal trajectory saving. After the current Qwen original run terminates, use its existing same2GPU command/outputroot to recover actual missing slots only; preserve valid outcomes and all old failures. No new context, selector flag or exception handler is needed. See evidence/qwen-benchmark-context-recovery.json.
 2. For each model, verify both real optimizer updates, nonzero finite gradients, frozen-teacher scoring, version-consistent decode/prefill/trainer comparisons, GLM R3 where applicable, actual changed weights and final two-step publication. Numerical agreement and workflow acceptance remain separate gates. Preserve qualification HF output until the real weight-change witness has consumed it.
 3. Only after the same-model qualification passes, submit its already prepared `learning20-glm.sh` or `learning20-qwen.sh` from `/data/ycfeng/tmp/verl-agent-opd-commands-20261106/`. Those command files are currently unsubmitted. Start from the original student, not qualification weights. Require exactly20successful updates and the verified final export.
 4. Once a verified final export exists, start that model's updated benchmark immediately. Its new SGLang process, identity check and actual generation provide the reload evidence for04/05. Original benchmark completion is required for final comparison, not for starting updated scoring. Require80valid outcomes per model/version and report avg@4 with the fixed denominator.

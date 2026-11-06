@@ -12,7 +12,7 @@
 
 **Blocked by:** 01 GLM runtime/input/config prerequisites; independent of Qwen training inputs and benchmark preparation.
 
-**Status:** in-progress — initial exp-1106-030133-940211 actually failed at native init_model:61440+4096+1=65537>teacher65536; rank0 exit1 at08:24:10HKT,0updates. Both8H800 workers and actual8-row input verified. Repairing declaration and verifying/reusing existing qualification parquet before fresh retry; no numerical/R3/weight-change PASS.
+**Status:** in-progress — corrected native teacher budget verified and pushed as86618c51; fresh exp-1106-134352-384471 / UID66f0521c-831e-4336-abba-6a1dfeae74bd, launcher56549, platformStarting at13:46:26HKT. Initial failure remains historical; updates/MAE/HF2 acceptance not yet observed.
 
 - [ ] 使用冻结的真实数据与交互边界，teacher 实际评分的 token IDs 与当前 student 采样一致。
 - [ ] thinking、正文和工具信号的源字段、tokens、mask、实际生成覆盖分别可核验；MoE routes 按约定真实录制并 replay。

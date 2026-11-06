@@ -2,6 +2,7 @@
 
 | Date | Change |
 | --- | --- |
+| 2026-11-06 | Record actual initialization failures, real partial native scores and corrected fresh qualification submissions. |
 | 2026-11-06 | Record one bounded capacity-alternative check and preserve the existing H800 queue. |
 | 2026-11-06 | Record current four GPU job identities, resources and queued state. |
 | 2026-11-06 | Distinguish actual Qwen serving from four infrastructure failures and still-queued GLM runs. |
@@ -126,3 +127,21 @@ Quota-only03:32:37–38HKT HTTP200 selectedfields: totalgpu/H800128, chargedgpu1
 ## Capacity alternatives during the external queue wait
 
 At04:32–04:33HKT a single current quota request percodesign/step_main followed by the conditionally authorized personal H200 activejob/owner-replica read was completed. Rawquota JSON was retained0600before localparsing; no retry. Aggregate selected evidence/capacity-wait.json records exact selected source paths andSHA. codesigntotal128,used124,charged123,nonpreemptibleused127/preemptibleused1 still does not identify immediatefreeH800. step_maintotal512/used488 gives onlyledger24; personal H200 currently has56nonpreemptible and16preemptibleGPU across9Runningreplicas, completepagination. Under the configured32nonpreemptible cap, addedheadroom for this task is0. No H200 submission or otherjobcontrol was performed; existing4H800jobs remainqueued. Other tasks' historical authorizations are outside this record. This is externalcapacity evidence, not model/workflow failure or scientificacceptance.
+
+
+## Resumed actual failures, partial original scores and fresh qualifications
+
+InitialQwen exp-1106-033627-955641 actually reached8H800 but failed08:04:26HKT at native DistillationConfig:126976+4096+1=131073>131072, containerexit1at08:04:36. InitialGLM exp-1106-030133-940211 reached2×8H800, actual8input/Ray/loaders, then failedat61440+4096+1=65537>65536, rank0exit1at08:24:10; the platformfailurepolicy stoppedrank1afterward. Its stale running container snapshot leaves the rank1exitcodeUNKNOWN. Both failedbeforefit, so no update/numerical/R3/weightchangePASS. Selected actualbusiness evidence: evidence/qwen-qualification-context-failure.json and glm-qualification-context-failure.json; exactpre-retry terminal reread: qualification-retry-terminal-read.json. The correctedprompt native-regression/input checks are in the executionpreflightreport, not relabelledGPUacceptance.
+
+Fix86618c51379ba9abd20468435599fb999008e8b7 was committed/pushed and independently matched by `git ls-remote origin refs/heads/agent-opd` before the new submissions. Same initialized personalRJobBackend/image/currentNFS/rjob_run.py as before:
+
+| Pair | Newjob / UID | Commandfile | Resources perreplica | Launcher |
+| --- | --- | --- | --- | --- |
+| GLM | exp-1106-134352-384471 /66f0521c-831e-4336-abba-6a1dfeae74bd | /data/ycfeng/tmp/verl-agent-opd-commands-20261106/qualification-glm.sh |8H800/48CPU/600000Mi ×2 |56549 |
+| Qwen | exp-1106-134403-815066 /41b7cae1-d62e-4624-bfb1-cd5839d4617e | /data/ycfeng/tmp/verl-agent-opd-commands-20261106/qualification-qwen.sh |8H800/32CPU/300000Mi ×1 |35793 |
+
+Submission invocation is the earlier exact `rjob_run.py --image ... --command-file ... --gpus8 --replicas2/1 --cpus48/32 --memory-gb600/300 --name verl-opd-{glm,qwen}-qualification-retry-1106`, from currentmachine with STEPMIND_BACKEND=rjob and existingpersonalcredentials. Source/image remain pinned to the documented company image. GLMcommand now only validates/reuses the alreadycreated8parquet, then sameworker. Selected metadata evidence/qualification-retry-identities.json confirmscreator/currentNFS100.96.128.195:/data/ycfeng:/data/ycfeng/codesign/nonpreemptible/RDMA/resources. At13:46:26HKT GLMStarting/twoContainerCreating, QwenPending/noreplica; bothoriginalsRunning/restart0. Localmetadataobserver3781 was stopped onlyafter exactPIDbinding, exit143, then sole4job observer89373 started sequentially. No workloadlauncher orhealthyjobwasstopped.
+
+Originals now have realnativepartialoutcomes:13:38:17HKT GLM10/80valid(5resolved/5unresolved),Qwen38/80(29resolved/9unresolved). Bothfirst4gatespassed. Actualnvidia-smi4H800/2H800,modelpath/version0,canonicalmembershipSHA unchanged. RealQwensandbox/tool/generation/grader execution nowverifies the earlierauthrepair. ThreeQwencontextoverflowepisodes stillmissing: inputs131334/131150/131177>131072 led oldgenericModelError→no normaltrajectory→FileNotFoundError/invalidgrading. Theirprocessreturned0/generationreturned do notmakevalidgrades. Selectedpaths/hashes/counts evidence/original-benchmarks-partial-1338.json; no full80oravg@4PASS.
+
+Read-onlysourceinvestigation found an existingMiles fix72fe633d76b8ed3315081a81b36678257dd6de81 (native_benchmark.pySHA7196ce82e4d22767e46fa4a44f39cbd14f4a1f37209e950a82edf379cfde46c4): exactSGLangHTTP400contextoverflow becomes nativeContextWindowExceedError, entering actualDefaultAgent latest_half/exit_context/autosubmit, patch extraction and normaltrajectorysaving→actualgrader. Oldthreeattempts startedbeforethatcommit andremainmissing; no retroactivegrade. The currentrun's laternewsubprocesses canuseexistingfix. NoMilesedits/contextincrease/newhandler. Existingbenchmarkrun has no three-slot selector and protects running/reserved slots while skippingvalid results; aftercurrentterminal use originalsame2GPUcommand/outputroot to recover actualmissingonly. Detailedsource/provenance/recoveryreceipt evidence/qwen-benchmark-context-recovery.json. Preserveallhealthycurrentattempts; do not start a secondwholebankrunwhileitsuntouchedfuture slotswouldbeeligible.

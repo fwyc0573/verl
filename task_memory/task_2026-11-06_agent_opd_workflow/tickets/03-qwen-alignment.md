@@ -13,7 +13,7 @@
 
 **Blocked by:** 01 Qwen runtime/input/config prerequisites; independent of GLM training inputs and original benchmarks.
 
-**Status:** in-progress — initial exp-1106-033627-955641 actually failed at native init_model:126976+4096+1=131073>teacher131072; containerexit1 at08:04:36HKT,0updates. Actual8H800 runtime verified. Repairing declaration before fresh retry. Existing first8 promptmax48129; above64k GPU behavior remains for80-row fresh20, not qualification.
+**Status:** in-progress — corrected native teacher budget verified and pushed as86618c51; fresh exp-1106-134403-815066 / UID41b7cae1-d62e-4624-bfb1-cd5839d4617e, launcher35793, platformPending at13:46:26HKT. Initial failure remains historical; updates/MAE/HF2 acceptance not yet observed.
 
 - [ ] 实际加载两个固定模型，验证同对 tokenizer/template 兼容性和 Qwen 渲染后的真实历史/长度，不直接套用 GLM token IDs。
 - [ ] 按合同覆盖 reasoning、正文和工具表达；teacher 评分 tokens、student tokens 及 loss mask 对齐。

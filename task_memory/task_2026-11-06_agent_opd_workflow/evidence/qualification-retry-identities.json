@@ -1,0 +1,109 @@
+{
+  "collected_at": "2026-11-06T05:45:14.909725+00:00",
+  "method": "Exact fresh qualification identity reads",
+  "jobs": [
+    {
+      "name": "exp-1106-134352-384471",
+      "uid": "66f0521c-831e-4336-abba-6a1dfeae74bd",
+      "created_at": "2026-11-06T05:43:52Z",
+      "creator": "i-fengyicheng",
+      "status": {
+        "phase": "Starting",
+        "reason": "RJobStarting",
+        "message": "Tasks is starting: [default]",
+        "taskStatuses": {
+          "default": {
+            "pending": 2,
+            "taskStage": "stepmind-task-stage-1"
+          }
+        },
+        "taskStage": "stepmind-task-stage-1"
+      },
+      "configuration_labels": {
+        "quotagroup.brainpp.cn/preemptible": "no",
+        "quotagroup.brainpp.cn/quotagroup": "codesign"
+      },
+      "tasks": {
+        "default": {
+          "replicas": 2,
+          "positive_tags": [
+            "H800"
+          ],
+          "source_mount": "100.96.128.195:/data/ycfeng:/data/ycfeng",
+          "containers": [
+            {
+              "name": "default",
+              "image": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+              "resources": {
+                "limits": {
+                  "cpu": "48",
+                  "mellanox.com/mlnx_rdma": "1",
+                  "memory": "600000Mi",
+                  "nvidia.com/gpu": "8",
+                  "rdma/mlnx_shared": "8"
+                },
+                "requests": {
+                  "cpu": "48",
+                  "memory": "600000Mi",
+                  "nvidia.com/gpu": "8"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "exp-1106-134403-815066",
+      "uid": "41b7cae1-d62e-4624-bfb1-cd5839d4617e",
+      "created_at": "2026-11-06T05:44:03Z",
+      "creator": "i-fengyicheng",
+      "status": {
+        "phase": "Pending",
+        "reason": "RJob is queuing",
+        "message": "RJob is queuing",
+        "taskStatuses": {
+          "default": {
+            "taskStage": "stepmind-task-stage-1"
+          }
+        },
+        "taskStage": "stepmind-task-stage-1"
+      },
+      "configuration_labels": {
+        "quotagroup.brainpp.cn/preemptible": "no",
+        "quotagroup.brainpp.cn/quotagroup": "codesign"
+      },
+      "tasks": {
+        "default": {
+          "replicas": 1,
+          "positive_tags": [
+            "H800"
+          ],
+          "source_mount": "100.96.128.195:/data/ycfeng:/data/ycfeng",
+          "containers": [
+            {
+              "name": "default",
+              "image": "artifactory.stepfun-inc.com/docker-public/verlai/verl@sha256:466853285884bccd04c85f1c474cf5c4cc8f3ba4348d893f10de7738d3efc504",
+              "resources": {
+                "limits": {
+                  "cpu": "32",
+                  "mellanox.com/mlnx_rdma": "1",
+                  "memory": "300000Mi",
+                  "nvidia.com/gpu": "8",
+                  "rdma/mlnx_shared": "8"
+                },
+                "requests": {
+                  "cpu": "32",
+                  "memory": "300000Mi",
+                  "nvidia.com/gpu": "8"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "controls": "NONE",
+  "quota_queries": "NONE"
+}
